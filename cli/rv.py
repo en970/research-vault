@@ -192,7 +192,8 @@ def cmd_units(units, _args):
         n = len(u["resources"])
         total += n
         kind = dim(" (cross-cutting)") if u.get("kind") == "cross-cutting" else ""
-        print(f"  {bold(u['unit']):30s} {n:4d}  {u['title']}{kind}")
+        name_col = "{:<24s}".format(u["unit"])
+        print(f"  {bold(name_col)} {n:4d}  {u['title']}{kind}")
     print(dim(f"\n  {total} entries in {len(units)} units"))
 
 
@@ -201,7 +202,8 @@ def cmd_categories(units, _args):
     for _u, r in all_resources(units):
         counts[r["category"]] = counts.get(r["category"], 0) + 1
     for cat, n in sorted(counts.items(), key=lambda kv: -kv[1]):
-        print(f"  {bold(cat):24s} {n:4d}")
+        cat_col = "{:<16s}".format(cat)
+        print(f"  {bold(cat_col)} {n:4d}")
 
 
 def cmd_random(units, args):

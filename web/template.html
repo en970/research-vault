@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:;">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="A catalogue of free and open resources for doing research in every major discipline — data archives, literature access, free compute, software, publishing, funding — with access methods and honest labels.">
+<title>research-vault — free &amp; open resources for research</title>
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --surface: #ffffff;
+    --surface-2: #f0f0f3;
+    --surface-3: #e8e8ec;
+    --text: #1d1d1f;
+    --text-2: #515154;
+    --text-3: #86868b;
+    --hairline: rgba(0,0,0,.10);
+    --hairline-strong: rgba(0,0,0,.16);
+    --accent: #007aff;
+    --accent-soft: rgba(0,122,255,.10);
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.06);
+    --shadow-lift: 0 2px 4px rgba(0,0,0,.05), 0 10px 28px rgba(0,0,0,.10);
+    --header-bg: rgba(245,245,247,.78);
+    --mono-bg: #f6f6f8;
+    --note-bg: rgba(255,159,10,.09);
+    --note-text: #8a5a00;
+    --ok: #34c759;
+    --warn: #ff9500;
+    --c-data: #007aff;
+    --c-software: #af52de;
+    --c-literature: #32ade6;
+    --c-compute: #ff9500;
+    --c-publishing: #ff2d55;
+    --c-funding: #34c759;
+    --c-learning: #5856d6;
+    --c-community: #a2845e;
+  }
+  [data-theme="dark"] {
+    --bg: #0d0d0f;
+    --surface: #1c1c1e;
+    --surface-2: #232326;
+    --surface-3: #2c2c30;
+    --text: #f5f5f7;
+    --text-2: #b8b8bd;
+    --text-3: #7c7c82;
+    --hairline: rgba(255,255,255,.10);
+    --hairline-strong: rgba(255,255,255,.18);
+    --accent: #0a84ff;
+    --accent-soft: rgba(10,132,255,.16);
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 4px 16px rgba(0,0,0,.35);
+    --shadow-lift: 0 2px 4px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.5);
+    --header-bg: rgba(13,13,15,.75);
+    --mono-bg: #141416;
+    --note-bg: rgba(255,159,10,.12);
+    --note-text: #ffb340;
+    --ok: #30d158;
+    --warn: #ff9f0a;
+    --c-data: #0a84ff;
+    --c-software: #bf5af2;
+    --c-literature: #64d2ff;
+    --c-compute: #ff9f0a;
+    --c-publishing: #ff375f;
+    --c-funding: #30d158;
+    --c-learning: #5e5ce6;
+    --c-community: #c0a582;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+  ::selection { background: var(--accent-soft); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── header ─────────────────────────────────────────────── */
+  header {
+    position: sticky; top: 0; z-index: 40;
+    background: var(--header-bg);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .header-inner {
+    display: flex; align-items: center; gap: 14px;
+    padding-top: 12px; padding-bottom: 12px;
+  }
+  .wordmark { display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+  .wordmark svg { width: 22px; height: 22px; display: block; }
+  .wordmark .name { font-size: 17px; font-weight: 700; letter-spacing: -.02em; }
+  .wordmark .name span { color: var(--text-3); font-weight: 500; }
+
+  .searchbox {
+    flex: 1; display: flex; align-items: center; gap: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 8px 12px;
+    transition: border-color .15s ease, background .15s ease;
+    max-width: 560px;
+  }
+  .searchbox:focus-within { border-color: var(--accent); background: var(--surface); }
+  .searchbox svg { width: 15px; height: 15px; flex: none; color: var(--text-3); }
+  .searchbox input {
+    flex: 1; border: none; background: none; color: var(--text);
+    font: inherit; font-size: 15px; outline: none; min-width: 0;
+  }
+  .searchbox input::placeholder { color: var(--text-3); }
+  .searchbox kbd {
+    font-family: inherit; font-size: 11px; color: var(--text-3);
+    border: 1px solid var(--hairline); border-radius: 5px; padding: 1px 5px;
+  }
+  .header-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+  .iconbtn {
+    display: grid; place-items: center;
+    width: 34px; height: 34px; border-radius: 10px;
+    color: var(--text-2); transition: background .15s ease;
+  }
+  .iconbtn:hover { background: var(--surface-2); }
+  .iconbtn svg { width: 17px; height: 17px; }
+
+  /* ── hero ───────────────────────────────────────────────── */
+  .hero { padding: 40px 0 8px; }
+  .hero h1 {
+    font-size: 32px; font-weight: 800; letter-spacing: -.03em; line-height: 1.15;
+    max-width: 720px;
+  }
+  .hero p.sub { color: var(--text-2); max-width: 680px; margin-top: 10px; font-size: 16px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .stat {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 14px; padding: 12px 18px; box-shadow: var(--shadow);
+    min-width: 128px;
+  }
+  .stat .n {
+    font-size: 22px; font-weight: 700; letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat .l { font-size: 12px; color: var(--text-3); margin-top: 1px; }
+
+  /* ── controls ───────────────────────────────────────────── */
+  .controls { padding: 22px 0 6px; display: flex; flex-direction: column; gap: 12px; }
+  .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .row-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--text-3); flex: none; width: 74px;
+  }
+
+  .segmented {
+    display: inline-flex; background: var(--surface-2);
+    border: 1px solid var(--hairline); border-radius: 11px; padding: 2px;
+  }
+  .segmented button {
+    padding: 6px 14px; border-radius: 9px; font-size: 13.5px; font-weight: 500;
+    color: var(--text-2); transition: all .15s ease;
+  }
+  .segmented button[aria-pressed="true"] {
+    background: var(--surface); color: var(--text); font-weight: 600;
+    box-shadow: var(--shadow);
+  }
+
+  .chips { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 12px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--hairline);
+    font-size: 13px; font-weight: 500; color: var(--text-2);
+    transition: all .15s ease; white-space: nowrap;
+  }
+  .chip:hover { border-color: var(--hairline-strong); color: var(--text); }
+  .chip[aria-pressed="true"] {
+    background: var(--accent); border-color: var(--accent); color: #fff;
+  }
+  .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+  .chip .count {
+    font-size: 11px; color: var(--text-3); font-variant-numeric: tabular-nums;
+  }
+  .chip[aria-pressed="true"] .count { color: rgba(255,255,255,.75); }
+
+  .switchrow { display: inline-flex; align-items: center; gap: 8px; }
+  .switch {
+    position: relative; width: 40px; height: 24px; border-radius: 999px;
+    background: var(--surface-3); border: 1px solid var(--hairline);
+    transition: background .18s ease;
+  }
+  .switch::after {
+    content: ""; position: absolute; top: 2px; left: 2px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25);
+    transition: transform .18s ease;
+  }
+  .switch[aria-checked="true"] { background: var(--ok); border-color: transparent; }
+  .switch[aria-checked="true"]::after { transform: translateX(16px); }
+  .switchrow .lbl { font-size: 13px; color: var(--text-2); font-weight: 500; }
+
+  .clearbtn { font-size: 13px; color: var(--accent); font-weight: 500; padding: 4px 8px; border-radius: 8px; }
+  .clearbtn:hover { background: var(--accent-soft); }
+
+  /* ── results ────────────────────────────────────────────── */
+  .results-head {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 18px 0 12px;
+  }
+  .results-head .n { font-size: 13px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+  .unit-title { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+
+  .grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+    padding-bottom: 30px;
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 16px; padding: 16px 16px 14px;
+    box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 9px;
+    transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+  }
+  .card:hover { box-shadow: var(--shadow-lift); transform: translateY(-1px); border-color: var(--hairline-strong); }
+  .card-top { display: flex; align-items: flex-start; gap: 10px; }
+  .card-top a.name {
+    font-size: 16px; font-weight: 650; letter-spacing: -.01em; color: var(--text);
+    line-height: 1.3;
+  }
+  .card-top a.name:hover { color: var(--accent); text-decoration: none; }
+  .card-top a.name .ext { color: var(--text-3); font-size: 12px; font-weight: 400; }
+  .badge {
+    margin-left: auto; flex: none;
+    font-size: 11px; font-weight: 600; letter-spacing: .02em;
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .badge.free { color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+  .badge.gated { color: var(--warn); background: color-mix(in srgb, var(--warn) 13%, transparent); }
+  .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); }
+  .card-meta .cat { display: inline-flex; align-items: center; gap: 5px; font-weight: 500; }
+  .card-meta .cat .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .card-meta .sep { opacity: .5; }
+  .dots { letter-spacing: 1.5px; font-size: 10px; }
+  .card .summary { font-size: 14px; color: var(--text-2); }
+  .access {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: var(--mono-bg); border: 1px solid var(--hairline);
+    border-radius: 10px; padding: 8px 10px;
+  }
+  .access code {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12px; line-height: 1.55; color: var(--text-2);
+    overflow-wrap: anywhere; flex: 1;
+  }
+  .copybtn {
+    flex: none; color: var(--text-3); border-radius: 7px; padding: 2px;
+    display: grid; place-items: center;
+  }
+  .copybtn:hover { color: var(--accent); }
+  .copybtn svg { width: 14px; height: 14px; }
+  .note {
+    font-size: 12.5px; color: var(--note-text); background: var(--note-bg);
+    border-radius: 9px; padding: 7px 10px;
+  }
+  .morewrap { display: grid; place-items: center; padding: 4px 0 40px; }
+  .morebtn {
+    padding: 9px 22px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--hairline);
+    font-weight: 600; font-size: 14px; box-shadow: var(--shadow);
+  }
+  .morebtn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .empty { text-align: center; padding: 70px 0 90px; color: var(--text-3); }
+  .empty .big { font-size: 30px; margin-bottom: 8px; }
+
+  /* ── footer ─────────────────────────────────────────────── */
+  footer { border-top: 1px solid var(--hairline); padding: 28px 0 44px; color: var(--text-3); font-size: 13px; }
+  footer .cols { display: flex; gap: 28px; flex-wrap: wrap; justify-content: space-between; }
+  footer p { max-width: 560px; }
+
+  @media (max-width: 720px) {
+    .hero h1 { font-size: 25px; }
+    .row-label { width: 100%; }
+    .searchbox kbd { display: none; }
+    .wordmark .name span { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="wordmark">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="9.2" stroke="var(--accent)" stroke-width="1.7"/>
+        <circle cx="12" cy="12" r="3.1" fill="var(--accent)"/>
+        <path d="M12 2.8v3.4M12 17.8v3.4M2.8 12h3.4M17.8 12h3.4" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <div class="name">research-vault <span id="headcount"></span></div>
+    </div>
+    <div class="searchbox">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6.2" stroke="currentColor" stroke-width="1.8"/><path d="m13.8 13.8 3.4 3.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input id="q" type="search" placeholder="Search 0 resources…" autocomplete="off" spellcheck="false" aria-label="Search resources">
+      <kbd>/</kbd>
+    </div>
+    <div class="header-actions">
+      <a class="iconbtn" href="https://github.com/en970/research-vault" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      </a>
+      <button class="iconbtn" id="themebtn" aria-label="Toggle dark mode">
+        <svg id="icon-moon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M17 11.3A7 7 0 0 1 8.7 3 7 7 0 1 0 17 11.3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <svg id="icon-sun" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="display:none"><circle cx="10" cy="10" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M10 1.8v2M10 16.2v2M1.8 10h2M16.2 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M15.8 4.2l-1.4 1.4M5.6 14.4l-1.4 1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1>Free and open resources for doing research, in every major discipline.</h1>
+  <p class="sub">Open data archives, literature access, free compute, software, publication
+  pathways, funding, and learning materials — each with a concrete access method and an honest
+  label for what is free and what is gated. Built for people researching without institutional
+  access.</p>
+  <div class="stats" id="stats"></div>
+</section>
+
+<section class="controls wrap" aria-label="Filters">
+  <div class="row">
+    <span class="row-label">Scope</span>
+    <div class="segmented" id="seg-kind" role="group" aria-label="Scope">
+      <button data-kind="" aria-pressed="true">All</button>
+      <button data-kind="discipline" aria-pressed="false">Disciplines</button>
+      <button data-kind="cross-cutting" aria-pressed="false">Cross-cutting</button>
+    </div>
+    <span style="flex:1"></span>
+    <span class="switchrow">
+      <button class="switch" id="nosignup" role="switch" aria-checked="false" aria-label="No sign-up only"></button>
+      <span class="lbl">No sign-up needed</span>
+    </span>
+    <button class="clearbtn" id="clear">Clear all</button>
+  </div>
+  <div class="row">
+    <span class="row-label">Field</span>
+    <div class="chips" id="unit-chips"></div>
+  </div>
+  <div class="row">
+    <span class="row-label">Type</span>
+    <div class="chips" id="cat-chips"></div>
+  </div>
+</section>
+
+<main class="wrap" aria-live="polite">
+  <div class="results-head">
+    <span class="unit-title" id="rtitle">All resources</span>
+    <span class="n" id="rcount"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="morewrap" id="morewrap" style="display:none">
+    <button class="morebtn" id="morebtn">Show more</button>
+  </div>
+  <div class="empty" id="empty" style="display:none">
+    <div class="big">∅</div>
+    <div>Nothing matches. Fewer words, or <button class="clearbtn" id="clear2">clear the filters</button>.</div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <p>Free status and limits change. Everything here was verified at the date shown on each
+    field's page, but check the source before you depend on it. Curation and code are MIT-licensed;
+    each linked resource carries its own licence.
+    Found something missing or dead? <a href="https://github.com/en970/research-vault" target="_blank" rel="noopener noreferrer">Pull requests are welcome.</a></p>
+    <p>Static page — no external requests, no analytics, no cookies.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const UNITS = /*__DATA__*/[];
+
+/* ── state ─────────────────────────────────────────────────── */
+const state = { q: "", kind: "", unit: "", cats: new Set(), noSignup: false, shown: 150 };
+const PAGE = 150;
+const CAT_ORDER = ["data","software","literature","compute","publishing","funding","learning","community"];
+const FREE_LABELS = { "free": "Free", "free-registration": "Free · sign-up", "free-tier": "Free tier", "freemium": "Freemium" };
+
+const ALL = [];
+UNITS.forEach(u => u.resources.forEach(r => ALL.push({ u, r })));
+
+/* ── helpers ───────────────────────────────────────────────── */
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
+const safeUrl = u => /^https?:\/\//i.test(u) ? u : "";
+const catVar = c => CAT_ORDER.includes(c) ? `var(--c-${c})` : "var(--text-3)";
+
+function score(r, tokens) {
+  const name = r.name.toLowerCase(), sub = (r.subcategory||"").toLowerCase();
+  const body = (r.summary + " " + (r.notes||"") + " " + r.access + " " + r.url).toLowerCase();
+  let total = 0;
+  for (const t of tokens) {
+    let s = 0;
+    if (name.includes(t)) s += 3;
+    if (sub.includes(t)) s += 2;
+    if (body.includes(t)) s += 1;
+    if (!s) return 0;
+    total += s;
+  }
+  return total;
+}
+
+function matches() {
+  const tokens = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+  const out = [];
+  for (const { u, r } of ALL) {
+    if (state.kind && u.kind !== state.kind) continue;
+    if (state.unit && u.unit !== state.unit) continue;
+    if (state.cats.size && !state.cats.has(r.category)) continue;
+    if (state.noSignup && r.registration && r.registration !== "none") continue;
+    const s = tokens.length ? score(r, tokens) : 1;
+    if (s > 0) out.push({ u, r, s });
+  }
+  if (tokens.length) out.sort((a, b) => b.s - a.s || a.r.name.localeCompare(b.r.name));
+  return out;
+}
+
+/* ── render ────────────────────────────────────────────────── */
+function card({ u, r }) {
+  const url = safeUrl(r.url);
+  const gated = r.free !== "free";
+  const dots = "●".repeat(r.beginner) + "○".repeat(5 - r.beginner);
+  return `<article class="card">
+    <div class="card-top">
+      <a class="name" href="${esc(url)}" target="_blank" rel="noopener noreferrer nofollow">${esc(r.name)} <span class="ext">↗</span></a>
+      <span class="badge ${gated ? "gated" : "free"}">${esc(FREE_LABELS[r.free] || r.free)}</span>
+    </div>
+    <div class="card-meta">
+      <span class="cat"><span class="dot" style="background:${catVar(r.category)}"></span>${esc(r.category)}</span>
+      <span class="sep">·</span><span>${esc(u.title)}</span>
+      <span class="sep">·</span><span class="dots" title="beginner-friendliness ${r.beginner}/5" aria-label="beginner-friendliness ${r.beginner} of 5">${dots}</span>
+    </div>
+    <p class="summary">${esc(r.summary)}</p>
+    <div class="access"><code>${esc(r.access)}</code><button class="copybtn" data-copy="${esc(r.access)}" aria-label="Copy access method"><svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1" stroke="currentColor" stroke-width="1.5"/></svg></button></div>
+    ${r.notes ? `<div class="note">${esc(r.notes)}</div>` : ""}
+  </article>`;
+}
+
+function render() {
+  const hits = matches();
+  const visible = hits.slice(0, state.shown);
+  $("grid").innerHTML = visible.map(card).join("");
+  $("empty").style.display = hits.length ? "none" : "";
+  $("morewrap").style.display = hits.length > state.shown ? "" : "none";
+  $("rcount").textContent = hits.length === ALL.length
+    ? `${hits.length} entries` : `${hits.length} of ${ALL.length}`;
+  const unitObj = UNITS.find(u => u.unit === state.unit);
+  $("rtitle").textContent = state.q ? `Results for “${state.q}”`
+    : unitObj ? unitObj.title
+    : state.kind === "discipline" ? "Disciplines"
+    : state.kind === "cross-cutting" ? "Cross-cutting"
+    : "All resources";
+  syncChips();
+}
+
+function syncChips() {
+  document.querySelectorAll("#unit-chips .chip").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.unit === state.unit)));
+  document.querySelectorAll("#cat-chips .chip").forEach(b =>
+    b.setAttribute("aria-pressed", String(state.cats.has(b.dataset.cat))));
+  document.querySelectorAll("#seg-kind button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.kind === state.kind)));
+  $("nosignup").setAttribute("aria-checked", String(state.noSignup));
+}
+
+/* ── build static chrome ───────────────────────────────────── */
+function init() {
+  const total = ALL.length;
+  const noSignupCount = ALL.filter(x => !x.r.registration || x.r.registration === "none").length;
+  const fullyFree = ALL.filter(x => x.r.free === "free").length;
+  $("headcount").textContent = `· ${total}`;
+  $("q").placeholder = `Search ${total} resources…`;
+  $("stats").innerHTML = [
+    [total, "resources"],
+    [UNITS.filter(u => u.kind === "discipline").length, "disciplines"],
+    [fullyFree, "fully free"],
+    [noSignupCount, "no sign-up"],
+  ].map(([n, l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+
+  $("unit-chips").innerHTML =
+    `<button class="chip" data-unit="" aria-pressed="true">All fields</button>` +
+    UNITS.map(u =>
+      `<button class="chip" data-unit="${esc(u.unit)}" aria-pressed="false">${esc(u.title)} <span class="count">${u.resources.length}</span></button>`
+    ).join("");
+
+  const catCounts = {};
+  ALL.forEach(({ r }) => { catCounts[r.category] = (catCounts[r.category] || 0) + 1; });
+  $("cat-chips").innerHTML = CAT_ORDER.filter(c => catCounts[c]).map(c =>
+    `<button class="chip" data-cat="${c}" aria-pressed="false"><span class="dot" style="background:${catVar(c)}"></span>${c} <span class="count">${catCounts[c]}</span></button>`
+  ).join("");
+
+  /* events */
+  let deb;
+  $("q").addEventListener("input", e => {
+    clearTimeout(deb);
+    deb = setTimeout(() => { state.q = e.target.value.trim(); state.shown = PAGE; render(); }, 120);
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "/" && document.activeElement !== $("q")) { e.preventDefault(); $("q").focus(); }
+    if (e.key === "Escape" && document.activeElement === $("q")) { $("q").value = ""; state.q = ""; render(); }
+  });
+  $("unit-chips").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    state.unit = b.dataset.unit === state.unit ? "" : b.dataset.unit;
+    state.shown = PAGE; render();
+  });
+  $("cat-chips").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const c = b.dataset.cat;
+    state.cats.has(c) ? state.cats.delete(c) : state.cats.add(c);
+    state.shown = PAGE; render();
+  });
+  $("seg-kind").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    state.kind = b.dataset.kind; state.unit = ""; state.shown = PAGE; render();
+  });
+  $("nosignup").addEventListener("click", () => { state.noSignup = !state.noSignup; state.shown = PAGE; render(); });
+  const clearAll = () => {
+    Object.assign(state, { q: "", kind: "", unit: "", noSignup: false, shown: PAGE });
+    state.cats.clear(); $("q").value = ""; render();
+  };
+  $("clear").addEventListener("click", clearAll);
+  $("clear2").addEventListener("click", clearAll);
+  $("morebtn").addEventListener("click", () => { state.shown += PAGE; render(); });
+  $("grid").addEventListener("click", e => {
+    const b = e.target.closest(".copybtn"); if (!b) return;
+    try { navigator.clipboard.writeText(b.dataset.copy); } catch (_) {}
+    b.style.color = "var(--ok)";
+    setTimeout(() => { b.style.color = ""; }, 900);
+  });
+
+  /* theme */
+  let stored = null;
+  try { stored = localStorage.getItem("rv-theme"); } catch (_) {}
+  const sysDark = matchMedia("(prefers-color-scheme: dark)");
+  const apply = t => {
+    document.documentElement.dataset.theme = t;
+    $("icon-moon").style.display = t === "dark" ? "none" : "";
+    $("icon-sun").style.display = t === "dark" ? "" : "none";
+  };
+  apply(stored || (sysDark.matches ? "dark" : "light"));
+  sysDark.addEventListener("change", e => { if (!stored) apply(e.matches ? "dark" : "light"); });
+  $("themebtn").addEventListener("click", () => {
+    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    stored = next;
+    try { localStorage.setItem("rv-theme", next); } catch (_) {}
+    apply(next);
+  });
+
+  render();
+}
+init();
+</script>
+</body>
+</html>
