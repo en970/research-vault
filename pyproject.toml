@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "research-vault"
+version = "0.1.0"
+description = "Search the research-vault catalogue of free and open research resources from the terminal."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+
+[project.scripts]
+rv = "rv:main"
+
+[project.urls]
+Repository = "https://github.com/en970/research-vault"
+
+[tool.setuptools]
+package-dir = { "" = "cli" }
+py-modules = ["rv"]
