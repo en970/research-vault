@@ -282,6 +282,41 @@
   .empty { text-align: center; padding: 70px 0 90px; color: var(--text-3); }
   .empty .big { font-size: 30px; margin-bottom: 8px; }
 
+  /* ── about ──────────────────────────────────────────────── */
+  .about { padding: 34px 20px 8px; border-top: 1px solid var(--hairline); }
+  .about h2 { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+  .about blockquote {
+    margin: 16px 0 14px; padding: 14px 18px;
+    border-left: 3px solid var(--accent);
+    background: var(--surface); border-radius: 0 14px 14px 0;
+    color: var(--text); font-size: 15px; box-shadow: var(--shadow);
+    max-width: 760px;
+  }
+  .about .lede { color: var(--text-2); max-width: 700px; margin-bottom: 26px; }
+  .about-cols {
+    display: grid; gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr));
+  }
+  .about h3 {
+    font-size: 12px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+    color: var(--text-3); margin-bottom: 12px;
+  }
+  .about-col h3:not(:first-child) { margin-top: 28px; }
+  .about dl { display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; align-items: start; }
+  .about dt { white-space: nowrap; padding-top: 1px; }
+  .about dd { color: var(--text-2); font-size: 14px; }
+  .about dt:not(:has(.badge)):not(:has(.dots)) {
+    font-weight: 600; color: var(--text); font-size: 14px;
+  }
+  .about ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .about li { color: var(--text-2); font-size: 14px; padding-left: 15px; position: relative; }
+  .about li::before {
+    content: ""; position: absolute; left: 0; top: 8px;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--text-3);
+  }
+  .about li strong { color: var(--text); }
+  .about-col > p { color: var(--text-2); font-size: 14px; }
+
   /* ── footer ─────────────────────────────────────────────── */
   footer { border-top: 1px solid var(--hairline); padding: 28px 0 44px; color: var(--text-3); font-size: 13px; }
   footer .cols { display: flex; gap: 28px; flex-wrap: wrap; justify-content: space-between; }
@@ -377,12 +412,71 @@
   </div>
 </main>
 
+<section class="about wrap" id="about">
+  <h2>About this catalogue</h2>
+  <blockquote>
+    Include a resource only where a meaningful free route exists, and state exactly what that
+    route is — the package to install, the endpoint that needs no key, the registration hoop,
+    the quota. Where a resource is free only in part, say which part. Where the wall is
+    institutional, say so plainly instead of listing it as free. Prefer a number that can be
+    checked at the source over an adjective that cannot.
+  </blockquote>
+  <p class="lede">A list of links answers <em>what exists</em>. The harder question — the one
+  that costs an afternoon each time it goes unanswered — is <em>what can I reach from where I
+  am sitting</em>. So the caveats here are not an appendix; they are half of what the catalogue
+  is for.</p>
+
+  <div class="about-cols">
+    <div class="about-col">
+      <h3>How to read an entry</h3>
+      <dl>
+        <dt><span class="badge free">Free</span></dt>
+        <dd>Free outright. <span class="badge gated">Free&nbsp;·&nbsp;sign-up</span> needs an
+        account, <span class="badge gated">Free tier</span> is free up to a quota, and
+        <span class="badge gated">Freemium</span> has a paid product behind it — in every case
+        the entry says which part is free.</dd>
+        <dt><span class="dots">●●●○○</span></dt>
+        <dd>Beginner-friendliness, 1 to 5. Five means a newcomer gets something useful out of
+        it in ten minutes; one means a specialist toolchain and patience.</dd>
+        <dt>The grey box</dt>
+        <dd>How you actually reach it: the package to install, the endpoint, the portal. Click
+        the icon to copy it.</dd>
+        <dt>The amber box</dt>
+        <dd>What will cost you time if you do not know it first — rate limits, licence terms,
+        institutional gates, the part that is not free.</dd>
+      </dl>
+    </div>
+    <div class="about-col">
+      <h3>What is deliberately not here</h3>
+      <ul>
+        <li><strong>Piracy.</strong> No Sci-Hub, LibGen, or their equivalents. Legal routes
+        only — including the forgotten ones: Unpaywall, the Wikipedia Library, public-library
+        access, and writing to the author, which works.</li>
+        <li><strong>Paid tools with a free demo.</strong> If the free tier exists to sell the
+        paid one, it is out. Where a field's standard tool is genuinely paid, the entry that
+        replaces it says so, so that you stop looking.</li>
+        <li><strong>Padding.</strong> Entries a researcher in that field would not actually
+        recommend were cut, even where it left a section short. The funding sections are the
+        honest example: routes open to unaffiliated researchers are scarce, and the catalogue
+        says so rather than filling the space.</li>
+      </ul>
+      <h3>A note on accuracy</h3>
+      <p>Every entry was checked against the resource's own pages, with figures taken from
+      primary sources rather than secondary write-ups. That does not make it durable: free
+      tiers shrink, archives migrate, grant programmes skip a year. Check the source before
+      you build on it, and
+      <a href="https://github.com/en970/research-vault/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">open a pull request</a>
+      when you find something that has moved — status changes are the one thing a catalogue
+      cannot notice by itself.</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap cols">
-    <p>Free status and limits change. Everything here was verified at the date shown on each
-    field's page, but check the source before you depend on it. Curation and code are MIT-licensed;
-    each linked resource carries its own licence.
-    Found something missing or dead? <a href="https://github.com/en970/research-vault" target="_blank" rel="noopener noreferrer">Pull requests are welcome.</a></p>
+    <p>Curation and code are MIT-licensed; each linked resource carries its own licence and
+    terms. Built by <a href="https://github.com/en970" target="_blank" rel="noopener noreferrer">en970</a> —
+    <a href="https://github.com/en970/research-vault" target="_blank" rel="noopener noreferrer">source and contributions on GitHub</a>.</p>
     <p>Static page — no external requests, no analytics, no cookies.</p>
   </div>
 </footer>
