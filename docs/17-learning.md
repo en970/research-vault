@@ -100,7 +100,7 @@ UNESCO Category 1 institute in Trieste, governed with the IAEA and Italy, whose 
 
 **Caveats.** Competitive, and support is explicitly targeted at scientists from developing countries — eligibility varies by activity, so read each call. Physics and mathematics dominate, with growing quantitative biology, climate and HPC activity. Visa and travel logistics are the practical obstacle, not the money; some programmes now run partly online.
 
-*Also listed under: physics, funding.*
+*Also listed under: physics, mathematics, funding.*
 
 ### [Outreachy](https://www.outreachy.org/)
 

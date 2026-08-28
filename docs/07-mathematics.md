@@ -648,7 +648,7 @@ The International Centre for Pure and Applied Mathematics has for almost 50 year
 
 **Caveats.** Schools are geographically targeted - participation calls usually prioritise applicants from the region hosting the school. Proposing a school requires a committed local host institution.
 
-### [ICTP mathematics programmes (Trieste)](https://www.ictp.it/math/opportunities-overview)
+### [ICTP mathematics programmes (Trieste)](https://www.ictp.it/)
 
 `Free, application` · beginner 2/5 · fellowships and funded visits
 

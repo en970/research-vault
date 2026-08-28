@@ -714,7 +714,7 @@ $4,000 microgrants for quantum-technology projects — open-source software, edu
 
 ## Learning
 
-### [David Tong — Lectures on Theoretical Physics](https://www.damtp.cam.ac.uk/user/tong/teaching.html)
+### [David Tong — Lectures on Theoretical Physics](https://davidtong.org/teaching/)
 
 `Free` · beginner 4/5 · graduate lecture notes
 

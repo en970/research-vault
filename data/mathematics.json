@@ -889,7 +889,7 @@
     },
     {
       "name": "ICTP mathematics programmes (Trieste)",
-      "url": "https://www.ictp.it/math/opportunities-overview",
+      "url": "https://www.ictp.it/",
       "category": "funding",
       "subcategory": "fellowships and funded visits",
       "summary": "The Abdus Salam International Centre for Theoretical Physics runs mathematics-specific opportunities aimed at researchers from developing countries: the one-year Postgraduate Diploma Programme (a bridge to a PhD), PhD and sandwich programmes, postdoctoral positions, and the Associates Programme, which funds repeated research visits to Trieste over several years.",
@@ -898,7 +898,7 @@
       "registration": "application",
       "beginner": 2,
       "notes": "Competitive and calendar-driven - Diploma and Associates calls have fixed annual deadlines. Most schemes require nationality of, or a position in, a developing country; the Associates scheme additionally requires an academic position to return to.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

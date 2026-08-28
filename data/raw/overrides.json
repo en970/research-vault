@@ -22,6 +22,20 @@
       "field": "notes",
       "new_value": "The hosted instance at voyant-tools.org is frequently down — it returned 502 for the whole of a check on 2026-08-28. For anything you depend on, run your own copy: VoyantServer is a self-contained download that runs locally with a bundled Java, and the source is on GitHub under GPL-3.",
       "reason": "The hosted service's unreliability is the single most important thing to know before building a workflow on it, and the original note did not mention it."
+    },
+    {
+      "unit": "physics",
+      "name": "David Tong — Lectures on Theoretical Physics",
+      "field": "url",
+      "new_value": "https://davidtong.org/teaching/",
+      "reason": "The DAMTP page now redirects here (checked 2026-08-28); this is the live home of the lecture notes."
+    },
+    {
+      "unit": "mathematics",
+      "name": "ICTP mathematics programmes (Trieste)",
+      "field": "url",
+      "new_value": "https://www.ictp.it/",
+      "reason": "Every deep path under ictp.it returned HTTP 500 on 2026-08-28 while the site root is fine — pointing at the root avoids linking a broken page."
     }
   ],
 
