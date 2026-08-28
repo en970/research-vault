@@ -491,7 +491,7 @@
       "registration": "api-key",
       "beginner": 4,
       "notes": "API allowances are per-endpoint and reported in response headers (commonly a few thousand calls per day). Earth-science coverage is newer and thinner than astronomy's, so cross-check OpenAlex and Crossref for geoscience bibliometrics. Full text is indexed only where publishers permit it.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

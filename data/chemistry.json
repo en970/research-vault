@@ -86,7 +86,9 @@
       "beginner": 4,
       "notes": "CC0 removes legal barriers but the project asks you to cite the original structure authors. A full checkout is tens of gigabytes; take the cif/ subdirectory or a mirror if bandwidth is limited. Coverage is broad but not exhaustive - it does not replace CSD or ICSD for systematic searching.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "physics"
+      ]
     },
     {
       "name": "JARVIS (NIST)",
@@ -269,7 +271,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "ASE only orchestrates - you still need the underlying code installed and, for plane-wave DFT, real compute. Some Calculator interfaces are far better maintained than others; check the calculator's own page before trusting defaults. Governance now sits with an ASE Steering Committee and development is on GitLab.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -384,7 +386,9 @@
       "beginner": 3,
       "notes": "The API surface is large and moves quickly - modules get relocated between releases, so pin a version. Some functionality (energy corrections, compatibility schemes) assumes Materials Project calculation settings and gives misleading results on calculations run with different parameters.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "physics"
+      ]
     },
     {
       "name": "PySCF",

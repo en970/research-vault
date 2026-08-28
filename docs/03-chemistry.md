@@ -68,6 +68,8 @@ Open collection of experimental crystal structures of organic, inorganic, metal-
 
 **Caveats.** CC0 removes legal barriers but the project asks you to cite the original structure authors. A full checkout is tens of gigabytes; take the cif/ subdirectory or a mirror if bandwidth is limited. Coverage is broad but not exhaustive - it does not replace CSD or ICSD for systematic searching.
 
+*Also listed under: physics.*
+
 ### [JARVIS (NIST)](https://jarvis.nist.gov/)
 
 `Free (registration), email` · beginner 3/5 · materials datasets and ML benchmarks
@@ -283,6 +285,8 @@ Python Materials Genomics: structure and molecule objects, symmetry analysis, ph
 **Access.** `pip install pymatgen`, then `from pymatgen.core import Structure; s = Structure.from_file('POSCAR')`. It is also the analysis layer beneath the Materials Project API client.
 
 **Caveats.** The API surface is large and moves quickly - modules get relocated between releases, so pin a version. Some functionality (energy corrections, compatibility schemes) assumes Materials Project calculation settings and gives misleading results on calculations run with different parameters.
+
+*Also listed under: physics.*
 
 ### [PySCF](https://pyscf.org/)
 

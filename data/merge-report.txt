@@ -1,5 +1,3 @@
-[physics] no critic file — sweep used as-is
-[astronomy] no critic file — sweep used as-is
 [chemistry] no critic file — sweep used as-is
 [biology] no critic file — sweep used as-is
 [medicine] no critic file — sweep used as-is

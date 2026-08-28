@@ -435,7 +435,7 @@
       "registration": "email",
       "beginner": 5,
       "notes": "The free compile timeout is the binding constraint: long documents, big TikZ pictures or heavy bibliographies can fail to compile until you pay (paid tiers give 24x the timeout) - a local TeX Live install has no such limit. Many universities buy site licences, which unaffiliated researchers cannot use.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

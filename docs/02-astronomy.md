@@ -1,10 +1,10 @@
 # Astronomy & space science
 
-Part of [research-vault](../README.md). 66 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 79 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (32) · [Software](#software) (11) · [Literature](#literature) (2) · [Compute](#compute) (3) · [Publishing](#publishing) (5) · [Funding](#funding) (4) · [Learning](#learning) (6) · [Community](#community) (3)
+**Contents:** [Data](#data) (37) · [Software](#software) (18) · [Literature](#literature) (2) · [Compute](#compute) (3) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (3)
 
 ## Data
 
@@ -48,6 +48,16 @@ All-Sky Automated Survey for Supernovae: 20 robotic telescopes at four sites (Ha
 
 **Caveats.** Shallow by design (small telephoto lenses, ~18 mag) - ideal for bright variables, supernovae and long baselines rather than faint sources. The web form is meant for fewer than about 100 targets; use the Sky Patrol client for larger jobs.
 
+### [ATNF Pulsar Catalogue (psrcat)](https://www.atnf.csiro.au/research/pulsar/psrcat/)
+
+`Free` · beginner 3/5 · pulsar catalogue
+
+CSIRO's catalogue of every published pulsar - more than 3,000 entries - carrying positions, spin periods and derivatives, dispersion measures, binary parameters, flux densities and derived quantities (characteristic age, surface field, spin-down luminosity), with a version number stamped on every release.
+
+**Access.** Web query form on the catalogue page; downloadable psrcat command-line tool for offline use; scripted access with `pip install psrqpy` then `from psrqpy import QueryATNF; q = QueryATNF(params=['JNAME','F0','DM','P0'])`, which caches a local copy of the catalogue.
+
+**Caveats.** Always record the catalogue version with any result - values change between versions, so 'the ATNF catalogue' alone is not a reproducible citation. It is a parameter catalogue, not a data archive: raw and folded pulsar observations live in the CSIRO Data Access Portal, and pulsar-timing-array data in the NANOGrav, EPTA and PPTA public releases.
+
 ### [Breakthrough Listen Open Data Archive](https://breakthroughinitiatives.org/opendatasearch)
 
 `Free` · beginner 2/5 · radio SETI / technosignatures
@@ -72,7 +82,7 @@ CHIME/FRB Catalog 2 contains 4,539 fast radio bursts from 3,641 unique sources d
 
 `Free` · beginner 2/5 · spectroscopic survey
 
-Public data from the Dark Energy Spectroscopic Instrument; DR1 (March 2025) contains spectra and redshifts for ~18.7 million galaxies, quasars and stars.
+Public data from the Dark Energy Spectroscopic Instrument. DR1 (19 March 2025) contains 18.7 million new spectra observed from May 2021 to June 2022 plus reprocessed Survey Validation data; the earlier Early Data Release (13 June 2023) holds spectra for 1.8 million unique Survey Validation targets and is a much smaller starting point. No DR2 has been released.
 
 **Access.** Direct HTTPS download at data.desi.lbl.gov; individual spectra retrievable without bulk download via the SPARCL service (`pip install sparclclient`) at NOIRLab.
 
@@ -108,6 +118,16 @@ Gaia DR3 (June 2022) gives positions, parallaxes, proper motions and photometry 
 
 **Caveats.** Anonymous queries have row and job limits; a free account lifts them and keeps query history. The Focused Product Release (October 2023) sits between DR3 and DR4. Expect archive interface changes and much larger volumes at DR4.
 
+### [ESA Planetary Science Archive (PSA)](https://www.cosmos.esa.int/web/psa)
+
+`Free` · beginner 2/5 · planetary mission archive
+
+ESA's permanent archive for its planetary missions - Rosetta, Mars Express, Venus Express, BepiColombo, ExoMars 2016/TGO, Huygens, SMART-1, Giotto and Chandrayaan-1 - the European counterpart to NASA's PDS, delivered in peer-reviewed PDS3 and PDS4 formats.
+
+**Access.** Search and download through the PSA web interface at psa.esa.int; FTP/HTTPS directory browsers for bulk retrieval of whole instrument datasets; TAP and EPN-TAP endpoints for scripted queries; observation geometry from the matching SPICE kernels (`pip install spiceypy`).
+
+**Caveats.** No account of any kind. The learning cost is the PDS label format and the per-instrument directory conventions; start from an instrument's user guide rather than the raw file tree. Some instrument teams deliver on a delayed schedule, so the newest BepiColombo and ExoMars data appear later than the observations.
+
 ### [ESO Science Archive](https://archive.eso.org)
 
 `Free` · beginner 3/5 · ground-based observatory archive
@@ -126,7 +146,7 @@ Euclid Quick Release 1 (19 March 2025): ~30 TB of VIS/NISP imaging, slitless spe
 
 **Access.** ESA Euclid Science Archive (linked from the Q1 data page); full mirror at IRSA with TAP/ADQL catalogue queries and AWS cloud copies; tutorial notebooks at caltech-ipac.github.io/irsa-tutorials.
 
-**Caveats.** Q1 is single-visit depth over deep fields only; substantially larger cosmology-scale releases follow as the survey progresses.
+**Caveats.** Q1 is single-visit depth over deep fields only. Euclid DR1 is announced on the ESA Cosmos site as a future release with its contents fixed by an approved Euclid Science Team memo, but it is not public as of 28 August 2026 - Q1 remains the only open Euclid dataset.
 
 ### [Fermi Science Support Center](https://fermi.gsfc.nasa.gov/ssc/)
 
@@ -178,6 +198,16 @@ Public neutrino datasets including IceTracks-DR2 (21 May 2026): 14 years of trac
 
 **Caveats.** These are curated event lists and responses, not raw detector data; questions go to analysis@icecube.wisc.edu.
 
+### [IllustrisTNG Public Data Release](https://www.tng-project.org/data/)
+
+`Free (registration), email` · beginner 3/5 · cosmological simulations
+
+Full public release of the TNG50, TNG100, TNG300 and TNG-Cluster magnetohydrodynamical galaxy-formation simulations: 27 runs, 2,914 snapshots and about 1.0 PB of data, with box sizes from 51.7 Mpc (TNG50) to 302.6 Mpc (TNG300) and 1,003.8 Mpc for TNG-Cluster, plus group catalogues, merger trees and supplementary catalogues.
+
+**Access.** Create a free account, then use the documented web API (returns individual subhalos, cutouts and merger trees so you never download a whole snapshot), direct HTTPS file download, or the hosted JupyterLab workspace that runs analysis next to the data.
+
+**Caveats.** Registration is free but mandatory even for the API. Whole snapshots run to tens of TB each - the API and the hosted JupyterLab are the only realistic routes without a cluster. The predecessor Illustris simulations are served from the same account.
+
 ### [IRSA (NASA/IPAC Infrared Science Archive)](https://irsa.ipac.caltech.edu)
 
 `Free` · beginner 4/5 · infrared and multi-mission archive
@@ -210,7 +240,7 @@ STScI archive holding JWST, HST, TESS, Kepler/K2, GALEX and Pan-STARRS data; all
 
 `Free` · beginner 3/5 · asteroid and comet astrometry
 
-The IAU's official clearinghouse for astrometric observations and orbits of over 1.4 million minor planets and comets; publishes orbit files (MPCORB), observation databases and the NEO Confirmation Page.
+The IAU's official clearinghouse for astrometric observations and orbits of minor planets and comets; the front-page all-time counters on 28 August 2026 read 1,559,751 minor planets, 4,643 comets, 42,347 near-Earth objects and 550.8 million observations received. It publishes orbit files (MPCORB), observation databases and the NEO Confirmation Page.
 
 **Access.** Web services and database queries at minorplanetcenter.net; bulk MPCORB downloads; astrometry submissions accepted from anyone observing from a site with an MPC observatory code.
 
@@ -246,15 +276,25 @@ Cross-matched multiwavelength positions, redshifts, photometry, images and liter
 
 **Caveats.** Complements SIMBAD: NED is deeper for galaxies and redshift bookkeeping; SIMBAD is stronger for Galactic objects.
 
+### [NRAO Science Data Archive](https://data.nrao.edu)
+
+`Free` · beginner 2/5 · radio interferometry archive
+
+Holds all raw data taken by the VLA (historical and Jansky), the VLBA, the GMVA and the GBT (2014-2020), and also serves ALMA; the standard proprietary period is 12 months from the last observation of a project, 6 months for Director's Discretionary Time, and 24 months for projects from semester 2026A onwards.
+
+**Access.** Archive Access Tool web interface at data.nrao.edu (search by position, receiver, frequency, array configuration); public data download without an account, giving an email address at download time; a free my.nrao.edu login is only needed for proprietary data you are on. Calibrated measurement sets from the VLA calibration pipeline are offered alongside raw data.
+
+**Caveats.** Raw visibilities need CASA plus substantial disk and CPU; a single VLA dataset is routinely tens of GB. The lengthening proprietary period (24 months from 2026A) means recent VLA science stays closed longer than ALMA's one year.
+
 ### [Rubin Observatory / LSST data](https://rubinobservatory.org/for-scientists/data-products/data-access)
 
 `Free, application` · beginner 2/5 · optical survey + alert stream
 
-Data Preview 1 (released 30 June 2025) covers seven ~1 deg2 fields observed with the LSST Commissioning Camera in late 2024, processed with Science Pipelines v29; in survey operations alerts are transmitted to brokers within 60 seconds of every image.
+Early Data Preview 2 (DP2) is now the most recent preview: image and catalogue products from observations taken April 2025 to January 2026, processed with Science Pipelines v30 (deep coadd images only, but all catalogues); Data Preview 1 (30 June 2025) covers seven ~1 deg2 Commissioning Camera fields from late 2024. Since 24 February 2026 alerts have been streaming in real time to brokers and are accessible to the global science community.
 
 **Access.** Rubin Science Platform (data.lsst.cloud) notebooks, portal and TAP for data-rights holders - all US- and Chile-based scientists and students plus named international contributors; alerts are world-public through brokers (ALeRCE, Fink, Lasair, ANTARES and others) with no data rights needed; solar-system detections flow to the Minor Planet Center.
 
-**Caveats.** Pixel and catalogue releases stay inside the data-rights community for a proprietary period before becoming world-public, so an unaffiliated researcher cannot get an RSP account today. Real time-domain science is still possible now through the public alert stream, broker portals and the MPC.
+**Caveats.** Rubin's data policy sets a two-year proprietary period on prompt-processed images and annual data releases, after which they become world-public; RSP accounts are for data-rights holders only (US and Chile-based scientists and students, plus named international in-kind contributors), although unaffiliated researchers such as amateur astronomers may request access where public resources are insufficient. Alert packets and the contents of the Prompt Products Database are public with no data rights required, so real time-domain science is possible now through brokers and the MPC.
 
 ### [SDOML (SDO Machine Learning Dataset)](https://sdoml.github.io)
 
@@ -270,7 +310,7 @@ Curated, calibration-corrected SDO dataset for machine learning: AIA images 2010
 
 `Free` · beginner 5/5 · optical survey database
 
-SQL interface to all Sloan Digital Sky Survey releases; DR20 (announced 30 July 2026) is the third SDSS-V release and adds the first optical BOSS spectra taken from Las Campanas Observatory for the Milky Way Mapper and Black Hole Mapper programs, plus Local Volume Mapper tiles and value-added catalogues.
+SQL interface to all Sloan Digital Sky Survey releases; DR20 is live as the third SDSS-V release, adding the first optical BOSS spectra taken at Las Campanas Observatory plus more BOSS spectra from Apache Point, further Local Volume Mapper tiles, and a large SPIDERS dataset giving optical spectroscopy of eROSITA X-ray sources. DR20 contains no new APOGEE spectra and no reanalysis of previous APOGEE data - those are expected in DR21.
 
 **Access.** Free-form SQL in the browser at skyserver.sdss.org; longer jobs via CasJobs (free account); `astroquery.sdss` for scripted access; flat files from data.sdss.org.
 
@@ -280,11 +320,21 @@ SQL interface to all Sloan Digital Sky Survey releases; DR20 (announced 30 July 
 
 `Free` · beginner 5/5 · object database
 
-CDS reference database resolving names, cross-identifications, basic measurements and complete literature links for over 10 million astronomical objects outside the solar system.
+CDS reference database resolving names, cross-identifications, basic measurements and complete literature links for objects outside the solar system; the site's own counter reported 21,831,863 objects, 72,564,984 identifiers and 466,704 bibliographic references on 28 August 2026.
 
 **Access.** Web queries at simbad.cds.unistra.fr; `from astroquery.simbad import Simbad`; TAP service for bulk cross-identification.
 
 **Caveats.** Part of the wider free CDS ecosystem: the Aladin interactive sky atlas (aladin.cds.unistra.fr, desktop and Lite web versions) and the CDS X-Match service for crossmatching billion-row catalogues. ESA's ESASky (sky.esa.int, with astroquery.esasky and the pyESASky Jupyter widget) plays the same role for space-mission footprints across Hubble, JWST, XMM-Newton, Herschel and planetary missions.
+
+### [SkyView Virtual Observatory](https://skyview.gsfc.nasa.gov)
+
+`Free` · beginner 5/5 · multiwavelength image cutout service
+
+NASA/HEASARC service (current version 3.5.7) that generates an image of any position on the sky at any wavelength from radio to gamma-ray, resampling dozens of local and remote surveys - DSS, 2MASS, SDSS, GALEX, WISE, UKIDSS, FIRST, TGSS, RASS, IRAS, Fermi and more - onto a projection and pixel scale you choose.
+
+**Access.** Web form at skyview.gsfc.nasa.gov; URL/CGI API at https://skyview.gsfc.nasa.gov/cgi-bin/images for scripted requests; the downloadable 'SkyView-in-a-Jar' Java build for offline batch work; or `from astroquery.skyview import SkyView; SkyView.get_images(position='M31', survey=['DSS','2MASS-K'])`.
+
+**Caveats.** Returns resampled, reprojected survey images rather than original mission pixels - excellent for finder charts and multiwavelength comparison figures, not the right source for precision photometry. Remote surveys depend on third-party servers and can be temporarily unavailable.
 
 ### [SPHEREx Archive at IRSA](https://irsa.ipac.caltech.edu/Missions/spherex.html)
 
@@ -328,6 +378,16 @@ Northern-sky time-domain survey; bimonthly public data releases of images and li
 
 ## Software
 
+### [Aladin Sky Atlas](https://aladin.cds.unistra.fr)
+
+`Free` · beginner 4/5 · interactive sky atlas
+
+CDS interactive sky atlas that overlays catalogues, databases and your own images on more than 1,100 HiPS surveys totalling roughly 900 TB of imagery from radio to gamma-ray; ships as a Java desktop application, a WebGL browser version (Aladin Lite) and a Jupyter widget.
+
+**Access.** Run the desktop Java application from aladin.cds.unistra.fr; Aladin Lite needs only a browser and can be embedded in a page; `pip install ipyaladin` for notebooks. Exchanges tables and images live with TOPCAT, DS9 and Python sessions over a SAMP hub.
+
+**Caveats.** GPL v3. The desktop version needs a Java runtime. For crossmatching billion-row catalogues use the companion CDS X-Match service rather than Aladin itself.
+
 ### [Astrometry.net](https://astrometry.net)
 
 `Free, email` · beginner 4/5 · astrometric plate solving
@@ -336,7 +396,17 @@ Blind astrometric calibration: hand it an image with no reliable pointing inform
 
 **Access.** Upload at the free web service nova.astrometry.net, or drive it through the documented REST API with a free API key; or install locally from source, apt, Homebrew or Docker and run `solve-field image.fits` after fetching index files matched to your field size.
 
-**Caveats.** Web submissions are public by default and the service queues at busy times; a local install removes both the rate limit and the publicity, at the cost of downloading index files (hundreds of MB for wide fields, several GB for narrow ones). Images uploaded to the Flickr astrometry group are solved automatically.
+**Caveats.** The nova.astrometry.net service is now hosted by CANFAR (Canadian Advanced Network for Astronomical Research). Web submissions are public by default and the service queues at busy times; a local install removes both the rate limit and the publicity, at the cost of downloading index files (hundreds of MB for wide fields, several GB for narrow ones).
+
+### [astroML](https://www.astroml.org)
+
+`Free` · beginner 3/5 · astro-statistics and machine learning
+
+Python library of statistical and machine-learning routines built for astronomy on top of numpy, scipy, scikit-learn, matplotlib and astropy, shipping dataset loaders (SDSS spectra and imaging, quasar catalogues, LINEAR light curves) and the complete runnable figure code for the textbook 'Statistics, Data Mining, and Machine Learning in Astronomy' (2nd edition, 2019).
+
+**Access.** `pip install astroML`; every figure in the book is a standalone script on the site, so `astroML.datasets.fetch_sdss_spectrum(...)` plus the matching example is a working starting point for density estimation, classification, regression and time-series analysis.
+
+**Caveats.** The textbook itself is a paid Princeton University Press title - only the code, figures and example datasets are free, though the figures carry most of the practical content. The package evolves slowly; check compatibility with your scikit-learn version and prefer current scikit-learn or statsmodels implementations where they overlap.
 
 ### [Astropy](https://www.astropy.org)
 
@@ -358,7 +428,47 @@ One Python package with uniform interfaces to dozens of archives and services - 
 
 **Caveats.** Individual services keep their own rate limits and occasional required credentials; module namespaces changed in recent versions (e.g. `astroquery.ipac.ned`), so match examples to your installed version.
 
-### [Lightkurve](https://docs.lightkurve.org)
+### [batman (transit model)](https://lkreidberg.github.io/batman/docs/html/index.html)
+
+`Free` · beginner 3/5 · exoplanet transit modelling
+
+Fast analytic exoplanet transit light-curve generator supporting any radially symmetric limb-darkening law; the documentation states it computes a million model light curves in well under ten minutes, which is what makes MCMC fitting of TESS or Kepler transits feasible on a laptop.
+
+**Access.** `pip install batman-package` then `import batman`; define `batman.TransitParams()` (t0, per, rp, a, inc, ecc, w, limb-darkening), build `m = batman.TransitModel(params, t)` and evaluate `m.light_curve(params)`. Combine with lightkurve for the data and emcee or dynesty for the posterior.
+
+**Caveats.** The pip name is batman-package, not batman - the short name belongs to an unrelated project. It is a forward model only: it supplies no detrending, no fitting and no eclipse-mapping, so you build the likelihood yourself or use a wrapper such as juliet or the exoplanet/PyMC stack.
+
+### [CAMB](https://camb.readthedocs.io)
+
+`Free` · beginner 3/5 · cosmology Boltzmann code
+
+Code for Anisotropies in the Microwave Background: computes CMB temperature, polarisation and lensing power spectra, matter power spectra and transfer functions, galaxy counts and 21 cm spectra, plus background distances and expansion history; Python interface over numerically efficient Fortran.
+
+**Access.** `pip install camb`; e.g. `import camb; pars = camb.set_params(H0=67.5, ombh2=0.022, omch2=0.122, ns=0.965); results = camb.get_results(pars); cls = results.get_cmb_power_spectra(pars, CMB_unit='muK')`.
+
+**Caveats.** A theory calculator, not a fitter - pair it with Cobaya or CosmoMC for parameter inference, and with the likelihoods and chains served free by NASA LAMBDA. CLASS is the equally free alternative implementation. Building from source needs a modern Fortran compiler; the pip wheels avoid that on common platforms.
+
+### [galpy](https://docs.galpy.org)
+
+`Free` · beginner 3/5 · galactic dynamics
+
+Astropy-affiliated Python package for galactic dynamics: orbit integration in a large library of gravitational potentials (including the MWPotential2014 Milky Way model), distribution functions, and action-angle coordinates; used in over 200 published papers and the computational companion to the free galaxiesbook.org text.
+
+**Access.** `pip install galpy` or `conda install -c conda-forge galpy`; e.g. `from galpy.orbit import Orbit; from galpy.potential import MWPotential2014; o = Orbit.from_name('LMC'); o.integrate(numpy.linspace(0,10,1001)*u.Gyr, MWPotential2014)`.
+
+**Caveats.** Orbit.from_name pulls coordinates from SIMBAD, so integrating a real star's orbit is a two-line job. The optional C extensions make integration orders of magnitude faster - install from conda-forge if compiling locally is a problem.
+
+### [HEASoft (FTOOLS + XSPEC)](https://heasarc.gsfc.nasa.gov/docs/software/heasoft/)
+
+`Free` · beginner 2/5 · high-energy analysis suite
+
+NASA's unified high-energy astrophysics software release, version 6.37 (13 August 2026), bundling FTOOLS for FITS manipulation, XSPEC for spectral fitting, Xronos for timing, Ximage for imaging and XSTAR for photoionised gas, plus mission-specific tools for Swift, NICER, NuSTAR, IXPE and others.
+
+**Access.** Download source or precompiled binaries for Linux and macOS from the HEASoft page, or install through conda; then `xspec` at the shell prompt. Python bindings via PyXspec and heasoftpy for scripted fitting.
+
+**Caveats.** The source build takes an hour or more and needs a Fortran compiler; the binary or conda route is far easier. Calibration files (CALDB) are downloaded separately and are large. Chandra (CIAO) and XMM-Newton (SAS) have their own free but separate installs.
+
+### [Lightkurve](https://lightkurve.github.io/lightkurve/)
 
 `Free` · beginner 5/5 · time-series photometry
 
@@ -377,6 +487,16 @@ Open-source 1D stellar structure and evolution code with peer-reviewed physics m
 **Access.** Download the release (about a 2 GB zip) plus the MESA SDK from docs.mesastar.org, set MESA_DIR/MESASDK_ROOT/OMP_NUM_THREADS and run `./install`; macOS or Linux, 64-bit CPU, 8 GB RAM and 20 GB free disk are the stated minimums.
 
 **Caveats.** The strongest example in this catalogue of research that needs no institutional access at all - just a laptop. The cost is time: compilation is slow, and writing inlists for a new problem has a genuine learning curve. Windows requires WSL. Help comes from the mesa-users mailing list and the MESA GitHub.
+
+### [PyVO](https://pyvo.readthedocs.io)
+
+`Free` · beginner 3/5 · Virtual Observatory client
+
+Astropy-affiliated Python client for the IVOA standards - TAP, Simple Cone Search, Simple Image Access, Simple Spectral Access, Simple Line Access and the VO registry - so any standards-compliant archive worldwide can be queried with the same few lines of code.
+
+**Access.** `pip install pyvo`; e.g. `import pyvo; s = pyvo.dal.TAPService('https://gea.esac.esa.int/tap-server/tap'); s.search('SELECT TOP 10 * FROM gaiadr3.gaia_source')`. `pyvo.registry.search(...)` discovers services you did not already know about.
+
+**Caveats.** Complements rather than replaces astroquery: astroquery wraps specific archives with convenience methods, PyVO speaks the protocol so it also reaches the many small national and institutional services that have no astroquery module. Query limits are set by each remote service.
 
 ### [REBOUND](https://rebound.readthedocs.io)
 
@@ -564,6 +684,16 @@ Annual open call funding astronomy-for-development projects worldwide; the 2026 
 
 **Caveats.** Funds development, education and community-impact projects that use astronomy, not pure research programmes. In the 2026 round Stage 1 closed on 31 May 2026, Stage 2 proposals are due 15 September 2026 and results come in mid-November, with funded projects running from early 2027; watch for the next annual call.
 
+### [JWST and Hubble General Observer proposals (STScI)](https://www.stsci.edu/jwst/science-planning/calls-for-proposals-and-policy)
+
+`Free, email` · beginner 2/5 · open telescope time
+
+STScI issues annual open calls for JWST and HST observing time to the worldwide astronomical community with no fee to propose and no affiliation requirement; the JWST Cycle 6 Call was released on 20 July 2026 with proposals due 30 September 2026 and observations starting 1 July 2027.
+
+**Access.** Read the Call on JDox, size the observations with the free web Exposure Time Calculator (jwst.etc.stsci.edu), build and submit the proposal in the free Astronomer's Proposal Tool (APT); a free MyST account is the only credential needed. Review is dual-anonymous, so the proposal is judged without the proposers' names.
+
+**Caveats.** Proposing is free and open to anyone, but the attached grant money goes only to US institutions - a successful non-US PI receives the data and the proprietary rights, not funding. Success rates are low (roughly one in eight for JWST GO), deadlines are hard, and APT/ETC have a real learning curve. Archival research on already-public MAST data needs no proposal at all and is the faster route for an unaffiliated researcher.
+
 ### [Las Cumbres Observatory Global Sky Partners](https://lco.global/education/partners/)
 
 `Free, application` · beginner 2/5 · free telescope time
@@ -582,7 +712,7 @@ Grants for advanced amateur and under-funded professional astronomers anywhere i
 
 **Access.** Apply during announced rounds via the programme page, with a proposal describing your observing programme and the equipment upgrade you need; the current Request for Proposals is downloadable there.
 
-**Caveats.** One of very few funding lines explicitly open to unaffiliated observers, but it funds equipment for NEO astrometry submitted to the Minor Planet Center, not salary or general research. The Planetary Society's separate STEP Grants fund larger open-call projects in planetary exploration, planetary defence and the search for life.
+**Caveats.** One of very few funding lines explicitly open to unaffiliated observers, but it funds equipment for NEO astrometry submitted to the Minor Planet Center, not salary or general research. As of 28 August 2026 the programme page announces the 2025 winners and the downloadable Request for Proposals is the 2025 one - there is no open call at the moment, so watch the page for the next round. The Planetary Society's separate STEP Grants fund larger open-call projects in planetary exploration, planetary defence and the search for life.
 
 ## Learning
 

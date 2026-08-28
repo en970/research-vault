@@ -343,6 +343,7 @@
       "notes": "The single most important caveat: the free tier is not a place to run long jobs. Google explicitly says access to GPUs is 'heavily restricted' on the free plan, and heavy users get downgraded to CPU-only for hours at a time. SSH/remote desktops, distributed computing and mining are prohibited by the FAQ. Checkpoint to Drive every few minutes or expect to lose work.",
       "canonical": true,
       "also_in": [
+        "physics",
         "chemistry",
         "medicine",
         "earth",

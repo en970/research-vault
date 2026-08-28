@@ -96,7 +96,20 @@ def clean_resource(r: dict, unit: str, problems: list) -> dict | None:
     return out
 
 
-def merge_unit(key: str, title: str, problems: list) -> dict | None:
+def load_overrides() -> dict:
+    """Hand-verified fixes, applied after the critic pass.
+
+    The sweep and critic files are machine output and get regenerated; this
+    file is where a human correction lives so that it survives a re-merge.
+    """
+    path = RAW / "overrides.json"
+    if not path.exists():
+        return {"corrections": [], "removals": [], "additions": []}
+    data = json.loads(path.read_text())
+    return {k: data.get(k, []) for k in ("corrections", "removals", "additions")}
+
+
+def merge_unit(key: str, title: str, problems: list, overrides: dict) -> dict | None:
     sweep_path = RAW / f"{key}.sweep.json"
     critic_path = RAW / f"{key}.critic.json"
     if not sweep_path.exists():
@@ -135,6 +148,27 @@ def merge_unit(key: str, title: str, problems: list) -> dict | None:
     else:
         problems.append(f"[{key}] no critic file — sweep used as-is")
 
+    ov_applied = 0
+    by_key = {norm_key(r.get("name", "")): r for r in resources}
+    for c in overrides["corrections"]:
+        if c.get("unit") != key:
+            continue
+        target = by_key.get(norm_key(c.get("name", "")))
+        if target is None:
+            problems.append(f"[{key}] override for unknown entry '{c.get('name')}'")
+            continue
+        target[c["field"]] = c["new_value"]
+        ov_applied += 1
+    ov_removed = {norm_key(r["name"]) for r in overrides["removals"]
+                  if r.get("unit") == key}
+    before = len(resources)
+    resources = [r for r in resources if norm_key(r.get("name", "")) not in ov_removed]
+    ov_applied += before - len(resources)
+    for a in overrides["additions"]:
+        if a.get("unit") == key:
+            resources.append({k: v for k, v in a.items() if k != "unit"})
+            ov_applied += 1
+
     # Clean, then dedupe within the unit by name and by URL.
     cleaned, seen_names, seen_urls = [], set(), set()
     for r in resources:
@@ -160,8 +194,9 @@ def merge_unit(key: str, title: str, problems: list) -> dict | None:
         "resources": cleaned,
     }
     (OUT / f"{key}.json").write_text(json.dumps(unit, indent=2, ensure_ascii=False) + "\n")
+    ov = f", {ov_applied} overrides" if ov_applied else ""
     print(f"  {key:20s} {len(cleaned):4d} entries  (+{additions} critic adds, "
-          f"{corrections} corrections, -{removals} removals)")
+          f"{corrections} corrections, -{removals} removals{ov})")
     return unit
 
 
@@ -199,9 +234,10 @@ def mark_canonical(units: list[dict]) -> None:
 def main() -> int:
     problems: list[str] = []
     units = []
+    overrides = load_overrides()
     print("Merging units:")
     for key, title in UNITS:
-        u = merge_unit(key, title, problems)
+        u = merge_unit(key, title, problems, overrides)
         if u:
             units.append(u)
 

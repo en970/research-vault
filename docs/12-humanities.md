@@ -378,7 +378,7 @@ Web-based reading and visualisation environment for text corpora: word clouds, f
 
 **Access.** Paste text or upload files at the web interface. To run offline or on large or sensitive corpora, download VoyantServer from github.com/voyanttools/VoyantServer and run it locally (Java).
 
-**Caveats.** Time-sensitive: the main voyant-tools.org server has been unavailable since 17 July 2026 while the project moves to new hosting. Working mirrors during the outage are the LINCS instance at voyant.lincsproject.ca and beta.voyant-tools.org; the local VoyantServer is unaffected. Uploading to the hosted service puts your text on someone else's server — use the local server for unpublished or restricted material.
+**Caveats.** The hosted instance at voyant-tools.org is frequently down — it returned 502 for the whole of a check on 2026-08-28. For anything you depend on, run your own copy: VoyantServer is a self-contained download that runs locally with a bundled Java, and the source is on GitHub under GPL-3.
 
 ### [Zotero](https://www.zotero.org/)
 

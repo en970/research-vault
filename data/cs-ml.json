@@ -202,7 +202,7 @@
     },
     {
       "name": "Llama (Meta)",
-      "url": "https://developer.meta.com/ai/",
+      "url": "https://www.llama.com/",
       "category": "software",
       "subcategory": "open-weight model family",
       "summary": "Meta's Llama models (Llama 4 is the current generation) are downloadable weights with a large fine-tuning ecosystem, distributed under the Llama Community License rather than an OSI-approved open-source licence.",

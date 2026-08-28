@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**764 resources** across **14 fields** — 588 free outright, 471 usable with no account at all. Verified 2026-08-28.
+**786 resources** across **14 fields** — 609 free outright, 489 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -43,8 +43,8 @@ sixty seconds. Those distinctions are the content.
 <!-- FIELDS:START -->
 | Field | Entries | The deepest part of it |
 |---|---|---|
-| [Physics](docs/01-physics.md) | 65 | software (18), data (14), learning (9) |
-| [Astronomy & space science](docs/02-astronomy.md) | 66 | data (32), software (11), learning (6) |
+| [Physics](docs/01-physics.md) | 83 | software (27), data (18), learning (10) |
+| [Astronomy & space science](docs/02-astronomy.md) | 79 | data (37), software (18), learning (6) |
 | [Chemistry & materials science](docs/03-chemistry.md) | 60 | data (18), software (14), publishing (7) |
 | [Biology & life sciences](docs/04-biology.md) | 60 | data (20), software (13), learning (6) |
 | [Medicine & health sciences](docs/05-medicine.md) | 59 | data (20), software (10), literature (7) |

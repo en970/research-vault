@@ -1,10 +1,10 @@
 # Physics
 
-Part of [research-vault](../README.md). 65 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 83 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (14) · [Software](#software) (18) · [Literature](#literature) (4) · [Compute](#compute) (5) · [Publishing](#publishing) (5) · [Funding](#funding) (6) · [Learning](#learning) (9) · [Community](#community) (4)
+**Contents:** [Data](#data) (18) · [Software](#software) (27) · [Literature](#literature) (6) · [Compute](#compute) (7) · [Publishing](#publishing) (5) · [Funding](#funding) (6) · [Learning](#learning) (10) · [Community](#community) (4)
 
 ## Data
 
@@ -14,7 +14,7 @@ Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it i
 
 ATLAS's dedicated open-data site with two tracks: laptop-sized education datasets with Jupyter tutorials, and the 2024 research release of ~65 TB of 13 TeV proton-proton collision data from 2015-2016 (over 7 billion events, plus ~2 billion simulated events) under CC0.
 
-**Access.** Web interface; education notebooks run in the browser; research-grade PHYSLITE files served through the CERN Open Data Portal and readable with `pip install uproot`.
+**Access.** Web interface at opendata.atlas.cern; education notebooks run in the browser; research-grade PHYSLITE files are served through the CERN Open Data Portal and readable with `pip install uproot`. The collaboration's own `pip install atlasopenmagic` package resolves dataset names to streaming URLs and bundles cross-section metadata, which is the least painful way to start.
 
 **Caveats.** The education datasets are simplified and not suitable for publishable measurements; the 2024 research release is, and has documentation aimed at people outside the collaboration.
 
@@ -32,7 +32,7 @@ The official record of world metrology under the CIPM Mutual Recognition Arrange
 
 `Free` · beginner 3/5 · particle-physics data
 
-Public archive of collision data, simulations, software environments, and documentation from CERN experiments including ALICE, ATLAS, CMS, DELPHI, LHCb, OPERA, and TOTEM — 82,385 records as of August 2026. CMS alone has released several petabytes of real and simulated data since 2014; every dataset gets a DOI and an open licence (mostly CC0).
+Public archive of collision data, simulations, software environments and documentation from CERN experiments — the portal's own front page lists ALICE, ATLAS, CMS, DELPHI, JADE, LHCb, OPERA, PHENIX and TOTEM, and advertises more than five petabytes of open particle-physics data. 82,385 records as of 28 August 2026. Every dataset gets a DOI and an open licence (mostly CC0).
 
 **Access.** Web interface with direct downloads; bulk retrieval via `pip install cernopendata-client`; analysis environments ship as Docker images and CVMFS repositories so old software still runs.
 
@@ -48,6 +48,16 @@ The internationally recommended values of the fundamental physical constants wit
 
 **Caveats.** A new CODATA adjustment lands every four years — check which set your software version ships before high-precision work.
 
+### [Crystallography Open Database (COD)](https://www.crystallography.net/cod/)
+
+`Free` · beginner 4/5 · experimental crystal structures
+
+Open-access collection of experimentally determined crystal structures of organic, inorganic, metal-organic compounds and minerals (biopolymers excluded): 534,681 entries as of 25 August 2026, all dedicated to the public domain under CC0.
+
+**Access.** Web search, including structure-formula drawing, at crystallography.net/cod; the whole database downloads as CIF files over rsync/HTTP from the mirrors listed in the COD wiki; also exposed through OPTIMADE and readable directly by pymatgen or ASE.
+
+**Caveats.** The free counterpart to the subscription ICSD and CSD. Curation is community-driven, so duplicates and low-quality refinements exist — check the source publication before using a structure as a DFT starting point. An account is only needed to deposit.
+
 ### [FAIR-MAST](https://mastapp.site)
 
 `Free` · beginner 2/5 · fusion / tokamak experimental data
@@ -58,6 +68,18 @@ UKAEA's open archive of diagnostic data from the MAST spherical tokamak (campaig
 
 **Caveats.** Raw diagnostic signals with minimal hand-holding; expect to invest time understanding tokamak diagnostics. Related releases appear on the UKAEA Open Data portal (opendata.ukaea.uk).
 
+### [Gravitational Wave Open Science Center (GWOSC)](https://gwosc.org)
+
+`Free` · beginner 4/5 · gravitational-wave strain data
+
+LIGO/Virgo/KAGRA's public archive of calibrated detector strain data and event catalogues: full releases for observing runs O1, O2, O3a, O3b, O4a (24 May 2023 - 16 Jan 2024) and O4b (10 Apr 2024 - 28 Jan 2025) at 4 kHz and 16 kHz sampling, plus the cumulative Gravitational-Wave Transient Catalog listing 391 events across GWTC-1 through GWTC-5.0 (checked 28 August 2026). All data released under CC BY 4.0.
+
+**Access.** Web interface and event portal at gwosc.org; `pip install gwosc` for the query client and `pip install gwpy` to read strain (`TimeSeries.fetch_open_data('H1', t0, t1)`); bulk transfers via the OSDF, which GWOSC names as the preferred route for large downloads.
+
+**Caveats.** Short segments around individual events are laptop-sized; a whole observing run is hundreds of TB. Detection and parameter estimation (PyCBC, Bilby) are compute-hungry. The IGWN conda distribution is the least painful way to install the whole stack. Auxiliary/trend channels are released only for O3a and O3b.
+
+*Also listed under: astronomy.*
+
 ### [HEPData](https://www.hepdata.net)
 
 `Free` · beginner 4/5 · published particle-physics results
@@ -67,6 +89,16 @@ Repository of the numerical data behind published particle-physics results — c
 **Access.** Web interface; every table downloads as CSV, YAML, JSON, or ROOT; records are query-able via a REST/JSON API; submissions are prepared with `pip install hepdata-lib`.
 
 **Caveats.** Coverage depends on collaborations depositing their tables; recent LHC results are well covered, older or smaller experiments patchier.
+
+### [HITRAN](https://hitran.org)
+
+`Free (registration), email` · beginner 3/5 · molecular spectroscopic line lists
+
+The standard database of molecular spectroscopic parameters — line positions, intensities, pressure-broadening and temperature-dependence coefficients, absorption cross sections — used for radiative transfer and absorption modelling in atmospheric physics, astrophysics and laser spectroscopy. The HITRAN2024 edition was released in January 2026; the site reports 43,000+ registered users and 600+ GB of downloads per month.
+
+**Access.** Free account required, then build and download line lists through the web interface, or use the Python API HAPI (`pip install hitran-api`), which fetches data over the web service and computes absorption coefficients, cross sections and transmittance locally.
+
+**Caveats.** Registration is free but mandatory even for downloads. Cite the HITRAN2024 paper and record which edition you used — line parameters change between editions and shift computed spectra. Hot-environment line lists live in the separate HITEMP database, and the licence discourages redistribution, so link rather than mirror.
 
 ### [IAEA Nuclear Data Services](https://nds.iaea.org)
 
@@ -128,6 +160,16 @@ NIST's hub of free reference databases used daily by experimentalists: XCOM phot
 
 **Caveats.** Web forms only — no bulk API or single download for the whole collection, so scripted use means scraping or caching your own tables. Record the database version and retrieval date when citing.
 
+### [NOMAD](https://nomad-lab.eu)
+
+`Free, email` · beginner 3/5 · computational materials data repository
+
+FAIR repository for materials-science calculations run by the FAIRmat consortium: 19,425,275 uploaded entries covering 4,346,100 materials and 129.3 TB of files as of 28 August 2026, normalised into a common schema across DFT and other codes (VASP, Quantum ESPRESSO, FHI-aims, exciting and dozens more) and published under CC-BY-4.0.
+
+**Access.** Web search and browser-hosted notebooks at nomad-lab.eu; REST API under `https://nomad-lab.eu/prod/v1/api/v1/entries/query`; `pip install nomad-lab` for the Python client and parsers; upload your own raw calculation outputs after free registration.
+
+**Caveats.** Published data is searchable and downloadable without an account; uploading and private staging need one. Unlike Materials Project there is no single uniform workflow — entries are contributed raw outputs with varying functionals, cutoffs and convergence, so inspect the input files before trusting a number. An OASIS version can be self-hosted by a group.
+
 ### [OQMD — Open Quantum Materials Database](https://oqmd.org)
 
 `Free` · beginner 3/5 · computed materials properties
@@ -142,7 +184,7 @@ Northwestern University database of DFT-calculated thermodynamic and structural 
 
 `Free` · beginner 5/5 · evaluated particle properties
 
-The Review of Particle Physics: evaluated masses, widths, branching ratios and limits for all known particles, plus ~100 review articles on topics from the Standard Model to statistics. The current edition is free online; pdgLive gives interactive access to every measurement with references.
+The Review of Particle Physics: evaluated masses, widths, branching ratios and limits for all known particles, plus ~100 review articles on topics from the Standard Model to statistics. The current edition is RPP 2026 (Takahashi et al., Int. J. Mod. Phys. A 41, 2630011 (2026)), free online; pdgLive gives interactive access to every measurement with references.
 
 **Access.** pdgLive web interface at pdg.lbl.gov; machine-readable access via `pip install pdg` (docs at pdgapi.lbl.gov); summary tables and data files as direct downloads.
 
@@ -150,7 +192,19 @@ The Review of Particle Physics: evaluated masses, widths, branching ratios and l
 
 ## Software
 
-### [Delphes](https://cp3.irmp.ucl.ac.be/projects/delphes)
+### [ASE — Atomic Simulation Environment](https://ase-lib.org)
+
+`Free` · beginner 3/5 · atomistic simulation driver
+
+Python framework for setting up, running, visualising and analysing atomistic simulations, driving external codes (Quantum ESPRESSO, GPAW, ABINIT, VASP, LAMMPS, CP2K, SIESTA and dozens more) through one Atoms/Calculator interface, with built-in structure optimisation, molecular dynamics, phonons and nudged elastic band. Version 3.29.0 (21 June 2026), LGPL-2.1-or-later.
+
+**Access.** `pip install ase`; build an `Atoms` object, attach a calculator (`atoms.calc = EMT()` for a quick test, or a DFT calculator), then `BFGS(atoms).run(fmax=0.05)`; `ase gui traj.traj` inspects trajectories.
+
+**Caveats.** ASE only orchestrates — you still need the underlying DFT/MD engine installed along with its pseudopotentials, and every calculator interface has its own quirks. Documentation moved from wiki.fysik.dtu.dk/ase to ase-lib.org; old links redirect.
+
+*Also listed under: chemistry.*
+
+### [Delphes](https://delphes.github.io/)
 
 `Free` · beginner 2/5 · fast detector simulation
 
@@ -159,6 +213,26 @@ C++ framework for fast, parametrised simulation of a generic collider detector �
 **Access.** `git clone https://github.com/delphes/delphes` and `make` against a ROOT installation; run `./DelphesPythia8 cards/delphes_card_CMS.tcl ...`, then analyse the output tree with ROOT or uproot.
 
 **Caveats.** Parametrised response, not full Geant4 — appropriate for phenomenology and sensitivity estimates, not for claims about detector-level effects. Together with MadGraph and Pythia it makes a complete collider-study chain that runs on a laptop.
+
+### [Einstein Toolkit](https://www.einsteintoolkit.org)
+
+`Free` · beginner 1/5 · numerical relativity
+
+Community open-source platform for relativistic astrophysics and gravitational physics: 3+1 spacetime evolution, general-relativistic (magneto)hydrodynamics, horizon finding and gravitational-wave extraction, built on the Cactus framework with Carpet/CarpetX adaptive mesh refinement. Current release 'Hypatia', 10 July 2026.
+
+**Access.** Download with the GetComponents script from einsteintoolkit.org/download.html (it assembles several hundred component repositories from git/svn), then build and run with the Simulation Factory; a new-user tutorial walks through a first single-black-hole evolution.
+
+**Caveats.** Predominantly GPL components, but licences are per-thorn and worth checking before redistribution. Binary-merger production runs need a cluster allocation; the tutorial examples run on a workstation. Support is a weekly open Zoom call and a mailing list rather than a ticket system.
+
+### [FORM](https://github.com/vermaseren/form)
+
+`Free` · beginner 1/5 · symbolic algebra for very large expressions
+
+Symbolic manipulation system designed for expressions far larger than memory — it streams terms to disk, so the practical limit is disk space, not RAM. The standard tool for multi-loop Feynman-diagram algebra, Dirac trace and colour computations and large perturbative series in QFT. Version 5.0.0.
+
+**Access.** `git clone https://github.com/vermaseren/form` then `autoreconf -i && ./configure && make` (optional gmp/mpfr/zlib/flint dependencies); write a `.frm` program and run `form myjob.frm`. TFORM and ParFORM builds add threaded and MPI parallelism.
+
+**Caveats.** Its own terse, non-interactive language — not a Mathematica replacement for exploratory work; it wins only when expressions reach millions of terms. Usually driven by diagram generators such as QGRAF. The nikhef.nl homepage puts a licence-acceptance gate in front of the documentation, so GitHub is the practical entry point.
 
 ### [Geant4](https://geant4.web.cern.ch)
 
@@ -169,6 +243,16 @@ The standard open-source C++ toolkit for simulating the passage of particles thr
 **Access.** Source and binary downloads from geant4.web.cern.ch; build with CMake; extensive examples included in the distribution.
 
 **Caveats.** Serious learning investment (C++, physics lists, geometry description); many detector simulations run fine on a laptop. Free user forum and annual courses; documentation is thorough.
+
+### [GWpy](https://gwpy.github.io)
+
+`Free` · beginner 4/5 · gravitational-wave data analysis
+
+Python package for reading, filtering and plotting time- and frequency-domain data from the LIGO, Virgo and KAGRA detectors: GWF/HDF5 I/O, spectrograms, Q-transforms, whitening and coherence. Version 4.0.2 released 14 August 2026, GPL-3.0-or-later.
+
+**Access.** `pip install gwpy` or `conda install -c conda-forge gwpy`; `from gwpy.timeseries import TimeSeries; TimeSeries.fetch_open_data('L1', 1126259446, 1126259478)` pulls public strain straight from GWOSC and `.q_transform().plot()` reproduces the classic event spectrogram.
+
+**Caveats.** GWpy reads and conditions data but does not do detection or parameter estimation — GWOSC points to PyCBC for matched filtering and Bilby for parameter estimation, both installable from the same conda channel or the IGWN distribution.
 
 ### [Kwant](https://kwant-project.org)
 
@@ -190,11 +274,21 @@ Sandia's open-source (GPL) classical molecular dynamics code for soft matter, so
 
 **Caveats.** Force-field choice is the hard part; the mailing list and the MatSci.org forum are active and answer beginner questions.
 
+### [LHAPDF](https://gitlab.com/hepcedar/lhapdf)
+
+`Free` · beginner 3/5 · parton distribution functions
+
+The universal C++/Python interface for evaluating parton distribution functions; PDF sets from CT, MSHT, NNPDF and others are distributed as separate data files and read through one API. Version 6.5.6 released 20 February 2026, GPL-3.0.
+
+**Access.** `conda install -c conda-forge lhapdf` or build the tarball from the GitLab releases; `lhapdf install CT18NLO` fetches a set, then `import lhapdf; p = lhapdf.mkPDF('CT18NLO', 0); p.xfxQ(21, 0.01, 100.0)`.
+
+**Caveats.** Pythia, MadGraph and Herwig all link against it, so the PDF set and LHAPDF version propagate directly into published numbers — record both. Individual sets are tens to hundreds of MB; install only what you use. The hepforge website blocks automated fetches, so use the GitLab mirror.
+
 ### [MadGraph5_aMC@NLO](https://launchpad.net/mg5amcnlo)
 
 `Free` · beginner 2/5 · matrix-element generator
 
-Automated tool for computing tree-level and NLO cross sections and generating parton-level events for arbitrary Standard Model and BSM processes; the workhorse of LHC phenomenology.
+Automated tool for computing tree-level and NLO cross sections and generating parton-level events for arbitrary Standard Model and BSM processes; the workhorse of LHC phenomenology. Current release 3.7.2 (5 January 2026), with 3.5.16 maintained as a long-term-stable branch.
 
 **Access.** Download the tarball from launchpad.net/mg5amcnlo or `git clone https://github.com/mg5amcnlo/mg5amcnlo`; drive it from its own command shell; needs Python 3.7+ and gfortran for NLO.
 
@@ -229,6 +323,28 @@ Martin Lüscher and Stefan Schaefer's GPL-licensed lattice QCD simulation packag
 **Access.** Source tarball from the website; C code parallelised with MPI; full algorithmic documentation included in the distribution.
 
 **Caveats.** Production lattices need HPC allocations, but small test lattices run on a workstation and the code doubles as a masterclass in simulation algorithms.
+
+### [Overleaf](https://www.overleaf.com)
+
+`Free tier, email` · beginner 5/5 · collaborative LaTeX editor
+
+Browser-based LaTeX editor with a hosted TeX Live installation, journal and preprint templates (REVTeX, JHEP, Elsevier, arXiv-ready), and real-time co-editing. The free plan gives unlimited projects, one collaborator per project, basic compile timeout and 24 hours of document history.
+
+**Access.** Free account at overleaf.com; start from a template or upload a .zip of an existing project; source and compiled PDF are downloadable at any time.
+
+**Caveats.** Paid plans (Student $8.25/month upward) are needed for more than one collaborator per project, track changes, full version history, longer compile timeouts, and Git/GitHub/Dropbox/Zotero integration; AI features are capped at 5 uses/day on free. Many universities hold site licences worth checking before paying. A local TeX Live install plus git has no limits at all — Overleaf's real value is collaborating with people who will not install LaTeX.
+
+*Also listed under: mathematics.*
+
+### [pymatgen](https://pymatgen.org)
+
+`Free` · beginner 3/5 · materials analysis library
+
+Python Materials Genomics: core objects for elements, sites, molecules and crystal structures, I/O for VASP, ABINIT, CIF, Gaussian and XYZ, phase and Pourbaix diagram construction, diffusion and electronic-structure analysis, and the client layer under the Materials Project API. Version 2026.5.4 (4 May 2026), MIT licence.
+
+**Access.** `pip install pymatgen`; `from pymatgen.core import Structure; s = Structure.from_file('POSCAR')` for local files, or `from mp_api.client import MPRester; MPRester(key).get_structure_by_material_id('mp-149')` against Materials Project.
+
+**Caveats.** Calendar-versioned with frequent API-breaking changes — pin the version in anything you intend to reproduce. Complements ASE rather than replacing it: ASE is better at driving calculators, pymatgen at structure analysis, file handling and phase diagrams.
 
 ### [PyMeasure](https://pymeasure.readthedocs.io)
 
@@ -280,6 +396,16 @@ Open-source Python library for simulating the dynamics of open quantum systems (
 
 **Caveats.** Simulations of ~10-20 qubits or modest Hilbert spaces are laptop-friendly; memory grows exponentially with system size.
 
+### [Rivet](https://gitlab.com/hepcedar/rivet)
+
+`Free` · beginner 2/5 · MC generator validation and analysis preservation
+
+Toolkit that preserves collider analysis logic as reusable code and compares Monte Carlo predictions against published measurements; ships hundreds of routines encoding LHC, Tevatron, HERA and LEP analyses, reads HepMC events and writes YODA histograms. Version 4.1.3, GPL-3.0.
+
+**Access.** `docker run -it hepstore/rivet` is the fastest start; otherwise the bootstrap script or a source build against YODA and HepMC. Run `rivet --analysis=<ANALYSIS_ID> events.hepmc` on generator output, then `rivet-mkhtml` for data/MC comparison plots.
+
+**Caveats.** The rivet.hepforge.org site sits behind an anti-bot challenge that blocks scripted access; the GitLab project and hepcedar.gitlab.io/rivet are the reliable entry points. Rivet checks your generator setup, it does not fix it — tunes and PDF choices still dominate agreement with data.
+
 ### [ROOT](https://root.cern)
 
 `Free` · beginner 2/5 · HEP data analysis framework
@@ -328,13 +454,23 @@ Tensor Network Python: matrix-product-state library for one- and quasi-one-dimen
 
 **Caveats.** Spin chains and ladders converge on a laptop; genuinely two-dimensional systems still need large bond dimensions and serious compute. You need to understand MPS/entanglement scaling to trust the output — the docs include an introduction, and QuSpin (exact diagonalisation) is the complementary tool for small systems.
 
+### [Zotero](https://www.zotero.org)
+
+`Free` · beginner 5/5 · reference manager
+
+Free, open-source reference manager with browser connectors that capture citations and PDFs from arXiv, ADS, INSPIRE and publisher pages, a Word/LibreOffice/Google Docs plugin, BibTeX/BibLaTeX export for LaTeX, PDF annotation and shared group libraries. Accounts include 300 MB of free sync storage.
+
+**Access.** Install the desktop app plus the browser connector from zotero.org/download; the Better BibTeX add-on keeps an auto-updating .bib file next to your LaTeX project; a free account enables sync and group libraries.
+
+**Caveats.** The application and unlimited local libraries cost nothing; only cloud file storage above 300 MB is paid ($20/yr for 2 GB up to $120/yr unlimited). Attachments can be linked from a local folder or synced via your own WebDAV instead, which keeps the free tier genuinely workable. The library is a local SQLite database, so data is portable.
+
 ## Literature
 
 ### [arXiv](https://arxiv.org)
 
 `Free` · beginner 5/5 · preprint server
 
-The spine of physics literature since 1991: over 2.4 million preprints across physics, maths and allied fields, with essentially every particle-physics, cond-mat and quantum paper appearing here first. Reading is free with no account.
+The spine of physics literature since 1991: nearly 2.4 million preprints across physics, maths and allied fields, with essentially every particle-physics, cond-mat and quantum paper appearing here first. Reading is free with no account.
 
 **Access.** Web, plus free bulk/API access (arXiv API, Kaggle dataset, full-text bulk on S3); submission requires a free account.
 
@@ -360,6 +496,28 @@ Fully open-access review journal on general relativity and gravitational physics
 
 **Caveats.** Articles are commissioned — this is a reading resource, not a submission venue for most researchers.
 
+### [NASA Astrophysics Data System (ADS / SciX)](https://ui.adsabs.harvard.edu)
+
+`Free` · beginner 4/5 · bibliographic database (astronomy and physics)
+
+NASA-funded literature database operated by the Smithsonian Astrophysical Observatory covering astronomy, astrophysics and physics: journal articles, arXiv e-prints, conference proceedings and scanned historical literature, with citation and reference graphs, full-text search, metrics and links to data and software. Being rebuilt as SciX (scixplorer.org) with added earth, planetary and heliophysics collections.
+
+**Access.** Free web search at ui.adsabs.harvard.edu with a rich query syntax (`author:"^Abbott, B" year:2016 property:refereed`); REST API at api.adsabs.harvard.edu needs a free personal token generated in account settings, sent as `Authorization: Bearer <token>`.
+
+**Caveats.** Reading and searching need no account; only the API, saved libraries and alerts require a free login. API rate limits are per-endpoint daily allowances reported in X-RateLimit headers. Coverage is deepest in astronomy, astrophysics, gravitation and space physics — for condensed matter or nuclear work INSPIRE or OpenAlex serve better. The classic UI is migrating to SciX, so bookmarked URLs may move.
+
+*Also listed under: earth.*
+
+### [OpenAlex](https://openalex.org)
+
+`Free` · beginner 4/5 · open bibliographic index
+
+Fully open index of scholarly works from the non-profit OurResearch and the practical successor to Microsoft Academic Graph: 322,147,582 works as of 28 August 2026, of which about 56.7 million carry the Physics concept, with linked authors, institutions, sources, citation counts and open-access status, all released CC0.
+
+**Access.** REST API at api.openalex.org with no key — e.g. `https://api.openalex.org/works?filter=concepts.id:C121332964&per-page=1`; adding `mailto=you@example.com` puts you in the faster polite pool. Full monthly snapshots download from a public S3 bucket; `pip install pyalex` wraps the API.
+
+**Caveats.** Author disambiguation and topic tagging are automated and make mistakes, so it is better for coverage-scale bibliometrics than as a definitive record of one person's output. Daily and per-second rate limits apply to the free API; take the snapshot for heavy analysis. It is metadata plus OA links, not full text.
+
 ### [Unpaywall](https://unpaywall.org)
 
 `Free` · beginner 5/5 · legal open-access lookup
@@ -372,6 +530,16 @@ Index of legally posted free versions of paywalled articles, harvested from publ
 
 ## Compute
 
+### [ACCESS (NSF national cyberinfrastructure allocations)](https://access-ci.org)
+
+`Free, application` · beginner 2/5 · US national HPC and GPU allocations
+
+The NSF programme that allocates time on US national systems (Anvil, Bridges-2, Delta, Expanse, Stampede3, Jetstream2 and others). Four tiers: Explore (400,000 credits, one-page request), Discover (1,500,000 credits, three pages), Accelerate (3,000,000 credits, ten pages, merit panel) and Maximize (awarded in resource units, merit panel). Explore/Discover/Accelerate accept requests at any time; Maximize opens every six months.
+
+**Access.** Create an ACCESS ID with an institutional email at access-ci.org, browse the resource catalogue, then submit an allocation request at allocations.access-ci.org and exchange the awarded credits for time on specific machines. Explore requests can be approved in 1-2 business days.
+
+**Caveats.** Eligibility is limited to US-based PIs at academic, government or non-profit institutions — no route for researchers elsewhere, and student-PI rules are on the eligibility page. Credits buy very different amounts of wall time on different resources, so read the exchange rates. Allocations run for the supporting grant's duration or 12 months, whichever is longer, and carry reporting expectations.
+
 ### [EuroHPC JU supercomputer access calls](https://eurohpc-ju.europa.eu/access-our-supercomputers/eurohpc-access-calls_en)
 
 `Free, application` · beginner 2/5 · European HPC allocations
@@ -381,6 +549,16 @@ Peer-reviewed allocations on Europe's petascale and pre-exascale systems (LUMI, 
 **Access.** Apply through the EuroHPC access portal linked from each call page — a technical proposal plus a named principal investigator; Development Access is the low-friction route for porting and scaling a code before a large request.
 
 **Caveats.** Eligibility is limited to users established or located in an EU Member State or a country associated with Horizon 2020 — no route for researchers elsewhere. Allocations are awarded on scientific and technical review rather than payment; read each call's text for its conditions, including expectations to publish results.
+
+### [Google Colab (free tier)](https://colab.research.google.com)
+
+`Free tier, email` · beginner 5/5 · free GPU/TPU notebooks
+
+Google-hosted Jupyter notebooks with best-effort free access to NVIDIA GPUs and TPUs. Free sessions run at most 12 hours and are cut short by idleness or heavy usage; the accelerator model offered varies over time and by availability.
+
+**Access.** Sign in with a Google account at colab.research.google.com; pick the accelerator under Runtime > Change runtime type; `!pip install` works inside the session and notebooks save to Google Drive or GitHub.
+
+**Caveats.** Google publishes no fixed free quota — allocation is dynamic and heavy users get throttled or refused a GPU at busy times, which makes it unsuitable for anything on a deadline. Nothing outside the runtime's disk persists after the session ends; mount Drive or push to git. SSH, remote desktops, long unattended jobs and mining are prohibited. Kaggle Notebooks is the alternative with a stated weekly quota.
 
 ### [IBM Quantum Platform (Open Plan)](https://quantum.cloud.ibm.com)
 
@@ -416,7 +594,7 @@ Turns any public Git repository with an environment file into a live, shareable 
 
 `Free, application` · beginner 2/5 · high-throughput computing
 
-Free opportunistic high-throughput computing across US campuses: well-suited workloads (many independent single-core jobs under ~10 h) can reach thousands of concurrent cores via HTCondor.
+Free opportunistic high-throughput computing across US campuses via HTCondor: OSG's own guidance calls jobs ideal when they use 1 CPU or GPU, run under 10 hours and move under 10 GB of input/output, still advantageous up to 12 CPUs or 4 GPUs, 20 hours and 40 GB, and worth discussing beyond that. Well-suited workloads can reach thousands of concurrent cores.
 
 **Access.** Request an account at portal.osg-htc.org; a facilitator meeting follows, then jobs are submitted from an OSG access point with HTCondor.
 
@@ -438,7 +616,7 @@ Peer-reviewed, developer-friendly journal (ISSN 2475-9066) for research software
 
 `Free, email` · beginner 3/5 · arXiv-overlay journal (quantum science)
 
-Non-profit, community-run arXiv-overlay journal for quantum science founded in 2017. Default publication fee is €600 (since January 2025), but authors can pay a reduced €100 or request a full waiver with no justification required — roughly a quarter of papers use the waiver.
+Non-profit, community-run arXiv-overlay journal for quantum science founded in 2017. The publication fee is a voluntary article processing charge of €600 with a discounted €100 rate, in force since 1 January 2024; a full waiver is available on request with no justification required.
 
 **Access.** Submit the arXiv version through quantum-journal.org; published papers are free to read (CC-BY) and live on arXiv.
 
@@ -470,7 +648,7 @@ CERN-coordinated consortium of 3,000+ libraries and agencies in 44 countries tha
 
 CERN-operated general-purpose repository (launched 2013, built on InvenioRDM with OpenAIRE/EU backing): free DOIs for datasets, software, posters, and preprints from any discipline, with versioning and a GitHub integration that archives tagged releases automatically.
 
-**Access.** Web upload after free registration; REST API with personal access token for scripted deposits; default limit 50 GB per record (more on request).
+**Access.** Web upload after free registration; REST API with a personal access token for scripted deposits; the standard limit is 100 files and 50 GB per record, extendable to 200 GB through the storage-quota request process.
 
 **Caveats.** Standard way to make supplementary data and analysis code citable when a journal or field archive has no home for it.
 
@@ -484,7 +662,7 @@ Funder of research on foundational questions in physics and cosmology: Zenith Gr
 
 **Access.** Apply to open calls announced at fqxi.org/programs; essay competitions run via the FQxI community site.
 
-**Caveats.** Zenith rounds are thematic and intermittent rather than always-open; competition for them is strong. A February 2026 mini-competition ('How Quantum is Life?', $53,000 across eight winners) shows the programme remains active.
+**Caveats.** As of August 2026 FQxI's own programmes page states it is 'currently raising funds to host future rounds of the Zenith and Fulcrum Grants' — so there is no open grant call right now, and Fulcrum Grants (up to $15K) are for FQxI Members only. Essay and mini-competitions continue to run and are the realistic entry point for an unaffiliated researcher; a February 2026 mini-competition ('How Quantum is Life?', $53,000 across eight winners) shows the programme is still active.
 
 ### [Google Summer of Code](https://summerofcode.withgoogle.com)
 
@@ -526,7 +704,7 @@ One-year master's programme at Perimeter Institute (Waterloo, Canada) taught by 
 
 **Access.** Apply online through the PSI admissions pages at perimeterinstitute.ca during the annual application window; consideration for the full scholarship is part of the admissions process.
 
-**Caveats.** Highly selective, and theory-only (quantum fields and strings, gravity, quantum information, condensed matter, cosmology). Students are expected to apply for any external funding they qualify for (e.g. NSERC in Canada). The lecture courses themselves are separately free to anyone via PIRSA.
+**Caveats.** Highly selective, and theory-only (quantum fields and strings, gravity, quantum information, condensed matter, cosmology). Applications for the next cohort open in October 2026 per the programme page. Students are expected to apply for any external funding they qualify for (e.g. NSERC in Canada), and the programme page describes 'options for monetary support' with details on a separate financial-support page rather than guaranteeing a full scholarship to every admit. The lecture courses themselves are separately free to anyone via PIRSA.
 
 ### [Unitary Foundation Microgrants](https://unitary.foundation/grants/)
 
@@ -620,6 +798,16 @@ Caltech's free, high-quality HTML edition of all three volumes of the Feynman Le
 
 **Caveats.** Online reading only — there is no authorized free PDF/ebook download; print editions remain commercial.
 
+### [The Theoretical Minimum (Susskind)](https://theoreticalminimum.com)
+
+`Free` · beginner 5/5 · video lecture course series
+
+Leonard Susskind's Stanford continuing-studies lecture courses, free in full video: a core sequence of six courses — classical mechanics (2011), quantum mechanics (2012), special relativity and electrodynamics (2012), general relativity (2012), cosmology (2013) and statistical mechanics (2013) — plus supplemental courses on advanced topics including quantum entanglement, string theory and cosmology.
+
+**Access.** Stream free at theoreticalminimum.com, where each course page links its lecture videos, or from Stanford's YouTube channel; no registration.
+
+**Caveats.** Aimed at people who want the actual equations without a full degree — lighter than a graduate course, with no problem sets, assessment or certificates, and recorded over a decade ago. The companion books are commercial. Good as a first pass before Tong's notes or MIT OCW, not as a substitute for them.
+
 ### [Topology in Condensed Matter](https://topocondmat.org)
 
 `Free` · beginner 3/5 · online graduate course
@@ -666,7 +854,7 @@ Q&A community for quantum computing and quantum information where framework deve
 
 `Free` · beginner 4/5 · open seminar and conference listings
 
-Community-maintained, free listing of online and hybrid research seminars, courses and conferences with time-zone-aware schedules and, for most series, public join links; 87 physics series were listed alongside mathematics, computer science and other fields in August 2026.
+Community-maintained, free listing of online and hybrid research seminars, courses and conferences with time-zone-aware schedules and, for most series, public join links; the topic browser showed 85 physics series alongside mathematics, computer science and other fields on 28 August 2026.
 
 **Access.** Browse or search at researchseminars.org with no account; a free account lets you subscribe to series, export to your calendar, and list a seminar of your own.
 

@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 """Check every URL in the canonical data files.
 
-Concurrent GET requests with a browser-like User-Agent. Sites that block
-automated clients (403/405/429, TLS quirks) are reported as `manual`, not
-failures — the point is to catch genuinely dead links, not to fight WAFs.
+Two passes: everything that is not plainly fine on the first pass is retried
+once, more slowly and alone, because a catalogue this size trips rate limits
+and transient 5xx on its own. Verdicts are deliberately conservative — the
+point is to catch genuinely dead links, not to fight bot protection:
 
-Run from the repository root:  python3 scripts/check_links.py [--timeout 20]
+  ok         2xx, or a redirect that resolved
+  manual     alive but refusing an automated client (401/403/405/406/429/503)
+  unreachable  timed out, TLS or DNS failure, or 5xx twice — recheck by hand
+  dead       404/410, or a redirect loop — almost certainly gone
+
+Run from the repository root:  python3 scripts/check_links.py
 Writes data/link-report.json and prints a summary.
 """
 
@@ -28,39 +34,53 @@ HEADERS = {
     ),
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Encoding": "identity",
+    "Connection": "close",
 }
 MANUAL_CODES = {401, 403, 405, 406, 429, 503}
+DEAD_CODES = {404, 410}
+
+
+def fetch(url: str, timeout: int) -> dict:
+    req = urllib.request.Request(url, headers=HEADERS, method="GET")
+    ctx = ssl.create_default_context()
+    try:
+        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
+            return {"status": resp.status, "verdict": "ok", "final": resp.url}
+    except urllib.error.HTTPError as e:
+        if e.code in DEAD_CODES:
+            verdict = "dead"
+        elif e.code in MANUAL_CODES:
+            verdict = "manual"
+        elif 300 <= e.code < 400:
+            # urllib raises rather than following only when the redirect is
+            # unusable — a loop, or a Location it will not follow.
+            verdict = "redirect"
+        else:
+            verdict = "unreachable"
+        return {"status": e.code, "verdict": verdict}
+    except ssl.SSLError as e:
+        return {"status": None, "verdict": "unreachable", "error": f"ssl: {e.reason}"}
+    except Exception as e:
+        return {"status": None, "verdict": "unreachable", "error": type(e).__name__}
 
 
 def check(entry: tuple[str, str, str], timeout: int) -> dict:
     unit, name, url = entry
-    ctx = ssl.create_default_context()
-    req = urllib.request.Request(url, headers=HEADERS, method="GET")
-    try:
-        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
-            return {"unit": unit, "name": name, "url": url,
-                    "status": resp.status, "verdict": "ok"}
-    except urllib.error.HTTPError as e:
-        verdict = "manual" if e.code in MANUAL_CODES else "dead"
-        return {"unit": unit, "name": name, "url": url,
-                "status": e.code, "verdict": verdict}
-    except ssl.SSLError:
-        return {"unit": unit, "name": name, "url": url,
-                "status": None, "verdict": "manual", "error": "ssl"}
-    except Exception as e:  # timeout, DNS, connection refused
-        return {"unit": unit, "name": name, "url": url,
-                "status": None, "verdict": "dead", "error": type(e).__name__}
+    res = fetch(url, timeout)
+    return {"unit": unit, "name": name, "url": url, **res}
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--timeout", type=int, default=20)
+    ap.add_argument("--retry-timeout", type=int, default=45)
     ap.add_argument("--workers", type=int, default=16)
     args = ap.parse_args()
 
     entries = []
     for path in sorted(DATA.glob("*.json")):
-        if path.name in ("link-report.json",):
+        if path.name == "link-report.json":
             continue
         unit = json.loads(path.read_text())
         if "resources" not in unit:
@@ -68,30 +88,47 @@ def main() -> int:
         for r in unit["resources"]:
             entries.append((unit["unit"], r["name"], r["url"]))
 
-    print(f"Checking {len(entries)} URLs ({args.workers} workers)…")
+    print(f"Pass 1: {len(entries)} URLs ({args.workers} workers)…")
     results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as ex:
         futures = [ex.submit(check, e, args.timeout) for e in entries]
         for i, f in enumerate(concurrent.futures.as_completed(futures), 1):
             results.append(f.result())
-            if i % 100 == 0:
+            if i % 200 == 0:
                 print(f"  …{i}/{len(entries)}")
 
-    by_verdict: dict[str, list] = {"ok": [], "manual": [], "dead": []}
+    suspect = [r for r in results if r["verdict"] != "ok"]
+    print(f"\nPass 2: retrying {len(suspect)} slowly (4 workers, "
+          f"{args.retry_timeout}s timeout)…")
+    fixed = {}
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as ex:
+        futures = {
+            ex.submit(check, (r["unit"], r["name"], r["url"]), args.retry_timeout): r["url"]
+            for r in suspect
+        }
+        for f in concurrent.futures.as_completed(futures):
+            res = f.result()
+            fixed[res["url"]] = res
+    results = [fixed.get(r["url"], r) for r in results]
+
+    order = ["dead", "redirect", "unreachable", "manual", "ok"]
+    by_verdict: dict[str, list] = {v: [] for v in order}
     for r in results:
-        by_verdict[r["verdict"]].append(r)
+        by_verdict.setdefault(r["verdict"], []).append(r)
 
     (DATA / "link-report.json").write_text(
-        json.dumps(sorted(results, key=lambda r: (r["verdict"], r["unit"], r["name"])),
+        json.dumps(sorted(results, key=lambda r: (order.index(r["verdict"])
+                                                  if r["verdict"] in order else 9,
+                                                  r["unit"], r["name"])),
                    indent=2, ensure_ascii=False) + "\n")
 
-    print(f"\nok: {len(by_verdict['ok'])}   manual-check: {len(by_verdict['manual'])}   "
-          f"dead: {len(by_verdict['dead'])}")
-    for r in by_verdict["dead"]:
-        print(f"  DEAD [{r['unit']}] {r['name']}: {r['url']} "
-              f"({r.get('status') or r.get('error')})")
-    for r in by_verdict["manual"]:
-        print(f"  manual [{r['unit']}] {r['name']}: {r['url']} ({r.get('status') or r.get('error')})")
+    print("\n" + "  ".join(f"{v}: {len(by_verdict[v])}" for v in order))
+    for v in ("dead", "redirect", "unreachable"):
+        for r in by_verdict[v]:
+            print(f"  {v.upper():12s} [{r['unit']}] {r['name']}: {r['url']} "
+                  f"({r.get('status') or r.get('error')})")
+    print(f"\n{len(by_verdict['manual'])} alive but blocking automated clients "
+          f"(403 and friends) — listed in data/link-report.json, no action needed.")
     return 0
 
 

@@ -143,6 +143,7 @@
       "notes": "The software is free and unlimited forever; only cloud file storage is metered — 300 MB free, then $20/year for 2 GB, $60/year for 6 GB, $120/year for unlimited. Two ways around this entirely: sync metadata only (unlimited and free) and keep PDFs local, or point file syncing at your own WebDAV server. Group library files draw on the group owner's quota. Beyond citation formatting, Zotero is the practical hub of a no-institution workflow: it stores the PDFs you legally obtain, and its saved searches and RSS reader make it a discovery tool as well.",
       "canonical": true,
       "also_in": [
+        "physics",
         "humanities"
       ]
     },
@@ -469,6 +470,7 @@
       "notes": "IMPORTANT CHANGE: the API is now metered in dollars, not calls. A free account key gets $1 of usage per day (resets midnight UTC); with no key you get $0.10/day. Rates: single-entity lookups by ID or DOI are free and unlimited; list+filter $0.10 per 1,000 calls; keyword or semantic search $1 per 1,000 calls; cached PDF download $10 per 1,000. So $1/day buys roughly 10,000 filter calls (1M results) or ~1,000 searches or 100 PDFs. Browsing openalex.org draws on the same budget (~1.8x costlier per search than a direct API call). Overflow needs prepaid credit in $1 increments (expires after 3 months) or an annual plan (Member $5,000/yr, Member+ $10,000/yr, Partner from $20,000/yr). The data itself stays CC0 and the whole snapshot remains a free download — only serving and freshness are billed. The snapshot is quarterly, so it lags the live API by up to three months.",
       "canonical": true,
       "also_in": [
+        "physics",
         "chemistry",
         "neuro-psych",
         "social"

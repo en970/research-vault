@@ -150,7 +150,7 @@ NumPy-compatible array library with composable function transforms (jit, grad, v
 
 **Caveats.** Apache-2.0. The functional/pure-function style and explicit PRNG keys are a real learning curve if you come from PyTorch, and the third-party ecosystem (data loading, pretrained checkpoints) is much thinner. Best payoff if you get TPU Research Cloud access.
 
-### [Llama (Meta)](https://developer.meta.com/ai/)
+### [Llama (Meta)](https://www.llama.com/)
 
 `Free (registration), email` · beginner 3/5 · open-weight model family
 

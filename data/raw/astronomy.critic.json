@@ -1,0 +1,249 @@
+{
+  "unit": "astronomy",
+  "additions": [
+    {
+      "name": "NRAO Science Data Archive",
+      "url": "https://data.nrao.edu",
+      "category": "data",
+      "subcategory": "radio interferometry archive",
+      "summary": "Holds all raw data taken by the VLA (historical and Jansky), the VLBA, the GMVA and the GBT (2014-2020), and also serves ALMA; the standard proprietary period is 12 months from the last observation of a project, 6 months for Director's Discretionary Time, and 24 months for projects from semester 2026A onwards.",
+      "access": "Archive Access Tool web interface at data.nrao.edu (search by position, receiver, frequency, array configuration); public data download without an account, giving an email address at download time; a free my.nrao.edu login is only needed for proprietary data you are on. Calibrated measurement sets from the VLA calibration pipeline are offered alongside raw data.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Raw visibilities need CASA plus substantial disk and CPU; a single VLA dataset is routinely tens of GB. The lengthening proprietary period (24 months from 2026A) means recent VLA science stays closed longer than ALMA's one year."
+    },
+    {
+      "name": "ATNF Pulsar Catalogue (psrcat)",
+      "url": "https://www.atnf.csiro.au/research/pulsar/psrcat/",
+      "category": "data",
+      "subcategory": "pulsar catalogue",
+      "summary": "CSIRO's catalogue of every published pulsar - more than 3,000 entries - carrying positions, spin periods and derivatives, dispersion measures, binary parameters, flux densities and derived quantities (characteristic age, surface field, spin-down luminosity), with a version number stamped on every release.",
+      "access": "Web query form on the catalogue page; downloadable psrcat command-line tool for offline use; scripted access with `pip install psrqpy` then `from psrqpy import QueryATNF; q = QueryATNF(params=['JNAME','F0','DM','P0'])`, which caches a local copy of the catalogue.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Always record the catalogue version with any result - values change between versions, so 'the ATNF catalogue' alone is not a reproducible citation. It is a parameter catalogue, not a data archive: raw and folded pulsar observations live in the CSIRO Data Access Portal, and pulsar-timing-array data in the NANOGrav, EPTA and PPTA public releases."
+    },
+    {
+      "name": "IllustrisTNG Public Data Release",
+      "url": "https://www.tng-project.org/data/",
+      "category": "data",
+      "subcategory": "cosmological simulations",
+      "summary": "Full public release of the TNG50, TNG100, TNG300 and TNG-Cluster magnetohydrodynamical galaxy-formation simulations: 27 runs, 2,914 snapshots and about 1.0 PB of data, with box sizes from 51.7 Mpc (TNG50) to 302.6 Mpc (TNG300) and 1,003.8 Mpc for TNG-Cluster, plus group catalogues, merger trees and supplementary catalogues.",
+      "access": "Create a free account, then use the documented web API (returns individual subhalos, cutouts and merger trees so you never download a whole snapshot), direct HTTPS file download, or the hosted JupyterLab workspace that runs analysis next to the data.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 3,
+      "notes": "Registration is free but mandatory even for the API. Whole snapshots run to tens of TB each - the API and the hosted JupyterLab are the only realistic routes without a cluster. The predecessor Illustris simulations are served from the same account."
+    },
+    {
+      "name": "Aladin Sky Atlas",
+      "url": "https://aladin.cds.unistra.fr",
+      "category": "software",
+      "subcategory": "interactive sky atlas",
+      "summary": "CDS interactive sky atlas that overlays catalogues, databases and your own images on more than 1,100 HiPS surveys totalling roughly 900 TB of imagery from radio to gamma-ray; ships as a Java desktop application, a WebGL browser version (Aladin Lite) and a Jupyter widget.",
+      "access": "Run the desktop Java application from aladin.cds.unistra.fr; Aladin Lite needs only a browser and can be embedded in a page; `pip install ipyaladin` for notebooks. Exchanges tables and images live with TOPCAT, DS9 and Python sessions over a SAMP hub.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "GPL v3. The desktop version needs a Java runtime. For crossmatching billion-row catalogues use the companion CDS X-Match service rather than Aladin itself."
+    },
+    {
+      "name": "HEASoft (FTOOLS + XSPEC)",
+      "url": "https://heasarc.gsfc.nasa.gov/docs/software/heasoft/",
+      "category": "software",
+      "subcategory": "high-energy analysis suite",
+      "summary": "NASA's unified high-energy astrophysics software release, version 6.37 (13 August 2026), bundling FTOOLS for FITS manipulation, XSPEC for spectral fitting, Xronos for timing, Ximage for imaging and XSTAR for photoionised gas, plus mission-specific tools for Swift, NICER, NuSTAR, IXPE and others.",
+      "access": "Download source or precompiled binaries for Linux and macOS from the HEASoft page, or install through conda; then `xspec` at the shell prompt. Python bindings via PyXspec and heasoftpy for scripted fitting.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "The source build takes an hour or more and needs a Fortran compiler; the binary or conda route is far easier. Calibration files (CALDB) are downloaded separately and are large. Chandra (CIAO) and XMM-Newton (SAS) have their own free but separate installs."
+    },
+    {
+      "name": "PyVO",
+      "url": "https://pyvo.readthedocs.io",
+      "category": "software",
+      "subcategory": "Virtual Observatory client",
+      "summary": "Astropy-affiliated Python client for the IVOA standards - TAP, Simple Cone Search, Simple Image Access, Simple Spectral Access, Simple Line Access and the VO registry - so any standards-compliant archive worldwide can be queried with the same few lines of code.",
+      "access": "`pip install pyvo`; e.g. `import pyvo; s = pyvo.dal.TAPService('https://gea.esac.esa.int/tap-server/tap'); s.search('SELECT TOP 10 * FROM gaiadr3.gaia_source')`. `pyvo.registry.search(...)` discovers services you did not already know about.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Complements rather than replaces astroquery: astroquery wraps specific archives with convenience methods, PyVO speaks the protocol so it also reaches the many small national and institutional services that have no astroquery module. Query limits are set by each remote service."
+    },
+    {
+      "name": "SkyView Virtual Observatory",
+      "url": "https://skyview.gsfc.nasa.gov",
+      "category": "data",
+      "subcategory": "multiwavelength image cutout service",
+      "summary": "NASA/HEASARC service (current version 3.5.7) that generates an image of any position on the sky at any wavelength from radio to gamma-ray, resampling dozens of local and remote surveys - DSS, 2MASS, SDSS, GALEX, WISE, UKIDSS, FIRST, TGSS, RASS, IRAS, Fermi and more - onto a projection and pixel scale you choose.",
+      "access": "Web form at skyview.gsfc.nasa.gov; URL/CGI API at https://skyview.gsfc.nasa.gov/cgi-bin/images for scripted requests; the downloadable 'SkyView-in-a-Jar' Java build for offline batch work; or `from astroquery.skyview import SkyView; SkyView.get_images(position='M31', survey=['DSS','2MASS-K'])`.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Returns resampled, reprojected survey images rather than original mission pixels - excellent for finder charts and multiwavelength comparison figures, not the right source for precision photometry. Remote surveys depend on third-party servers and can be temporarily unavailable."
+    },
+    {
+      "name": "CAMB",
+      "url": "https://camb.readthedocs.io",
+      "category": "software",
+      "subcategory": "cosmology Boltzmann code",
+      "summary": "Code for Anisotropies in the Microwave Background: computes CMB temperature, polarisation and lensing power spectra, matter power spectra and transfer functions, galaxy counts and 21 cm spectra, plus background distances and expansion history; Python interface over numerically efficient Fortran.",
+      "access": "`pip install camb`; e.g. `import camb; pars = camb.set_params(H0=67.5, ombh2=0.022, omch2=0.122, ns=0.965); results = camb.get_results(pars); cls = results.get_cmb_power_spectra(pars, CMB_unit='muK')`.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "A theory calculator, not a fitter - pair it with Cobaya or CosmoMC for parameter inference, and with the likelihoods and chains served free by NASA LAMBDA. CLASS is the equally free alternative implementation. Building from source needs a modern Fortran compiler; the pip wheels avoid that on common platforms."
+    },
+    {
+      "name": "galpy",
+      "url": "https://docs.galpy.org",
+      "category": "software",
+      "subcategory": "galactic dynamics",
+      "summary": "Astropy-affiliated Python package for galactic dynamics: orbit integration in a large library of gravitational potentials (including the MWPotential2014 Milky Way model), distribution functions, and action-angle coordinates; used in over 200 published papers and the computational companion to the free galaxiesbook.org text.",
+      "access": "`pip install galpy` or `conda install -c conda-forge galpy`; e.g. `from galpy.orbit import Orbit; from galpy.potential import MWPotential2014; o = Orbit.from_name('LMC'); o.integrate(numpy.linspace(0,10,1001)*u.Gyr, MWPotential2014)`.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Orbit.from_name pulls coordinates from SIMBAD, so integrating a real star's orbit is a two-line job. The optional C extensions make integration orders of magnitude faster - install from conda-forge if compiling locally is a problem."
+    },
+    {
+      "name": "ESA Planetary Science Archive (PSA)",
+      "url": "https://www.cosmos.esa.int/web/psa",
+      "category": "data",
+      "subcategory": "planetary mission archive",
+      "summary": "ESA's permanent archive for its planetary missions - Rosetta, Mars Express, Venus Express, BepiColombo, ExoMars 2016/TGO, Huygens, SMART-1, Giotto and Chandrayaan-1 - the European counterpart to NASA's PDS, delivered in peer-reviewed PDS3 and PDS4 formats.",
+      "access": "Search and download through the PSA web interface at psa.esa.int; FTP/HTTPS directory browsers for bulk retrieval of whole instrument datasets; TAP and EPN-TAP endpoints for scripted queries; observation geometry from the matching SPICE kernels (`pip install spiceypy`).",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "No account of any kind. The learning cost is the PDS label format and the per-instrument directory conventions; start from an instrument's user guide rather than the raw file tree. Some instrument teams deliver on a delayed schedule, so the newest BepiColombo and ExoMars data appear later than the observations."
+    },
+    {
+      "name": "JWST and Hubble General Observer proposals (STScI)",
+      "url": "https://www.stsci.edu/jwst/science-planning/calls-for-proposals-and-policy",
+      "category": "funding",
+      "subcategory": "open telescope time",
+      "summary": "STScI issues annual open calls for JWST and HST observing time to the worldwide astronomical community with no fee to propose and no affiliation requirement; the JWST Cycle 6 Call was released on 20 July 2026 with proposals due 30 September 2026 and observations starting 1 July 2027.",
+      "access": "Read the Call on JDox, size the observations with the free web Exposure Time Calculator (jwst.etc.stsci.edu), build and submit the proposal in the free Astronomer's Proposal Tool (APT); a free MyST account is the only credential needed. Review is dual-anonymous, so the proposal is judged without the proposers' names.",
+      "free": "free",
+      "registration": "email",
+      "beginner": 2,
+      "notes": "Proposing is free and open to anyone, but the attached grant money goes only to US institutions - a successful non-US PI receives the data and the proprietary rights, not funding. Success rates are low (roughly one in eight for JWST GO), deadlines are hard, and APT/ETC have a real learning curve. Archival research on already-public MAST data needs no proposal at all and is the faster route for an unaffiliated researcher."
+    },
+    {
+      "name": "astroML",
+      "url": "https://www.astroml.org",
+      "category": "software",
+      "subcategory": "astro-statistics and machine learning",
+      "summary": "Python library of statistical and machine-learning routines built for astronomy on top of numpy, scipy, scikit-learn, matplotlib and astropy, shipping dataset loaders (SDSS spectra and imaging, quasar catalogues, LINEAR light curves) and the complete runnable figure code for the textbook 'Statistics, Data Mining, and Machine Learning in Astronomy' (2nd edition, 2019).",
+      "access": "`pip install astroML`; every figure in the book is a standalone script on the site, so `astroML.datasets.fetch_sdss_spectrum(...)` plus the matching example is a working starting point for density estimation, classification, regression and time-series analysis.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The textbook itself is a paid Princeton University Press title - only the code, figures and example datasets are free, though the figures carry most of the practical content. The package evolves slowly; check compatibility with your scikit-learn version and prefer current scikit-learn or statsmodels implementations where they overlap."
+    },
+    {
+      "name": "batman (transit model)",
+      "url": "https://lkreidberg.github.io/batman/docs/html/index.html",
+      "category": "software",
+      "subcategory": "exoplanet transit modelling",
+      "summary": "Fast analytic exoplanet transit light-curve generator supporting any radially symmetric limb-darkening law; the documentation states it computes a million model light curves in well under ten minutes, which is what makes MCMC fitting of TESS or Kepler transits feasible on a laptop.",
+      "access": "`pip install batman-package` then `import batman`; define `batman.TransitParams()` (t0, per, rp, a, inc, ecc, w, limb-darkening), build `m = batman.TransitModel(params, t)` and evaluate `m.light_curve(params)`. Combine with lightkurve for the data and emcee or dynesty for the posterior.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The pip name is batman-package, not batman - the short name belongs to an unrelated project. It is a forward model only: it supplies no detrending, no fitting and no eclipse-mapping, so you build the likelihood yourself or use a wrapper such as juliet or the exoplanet/PyMC stack."
+    }
+  ],
+  "corrections": [
+    {
+      "name": "SIMBAD",
+      "field": "summary",
+      "new_value": "CDS reference database resolving names, cross-identifications, basic measurements and complete literature links for objects outside the solar system; the site's own counter reported 21,831,863 objects, 72,564,984 identifiers and 466,704 bibliographic references on 28 August 2026.",
+      "reason": "The sweep said 'over 10 million astronomical objects'. SIMBAD's live statistics line on 2026-08-28 gives 21,831,863 objects - the stated figure understates the database by more than a factor of two."
+    },
+    {
+      "name": "Minor Planet Center",
+      "field": "summary",
+      "new_value": "The IAU's official clearinghouse for astrometric observations and orbits of minor planets and comets; the front-page all-time counters on 28 August 2026 read 1,559,751 minor planets, 4,643 comets, 42,347 near-Earth objects and 550.8 million observations received. It publishes orbit files (MPCORB), observation databases and the NEO Confirmation Page.",
+      "reason": "The sweep said 'over 1.4 million minor planets and comets'; the MPC front page currently reports 1,559,751 minor planets plus 4,643 comets, so the number is stale and the comet count was folded in incorrectly."
+    },
+    {
+      "name": "Rubin Observatory / LSST data",
+      "field": "summary",
+      "new_value": "Early Data Preview 2 (DP2) is now the most recent preview: image and catalogue products from observations taken April 2025 to January 2026, processed with Science Pipelines v30 (deep coadd images only, but all catalogues); Data Preview 1 (30 June 2025) covers seven ~1 deg2 Commissioning Camera fields from late 2024. Since 24 February 2026 alerts have been streaming in real time to brokers and are accessible to the global science community.",
+      "reason": "Verified on rubinobservatory.org: DP1 is no longer the latest preview (DP2 supersedes it) and the start of world-public real-time alert streaming on 24 February 2026 is the single most important change for unaffiliated researchers."
+    },
+    {
+      "name": "Rubin Observatory / LSST data",
+      "field": "notes",
+      "new_value": "Rubin's data policy sets a two-year proprietary period on prompt-processed images and annual data releases, after which they become world-public; RSP accounts are for data-rights holders only (US and Chile-based scientists and students, plus named international in-kind contributors), although unaffiliated researchers such as amateur astronomers may request access where public resources are insufficient. Alert packets and the contents of the Prompt Products Database are public with no data rights required, so real time-domain science is possible now through brokers and the MPC.",
+      "reason": "The sweep referred vaguely to 'a proprietary period'. The data policy states two years, and it also documents a request route for unaffiliated researchers and an in-kind route for international scientists that the sweep's flat 'cannot get an RSP account today' misses."
+    },
+    {
+      "name": "SDSS SkyServer",
+      "field": "summary",
+      "new_value": "SQL interface to all Sloan Digital Sky Survey releases; DR20 is live as the third SDSS-V release, adding the first optical BOSS spectra taken at Las Campanas Observatory plus more BOSS spectra from Apache Point, further Local Volume Mapper tiles, and a large SPIDERS dataset giving optical spectroscopy of eROSITA X-ray sources. DR20 contains no new APOGEE spectra and no reanalysis of previous APOGEE data - those are expected in DR21.",
+      "reason": "Verified against sdss.org/dr20. The sweep omitted the largest single new component (SPIDERS/eROSITA optical spectroscopy) and the important negative that APOGEE is unchanged in DR20; the DR20 page itself does not state the '30 July 2026' announcement date the sweep asserts."
+    },
+    {
+      "name": "DESI Data Archive",
+      "field": "summary",
+      "new_value": "Public data from the Dark Energy Spectroscopic Instrument. DR1 (19 March 2025) contains 18.7 million new spectra observed from May 2021 to June 2022 plus reprocessed Survey Validation data; the earlier Early Data Release (13 June 2023) holds spectra for 1.8 million unique Survey Validation targets and is a much smaller starting point. No DR2 has been released.",
+      "reason": "Verified on data.desi.lbl.gov/doc/releases. Exact release date and the wording ('18.7 million new spectra', not objects) corrected, and the EDR - the practical entry point for someone on a laptop - was missing entirely."
+    },
+    {
+      "name": "Euclid Q1 Data Release",
+      "field": "notes",
+      "new_value": "Q1 is single-visit depth over deep fields only. Euclid DR1 is announced on the ESA Cosmos site as a future release with its contents fixed by an approved Euclid Science Team memo, but it is not public as of 28 August 2026 - Q1 remains the only open Euclid dataset.",
+      "reason": "The sweep said only that 'substantially larger releases follow'. Checking cosmos.esa.int confirms DR1 is defined and scheduled but still unreleased, which is the fact a reader planning work needs."
+    },
+    {
+      "name": "Planetary Society Shoemaker NEO Grants",
+      "field": "notes",
+      "new_value": "One of very few funding lines explicitly open to unaffiliated observers, but it funds equipment for NEO astrometry submitted to the Minor Planet Center, not salary or general research. As of 28 August 2026 the programme page announces the 2025 winners and the downloadable Request for Proposals is the 2025 one - there is no open call at the moment, so watch the page for the next round. The Planetary Society's separate STEP Grants fund larger open-call projects in planetary exploration, planetary defence and the search for life.",
+      "reason": "The sweep says 'the current Request for Proposals is downloadable there', implying an open call. The live page shows the 2025 winners announced and only the 2025 RFP, so a reader would waste time preparing a proposal with nowhere to send it."
+    },
+    {
+      "name": "Astrometry.net",
+      "field": "notes",
+      "new_value": "The nova.astrometry.net service is now hosted by CANFAR (Canadian Advanced Network for Astronomical Research). Web submissions are public by default and the service queues at busy times; a local install removes both the rate limit and the publicity, at the cost of downloading index files (hundreds of MB for wide fields, several GB for narrow ones).",
+      "reason": "Verified on nova.astrometry.net: hosting moved to CANFAR, which matters for anyone diagnosing an outage or citing the service. The Flickr auto-solving claim in the sweep is no longer visible on the site and should not be relied on."
+    }
+  ],
+  "removals": [],
+  "checked": [
+    "GWOSC (Gravitational Wave Open Science Center)",
+    "NASA Exoplanet Archive",
+    "ESA Gaia Archive",
+    "SDSS SkyServer",
+    "DESI Data Archive",
+    "IceCube public data releases",
+    "TOPCAT",
+    "SAOImageDS9",
+    "ASAS-SN Sky Patrol",
+    "Minor Planet Center",
+    "SIMBAD",
+    "The Astronomer's Telegram",
+    "Research Notes of the AAS (RNAAS)",
+    "Astronomy & Astrophysics (A&A)",
+    "IAU Office of Astronomy for Development grants",
+    "Planetary Society Shoemaker NEO Grants",
+    "Las Cumbres Observatory Global Sky Partners",
+    "Rubin Observatory / LSST data",
+    "SPHEREx Archive at IRSA",
+    "Euclid Q1 Data Release",
+    "TIKE (Timeseries Integrated Knowledge Engine)",
+    "Breakthrough Listen Open Data Archive",
+    "Essential Radio Astronomy",
+    "Data Carpentry: Foundations of Astronomical Data Science",
+    "e-CALLISTO",
+    "MAST (Mikulski Archive for Space Telescopes)",
+    "Astrometry.net",
+    "ALMA Science Archive",
+    "CHIME/FRB Catalogs"
+  ]
+}

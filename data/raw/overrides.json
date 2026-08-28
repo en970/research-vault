@@ -1,0 +1,30 @@
+{
+  "_comment": "Hand-verified fixes applied after the automated critic pass. The sweep and critic files are machine output and get regenerated; corrections recorded here survive a re-merge. Each entry names the unit and the resource it acts on, and says why.",
+
+  "corrections": [
+    {
+      "unit": "astronomy",
+      "name": "Lightkurve",
+      "field": "url",
+      "new_value": "https://lightkurve.github.io/lightkurve/",
+      "reason": "docs.lightkurve.org redirects to itself in a loop and returns 404 on sub-paths (checked 2026-08-28); the GitHub Pages docs are the working canonical home."
+    },
+    {
+      "unit": "cs-ml",
+      "name": "Llama (Meta)",
+      "field": "url",
+      "new_value": "https://www.llama.com/",
+      "reason": "llama.com is the human-facing entry point; the previous developer.meta.com/ai/ URL rejects non-browser clients with a 400."
+    },
+    {
+      "unit": "humanities",
+      "name": "Voyant Tools",
+      "field": "notes",
+      "new_value": "The hosted instance at voyant-tools.org is frequently down — it returned 502 for the whole of a check on 2026-08-28. For anything you depend on, run your own copy: VoyantServer is a self-contained download that runs locally with a bundled Java, and the source is on GitHub under GPL-3.",
+      "reason": "The hosted service's unreliability is the single most important thing to know before building a workflow on it, and the original note did not mention it."
+    }
+  ],
+
+  "removals": [],
+  "additions": []
+}
