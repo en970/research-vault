@@ -148,7 +148,7 @@ def print_row(u: dict, r: dict):
 
 
 def cmd_search(units, args):
-    tokens = [t.lower() for t in args.query]
+    tokens = " ".join(args.query).lower().split()
     hits = []
     for u, r in apply_filters(all_resources(units), args):
         s = score(r, tokens, u) if tokens else 1
