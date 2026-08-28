@@ -125,9 +125,9 @@ def refresh_readme(units: list[dict]) -> None:
     canon = [r for u in units for r in u["resources"] if r.get("canonical", True)]
     dates = sorted({u.get("generated", "") for u in units if u.get("generated")})
     stats = (
-        f"**{len(canon)} resources** across **{len(units)} fields** — "
-        f"{sum(1 for r in canon if r['free'] == 'free')} free outright, "
-        f"{sum(1 for r in canon if r.get('registration') == 'none')} usable with no account "
+        f"**{len(canon):,} resources** across **{len(units)} fields** — "
+        f"{sum(1 for r in canon if r['free'] == 'free'):,} free outright, "
+        f"{sum(1 for r in canon if r.get('registration') == 'none'):,} usable with no account "
         f"at all. Verified {dates[0] if len(dates) == 1 else f'{dates[0]} – {dates[-1]}'}."
     )
 

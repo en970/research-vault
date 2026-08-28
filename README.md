@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**1114 resources** across **18 fields** — 861 free outright, 706 usable with no account at all. Verified 2026-08-28.
+**1,114 resources** across **18 fields** — 861 free outright, 706 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
