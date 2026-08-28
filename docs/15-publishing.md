@@ -102,7 +102,7 @@ Free database of life-science and biomedical literature including abstracts, ope
 
 **Caveats.** The manuscript deposit route works only if one of the participating funders supported the work, so it is not a general-purpose repository. Full text is available only where the publisher or author made it open; abstracts are universal. Preprint indexing includes bioRxiv and medRxiv but is not exhaustive.
 
-*Also listed under: biology, medicine, neuro-psych, literature-access.*
+*Also listed under: chemistry, biology, medicine, neuro-psych, literature-access.*
 
 ### [Google Scholar profiles](https://scholar.google.com/citations)
 
@@ -532,7 +532,7 @@ Universal archive that harvests and preserves publicly available source code wit
 
 **Caveats.** Archives only publicly accessible repositories; nothing private, and no way to remove code once archived except through a documented takedown process. The archive site sits behind a JavaScript proof-of-work challenge, so scripted API access from a plain HTTP client can fail. SWHIDs identify code, not a publication — pair them with a Zenodo DOI when you need a citable, described release.
 
-*Also listed under: compute, workflow-tools.*
+*Also listed under: cs-ml, compute, workflow-tools.*
 
 ### [SSRN](https://www.ssrn.com/)
 

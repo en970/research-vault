@@ -314,7 +314,7 @@ Long-running programme (over 30 years) that provides field equipment rather than
 
 **Caveats.** Equipment only — no salaries, travel or consumables — and the maximum value is not published on the application page, so ask before building a wishlist. This is the fastest realistic route for a student in a low-income country who needs a camera trap, GPS unit or recorder and has no departmental budget.
 
-*Also listed under: biology.*
+*Also listed under: biology, earth.*
 
 ### [IMU Commission for Developing Countries](https://www.mathunion.org/cdc)
 
@@ -413,6 +413,8 @@ Free searchable repository of NIH-funded intramural and extramural research proj
 **Access.** Web interface with no registration; search by topic, PI, institution or study section, read funded abstracts, and export results. An API is available for bulk queries.
 
 **Caveats.** This is not a source of money — it is the best free way to see which programme officers and study sections actually fund your topic, how a successful specific-aims framing reads, and who your realistic collaborators are. US biomedical research only.
+
+*Also listed under: medicine.*
 
 ### [NLnet Foundation (NGI Zero / Open Internet Stack)](https://nlnet.nl/propose/)
 

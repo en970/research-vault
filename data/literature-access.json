@@ -149,6 +149,7 @@
       "canonical": true,
       "also_in": [
         "physics",
+        "mathematics",
         "humanities",
         "workflow-tools"
       ]
@@ -481,6 +482,9 @@
       "also_in": [
         "physics",
         "chemistry",
+        "medicine",
+        "mathematics",
+        "cs-ml",
         "neuro-psych",
         "social",
         "publishing"
@@ -546,6 +550,7 @@
       "notes": "This is an institutional programme, not an individual one — an unaffiliated researcher cannot register alone, and a researcher at an eligible institution that has not registered gets nothing until a librarian applies. Eligibility is determined by country group, so a poorly resourced institution in a high-income country is excluded entirely. Group A countries get free access; Group B institutions pay an annual fee. The same Group A/B lists are reused by many publishers to set APC waivers, so knowing your country's group is worth doing. Their website is behind a bot filter that blocked automated verification of current title counts, so I have not quoted any.",
       "canonical": true,
       "also_in": [
+        "chemistry",
         "medicine",
         "social",
         "publishing"
@@ -723,6 +728,7 @@
       "canonical": true,
       "also_in": [
         "physics",
+        "chemistry",
         "mathematics",
         "cs-ml",
         "social",

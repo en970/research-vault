@@ -354,8 +354,6 @@ Full-featured open-source desktop GIS: reads and writes shapefiles, GeoJSON, Geo
 
 **Caveats.** A complete free replacement for ArcGIS Pro for the tasks social scientists actually need. It is memory-hungry on large rasters, and the plugin ecosystem varies in quality - stick to plugins with recent updates. Coordinate reference systems are the usual source of silent errors; set the project CRS deliberately.
 
-*Also listed under: earth.*
-
 ### [QualCoder](https://github.com/ccbogel/QualCoder)
 
 `Free` · beginner 3/5 · qualitative data analysis (CAQDAS)

@@ -130,6 +130,7 @@
       "notes": "The manuscript deposit route works only if one of the participating funders supported the work, so it is not a general-purpose repository. Full text is available only where the publisher or author made it open; abstracts are universal. Preprint indexing includes bioRxiv and medRxiv but is not exhaustive.",
       "canonical": true,
       "also_in": [
+        "chemistry",
         "biology",
         "medicine",
         "neuro-psych",
@@ -726,6 +727,7 @@
       "notes": "Archives only publicly accessible repositories; nothing private, and no way to remove code once archived except through a documented takedown process. The archive site sits behind a JavaScript proof-of-work challenge, so scripted API access from a plain HTTP client can fail. SWHIDs identify code, not a publication — pair them with a Zenodo DOI when you need a citable, described release.",
       "canonical": true,
       "also_in": [
+        "cs-ml",
         "compute",
         "workflow-tools"
       ]

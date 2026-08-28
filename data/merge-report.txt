@@ -1,10 +1,3 @@
-[chemistry] no critic file — sweep used as-is
-[biology] no critic file — sweep used as-is
-[medicine] no critic file — sweep used as-is
-[earth] no critic file — sweep used as-is
-[mathematics] no critic file — sweep used as-is
-[cs-ml] no critic file — sweep used as-is
-[neuro-psych] no critic file — sweep used as-is
 [social] no critic file — sweep used as-is
 [econ-finance] no critic file — sweep used as-is
 [humanities] no critic file — sweep used as-is

@@ -350,6 +350,8 @@
         "chemistry",
         "medicine",
         "earth",
+        "mathematics",
+        "cs-ml",
         "econ-finance"
       ]
     },
@@ -426,7 +428,8 @@
       "also_in": [
         "physics",
         "chemistry",
-        "medicine"
+        "medicine",
+        "cs-ml"
       ]
     },
     {

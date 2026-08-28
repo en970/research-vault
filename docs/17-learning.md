@@ -336,6 +336,8 @@ Deisenroth, Faisal and Ong (Cambridge, April 2020): seven chapters of mathematic
 
 **Caveats.** Explicitly the prerequisite book, not an ML book — it teaches the mathematics so you can read the others. The instructor's solutions manual is available only from Cambridge on request; the student-facing exercise solutions are free.
 
+*Also listed under: cs-ml.*
+
 ### [MIT 18.06 Linear Algebra (Gilbert Strang)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 
 `Free` · beginner 4/5 · video lecture course (mathematics)

@@ -1,10 +1,10 @@
 # Medicine & health sciences
 
-Part of [research-vault](../README.md). 59 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 72 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (20) · [Software](#software) (10) · [Literature](#literature) (7) · [Compute](#compute) (3) · [Publishing](#publishing) (6) · [Funding](#funding) (4) · [Learning](#learning) (6) · [Community](#community) (3)
+**Contents:** [Data](#data) (24) · [Software](#software) (15) · [Literature](#literature) (10) · [Compute](#compute) (3) · [Publishing](#publishing) (6) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (3)
 
 ## Data
 
@@ -27,6 +27,18 @@ Ad-hoc query system over US public health datasets: underlying and multiple caus
 **Access.** Web query wizard producing tables and TSV export; each database also has a POST XML API endpoint (e.g. `https://wonder.cdc.gov/controller/datarequest/D77` for Multiple Cause of Death). R: `install.packages('wonderapi')`.
 
 **Caveats.** Sub-national cells with fewer than 10 deaths are suppressed and rates from small numbers are flagged unreliable, which limits rare-cause county work. The XML-request API is awkward; most people start in the web wizard. CDC has announced a modernisation of WONDER, so interfaces and URLs may shift during 2026.
+
+### [ChEMBL](https://www.ebi.ac.uk/chembl/)
+
+`Free` · beginner 3/5 · drug and bioactivity database
+
+EMBL-EBI's manually curated database of bioactive drug-like molecules. Release ChEMBL_37 (1 May 2026) holds 2,921,148 distinct compounds, 24,527,044 activity measurements against 18,552 targets, curated from 101,100 publications, plus approved-drug and clinical-candidate annotations.
+
+**Access.** Web interface plus a keyless REST API: `https://www.ebi.ac.uk/chembl/api/data/molecule/CHEMBL25.json`, and `https://www.ebi.ac.uk/chembl/api/data/status.json` reports the current release and record counts. Python: `pip install chembl_webresource_client`. Full Oracle/MySQL/PostgreSQL dumps and an RDF distribution are on the EBI FTP.
+
+**Caveats.** Licensed CC BY-SA 3.0, so derivative datasets and some models must be shared alike — this matters if a commercial partner is involved. Activities are extracted from heterogeneous published assays with differing units, assay formats and confidence scores; naively pooling IC50 values across assay types is the classic beginner error. It is medicinal-chemistry data, not clinical outcome data.
+
+*Also listed under: chemistry.*
 
 ### [ClinicalTrials.gov](https://clinicaltrials.gov/)
 
@@ -66,7 +78,7 @@ Regenstrief Institute's universal code system for laboratory tests, measurements
 
 **Access.** Create a free LOINC account, then download the Loinc_2.83.zip table and accessory files, or use the RELMA mapping tool (Windows). A HL7 FHIR terminology service and a hierarchy browser are available online; search at loinc.org/search.
 
-**Caveats.** Free worldwide including commercial use, but bound by the LOINC License — you may not fork the code system or redistribute modified versions as LOINC. Mapping local lab codes to LOINC is skilled, slow work that RELMA assists but does not automate. The site sits behind a bot filter, so scripted downloads need a browser session.
+**Caveats.** Free worldwide including commercial use, but bound by the LOINC License — you may not fork the code system or redistribute modified versions as LOINC. Mapping local lab codes to LOINC is skilled, slow work that RELMA assists but does not automate. The site sits behind a Cloudflare bot filter (HTTP 403 to scripted requests), so downloads need a browser session; for automation, Regenstrief documents a download API at loinc.org/kb/api/download. Note the cadence change: releases are twice yearly now but Regenstrief has announced a move to monthly releases in 2027, so pin the version you map against.
 
 ### [MedMNIST / MedMNIST+](https://medmnist.com/)
 
@@ -118,6 +130,16 @@ US National Health and Nutrition Examination Survey: linked interview, physical 
 
 **Caveats.** Public files are fully open, but restricted variables (fine geography, some linkages, mortality linkage detail) live in the NCHS Research Data Center and require an application and fees. Ignoring the survey design weights is by far the most common analytical error with these data.
 
+### [Open Targets Platform](https://platform.opentargets.org/)
+
+`Free` · beginner 3/5 · target-disease association evidence
+
+EMBL-EBI, Wellcome Sanger and pharma-partner platform that integrates GWAS and rare-disease genetics, somatic mutations, expression, pathways, animal models, known drugs and text-mined literature into scored target-disease associations. Data release 26.06 is live, served by GraphQL API version 26.6.3 as of 28 August 2026.
+
+**Access.** Web interface at platform.opentargets.org; keyless GraphQL at `https://api.platform.opentargets.org/api/v4/graphql` — e.g. `{target(ensemblId:"ENSG00000169083"){approvedSymbol biotype}}` returns AR / protein_coding. Whole releases download as Parquet from the EMBL-EBI FTP under /pub/databases/opentargets/platform/ and are mirrored for BigQuery.
+
+**Caveats.** Association scores are an automated prioritisation heuristic, not evidence of causality, and they move between releases — pin the release version in any analysis you publish. The legacy REST API was retired in favour of GraphQL, so old tutorials and the `opentargets` pip client will not work. Licensing follows the constituent data sources; check per-source terms before redistributing.
+
 ### [openFDA](https://open.fda.gov/)
 
 `Free` · beginner 4/5 · drug, device and food safety data
@@ -168,7 +190,7 @@ NCI's population-based cancer incidence and survival data from US registries, wi
 
 **Access.** Apply through the SEER Data Request System, then download the database and analyse it in the free SEER*Stat desktop application (Windows; runs under Wine). R: `install.packages('SEER2R')`, or read exported ASCII with the supplied dictionaries.
 
-**Caveats.** Read the tiering carefully. SEER Research Plus requires an eRA Commons or HHS account, a non-free-mail institutional email address, and a supervisor at the same institution — closed in practice to unaffiliated researchers, and requests from gmail/icloud addresses are rejected. SEER Research Data can be requested for personal use without eRA Commons, and is the route for independents. Since 4 April 2025 NIH prohibits access to SEER Research Plus and NCCR data from designated countries of concern.
+**Caveats.** Read the tiering carefully. SEER Research Plus and NCCR require authentication with an eRA Commons or HHS account that must then be linked to a Login.gov account, plus a non-free-mail institutional email address — closed in practice to unaffiliated researchers, and requests from gmail/icloud addresses are rejected. SEER's own instructions state that if you cannot obtain an eRA Commons account, are requesting data for personal use, or do not need the extra Research Plus variables, you can register for SEER Research Data instead — that is the route for independents, and its access policy was updated on 13 June 2025. Since 4 April 2025 NIH prohibits access to SEER Research Plus and NCCR data by users located in countries of concern.
 
 ### [The Cancer Imaging Archive (TCIA)](https://www.cancerimagingarchive.net/)
 
@@ -202,6 +224,16 @@ NLM's integration of over 200 biomedical vocabularies — SNOMED CT, ICD-10-CM, 
 
 **Caveats.** The licence is free and open to individuals worldwide, but it is a real agreement with per-source restrictions — some constituent vocabularies (notably CPT) restrict redistribution and some restrict use outside certain countries. A UMLS licence also delivers SNOMED CT to users in SNOMED International member countries, which is a far simpler route than licensing SNOMED separately. Annual re-affirmation of the licence is required.
 
+### [Vivli](https://vivli.org/)
+
+`Free (registration), application` · beginner 2/5 · individual participant data from clinical trials
+
+Global platform for sharing anonymised individual participant data from completed clinical trials, including industry-sponsored trials. Platform metrics dated 30 June 2026: 8,644 studies listed for sharing, 6.36 million participants, 142 countries, 59 data contributors, 2,048 data requests submitted and 991 approved.
+
+**Access.** Search the study catalogue free at search.vivli.org without an account. To obtain data, register, submit a research proposal with a statistical analysis plan, sign the data use agreement, and analyse inside the Vivli secure research environment. Disease-specific portals exist for antimicrobial resistance (amr.vivli.org) and HIV.
+
+**Caveats.** Genuinely gated: requests are reviewed by the data contributor or an independent review panel, review takes weeks to months, and rejection is common — 248 requests denied and 809 withdrawn against 991 approved as of June 2026. Data cannot be downloaded; all analysis happens inside the walled environment. Treat Vivli's own FAQ as the authority on any charges for the research environment rather than assuming there are none, and expect to name a statistician and an institutional affiliation.
+
 ### [WHO Global Health Observatory](https://www.who.int/data/gho)
 
 `Free` · beginner 4/5 · global health indicators
@@ -211,6 +243,16 @@ WHO's official indicator repository, exposing 3,095 indicators as of August 2026
 **Access.** Keyless OData API: list indicators at `https://ghoapi.azureedge.net/api/Indicator`, then pull values with `https://ghoapi.azureedge.net/api/<IndicatorCode>`. R: `install.packages('rgho')`. CSV export from the web data pages.
 
 **Caveats.** Indicator codes are opaque and inconsistently documented; expect to grep the Indicator list first. Many indicators are WHO model estimates rather than raw country reports, and country coverage is uneven — read the indicator metadata before comparing across countries.
+
+### [WHO ICTRP Search Portal](https://trialsearch.who.int/)
+
+`Free` · beginner 3/5 · clinical trial registry federation
+
+WHO's federated search across the recognised primary trial registries — ClinicalTrials.gov plus ANZCTR, ChiCTR, CTRI, ISRCTN, IRCT, jRCT, PACTR, REBEC and others — so trials registered outside the United States appear in one query. Searching registries beyond ClinicalTrials.gov is expected by Cochrane MECIR and by PRISMA-S.
+
+**Access.** Web search and Advanced Search at trialsearch.who.int, with result-set export; the registry network, the WHO Trial Registration Data Set and the Universal Trial Number application are documented at who.int/clinical-trials-registry-platform. Bulk access to the full ICTRP data set is arranged through those WHO pages rather than an open API.
+
+**Caveats.** An ageing ASP.NET application with awkward paging and no modern REST API, so large harvests are painful; plan on the WHO data-set route instead of scraping. Records are supplied by member registries, so completeness, language and update frequency vary widely, and the same trial registered in two registries appears twice and must be deduplicated by hand. It indexes registrations, not results.
 
 ## Software
 
@@ -234,6 +276,16 @@ Open-source active-learning tool for title and abstract screening in systematic 
 
 **Caveats.** Runs entirely on your own machine with no account and no upload of your data, which is a real advantage over cloud screening tools for sensitive or unpublished datasets. It reorders screening but does not decide when to stop, and stopping criteria remain a live methodological debate. Journals and Cochrane may require you to justify machine-assisted screening in your methods.
 
+### [DHIS2](https://dhis2.org/)
+
+`Free` · beginner 3/5 · health management information system
+
+Free open-source (BSD 3-clause) web platform for routine health information: aggregate reporting, individual-level tracker programmes, dashboards, maps and metadata exchange. Coordinated by the HISP Centre at the University of Oslo and used by more than 80 low- and middle-income country governments as the national health data system, and in over 100 countries counting NGO programmes.
+
+**Access.** Explore the live public demo at play.dhis2.org before installing anything. Self-host with the official Docker images; everything is reachable through the Web API (`/api/analytics`, `/api/dataValueSets`, `/api/trackedEntityInstances`). Documentation at docs.dhis2.org, free courses at academy.dhis2.org, and a very active forum at community.dhis2.org.
+
+**Caveats.** The software is free; the data usually are not yours. In most countries a DHIS2 instance holds ministry-owned routine data, so a researcher needs a formal data request to the ministry rather than a login. Running an instance is a real systems job (PostgreSQL tuning, Java, scheduled analytics table generation). Routine service data carry well-known biases — incomplete facility reporting, unreliable denominators — and are not a substitute for survey data such as DHS.
+
 ### [Epi Info](https://www.cdc.gov/epiinfo/index.html)
 
 `Free` · beginner 4/5 · field epidemiology (discontinued)
@@ -254,6 +306,26 @@ Focused desktop tool for manual and semi-automatic segmentation of 3D medical im
 
 **Caveats.** Open source under the GPL and free for any use, but with a far narrower feature set than 3D Slicer — no registration pipelines, no extension ecosystem. The best first tool for a student who needs to produce reliable manual ground-truth masks on a laptop. Research use only.
 
+### [jamovi](https://www.jamovi.org/)
+
+`Free` · beginner 5/5 · point-and-click statistics
+
+Free open-source statistics application built on R with a spreadsheet interface: descriptives, t-tests, ANOVA, linear and logistic regression, factor analysis, and add-on modules for survival analysis, meta-analysis (MAJOR) and medical diagnostic-accuracy work (ClinicoPath). Current release 2.7.34. Every analysis can display the underlying R syntax, so work started by clicking can be reproduced in code.
+
+**Access.** Direct download for Windows, macOS, Linux (flatpak) and ChromeOS from jamovi.org/download.html; install add-ons from the in-app jamovi library. The `Rj` module runs arbitrary R inside a jamovi session against the open data set.
+
+**Caveats.** The desktop application is free and open source (AGPL); the hosted jamovi Cloud option is priced separately, so check its current terms before relying on it. This is the realistic SPSS replacement for clinicians and students with no licence budget, but it is not a scripted pipeline: complex survey weights, multilevel models and reproducible reporting are still better done directly in R. Community-maintained modules vary in quality and update rate.
+
+### [KoboToolbox](https://www.kobotoolbox.org/)
+
+`Free tier, email` · beginner 4/5 · field data collection
+
+Open-source XLSForm/ODK-based data collection platform designed for humanitarian and low-connectivity settings: offline Android collection, skip logic, GPS and media capture, multi-language forms, and browser-based tables, maps and exports. The free Community plan gives non-profit users 5,000 submissions per month and 1 GB of file storage; the entry free tier is 1,000 submissions per month, and paid Starter is $25 per month ($21 billed annually).
+
+**Access.** Create an account on a hosted server (kf.kobotoolbox.org or the EU server), build a form in the browser or upload an XLSForm, collect via the KoboCollect Android app or a web form, and export to XLSX, CSV or SPSS. REST API under `/api/v2/` for programmatic export; R: `install.packages('robotoolbox')` (1.6.2) with an API token from account settings. Self-hosting with Docker is supported.
+
+**Caveats.** The honest alternative to REDCap for someone with no institutional server, and named as such in the REDCap entry — but it is not equivalent: there is no 21 CFR Part 11 validated audit trail, so it is not the right tool for a regulated interventional trial. Data sit on a third-party server, so check your ethics approval and any data use agreement before collecting identifiable clinical data. Submission and storage caps are per account, and exceeding them blocks new submissions.
+
 ### [metafor and meta (R meta-analysis)](https://cran.r-project.org/package=metafor)
 
 `Free` · beginner 3/5 · meta-analysis
@@ -272,7 +344,7 @@ PyTorch-based framework for healthcare imaging AI: domain-specific transforms (i
 
 **Access.** `pip install monai[all]`, then e.g. `from monai.networks.nets import UNet` and `from monai.transforms import Compose, LoadImaged, ScaleIntensityd`. MONAI Label plugs interactive AI annotation into 3D Slicer, QuPath and OHIF; MONAI Bundles ship pretrained models.
 
-**Caveats.** The project website monai.io did not resolve in DNS on 28 August 2026, so use the GitHub repository and the readthedocs docs as entry points; the code itself is actively maintained, with commits as recent as 26 August 2026. Training 3D models needs a GPU with substantial VRAM — 2D slice models or MedMNIST are the realistic starting point on a free tier. For plain segmentation baselines, nnU-Net (github.com/MIC-DKFZ/nnUNet, Apache-2.0) remains the reference implementation.
+**Caveats.** The project's own domain is broken: monai.io, www.monai.io and docs.monai.io all failed to resolve in DNS on 28 August 2026. Working entry points are the GitHub repository, the documentation at https://monai.readthedocs.io/en/stable/ (HTTP 200) and the project site now advertised by the repo, https://project-monai.github.io/. The code is actively maintained — v1.6.0 was tagged 11 June 2026 and the repo was last pushed 26 August 2026. Training 3D models needs a GPU with substantial VRAM — 2D slice models or MedMNIST are the realistic starting point on a free tier. For plain segmentation baselines, nnU-Net (github.com/MIC-DKFZ/nnUNet, Apache-2.0) remains the reference implementation.
 
 ### [OHDSI and the OMOP Common Data Model](https://www.ohdsi.org/)
 
@@ -284,6 +356,26 @@ Open community standard for representing observational health data (the OMOP CDM
 
 **Caveats.** The software and standards are free and Apache-licensed; what is not free is patient data — you supply your own CDM instance, or work with Eunomia, the small synthetic OMOP dataset (`remotes::install_github('OHDSI/Eunomia')`), which is the realistic entry point without a data partner. Athena downloads that include CPT4 require a UMLS licence key. Standing up ATLAS is a multi-day systems task.
 
+### [Polyglot Search Translator (Systematic Review Accelerator)](https://polyglot.sr-accelerator.com/)
+
+`Free` · beginner 5/5 · systematic review search translation
+
+Free tool from Bond University's Institute for Evidence-Based Healthcare that translates a search string between database syntaxes — PubMed, Ovid MEDLINE, Embase, Cochrane CENTRAL, Web of Science, CINAHL, Scopus and others — preserving field tags, truncation and line references, with built-in RCT and systematic-review filters.
+
+**Access.** Paste a PubMed or Ovid MEDLINE query into the box at polyglot.sr-accelerator.com and copy the translation per database; it runs in the browser with no account. Sibling Systematic Review Accelerator tools (Deduplicator, SearchRefinery, Word Frequency Analyser) have moved to the Evidence Research Accelerator at tera-tools.com.
+
+**Caveats.** Bond states Polyglot stays at the old address while the rest of the Systematic Review Accelerator migrated to TERA, which does need an account; tera-tools.com served a 'Site down for maintenance' page on 28 August 2026, so do not make it a critical dependency yet. Translations are a strong first draft only: MeSH and Emtree headings are not semantically mapped and must be reworked by hand, and the search still needs PRESS-style peer review.
+
+### [QuPath](https://qupath.github.io/)
+
+`Free` · beginner 3/5 · digital pathology image analysis
+
+Open-source desktop application for whole-slide and tissue image analysis: reads vendor slide formats through Bio-Formats and OpenSlide, does cell and nucleus detection, stain (H-DAB) deconvolution, tissue and object classification, TMA dearraying and positive-cell scoring. Version 0.7.0 was released on 2 March 2026 under the GPLv3.
+
+**Access.** Direct download of installers for Windows, macOS and Linux from qupath.github.io. Batch work is scripted in the built-in Groovy editor and applied with 'Run for project'; a command-line `script` entry point runs the same scripts headlessly. StarDist and Cellpose extensions plug in deep-learning segmentation, and MONAI Label can drive interactive annotation.
+
+**Caveats.** Fills the obvious hole in a CT/MRI-centric toolchain — 3D Slicer and ITK-SNAP do not handle whole-slide pathology at all. Slides are commonly 1-10 GB each, so disk, RAM and tile-cache settings are the real constraint. Scripting is Groovy rather than Python, which surprises people arriving from a Python stack. Research use only, not a diagnostic device.
+
 ### [Rayyan](https://www.rayyan.ai/)
 
 `Freemium, email` · beginner 5/5 · collaborative review screening
@@ -292,7 +384,7 @@ Hosted collaborative screening platform for systematic reviews with blinded dual
 
 **Access.** Web app plus mobile apps; import RIS, EndNote or CSV exports, invite a co-screener, screen blinded and resolve conflicts. Stated user base of over 1 million researchers across 20,000+ institutions.
 
-**Caveats.** The free tier covers a typical two-person student review, but PRISMA flow-diagram generation, automatic duplicate resolution, unlimited mobile use and more than 2 reviewers require the paid Essential plan (from about $8.33 per month billed quarterly) or higher. Your records are uploaded to a third-party service — check that this is acceptable for unpublished or sensitive datasets, and prefer ASReview if not.
+**Caveats.** The free tier covers a typical two-person student review, but PRISMA flow-diagram generation, automatic duplicate resolution, unlimited mobile use and more than 2 reviewers require the paid Essential plan or higher. Essential is $4.99 per seat per month billed annually, or $8.33 per month billed quarterly, and raises the free-reviewer allowance from 2 to 5. Your records are uploaded to a third-party service — check that this is acceptable for unpublished or sensitive datasets, and prefer ASReview if not.
 
 ### [REDCap](https://project-redcap.org/)
 
@@ -345,6 +437,36 @@ The health sciences preprint server run by Cold Spring Harbor Laboratory, BMJ an
 **Access.** Post free of charge through the submission portal (ORCID plus author confirmation; no fee at any stage). Read and harvest with the keyless API: `https://api.biorxiv.org/details/medrxiv/2026-08-01/2026-08-27` for date ranges, `/details/medrxiv/<DOI>` for one paper, and `/pubs/medrxiv/...` for subsequent journal publication links.
 
 **Caveats.** The most realistic way for an unaffiliated researcher to put health research on the public record with a DOI at zero cost. Screening rejects case reports of identifiable patients and anything readable as clinical advice; trial reports should carry a registration number. Some clinical journals still treat preprinting cautiously, so check the target journal's policy first. The website blocks scripted fetches — use the API.
+
+### [NCBI Bookshelf](https://www.ncbi.nlm.nih.gov/books/)
+
+`Free` · beginner 5/5 · free full-text books and clinical reference
+
+NLM's archive of free full-text biomedical books, reports and reference chapters, holding 1,330,418 records as of 27 August 2026. It includes StatPearls (116,932 chapters), GeneReviews, the NCBI Handbooks, AHRQ and WHO reports, and many out-of-print textbooks.
+
+**Access.** Web reading at ncbi.nlm.nih.gov/books with no account; every chapter has a stable NBK identifier. Scriptable through the same E-utilities as PubMed with `db=books`, e.g. `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=books&term=sepsis[title]&retmode=json`.
+
+**Caveats.** Free to read but not open licensed: publishers retain copyright on most titles, so unlike the PMC Open Access Subset you generally may not redistribute or text-mine them. Quality is uneven — StatPearls is templated point-of-care material, not a peer-reviewed review, and some deposited textbooks are a decade old with no update or retraction mechanism.
+
+### [NICE guidance](https://www.nice.org.uk/guidance)
+
+`Free` · beginner 4/5 · clinical guidelines and evidence reviews
+
+The UK National Institute for Health and Care Excellence guidance library — clinical guidelines, technology appraisals, diagnostics and medtech assessments, quality standards — published free worldwide together with the underlying evidence reviews, GRADE profiles and economic models. Related free resources include Clinical Knowledge Summaries (cks.nice.org.uk) and the British National Formulary (bnf.nice.org.uk).
+
+**Access.** Free web reading at nice.org.uk/guidance with no account; each guideline page links its full evidence review PDFs and committee papers, which are the part researchers actually want. A syndication API is offered for reusing NICE content inside other systems.
+
+**Caveats.** Reading is free everywhere, but the content is not openly licensed: the NICE UK Open Content Licence covers reuse in UK settings only, and any international reuse needs a permission request to NICE — so do not treat guideline text or figures as reusable in your own publication. Some BNF content is restricted by UK access checks. Guidance is written for the English NHS, and its thresholds and cost-effectiveness assumptions do not transfer directly to other health systems.
+
+### [OpenAlex](https://openalex.org/)
+
+`Free` · beginner 4/5 · open bibliographic index and API
+
+Fully open scholarly index from OurResearch (the Unpaywall team) holding 322,147,582 works as of 28 August 2026, with authors, institutions, funders, topics, citation links and open-access status. It replaced Microsoft Academic Graph and is the practical free stand-in for Scopus or Web of Science in bibliometrics and citation searching.
+
+**Access.** Keyless REST API: `https://api.openalex.org/works?filter=title.search:sepsis,publication_year:2026&per-page=200&mailto=you@example.org`, with cursor paging for full result sets. Python: `pip install pyalex`. Complete monthly snapshots are on AWS S3 (s3://openalex) under CC0.
+
+**Caveats.** No key and no account, but adding `mailto=` puts you in the faster 'polite pool' and is expected of anything more than casual use; large harvests should take the S3 snapshot rather than hammer the API. Coverage is broader but noisier than PubMed — no MeSH indexing, real author-disambiguation errors, and preprint-plus-journal versions that are not always merged — so it complements rather than replaces PubMed for clinical searching.
 
 ### [PubMed and the NCBI E-utilities](https://pubmed.ncbi.nlm.nih.gov/)
 
@@ -496,11 +618,21 @@ UK-based funder of research and innovation for humanitarian response, running th
 
 `Free, application` · beginner 3/5 · global health innovation grants
 
-Family of open, recurring funding calls in global health and development run by the Gates Foundation with partner funders; 251 challenges have been issued to date, with new calls posted through the year on topics from diagnostics and vaccines to maternal health and AI applications.
+Family of open, recurring funding calls in global health and development run by the Gates Foundation with partner funders. The programme site reports 4,163 awarded grants across 124 countries as of August 2026, with new grant opportunities posted through the year — open calls in August 2026 included low-cost pathogen sequencing workflows, multiplex micronutrient/inflammation assays, and Keystone Symposia global health travel awards for scientists from low- and middle-income countries.
 
 **Access.** Browse open calls at grandchallenges.org, read the specific challenge's eligibility rules and submission instructions, and submit through the online portal. Grand Challenges Explorations-style calls have historically used two-page applications with no preliminary data required.
 
 **Caveats.** One of the few large global health funders whose calls are genuinely open to applicants anywhere and to non-traditional applicants, though most awards still require an organisation able to receive and administer funds. Eligibility, award size and whether individuals may apply vary per challenge — read the specific call, not the programme page. Calls close on fixed dates and are competitive.
+
+### [NIH RePORTER](https://reporter.nih.gov/)
+
+`Free` · beginner 4/5 · grant award database
+
+Searchable database of NIH and other HHS-funded research projects with abstracts, funding amounts, principal investigators, institutions, study sections and linked publications and patents. The API returned 76,271 projects for fiscal year 2025.
+
+**Access.** Web search at reporter.nih.gov; keyless JSON API by POST: `curl -X POST -H 'Content-Type: application/json' -d '{"criteria":{"fiscal_years":[2025]},"limit":500}' https://api.reporter.nih.gov/v2/projects/search`, with a matching `/v2/publications/search`. Annual ExPORTER bulk CSV files are also downloadable.
+
+**Caveats.** US federal awards only — useless for mapping Wellcome, EU or LMIC funding. Its practical value to an outsider is reconnaissance: which study sections fund which topics, which principal investigators hold data you could ask for, and what funded aims actually look like. Reported amounts are fiscal-year obligations, not total project cost, and are routinely misquoted as such.
 
 ### [TDR, the WHO Special Programme for Research and Training in Tropical Diseases](https://tdr.who.int/grants)
 
@@ -562,7 +694,7 @@ WHO's open learning platform for health emergencies, launched in 2017 and redesi
 
 **Access.** Browse learning materials by topic at openwho.org. Since the 2025 redesign the site is completely open with no registration required, and materials can be downloaded, adapted and translated.
 
-**Caveats.** Important change: after the 2025 redesign OpenWHO no longer enrols learners in individual courses and no longer issues certificates — WHO removed registration deliberately, having found it acted as an access barrier. If you need a certificate for a job or a grant, this is no longer the route. Content is operational and emergency-focused rather than research-methods focused.
+**Caveats.** Important change: after the 2025 redesign OpenWHO no longer enrols learners in individual courses and no longer issues certificates — WHO removed registration deliberately, having found it acted as an access barrier. The site now runs as a Kaltura MediaSpace resource hub, and legacy course URLs of the form openwho.org/courses/<slug> return HTTP 404, so previously cited or bookmarked course links are dead and citations to them cannot be resolved. If you need a certificate for a job or a grant, this is no longer the route; the Global Health Network Training Centre entry in this file still issues certificates. Content is operational and emergency-focused rather than research-methods focused.
 
 ### [The Epidemiologist R Handbook](https://epirhandbook.com/)
 

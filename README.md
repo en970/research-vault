@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**907 resources** across **18 fields** — 689 free outright, 547 usable with no account at all. Verified 2026-08-28.
+**1025 resources** across **18 fields** — 790 free outright, 640 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -45,13 +45,13 @@ sixty seconds. Those distinctions are the content.
 |---|---|---|
 | [Physics](docs/01-physics.md) | 83 | software (27), data (18), learning (10) |
 | [Astronomy & space science](docs/02-astronomy.md) | 79 | data (37), software (18), learning (6) |
-| [Chemistry & materials science](docs/03-chemistry.md) | 60 | data (18), software (14), publishing (7) |
-| [Biology & life sciences](docs/04-biology.md) | 60 | data (20), software (13), learning (6) |
-| [Medicine & health sciences](docs/05-medicine.md) | 59 | data (20), software (10), literature (7) |
-| [Earth, climate & environmental science](docs/06-earth.md) | 58 | data (22), software (10), compute (5) |
-| [Mathematics](docs/07-mathematics.md) | 60 | software (15), publishing (11), data (8) |
-| [Computer science & machine learning](docs/08-cs-ml.md) | 61 | software (16), data (10), literature (9) |
-| [Neuroscience & psychology](docs/09-neuro-psych.md) | 60 | software (17), data (16), literature (7) |
+| [Chemistry & materials science](docs/03-chemistry.md) | 83 | software (27), data (24), literature (8) |
+| [Biology & life sciences](docs/04-biology.md) | 83 | data (36), software (18), learning (6) |
+| [Medicine & health sciences](docs/05-medicine.md) | 72 | data (24), software (15), literature (10) |
+| [Earth, climate & environmental science](docs/06-earth.md) | 84 | data (36), software (17), learning (7) |
+| [Mathematics](docs/07-mathematics.md) | 74 | software (17), publishing (14), learning (10) |
+| [Computer science & machine learning](docs/08-cs-ml.md) | 77 | software (18), literature (13), data (12) |
+| [Neuroscience & psychology](docs/09-neuro-psych.md) | 85 | software (35), data (20), literature (7) |
 | [Social sciences](docs/10-social.md) | 60 | data (26), software (11), literature (9) |
 | [Economics & finance](docs/11-econ-finance.md) | 60 | data (27), software (10), literature (6) |
 | [Linguistics & humanities](docs/12-humanities.md) | 60 | data (23), software (15), publishing (6) |

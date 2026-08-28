@@ -1,12 +1,32 @@
 # Earth, climate & environmental science
 
-Part of [research-vault](../README.md). 58 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 84 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (22) · [Software](#software) (10) · [Literature](#literature) (3) · [Compute](#compute) (5) · [Publishing](#publishing) (5) · [Funding](#funding) (4) · [Learning](#learning) (5) · [Community](#community) (4)
+**Contents:** [Data](#data) (36) · [Software](#software) (17) · [Literature](#literature) (3) · [Compute](#compute) (6) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (5)
 
 ## Data
+
+### [AmeriFlux (and the FLUXNET network)](https://ameriflux.lbl.gov/)
+
+`Free (registration), email` · beginner 3/5 · eddy covariance flux towers
+
+Eddy covariance network for the Americas: 843 registered sites of which 592 have downloadable flux data as of 28 August 2026, spanning the USA (682), Canada (93), Brazil (23), Mexico (16), Peru, Argentina, Chile, Costa Rica, Colombia, Panama and Puerto Rico. Products are half-hourly BASE files (CO2, water and energy fluxes plus meteorology) and ONEFlux gap-filled FLUXNET-format files.
+
+**Access.** Free account, accept the data policy, then select sites in the Download Data tool and retrieve zipped CSV; every site product carries its own DOI. Global network products and the FLUXNET2015 release are at https://fluxnet.org/.
+
+**Caveats.** Since August 2021 most sites are CC BY 4.0, but Legacy Policy sites still require contacting the PI and offering co-authorship before publication, and combining the two forces the stricter rule on the whole analysis. BASE files are not analysis-ready: u* filtering, gap-filling, storage correction and energy balance closure are yours to handle, which is why the ONEFlux products exist. Africa, Asia and Europe are covered by other regional networks (ICOS, AsiaFlux), not this one.
+
+### [AppEEARS](https://appeears.earthdatacloud.nasa.gov/)
+
+`Free (registration), email` · beginner 5/5 · point and area subsetting service
+
+NASA LP DAAC service that extracts and reformats subsets of gridded products (MODIS, VIIRS, HLS, ECOSTRESS, EMIT, Landsat ARD, SMAP, SRTM, Daymet, Gridded Population of the World) for a list of coordinates or an uploaded polygon, returning CSV, GeoTIFF or netCDF with quality flags attached, instead of whole tiles.
+
+**Access.** Sign in with an Earthdata Login, submit a point or area sample in the web interface, or script it against the REST API at https://appeears.earthdatacloud.nasa.gov/api/ (task submit, status poll, bundle download); the `appeears` R package on CRAN wraps the same endpoints.
+
+**Caveats.** Requests are queued and large areas or long time series can take hours to days; area requests have size caps, so tile large regions. Only catalogued products are available, and completed bundles are removed from the server after a retention period, so download promptly. This is the single biggest time-saver for anyone who needs MODIS or VIIRS time series at field sites rather than whole granules.
 
 ### [Argo float profiles](https://argo.ucsd.edu/)
 
@@ -26,7 +46,17 @@ Alaska Satellite Facility DAAC search and download for Sentinel-1 and legacy SAR
 
 **Access.** Search Vertex with an Earthdata Login; script with `pip install asf_search` (`asf_search.search(platform='SENTINEL-1', intersectsWith=wkt, ...)`) and submit processing jobs with `pip install hyp3_sdk`.
 
-**Caveats.** HyP3 jobs are free but metered by a monthly per-user credit allowance, so large InSAR stacks need planning. Doing the same processing locally means ESA SNAP plus a lot of RAM and disk; raw Sentinel-1 SLCs are several GB per scene.
+**Caveats.** HyP3 Basic gives every user 8,000 credits per month at no cost, with more available on request as ASF's budget allows, so large InSAR or RTC stacks have to be planned against that allowance. Job types include RTC, OPERA RTC-S1, InSAR, burst InSAR, ARIA S1 GUNW and autoRIFT. Doing the same processing locally means ESA SNAP plus a lot of RAM and disk; raw Sentinel-1 SLCs are several GB per scene.
+
+### [CHIRPS](https://www.chc.ucsb.edu/data/chirps)
+
+`Free` · beginner 4/5 · satellite-gauge precipitation
+
+Climate Hazards Center rainfall dataset blending infrared satellite estimates with station observations at 0.05 degree resolution across 50S-50N, from 1981 to near-present, in daily, pentad, dekad and monthly steps. Public domain and the standard baseline for drought and food-security monitoring in gauge-sparse regions.
+
+**Access.** Direct download from https://data.chc.ucsb.edu/products/CHIRPS-2.0/ (netCDF, GeoTIFF, BIL) with no login; also in Earth Engine as `UCSB-CHG/CHIRPS/DAILY` and through the ClimateSERV API.
+
+**Caveats.** A preliminary near-real-time product is published within days and is later replaced by the final version, so re-pull rather than assuming files are stable. Quality tracks station density: it is strongest over Africa, where the CHC has station agreements, and it is a gridded estimate, not a gauge measurement, so validating against local rain gauges before use is expected. CHIRTS is the companion temperature product.
 
 ### [CMIP6 analysis-ready Zarr in the cloud (Pangeo/ESGF)](https://pangeo-data.github.io/pangeo-cmip6-cloud/)
 
@@ -37,6 +67,16 @@ A large subset of CMIP6 rewritten as cloud-optimised Zarr in the public buckets 
 **Access.** `pip install intake-esm gcsfs zarr xarray`; `col = intake.open_esm_datastore('https://storage.googleapis.com/cmip6/pangeo-cmip6.json')`, then `col.search(source_id='MPI-ESM1-2-LR', variable_id='tas', experiment_id='ssp585').to_dataset_dict()`. Anonymous access uses `token='anon'` (GCS) or `anon=True` (S3).
 
 **Caveats.** It is a curated subset of ESGF, not the whole archive, and lags new model submissions. Reading over a home connection is fine for single variables and subsets but slow for large ensembles; the same catalogue exists on AWS if you compute there.
+
+### [Copernicus Atmosphere Data Store (CAMS)](https://ads.atmosphere.copernicus.eu/)
+
+`Free (registration), api-key` · beginner 3/5 · atmospheric composition and air quality
+
+ECMWF-run store for Copernicus Atmosphere Monitoring Service data: 16 datasets covering the EAC4 global composition reanalysis, the EGG4 greenhouse gas reanalysis, 5-day global forecasts of 50+ chemical species, European air quality reanalyses and forecasts, GFAS biomass burning emissions, solar radiation time series and global emission inventories.
+
+**Access.** `pip install 'cdsapi>=0.7.7'`; put `url: https://ads.atmosphere.copernicus.eu/api` and your ADS personal access token in ~/.cdsapirc, then `cdsapi.Client().retrieve('cams-global-reanalysis-eac4', {...}, 'out.nc')`.
+
+**Caveats.** A separate account and token from the Climate Data Store even though the client is the same, and each dataset licence must be accepted in the web interface first. Requests are queued like CDS. EAC4 is about 0.75 degrees and 3-hourly, so it is far too coarse for street- or city-scale air quality: use it for background and long-range transport, not exposure studies.
 
 ### [Copernicus Climate Data Store (ERA5)](https://cds.climate.copernicus.eu/)
 
@@ -56,7 +96,7 @@ Full free archive of Sentinel-1/2/3/5P plus Copernicus DEM and mirrored Landsat,
 
 **Access.** Register, then use the Browser at browser.dataspace.copernicus.eu, the STAC catalogue at https://catalogue.dataspace.copernicus.eu/stac, or S3 with boto3 against the eodata endpoint; `pip install sentinelhub` or `pip install openeo` for the processing APIs.
 
-**Caveats.** Quotas throttle rather than block: bandwidth drops to 1 MB/s and one concurrent connection once exceeded, and catalogue queries are limited to about 12 requests/minute. Server-side processing (Sentinel Hub processing units, openEO credits) is the scarce resource, not the downloads.
+**Caveats.** Quotas throttle rather than block: once the 12 TB rolling-30-day transfer allowance is exceeded, bandwidth drops to 1 MB/s and concurrent connections to 1. The documented free-tier limits are 4 concurrent connections and 20 MB/s per connection on S3/OData/STAC with up to 2,000 catalogue requests per minute; Sentinel Hub adds a 300 processing-unit-per-minute ceiling on top of the 10,000 units per month; openEO free accounts are limited to 2 concurrent API requests. Access tokens expire after 10 minutes and are refreshable for 60. Server-side processing (Sentinel Hub processing units, openEO credits) is the scarce resource, not the downloads.
 
 ### [Copernicus Marine Service](https://marine.copernicus.eu/)
 
@@ -67,6 +107,16 @@ EU ocean data service providing satellite and in-situ observations, global and r
 **Access.** `pip install copernicusmarine`; `copernicusmarine login`, then `copernicusmarine subset --dataset-id <id> --variable thetao --minimum-longitude ... --start-datetime ...`, or `copernicusmarine.open_dataset()` in Python for lazy xarray access.
 
 **Caveats.** Server-side subsetting is essential: whole products are terabytes. Dataset IDs carry version suffixes and older versions are retired after a notice period, so pin the exact ID in scripts and expect to update them.
+
+### [EarthChem](https://www.earthchem.org/)
+
+`Free` · beginner 3/5 · geochemistry data repository
+
+NSF-funded geochemistry data facility at Lamont-Doherty Earth Observatory: the EarthChem Library (a DOI-issuing repository for submitted geochemical datasets), the EarthChem Portal for federated search across geochemical databases, PetDB 2.0 for igneous and metamorphic whole-rock and mineral chemistry, and LEPR/TraceDs for experimental petrology and trace element partitioning.
+
+**Access.** Search the Portal or PetDB in the browser and export results as CSV or Excel; no account needed to download. Depositing a dataset requires a free account and returns a DOI plus a persistent landing page.
+
+**Caveats.** Registration gates submission only, not download. Compilations pool analyses across decades, laboratories and methods, so units, detection limits, normalisation and reference materials must be checked before combining records; the metadata are there but they are your responsibility. Coverage is strongest for igneous rocks and for US-funded sampling campaigns.
 
 ### [EarthScope (IRIS) FDSN web services](https://service.iris.edu/fdsnws/)
 
@@ -87,6 +137,16 @@ CRED's international disaster database: over 27,000 mass disasters worldwide fro
 **Access.** Register at https://public.emdat.be/, filter by country, hazard type and period in the web interface, and export the selection as XLSX for analysis.
 
 **Caveats.** Open access for non-commercial use only; commercial licensing is separate. Records depend on reporting, so early decades and low-income regions are systematically under-recorded and economic losses are inconsistent. Read the methodology before publishing counts or trends.
+
+### [ESA WorldCover](https://esa-worldcover.org/)
+
+`Free` · beginner 4/5 · global land cover
+
+Global land cover maps at 10 m for 2020 (v100) and 2021 (v200) with 11 classes, produced from Sentinel-1 and Sentinel-2 by a VITO-led consortium for ESA and distributed as 3x3 degree GeoTIFF tiles under CC BY 4.0.
+
+**Access.** Browse at https://viewer.esa-worldcover.org/worldcover, download tiles from the Terrascope/AWS Open Data bucket `s3://esa-worldcover` (anonymous read), or use `ESA/WorldCover/v200` in Earth Engine.
+
+**Caveats.** Two epochs only, so it is a snapshot rather than a change product, and v100 and v200 use different algorithms: differencing them produces spurious change. Reported global overall accuracy is around 75 percent, with the worst confusion between shrubland, grassland and sparse vegetation. For annual time series use the Copernicus Global Land Cover or Dynamic World layers instead.
 
 ### [ESGF MetaGrid (CMIP6)](https://aims2.llnl.gov/search)
 
@@ -138,6 +198,36 @@ Entry point to NASA's Earth science holdings (MODIS, VIIRS, ICESat-2, GPM, SMAP,
 
 **Caveats.** Search is open but an Earthdata Login is required to download. Direct S3 access to cloud-hosted DAAC data only works from AWS us-west-2; from a laptop you get HTTPS instead. A few collections (commercial smallsat imagery) are restricted to NASA-funded users.
 
+### [NASA GISTEMP v4](https://data.giss.nasa.gov/gistemp/)
+
+`Free` · beginner 5/5 · global surface temperature record
+
+NASA GISS Surface Temperature Analysis: global, hemispheric and zonal monthly land-ocean temperature anomalies relative to the 1951-1980 mean, distributed as plain-text tables, netCDF on a 2x2 degree grid, Zarr directories, equal-area subbox files and the input station data. Updated around the 10th of each month.
+
+**Access.** Direct download from the Data page (tables as .txt/.csv, gridded fields as .nc); open the gridded file with `xr.open_dataset('gistemp1200_GHCNv4_ERSSTv5.nc')`. No account.
+
+**Caveats.** These are anomalies, not absolute temperatures, and land values are smeared with a 1200 km interpolation radius, which matters in sparsely observed regions and the Arctic. The latest month can shift when upstream GHCN and ERSST inputs are revised. Cross-check with HadCRUT5, NOAAGlobalTemp and Berkeley Earth before making claims about a single year's ranking.
+
+### [NASA Worldview and GIBS](https://worldview.earthdata.nasa.gov/)
+
+`Free` · beginner 5/5 · near-real-time satellite imagery browser
+
+Interactive browser for over 1,200 full-resolution global imagery layers, many available within hours of acquisition, with geostationary imagery in 10-minute steps for the last 90 days. The underlying Global Imagery Browse Services (GIBS) serve the same tiles as WMTS/WMS to QGIS and web maps.
+
+**Access.** Web interface at worldview.earthdata.nasa.gov, no account needed to browse, animate or grab a snapshot. For scripted or GIS use add the WMTS endpoint https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi as a layer in QGIS, or use `pip install owslib`.
+
+**Caveats.** This is visualisation, not science data: layers are rendered RGB or scaled products with no calibration guarantees, so never take measurements from them. Downloading the underlying granules needs an Earthdata Login. It is the fastest way to check whether a scene was cloudy, to find a fire or flood date, and to pick candidate acquisitions before a real download.
+
+### [Natural Earth](https://www.naturalearthdata.com/)
+
+`Free` · beginner 5/5 · public-domain basemap vectors
+
+Public-domain vector and raster basemap data at 1:10m, 1:50m and 1:110m scales in cultural (countries, states, populated places, roads, railways), physical (coastlines, rivers, lakes, glaciated areas, graticules) and raster (shaded relief, bathymetry, ocean bottom) themes, built and maintained by volunteer cartographers with NACIS support.
+
+**Access.** Direct zip download of shapefiles or a single GeoPackage from the downloads page, no account; also fetched automatically by `cartopy.feature.NaturalEarthFeature` and by the `rnaturalearth` R package.
+
+**Caveats.** Public domain with no attribution required, but it is a cartographic product, not an authoritative boundary source: disputed boundaries follow the project's editorial choices, and the generalised geometries are unsuitable for area measurement or spatial joins at local scale. Use national or OSM data for anything analytical; use this for the map behind it.
+
 ### [NOAA Climate Data Online and GHCN-Daily](https://www.ncei.noaa.gov/cdo-web/)
 
 `Free (registration), api-key` · beginner 4/5 · weather station records
@@ -152,11 +242,51 @@ Station climate records including GHCN-Daily: over 100,000 stations in 180 count
 
 `Free` · beginner 4/5 · ocean and atmosphere data server
 
-ERDDAP server exposing 3,098 oceanographic and atmospheric datasets (satellite sea surface temperature, ocean colour, winds, buoys, model output) as subsettable griddap and tabledap endpoints returning netCDF, CSV, JSON, MATLAB or ready-made PNG maps from a single URL.
+ERDDAP server exposing 3,055 oceanographic and atmospheric datasets (count verified 28 August 2026): satellite sea surface temperature, ocean colour, winds, buoys and model output, served as subsettable griddap and tabledap endpoints returning netCDF, CSV, JSON, MATLAB or ready-made PNG maps from a single URL.
 
 **Access.** Construct a URL such as .../erddap/griddap/<datasetID>.nc?sst[(2024-01-01)][(20):(40)][(-30):(-10)], or use `pip install erddapy`, or point `xarray.open_dataset()` straight at a griddap URL.
 
 **Caveats.** Dataset IDs are server-specific and there are dozens of other ERDDAP installations (IOOS, IFREMER, EMODnet) with different holdings. Very large requests are throttled or time out; subset by time and bounding box in the URL rather than downloading whole datasets.
+
+### [NOAA Global Monitoring Laboratory greenhouse gas records](https://gml.noaa.gov/ccgg/trends/)
+
+`Free` · beginner 5/5 · atmospheric greenhouse gas time series
+
+In-situ and flask CO2, CH4, N2O and SF6 records from NOAA's global cooperative air sampling network, including the Mauna Loa CO2 series started by C. D. Keeling in March 1958 (NOAA's own parallel record from May 1974); the monthly Mauna Loa mean for July 2026 was 429.12 ppm. Trends, annual growth rates and full station series are published as plain-text and CSV.
+
+**Access.** Direct download, no key: `pandas.read_csv('https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.csv', comment='#')`; the whole station and ObsPack tree is under https://gml.noaa.gov/aftp/data/ over HTTPS.
+
+**Caveats.** The most recent months are preliminary and get revised. Mauna Loa observations moved to a site on Mauna Kea after the November 2022 eruption cut access, so the record has a documented discontinuity there. NOAA and Scripps maintain separate Mauna Loa series with small offsets: do not mix them in one trend. ObsPack products have their own citation and DOI requirements.
+
+### [NSF NCAR GDEX (formerly the Research Data Archive)](https://gdex.ucar.edu/)
+
+`Free (registration), email` · beginner 3/5 · curated meteorological and oceanographic archive
+
+NSF NCAR's Geoscience Data Exchange, the successor to the Research Data Archive at rda.ucar.edu (which now issues a 301 redirect here): curated long-record collections including NCEP/NCAR and NCEP/DOE reanalyses, ERA5 mirrors, JRA reanalyses, ICOADS marine observations and global radiosonde and station archives, with server-side subsetting, web services and cloud-optimised Zarr copies.
+
+**Access.** Browse and download with a free UCAR account; submit subsetting jobs in the web interface or script them with the GDEX API client, and run notebooks against the archive in the hosted JupyterLab.
+
+**Caveats.** The rda.ucar.edu to gdex.ucar.edu migration breaks older scripts, bookmarks and dataset paths of the form /datasets/dsNNN.N, so check any inherited download code. Most collections require a login before download and a few carry access conditions imposed by the originating agency. Some very large datasets are staged on request rather than served instantly.
+
+### [Open-Meteo](https://open-meteo.com/)
+
+`Free tier` · beginner 5/5 · weather and climate API
+
+Free JSON weather API needing no key for non-commercial use: 16-day forecasts at hourly and 15-minute steps, an historical archive built on ERA5 and ERA5-Land from 1940, CMIP6 climate projections, plus marine, air quality, flood, seasonal and solar radiation endpoints.
+
+**Access.** Plain HTTPS, no registration: `https://archive-api.open-meteo.com/v1/archive?latitude=-1.29&longitude=36.82&start_date=1991-01-01&end_date=2020-12-31&daily=temperature_2m_mean`. Official clients via `pip install openmeteo-requests`.
+
+**Caveats.** The free non-commercial tier is capped at 600 calls per minute, 5,000 per hour and 10,000 per day, and carries no uptime guarantee; commercial use needs a paid key on reserved instances. Data are CC BY 4.0 and attribution is required. It repackages ERA5 and operational model output, so cite the underlying source as well and go to the CDS when you need the native grid rather than a point.
+
+### [OpenAQ](https://openaq.org/)
+
+`Free (registration), api-key` · beginner 4/5 · air quality measurements
+
+Aggregator that harmonises open air quality measurements (PM2.5, PM10, NO2, O3, SO2, CO, black carbon) from government reference monitors and low-cost sensor networks worldwide into one schema, served through a versioned REST API and a public S3 archive of the full history.
+
+**Access.** Register free at https://explore.openaq.org/register for a key, then `GET https://api.openaq.org/v3/locations?coordinates=6.5,3.4&radius=25000` with an `X-API-Key` header; `pip install openaq` is the official Python client. Bulk history is in the open `openaq-data-archive` S3 bucket.
+
+**Caveats.** An API key has been mandatory since v3 and rate limits are enforced per key. Coverage follows whoever publishes an open feed, so large parts of Africa, Central Asia and Latin America are thin or sensor-only. Values are passed through as reported: no cross-network calibration is applied to low-cost sensors, and units and averaging periods differ by source.
 
 ### [OpenStreetMap bulk extracts (Geofabrik) and Overpass API](https://download.geofabrik.de/)
 
@@ -176,7 +306,7 @@ Portal and API for global DEMs (SRTM GL1/GL3, NASADEM, ALOS World 3D, Copernicus
 
 **Access.** Get a free API key from My Account, then `GET https://portal.opentopography.org/API/globaldem?demtype=COP30&south=..&north=..&west=..&east=..&outputFormat=GTiff&API_Key=..`; there is also a point-elevation API and a catalogue search API.
 
-**Caveats.** Free keys are capped at roughly 200-250 calls per 24 hours for academic users and 50 for non-academic ones, and per-request area limits are tight for high-resolution data (about 250 km2 for 1 m 3DEP). Keys must not be shared or embedded in public applications.
+**Caveats.** Verified 28 August 2026: free keys allow 200 calls per 24 hours for academic users on the global DEM and USGS 3DEP raster APIs and 250 per 24 hours on the point-elevation API, against 50 per 24 hours for non-academic users. Per-request area caps are 250 km2 for 1 m 3DEP, 450,000 km2 for all 30 m global DEMs, 4,050,000 km2 at 90 m and much larger for the coarse SRTM15+/GEBCO and GEDI L3 layers. Keys must not be shared or embedded in public applications; higher limits require OpenTopography Plus or a custom enterprise key.
 
 ### [PANGAEA](https://www.pangaea.de/)
 
@@ -218,6 +348,16 @@ Global earthquake catalogue with an FDSN event API returning QuakeML, GeoJSON, C
 
 **Caveats.** Queries returning more than 20,000 events fail with HTTP 400, so page by time window. ComCat merges contributing networks, so magnitudes, depths and event IDs can be revised after publication, and catalogue completeness varies strongly by region and epoch.
 
+### [USGS Water Data for the Nation (NWIS) and dataRetrieval](https://waterdata.usgs.gov/)
+
+`Free` · beginner 4/5 · streamflow and water quality observations
+
+Discharge, gage height, water temperature, groundwater level, precipitation and discrete water quality records from more than one million USGS monitoring locations with over 135 years of record, including about 13,500 real-time sites. Everything is served in machine-readable form through REST web services.
+
+**Access.** `pip install dataretrieval` (or `install.packages('dataRetrieval')` in R): `from dataretrieval import nwis; df, meta = nwis.get_dv(sites='01646500', parameterCd='00060', start='2020-01-01')`. Raw endpoints at https://waterservices.usgs.gov/nwis/dv/?format=json&sites=...&parameterCd=00060 and the newer https://api.waterdata.usgs.gov/.
+
+**Caveats.** United States only. USGS is modernising these services and retiring legacy NWIS endpoints in favour of api.waterdata.usgs.gov, so pin the client version and expect URLs to change; some new endpoints ask for a free API key. Real-time values are provisional and revised after review, and rating curves change, so never mix provisional and approved records in a trend analysis.
+
 ### [WorldClim 2.1](https://www.worldclim.org/data/worldclim21.html)
 
 `Free` · beginner 5/5 · gridded climate surfaces
@@ -229,6 +369,16 @@ Global interpolated climate surfaces at 30 arc-second to 10 arc-minute resolutio
 **Caveats.** Interpolated from station data, so it is least reliable where stations are sparse: high mountains, polar regions, and parts of Africa and Amazonia. The 30 arc-second global layers are multi-GB. Licence terms are not stated on the download page; cite Fick and Hijmans (2017) and check terms before commercial reuse.
 
 ## Software
+
+### [Cartopy](https://cartopy.readthedocs.io/)
+
+`Free` · beginner 4/5 · map projections for matplotlib
+
+Matplotlib-based mapping library built on PROJ, NumPy and Shapely: 30-plus map projections exposed as axes classes, correct transformation of points, lines, polygons and images between projections including dateline and pole handling, plus built-in Natural Earth features and WMS/WMTS tile access.
+
+**Access.** `conda install -c conda-forge cartopy`; `ax = plt.axes(projection=ccrs.Robinson()); ax.coastlines(); ax.contourf(lon, lat, data, transform=ccrs.PlateCarree())`.
+
+**Caveats.** BSD-3-Clause. Documentation moved from scitools.org.uk/cartopy to cartopy.readthedocs.io, so older links only give a redirect notice. Omitting `transform=ccrs.PlateCarree()` on plotted data is by far the most common bug and produces a plausible-looking wrong map. Natural Earth shapefiles are downloaded on first use, so the first figure needs network access.
 
 ### [Climate Data Operators (CDO)](https://code.mpimet.mpg.de/projects/cdo)
 
@@ -249,6 +399,16 @@ ESA's desktop toolbox for Sentinel and other EO missions (SNAP 14 line), bundlin
 **Access.** Download the multi-platform installer from step.esa.int; batch processing with `gpt <graph.xml>` from the command line; `esa_snappy` exposes the Java API to Python.
 
 **Caveats.** Java-based and memory-hungry: InSAR on a laptop means small stacks, plenty of disk and patience. The Python bridge is fiddly to configure, so most people script gpt graphs instead. Questions get answered on the ESA STEP forum.
+
+### [FloPy and MODFLOW 6](https://flopy.readthedocs.io/)
+
+`Free` · beginner 2/5 · groundwater flow modelling
+
+USGS Python package (version 3.10.0) for building, running and post-processing MODFLOW groundwater models: full MODFLOW 6 support plus MODFLOW-2005/NWT/USG, MT3D, SEAWAT, MODPATH and PEST, with structured, vertex and unstructured grid generation, boundary-condition packages, and readers for head, budget and particle-track output.
+
+**Access.** `pip install flopy`, then `python -m flopy.utils.get_modflow :flopy` to fetch the compiled executables; `sim = flopy.mf6.MFSimulation(sim_name='m', sim_ws='./model'); gwf = flopy.mf6.ModflowGwf(sim); ...; sim.write_simulation(); sim.run_simulation()`.
+
+**Caveats.** US Government public domain, and MODFLOW itself is public domain, so the whole stack is free including for commercial work. FloPy writes and reads model files; it does not teach hydrogeology, and a badly posed model converges happily and returns nonsense. The USGS example notebooks and the MODFLOW 6 example problems are the practical route in.
 
 ### [GDAL/OGR](https://gdal.org/)
 
@@ -290,15 +450,45 @@ Python package for interactive mapping and geospatial analysis in Jupyter with m
 
 **Caveats.** Depends on many optional backends; install extras only as needed to avoid a heavy environment. Interactive maps need a live kernel, so they degrade to static images in exported HTML unless you plan for that.
 
+### [MetPy](https://unidata.github.io/MetPy/)
+
+`Free` · beginner 4/5 · meteorological calculations and plotting
+
+Unidata's Python package (1.7 line, Python 3.10+) for weather data: unit-aware thermodynamic and dynamic calculations (CAPE, CIN, dewpoint, lifted index, isentropic analysis, frontogenesis, Q-vectors), Skew-T/log-P diagrams, hodographs and station plots, and readers for GEMPAK, NEXRAD Level II/III radar and GINI satellite files.
+
+**Access.** `conda install -c conda-forge metpy`; `from metpy.calc import dewpoint_from_relative_humidity; from metpy.units import units`, and the `.metpy` xarray accessor attaches units and CRS to a dataset (`ds.metpy.parse_cf()`).
+
+**Caveats.** BSD-3-Clause. Everything is unit-aware through pint, which is the main source of beginner errors: bare NumPy arrays without units raise or silently mis-scale. The example gallery and the 'MetPy Mondays' video series are the fastest way in. It handles diagnostics and plotting, not forecasting or model running.
+
 ### [ObsPy](https://docs.obspy.org/)
 
 `Free` · beginner 3/5 · seismological data processing
 
-Python framework for seismology (version 1.5.0, March 2026): readers for miniSEED, SAC, SEG-Y and StationXML, FDSN and SeedLink clients, instrument response removal, filtering, triggering, and event and station metadata handling.
+Python framework for seismology (version 1.5.1; documentation last built 28 August 2026): readers for miniSEED, SAC, SEG-Y and StationXML, FDSN and SeedLink clients, instrument response removal, filtering, triggering, and event and station metadata handling.
 
 **Access.** `conda install -c conda-forge obspy`; `st = obspy.read('trace.mseed'); st.remove_response(inventory=inv, output='VEL'); st.filter('bandpass', freqmin=0.05, freqmax=1.0)`; downloads via `obspy.clients.fdsn.Client`.
 
 **Caveats.** LGPL. Response deconvolution and unit handling are the classic beginner trap: read the tutorial on `remove_response` before trusting amplitudes. Large waveform sets should be streamed to disk rather than held in memory.
+
+### [Panoply](https://www.giss.nasa.gov/tools/panoply/)
+
+`Free` · beginner 5/5 · netCDF/HDF/GRIB desktop viewer
+
+NASA GISS desktop viewer (version 5.10.1, released 2 August 2026) that plots georeferenced arrays straight out of netCDF, HDF and GRIB files: maps in dozens of projections, longitude-vertical and time sections, line plots, differences between two variables or two files, and export to PNG, PDF or animation.
+
+**Access.** Download the Java application for macOS, Windows or Linux and open a file; requires Java 11 or later and no Python environment at all.
+
+**Caveats.** A viewer, not an analysis tool: no scripting, no batch processing, and it will not repair a malformed file. Its value is diagnostic, showing what is actually inside an unfamiliar file (variable names, dimension order, units, missing-value conventions, whether latitudes run north-to-south) before you write code, and it works on locked-down machines where installing packages is not possible.
+
+### [PyGMT](https://www.pygmt.org/)
+
+`Free` · beginner 3/5 · publication-quality maps and geophysical plotting
+
+Python interface (v0.19.0) to the Generic Mapping Tools C API for maps and figures in geophysics, oceanography and planetary science: projections, coastlines, gridding and filtering, cross-sections, focal mechanisms, velocity vectors and 3D perspective plots, taking pandas, xarray and geopandas objects directly.
+
+**Access.** `conda install -c conda-forge pygmt`; `fig = pygmt.Figure(); fig.basemap(region=[30,45,-5,10], projection='M15c', frame=True); fig.coast(land='grey', shorelines=True); fig.show()`. The `gmt` command line is installed alongside for shell scripting.
+
+**Caveats.** BSD-3-Clause (GMT itself is LGPL). `pip install pygmt` regularly fails because the GMT C library version must match; conda-forge is the reliable route. Remote datasets such as Earth relief and seafloor age grids are downloaded and cached on first use, so the first figure needs a network connection.
 
 ### [pystac-client with odc-stac / stackstac](https://pystac-client.readthedocs.io/)
 
@@ -318,7 +508,19 @@ Full desktop GIS (4.2 is the current release line) for vector and raster editing
 
 **Access.** Install from qgis.org or conda-forge; script with the built-in Python console and PyQGIS; the Processing toolbox exposes GDAL, GRASS and SAGA algorithms and can be run headlessly with `qgis_process`.
 
-**Caveats.** For teaching and production use the long-term release branch rather than the newest feature release. Plugin quality varies and some depend on external binaries. Large rasters are slow unless you build overviews first.
+**Caveats.** Verified 28 August 2026: the latest release is QGIS 4.2.1 'Belem do Para' (31 July 2026) and the long-term release is 3.44.13 'Solothurn'. Use the LTR branch for teaching and production. Plugin quality varies and some plugins depend on external binaries; several are not yet ported to the 4.x line. Large rasters are slow unless you build overviews first.
+
+*Also listed under: social.*
+
+### [WhiteboxTools](https://www.whiteboxgeo.com/)
+
+`Free` · beginner 3/5 · terrain, hydrology and lidar processing
+
+Rust-based geospatial analysis engine from the University of Guelph with a large open-source tool library for terrain analysis, depression breaching and flow routing, stream network extraction, LiDAR/LAS point cloud processing, image processing and math operations, callable as a standalone binary or from Python, R and QGIS.
+
+**Access.** `pip install whitebox`; `import whitebox; wbt = whitebox.WhiteboxTools(); wbt.breach_depressions_least_cost('dem.tif','filled.tif', dist=100); wbt.d8_pointer('filled.tif','ptr.tif'); wbt.d8_flow_accumulation('ptr.tif','fac.tif', pntr=True)`. Also the WhiteboxTools for QGIS plugin and the `whitebox` R package.
+
+**Caveats.** The core engine is MIT-licensed and complete on its own, but Whitebox Workflows for Python Professional and the general/agriculture/lidar toolset extensions are commercial add-ons, and a handful of advanced tools live only there. Tools that measure distance or area assume a projected CRS: running them on degrees gives wrong numbers without warning. Its hydrological conditioning (breaching rather than filling) is the reason most geomorphologists reach for it over GRASS or SAGA.
 
 ### [xarray (with rioxarray and Dask)](https://docs.xarray.dev/)
 
@@ -329,6 +531,16 @@ The standard Python library for labelled multidimensional data: netCDF, Zarr, GR
 **Access.** `pip install 'xarray[complete]' rioxarray`; `ds = xr.open_dataset('era5.nc'); ds.t2m.sel(time='2024-07').mean('time').plot()`; `xr.open_mfdataset(files, chunks={'time': 24})` for multi-file archives; rioxarray adds CRS-aware clipping and reprojection.
 
 **Caveats.** Chunk sizes matter more than machine size: badly chunked Dask graphs are the usual reason a laptop dies on ERA5. GRIB support needs cfgrib/eccodes, an extra install that is easiest through conda-forge.
+
+### [xclim](https://xclim.readthedocs.io/)
+
+`Free` · beginner 3/5 · climate indicators and bias adjustment
+
+Ouranos-developed xarray/Dask library for climate services: a large catalogue of CF-compliant climate indicators including the ETCCDI and ET-SCI index families (heat and cold spells, frost and growing-season days, growing degree days, precipitation percentiles and drought indices), plus a bias-adjustment and statistical downscaling module (SDBA) and climate ensemble statistics.
+
+**Access.** `pip install xclim` or conda-forge; `import xclim; hot = xclim.atmos.tx_days_above(tasmax=ds.tasmax, thresh='30 degC', freq='YS')`. Operates lazily on Dask-backed xarray objects, so it scales to CMIP6 ensembles.
+
+**Caveats.** Apache-2.0. Deliberately strict about CF metadata and units: inputs without a `units` attribute or with the wrong calendar raise or warn, which is the point but is the main early friction. Bias adjustment is easy to misuse and can manufacture trends; work through the SDBA notebooks before applying it to projections. ESMValTool and climate-indices cover overlapping ground with different trade-offs.
 
 ## Literature
 
@@ -384,6 +596,16 @@ NASA-supported JupyterHub operated in partnership with 2i2c for cryosphere and w
 
 **Caveats.** Accounts are granted to community members rather than opened to everyone, and capacity depends on grant funding, so treat it as a shared and potentially temporary resource. Its main advantage is co-location with NASA DAAC data in us-west-2, which makes direct S3 access fast.
 
+### [Digital Earth Africa Sandbox](https://sandbox.digitalearth.africa/)
+
+`Free (registration), email` · beginner 4/5 · free JupyterHub over an African data cube
+
+Free browser-based JupyterLab with an Open Data Cube covering the whole African continent: analysis-ready Landsat, Sentinel-1 and Sentinel-2, plus continental products including Water Observations from Space, cropland extent, coastlines, land cover and water quality, alongside a large repository of worked notebooks.
+
+**Access.** Sign up at sandbox.digitalearth.africa and work in the browser; `import datacube; dc = datacube.Datacube(); ds = dc.load(product='s2_l2a', x=(36.7,36.9), y=(-1.4,-1.2), time='2024-01/2024-03', measurements=['red','nir'])`. The same products are readable from outside via the STAC API and the public `deafrica-services` S3 bucket.
+
+**Caveats.** Sign-up uses phone verification that does not work for numbers registered in China, Turkey, the United States, the United Kingdom, Zambia or Burundi; those users must contact support to be added manually. Sandbox sessions are shared and modest in CPU and RAM, and larger jobs need a separate use-case request. Coverage is Africa only, which is exactly why it matters for researchers there.
+
 ### [Google Colab](https://colab.research.google.com/)
 
 `Free tier, email` · beginner 5/5 · free hosted notebooks
@@ -402,7 +624,7 @@ Server-side analysis over a hosted multi-petabyte catalogue (Landsat, Sentinel, 
 
 **Access.** Register a Cloud project for noncommercial use, then work in the Code Editor at code.earthengine.google.com (JavaScript) or `pip install earthengine-api` with `ee.Authenticate(); ee.Initialize(project='my-project')`; geemap and leafmap bridge it into notebooks.
 
-**Caveats.** Commercial use requires a paid plan, and projects registered before 15 April 2025 had to verify noncommercial eligibility to keep access. Quotas reset monthly and exhausting them drops the project into restricted mode rather than cutting it off. The Contributor Tier requires a billing account to be attached even though Earth Engine itself is not charged. Exports go to Google Drive or Cloud Storage and count against those quotas.
+**Caveats.** Commercial use requires a paid plan, and projects registered before 15 April 2025 had to verify noncommercial eligibility to keep access. Verified 28 August 2026: Community Tier is 150 EECU-hours per month (540,000 EECU-seconds) with no extra requirements; Contributor Tier is 1,000 EECU-hours per month but needs an active billing account attached even though Earth Engine itself is not charged; an application-only Partner Tier gives 100,000 EECU-hours per month for demonstrated high-impact climate mitigation, adaptation or protection work. Quotas reset monthly and exhausting them drops the project into restricted mode rather than cutting it off. Exports go to Google Drive or Cloud Storage and count against those quotas.
 
 ### [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/)
 
@@ -478,6 +700,16 @@ AWS covers the cost of storing and sharing publicly available, cloud-optimised d
 
 **Caveats.** The obligations are real: an open licence, non-proprietary cloud-optimised formats, documentation and a tutorial notebook, a dedicated AWS account, and no fees charged to users. It funds hosting only, not salaries, fieldwork or analysis.
 
+### [Idea Wild](https://www.ideawild.org/)
+
+`Free, application` · beginner 3/5 · equipment grants for conservation researchers
+
+US non-profit that gives field equipment rather than cash to biodiversity conservation, research and education projects: camera traps, GPS units, binoculars, acoustic recorders, laptops, dive and field gear. Projects costing under about USD 1,500 are an explicitly stated priority, and applications are accepted year-round from all countries.
+
+**Access.** Apply through the online application at https://ideawild.org/application, listing the specific items needed; no institutional affiliation or grant-writing apparatus required.
+
+**Caveats.** Targeted at conservationists in the Global South and under-resourced countries; applicants from wealthy countries are generally not funded unless representing tribal or marginalised communities or working with country nationals. It funds equipment and sometimes fieldwork costs, never scholarships or conference travel, and a valid US contact address is required to receive shipments (not Alaska, Hawaii or Puerto Rico). At most two applications per 12 months, and past recipients must report before reapplying.
+
 ### [National Geographic Society grants](https://www.nationalgeographic.org/explore/grants-investments/)
 
 `Free, application` · beginner 2/5 · project grants for individuals
@@ -520,6 +752,16 @@ Two-day open curriculum in three lessons: geospatial concepts and data structure
 
 **Caveats.** R-centric; the Python geospatial equivalents live in the Carpentries Incubator and are less mature. Self-study loses the live instructor and helper feedback that makes the format effective, so work through it with someone if you can.
 
+### [Earth Data Science / ESIIL Learning Portal (Earth Lab, CU Boulder)](https://www.earthdatascience.org/)
+
+`Free` · beginner 5/5 · environmental data science curriculum
+
+Free open textbooks and course material from Earth Lab and ESIIL at the University of Colorado Boulder, including 'Introduction to Earth and Environmental Data Science', 'IGNITE Data Analytics for early-career researchers', and lesson series on Python, R, Google Earth Engine, cloud computing, remote sensing time series and reproducible workflows, all with runnable code and sample data.
+
+**Access.** Read directly on the site; lessons link to their source repositories so notebooks can be cloned and run locally or in the cloud. No account needed.
+
+**Caveats.** The portal was reorganised around ESIIL, so some older earthdatascience.org lesson URLs are stale or redirect: search from the front page rather than trusting bookmarks or search-engine hits. Licence terms are not stated uniformly across pages, so check the source repository before reusing material in your own teaching. Strongest on the workflow and tooling side, lighter on the underlying Earth science.
+
 ### [End-to-End Google Earth Engine (Spatial Thoughts)](https://courses.spatialthoughts.com/end-to-end-gee.html)
 
 `Free` · beginner 4/5 · Earth Engine course
@@ -539,6 +781,16 @@ Free online Earth observation courses, including the long-running Advanced Train
 **Access.** Create a free account and enrol; courses are self-paced with video lessons, quizzes and downloadable material.
 
 **Caveats.** Depth varies considerably between courses; the SAR and polarimetry material is the standout and is hard to find free elsewhere. Several courses are tied to specific ESA missions and their processing tools.
+
+### [Geocomputation with R](https://r.geocompx.org/)
+
+`Free` · beginner 4/5 · open textbook, spatial analysis in R
+
+Free online second edition (CRC Press, 2024) of the standard open textbook for spatial data in R: sf and terra data structures, attribute and spatial operations, geometry operations, raster-vector interaction, reprojection, I/O, cartography, bridges to GDAL/GRASS/QGIS, spatial statistical learning, and applied chapters on transport, geomarketing and ecology.
+
+**Access.** Read at r.geocompx.org; source, all code and exercise solutions are on GitHub, and a Python companion volume is at py.geocompx.org.
+
+**Caveats.** The prose is CC BY-NC-ND 4.0 (non-commercial, no derivatives) while the code is CC0, so you can reuse the code freely but cannot remix the text into your own course notes. Assumes working R knowledge; it is not an introduction to programming. The first edition is archived separately on bookdown.org and now uses superseded packages.
 
 ### [NASA ARSET](https://www.earthdata.nasa.gov/data/projects/arset)
 
@@ -601,3 +853,13 @@ Forum of the Pangeo community covering Zarr, netCDF and HDF, Dask and cloud work
 **Access.** Readable without an account; register free to post. Questions are often answered by the maintainers of the libraries themselves.
 
 **Caveats.** Best for data-engineering questions (chunking, cloud storage, scaling, formats) and weaker for domain science. A minimal reproducible example gets far better results than a prose description of your workflow.
+
+### [Software Underground](https://softwareunderground.org/)
+
+`Free, email` · beginner 4/5 · geoscience programming community
+
+Not-for-profit, member-supported community of geoscientists and engineers doing subsurface, geophysics and geological computing: a free open chat on Mattermost, the annual Transform conference and hackathons, and an archive of tutorials, recorded talks and open-source project discussion.
+
+**Access.** Join free from the website to get into the chat; Transform conference recordings and hackathon material are public on YouTube and GitHub with no membership needed.
+
+**Caveats.** Centre of gravity is subsurface geoscience (seismic, wells, petrophysics, geomechanics, geothermal) rather than climate or satellite remote sensing, and much of it grew out of the energy industry. The community moved off Slack to Mattermost, so old Slack invite links circulating in blog posts are dead. Volume is lower than Stack Exchange but the answers come from people who wrote the tools.

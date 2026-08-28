@@ -258,7 +258,7 @@ Hosted Jupyter notebooks with intermittent free GPU and TPU runtimes. Google's o
 
 **Caveats.** The single most important caveat: the free tier is not a place to run long jobs. Google explicitly says access to GPUs is 'heavily restricted' on the free plan, and heavy users get downgraded to CPU-only for hours at a time. SSH/remote desktops, distributed computing and mining are prohibited by the FAQ. Checkpoint to Drive every few minutes or expect to lose work.
 
-*Also listed under: physics, chemistry, medicine, earth, econ-finance.*
+*Also listed under: physics, chemistry, medicine, earth, mathematics, cs-ml, econ-finance.*
 
 ### [Google Earth Engine (noncommercial access)](https://earthengine.google.com/noncommercial/)
 
@@ -312,7 +312,7 @@ Free hosted notebooks with a fixed weekly accelerator quota (NVIDIA GPU and TPU 
 
 **Caveats.** Phone verification is required before the GPU/TPU and internet toggles appear at all — a real barrier in some countries. The remaining weekly quota is displayed in the session sidebar; treat that number as authoritative, because Kaggle has changed the allowance before and its documentation sits behind a bot wall. Quota resets weekly, not monthly, and idle sessions burn it.
 
-*Also listed under: physics, chemistry, medicine.*
+*Also listed under: physics, chemistry, medicine, cs-ml.*
 
 ### [Modal](https://modal.com/pricing)
 

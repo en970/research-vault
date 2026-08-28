@@ -1,10 +1,10 @@
 # Neuroscience & psychology
 
-Part of [research-vault](../README.md). 60 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 85 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (16) · [Software](#software) (17) · [Literature](#literature) (7) · [Compute](#compute) (4) · [Publishing](#publishing) (4) · [Funding](#funding) (3) · [Learning](#learning) (6) · [Community](#community) (3)
+**Contents:** [Data](#data) (20) · [Software](#software) (35) · [Literature](#literature) (7) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (3) · [Learning](#learning) (7) · [Community](#community) (4)
 
 ## Data
 
@@ -58,6 +58,16 @@ The BRAIN Initiative archive for neurophysiology: electrophysiology, optical phy
 
 **Caveats.** Public dandisets download without an account; uploading and embargoed sets need a GitHub login. Individual dandisets run to hundreds of GB or TB — streaming, not downloading, is the realistic route on a laptop. NWB files reward learning the schema first; expect a day of overhead.
 
+### [FlyWire Codex](https://codex.flywire.ai/)
+
+`Free (registration), email` · beginner 3/5 · whole-brain connectome
+
+Princeton's Connectome Data Explorer for whole-brain Drosophila connectomes: the FAFB/FlyWire adult female brain reconstruction with 139,255 neurons and 3,732,460 connections, alongside the male CNS (MCNS v1.0) dataset with 166,700 neurons and 6,242,118 connections — the most complete brain-wide wiring diagrams of any animal capable of complex behaviour.
+
+**Access.** Sign in with a Google account at codex.flywire.ai and query neurons by type, region, neurotransmitter or connectivity in the browser; export tables through the Download Data app, or work programmatically with `pip install fafbseg` / `pip install navis` against the CAVE annotation service.
+
+**Caveats.** Access requires a Google sign-in and agreement to the FlyWire terms; the data are shared for research with attribution and citation requirements for the FlyWire consortium papers. Cell-type nomenclature and the proofreading state change between releases — pin the dataset version in any analysis. Circuit interpretation still needs fly neuroanatomy knowledge the interface does not supply.
+
 ### [Human Connectome Project (ConnectomeDB)](https://www.humanconnectome.org/study/hcp-young-adult/data-releases)
 
 `Free (registration), email` · beginner 2/5 · high-quality human MRI
@@ -98,6 +108,16 @@ The standard repository of digitally reconstructed neuronal morphologies: versio
 
 **Caveats.** Reconstructions carry the original labs' tracing conventions — soma representation, shrinkage correction and truncation differ, so morphometric comparisons across labs need care. Metadata completeness varies by contribution. Attribution to the original publication is expected.
 
+### [NeuroQuery](https://neuroquery.org/)
+
+`Free` · beginner 4/5 · predictive fMRI literature meta-analysis
+
+A statistical model that maps arbitrary free text — a full sentence, not just a single indexed term — onto a predicted brain activation map learned from the coordinates and text of the neuroimaging literature. It is the direct answer to Neurosynth's main weakness, which is that rare or compound terms have too few studies for a classical coordinate meta-analysis.
+
+**Access.** Type a query at neuroquery.org and download the resulting map as NIfTI; or `pip install neuroquery` and run `encoder = NeuroQueryModel.from_data_dir(fetch_neuroquery_model()); encoder("Parkinson's disease")["brain_map"]`. BSD-3-Clause; the trained model and corpus are downloadable for offline use.
+
+**Caveats.** NeuroQuery predicts where a study on a topic would report activation — it is explicitly not a test of statistical significance and produces no p-values, so it cannot substitute for a real meta-analysis (use NiMARE or Neurosynth Compose for that). Like Neurosynth it inherits the biases of the published literature and of automated text mining. Best used as a fast hypothesis generator and for defining literature-based ROIs.
+
 ### [Neurosynth](https://neurosynth.org/)
 
 `Free` · beginner 5/5 · fMRI coordinate meta-analysis
@@ -112,11 +132,31 @@ Automated meta-analysis over the published fMRI literature: 507,891 activation c
 
 `Free` · beginner 4/5 · statistical brain maps
 
-Public repository of unthresholded statistical maps, parcellations and atlases from MRI and PET studies; as of 2026-08 it holds 17,794 collections and 713,915 images. Unthresholded maps are what make image-based meta-analysis and map comparison possible without re-running anyone's pipeline.
+Public repository of unthresholded statistical maps, parcellations and atlases from MRI and PET studies; the API reports 17,795 collections and 713,922 images as of 2026-08-28. Unthresholded maps are what make image-based meta-analysis and map comparison possible without re-running anyone's pipeline.
 
 **Access.** Browse and view maps in the browser; open REST API (`https://neurovault.org/api/collections/?format=json`, `/api/images/`); or fetch programmatically with Nilearn: `from nilearn.datasets import fetch_neurovault_ids`.
 
 **Caveats.** Metadata quality is uneven — many collections lack the contrast descriptions, sample size or template space you need for meta-analysis, so filter hard. Uploading requires a free account. Maps are in whatever space the authors used; check MNI vs. native before combining.
+
+### [NIH Brain Development Cohorts (NBDC) Data Hub](https://nbdc-datahub.org/)
+
+`Free (registration), credentialing` · beginner 1/5 · large longitudinal developmental cohorts
+
+The NIH platform that now distributes the ABCD Study (adolescent brain, behaviour and genomics, ~11,800 children followed for a decade) and the HEALthy Brain and Child Development (HBCD) study, with imaging, behavioural, biospecimen and genomic data and compute-in-place analysis. Since 2 June 2025 the NIMH Data Archive no longer accepts new or renewal ABCD access requests; NBDC is the route.
+
+**Access.** Identify a Signing Official at your institution (usually the grants office), meet the NIH security requirements (NIST SP 800-171 or ISO/IEC 27001/27002 equivalent), complete Responsible Data and Biospecimen Use training, and submit a Data Use Certification through the hub; analysis then runs in the hosted secure environment or on approved local infrastructure.
+
+**Caveats.** No fee, but this is the hardest gate in this list for the audience of this catalogue: an institutional Signing Official and an attestable security posture are both required, so unaffiliated researchers and many small institutions are effectively excluded. Applications take weeks. If you only need child/adolescent imaging and cannot clear the gate, OpenNeuro developmental datasets and ABIDE/ADHD-200 are the open fallbacks.
+
+### [OASIS Brains](https://sites.wustl.edu/oasisbrains/)
+
+`Free (registration), email` · beginner 3/5 · ageing and dementia neuroimaging
+
+Washington University's open ageing and Alzheimer's imaging series: OASIS-1 (416 subjects aged 18-96, cross-sectional T1w, 100 with mild to moderate AD), OASIS-2 (150 subjects aged 60-96, 373 longitudinal sessions), OASIS-3 (1,378 participants aged 42-95 with 2,842 MR sessions plus over 2,157 PET scans including 451 tau sessions) and OASIS-4 (663 subjects in a memory-clinic cohort).
+
+**Access.** Register free at NITRC, submit the OASIS data request and accept the data use agreement, then download through NITRC-IR/XNAT or the provided AWS-hosted paths; imaging comes with FreeSurfer derivatives and clinical/cognitive tables.
+
+**Caveats.** Non-commercial academic research only, with mandatory acknowledgement text and no redistribution. Approval is a form rather than an institutional application, which makes OASIS-3 the most accessible large dementia imaging cohort — considerably easier than ADNI or NACC. Longitudinal sessions have uneven modality coverage per visit, so check availability tables before designing an analysis.
 
 ### [Open Science Framework (OSF)](https://osf.io/)
 
@@ -180,11 +220,41 @@ NIMH's C/Python/R suite for analysis and display of multiple MRI modalities, fre
 
 **Caveats.** Free for research purposes; not a general-purpose licence for commercial products. The learning curve is command-line and the naming conventions are idiosyncratic, but the AFNI bootcamp materials and the message board (answered by the developers themselves, usually within a day) are the field's best support experience.
 
+### [ANTs (Advanced Normalization Tools)](https://github.com/ANTsX/ANTs)
+
+`Free` · beginner 2/5 · medical image registration and segmentation
+
+Apache-2.0 C++ toolkit whose SyN diffeomorphic registration has repeatedly won open registration challenges and is the normalisation step inside fMRIPrep, MRIQC and many other pipelines; it also provides N4 bias correction, Atropos tissue segmentation, template building and the antsCorticalThickness pipeline.
+
+**Access.** Pre-compiled binaries from GitHub Releases, or `conda install -c conda-forge ants`, or the Docker image; Python and R bindings via `pip install antspyx` (ANTsPy, with deep-learning models in ANTsPyNet) and ANTsR. Typical use: `antsRegistrationSyN.sh -d 3 -f template.nii.gz -m subject.nii.gz -o out_`.
+
+**Caveats.** Registration is CPU- and time-expensive: a full SyN run is tens of minutes to hours per image on a laptop, and template building over a cohort is a cluster job. The command-line interface has many parameters and the shell wrappers hide choices you may later need to justify; ANTsPy is the gentler entry point. Building from source is slow — take the binaries or conda.
+
+### [Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/)
+
+`Free` · beginner 4/5 · data organisation standard
+
+The community standard for laying out neuroimaging datasets on disk; specification 1.11.1 (19 February 2025) covers MRI, fMRI, EEG, MEG, iEEG, PET, eye tracking, EMG, microscopy and behavioural data, with atlas and derivative conventions. Over 100 BIDS Apps (fMRIPrep, MRIQC, QSIPrep, MRtrix3_connectome) take a BIDS directory as their only argument, and every OpenNeuro dataset is BIDS.
+
+**Access.** Read the spec at bids-specification.readthedocs.io; check a dataset with the BIDS Validator (browser version at bids-standard.github.io/bids-validator, also a command-line tool); convert DICOMs with `pip install heudiconv` or `pip install dcm2bids`, both of which wrap dcm2niix.
+
+**Caveats.** The standard is free (CC-BY) and there is nothing to install to use it, but converting an existing messy dataset is a day of work and DICOM-to-BIDS conversion is where beginners stall. Modality coverage is uneven: MRI and M/EEG are mature, several newer modalities are still BIDS Extension Proposals, and derivatives conventions are less settled than raw-data ones. Getting BIDS right is a prerequisite for almost every modern pipeline, so do it before, not after, collecting data.
+
+### [Brainstorm](https://neuroimage.usc.edu/brainstorm/)
+
+`Free (registration), email` · beginner 4/5 · M/EEG, fNIRS and iEEG analysis GUI
+
+Open-source application for MEG, EEG, fNIRS, ECoG, depth-electrode and multiunit recordings: head modelling, source estimation, time-frequency decomposition, connectivity, group statistics and decoding, with a GUI-first workflow. The project reports over 50,000 registered users since the late 1990s.
+
+**Access.** Register free on the site, then download either the source package (needs a MATLAB licence) or the compiled binary package, which runs on Windows, macOS and Linux against the free MATLAB Runtime R2023a. The pipeline editor records every GUI action and exports it as a runnable MATLAB script, which is the practical route from clicking to batch processing.
+
+**Caveats.** The compiled standalone removes the MATLAB licence cost entirely, which makes this the most realistic full-featured M/EEG package for a lab with no MATLAB budget — but the standalone cannot run your own MATLAB functions, so heavy customisation still needs the licensed version. A free account is required before downloading. Source localisation still needs an anatomical MRI or the ICBM152/FreeSurfer template.
+
 ### [Brian 2](https://briansimulator.org/)
 
 `Free` · beginner 4/5 · spiking network simulator
 
-Free, open-source spiking neural network simulator in Python (version 2.10, December 2025) where models are specified as plain differential equations in mathematical notation and compiled to C++ at runtime; it covers everything from leaky integrate-and-fire to Hodgkin-Huxley and arbitrary custom synapse models.
+Free, open-source spiking neural network simulator in Python (version 2.10.1 on PyPI as of 2026-08) where models are specified as plain differential equations in mathematical notation and compiled to C++ at runtime; it covers everything from leaky integrate-and-fire to Hodgkin-Huxley and arbitrary custom synapse models.
 
 **Access.** `pip install brian2` or `conda install -c conda-forge brian2`; the documentation ships runnable tutorials, and the Neuronal Dynamics exercises use it directly.
 
@@ -200,15 +270,25 @@ GPL-2 R package that fits Bayesian generalised (non-)linear multivariate multile
 
 **Caveats.** Compilation of each new model takes a minute or two; sampling for realistic psychology multilevel models takes minutes to hours on a laptop. You need to understand priors and convergence diagnostics — this is not a point-and-click substitute. Pair it with Statistical Rethinking for the conceptual grounding.
 
+### [DataLad](https://www.datalad.org/)
+
+`Free` · beginner 3/5 · dataset versioning and distribution
+
+Free, open-source distributed data management built on Git and git-annex: version-controls arbitrarily large files without putting them in Git, records provenance of how derived files were produced, and supports nested datasets so a study can link its raw data, code and derivatives. It is the machinery behind OpenNeuro's git endpoints and the datasets.datalad.org superdataset.
+
+**Access.** `pip install datalad` (or `conda install -c conda-forge datalad`, or apt on Debian/Ubuntu; needs Git and git-annex). Typical use: `datalad clone https://github.com/OpenNeuroDatasets/ds000117.git` gives a full directory tree of placeholder files, then `datalad get sub-01` downloads only that subject's data.
+
+**Caveats.** The clone-then-get pattern is the single most useful trick for working with public neuroimaging archives on a laptop or a metered connection — you browse the whole structure before downloading anything. git-annex is the fiddly dependency, and on Windows it is noticeably less smooth than on Linux/macOS. Provenance capture (`datalad run`) only helps if you use it consistently from the start.
+
 ### [DeepLabCut](https://mlabofai.org/deeplabcut)
 
 `Free` · beginner 3/5 · markerless pose estimation
 
 LGPL-v3 toolbox for 2D and 3D markerless pose tracking of animals and humans by transfer learning, typically reaching human-level labelling accuracy from 50-200 labelled frames. SuperAnimal models give zero-shot inference with no training at all: SuperAnimal-Quadruped (40,000+ images, 39 keypoints, mouse to elephant) and SuperAnimal-TopViewMouse (5,000+ mouse videos, 26 keypoints).
 
-**Access.** `pip install deeplabcut` (conda environment files provided) with a napari-based GUI, or run the official Colab notebooks — including a one-click SuperAnimal inference notebook — on Google's free GPU tier without installing anything.
+**Access.** DeepLabCut 3.0 uses a PyTorch backend: install PyTorch first, then `pip install --pre "deeplabcut[gui]"` on Python 3.10+ (conda environment files are also provided) for the napari-based GUI; or run the official Colab notebooks — including a one-click SuperAnimal inference notebook — on Google's free GPU tier without installing anything.
 
-**Caveats.** Training from scratch really wants a GPU; the free Colab tier works but sessions time out, so checkpoint to Drive. SuperAnimal inference is the genuinely laptop-friendly path. Behavioural analysis after tracking is your problem — DeepLabCut gives coordinates, not behaviour labels.
+**Caveats.** Training from scratch really wants a GPU; the free Colab tier works but sessions time out, so checkpoint to Drive. SuperAnimal inference is the genuinely laptop-friendly path, but the SuperAnimal model weights are released for research (non-commercial) use only, unlike the LGPL-v3 toolbox itself — check this before any commercial or contract work. Behavioural analysis after tracking is your problem: DeepLabCut gives coordinates, not behaviour labels.
 
 ### [EEGLAB](https://sccn.ucsd.edu/eeglab/)
 
@@ -220,6 +300,16 @@ UCSD SCCN's interactive toolbox for continuous and event-related EEG, MEG and ot
 
 **Caveats.** Academic free software. The standalone removes the MATLAB dependency but is less flexible for scripting than the toolbox; Octave support exists for parts of EEGLAB but is not complete. ICA on long high-density recordings is memory-hungry — downsample and high-pass first.
 
+### [FieldTrip](https://www.fieldtriptoolbox.org/)
+
+`Free` · beginner 3/5 · MATLAB M/EEG analysis toolbox
+
+GPL MATLAB toolbox from the Donders Institute for MEG, EEG and iEEG analysis: preprocessing, spectral and time-frequency analysis, beamformer and minimum-norm source reconstruction, connectivity, representational similarity analysis, temporal response functions, and the non-parametric cluster-based permutation statistics that most M/EEG papers cite for multiple-comparison correction.
+
+**Access.** Download the zip or clone from github.com/fieldtrip/fieldtrip, then in MATLAB `addpath('/path/to/fieldtrip'); ft_defaults`. Tutorial datasets are downloadable per tutorial, so the whole documentation set runs without your own recordings.
+
+**Caveats.** MATLAB is a hard dependency and is not free; Octave compatibility is partial and unsupported, so FieldTrip is the one major M/EEG package with a real licence cost behind it (MNE-Python, or Brainstorm's compiled standalone, are the MATLAB-free alternatives). The tutorials are excellent but assume you already know which analysis you want. Reading data from some proprietary MEG/EEG systems needs vendor files you may not have.
+
 ### [fMRIPrep](https://fmriprep.org/)
 
 `Free` · beginner 3/5 · preprocessing pipeline
@@ -229,6 +319,16 @@ Apache-2.0 robust preprocessing pipeline for task and resting-state fMRI (versio
 **Access.** Run the container: `pip install fmriprep-docker` then `fmriprep-docker bids_dir out_dir participant --fs-license-file license.txt`, or `apptainer run fmriprep.sif ...` on a cluster. A manually prepared Python 3.10+ environment is possible but not recommended.
 
 **Caveats.** Needs a free FreeSurfer licence file. Realistically 8-16 GB RAM and several hours per subject; `--fs-no-reconall` cuts most of that if you do not need surfaces. The container image is several GB. Version-pin it: outputs differ across releases, and the docs ask you to report the exact version.
+
+### [formr](https://formr.org/)
+
+`Free, email` · beginner 2/5 · longitudinal and experience-sampling surveys
+
+BSD-3 open-source framework for chaining simple surveys into complex longitudinal 'runs': diary and experience-sampling designs, automated email and SMS reminders on a schedule, randomisation and skip logic, and personalised feedback generated by running R (via OpenCPU) on the participant's own responses mid-study.
+
+**Access.** Sign up free at formr.org and build surveys as spreadsheets (Google Sheets or uploaded xlsx), assembling them into a run with pauses and triggers; or self-host the stack (PHP + MySQL + OpenCPU + R) from github.com/rubenarslan/formr.org for full data control.
+
+**Caveats.** The free hosted instance is a research-community service without an SLA — export your data regularly, and check whether hosting participant data on it satisfies your ethics approval and GDPR obligations. The repository warns that its default setup instructions are not production-ready, so self-hosting means real sysadmin work. The spreadsheet-plus-R model is powerful but has a genuine learning curve; nothing else free does automated longitudinal designs this well.
 
 ### [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/)
 
@@ -249,6 +349,16 @@ Oxford FMRIB's analysis library for functional, structural and diffusion MRI: FE
 **Access.** Download and run `python fslinstaller.py` (Linux/macOS; Windows via WSL); command-line tools plus GUIs, callable from shell scripts or Nipype pipelines.
 
 **Caveats.** Free for academic and non-commercial research; commercial use requires a paid licence from Oxford University Innovation, and the download form asks who you are. The install is ~10 GB and several pipelines are slow on a laptop — randomise with many permutations is an overnight job. Some components (e.g. parts built on other packages) carry their own terms.
+
+### [G*Power](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower)
+
+`Free` · beginner 5/5 · statistical power analysis
+
+The standard free power-analysis program in psychology, from Heinrich Heine University Düsseldorf: a priori, post hoc, compromise, criterion and sensitivity analyses for t, F, chi-square, z and exact tests, covering correlation, regression, ANOVA/ANCOVA, logistic and Poisson regression, with effect-size calculators and power curves. Current versions are 3.1.9.7 for Windows (17 March 2020) and 3.1.9.6 for macOS (21 February 2020).
+
+**Access.** Download the installer for Windows or macOS from the university page and run it; choose test family, statistical test and analysis type, enter effect size, alpha and power, and it returns required N plus a plot. The manual and the Faul et al. (2007, 2009) papers document every test.
+
+**Caveats.** Explicitly free for everyone including commercial users; only resale and commercial redistribution are barred. No Linux build, and the macOS build is Intel-only (runs under Rosetta 2 on Apple silicon) — a native G*Power 4 has been in development for years with no release. It does not cover multilevel or mixed models, which is exactly where most modern psychology designs live; use simulation (R `simr`, `Superpower`) for those.
 
 ### [JASP](https://jasp-stats.org/)
 
@@ -280,6 +390,38 @@ JavaScript framework for behavioural experiments that run in a web browser, buil
 
 **Caveats.** jsPsych only runs the experiment — you still need hosting and, if you want participants, a recruitment route. Prolific and MTurk integrations are documented but those services charge for participants. Browser timing varies by device and refresh rate; use the built-in timing calibration and expect noisier RTs than in-lab.
 
+### [lab.js](https://lab.js.org/)
+
+`Free` · beginner 5/5 · browser-based experiment builder
+
+Free, open online study builder for behavioural and cognitive science: a visual builder (AGPL) that composes screens, loops and sequences with live preview, sitting on top of a JavaScript library (Apache-2.0) for timing-controlled stimulus presentation and response collection in the browser. The middle ground between OpenSesame's desktop GUI and writing jsPsych by hand.
+
+**Access.** Use the builder in the browser at labjs.felixhenninger.com with no account, or run it locally; export the study as a static HTML bundle, or as a package preconfigured for JATOS, Open Lab or an online survey tool, then host it wherever you like. Data come back as CSV/JSON.
+
+**Caveats.** Nothing is paid, but as with jsPsych you still need hosting and a participant source; the builder alone collects no data. Studies you build are yours regardless of the AGPL on the builder itself. Browser timing depends on the participant's device and refresh rate — validate if reaction time is your dependent variable. The project is largely one maintainer's work, so release cadence is uneven.
+
+### [lavaan (R package)](https://lavaan.ugent.be/)
+
+`Free` · beginner 2/5 · structural equation modelling in R
+
+Free open-source R package for latent variable modelling — path analysis, confirmatory factor analysis, full structural equation models, growth curve models, measurement invariance testing and multigroup models — written as a free replacement for commercial SEM software; version 0.7-2 was released 16 July 2026.
+
+**Access.** `install.packages("lavaan")`, write the model in lavaan syntax (`model <- 'f1 =~ x1 + x2 + x3; f1 ~ y'`), then `fit <- sem(model, data = d); summary(fit, fit.measures = TRUE, standardized = TRUE)`. Tutorials and a full syntax reference are on the site.
+
+**Caveats.** This is the realistic substitute for Mplus, AMOS or LISREL, none of which an unaffiliated researcher can afford; missing-data handling (FIML) and robust estimators (MLR, WLSMV) are built in. Some advanced Mplus features (certain mixture models, complex multilevel SEM) are still not fully covered. SEM needs sample sizes and identification knowledge that no package supplies — a badly identified model will still print output.
+
+*Also listed under: social.*
+
+### [metafor (R package)](https://www.metafor-project.org/)
+
+`Free` · beginner 3/5 · meta-analysis in R
+
+GPL-2 R package that is the field standard for meta-analysis: computes effect sizes and outcome measures from raw study data, fits equal-, fixed-, random- and mixed-effects models, meta-regression with moderators, multilevel and multivariate models with `rma.mv`, and provides forest, funnel, radial and cumulative plots plus publication-bias and influence diagnostics.
+
+**Access.** `install.packages("metafor")` from CRAN, then `escalc()` to compute effect sizes and `rma(yi, vi, data = dat)` to fit; the project website carries a large worked-analysis gallery covering standard meta-analysis textbook examples step by step.
+
+**Caveats.** Free and runs on any laptop, so a meta-analysis is one of the few publishable projects that needs no data collection budget at all — the cost is the literature screening, not the computing. Assumes you can already use R and know which effect-size metric your studies support. Multilevel and multivariate models (dependent effect sizes) need care with the variance-covariance matrix; read the site's dedicated pages before using `rma.mv`.
+
 ### [MNE-Python](https://mne.tools/stable/)
 
 `Free` · beginner 4/5 · M/EEG analysis
@@ -290,6 +432,56 @@ Open-source Python package (version 1.12.1) for MEG, EEG, sEEG, ECoG and fNIRS: 
 
 **Caveats.** Source localisation needs an anatomical MRI and a FreeSurfer reconstruction; the fsaverage template is the fallback when you have EEG but no individual MRI. Reads most vendor formats, but some (e.g. certain proprietary EEG systems) need extra packages. The tutorial set is long but is the intended entry point.
 
+### [MRIQC](https://mriqc.readthedocs.io/)
+
+`Free` · beginner 3/5 · MRI quality control
+
+Apache-2.0 BIDS App from the fMRIPrep developers that extracts no-reference image quality metrics from structural (T1w/T2w), functional and diffusion MRI — SNR, CNR, framewise displacement, temporal SNR, ghost-to-signal ratio, AFNI/ANTs-derived spatial measures — and produces per-scan and group-level visual reports for exclusion decisions.
+
+**Access.** Run as a container: `docker run -v bids:/data:ro -v out:/out nipreps/mriqc:latest /data /out participant`, then the same command with `group` to get the group report; Apptainer/Singularity on clusters, or a bare-metal pip install if you already have AFNI and ANTs.
+
+**Caveats.** MRIQC measures quality but will not tell you a threshold — exclusion criteria are still your judgement, and should be preregistered. Needs a valid BIDS dataset first. Several minutes to tens of minutes per scan and a multi-GB container image. The optional web API that pools anonymised metrics across sites is opt-in; check your ethics approval before enabling it.
+
+### [MRtrix3](https://www.mrtrix.org/)
+
+`Free` · beginner 2/5 · diffusion MRI and tractography
+
+Open-source diffusion MRI toolkit (version 3.0.8, 22 October 2025) implementing constrained spherical deconvolution and multi-shell multi-tissue CSD, probabilistic and anatomically constrained tractography, global tractography, SIFT/SIFT2 tractogram filtering, fixel-based analysis and structural connectome construction, with its own interactive viewer (mrview).
+
+**Access.** Install from the site's binaries, `conda install -c mrtrix3 mrtrix3`, or Docker; runs natively on Linux, macOS and Windows. A standard pipeline is `dwidenoise` → `dwifslpreproc` → `dwi2response dhollander` → `dwi2fod msmt_csd` → `tckgen` → `tcksift2` → `tck2connectome`.
+
+**Caveats.** Some preprocessing wrappers (dwifslpreproc/eddy, topup) shell out to FSL, so you need FSL installed and its licence terms apply to that part. Tractography output is extremely sensitive to parameters and is easy to over-interpret — read the documentation's own warnings about streamline counts as 'connectivity'. Whole-brain tractograms of millions of streamlines need substantial RAM and disk.
+
+### [NEST simulator](https://www.nest-simulator.org/)
+
+`Free` · beginner 3/5 · large-scale spiking network simulator
+
+GPL-2+ simulator for spiking neural network models where the focus is network size, structure and dynamics rather than detailed morphology; version 3.10 (June 2026) scales from a laptop to multi-core machines and supercomputers via optimised C++ kernels, and is driven from Python (PyNEST) or through PyNN for simulator-independent models.
+
+**Access.** Install with `conda install -c conda-forge nest-simulator` or from source (needs only a C++ compiler and CMake); write the model in PyNEST, or use NEST Desktop, the browser-based GUI, for teaching and quick exploration. Preinstalled and tuned on the Neuroscience Gateway and EBRAINS.
+
+**Caveats.** Complements rather than competes with NEURON and Brian 2: NEST is the right tool for cortical-microcircuit-scale networks of point neurons, the wrong one for detailed dendrites. Custom neuron models mean either the NESTML modelling language or C++, which is a steeper wall than Brian 2's plain differential equations. Reproducing published network models often needs the exact NEST major version.
+
+### [Neurodata Without Borders (NWB)](https://nwb.org/)
+
+`Free` · beginner 2/5 · neurophysiology data standard
+
+The community standard for cellular-level neurophysiology data — extracellular and intracellular electrophysiology, optical physiology, optogenetics, imaging, behaviour and epoch annotations — stored in a single self-describing HDF5 or Zarr file with its metadata. It is the required format for the DANDI Archive and is backed by the Allen Institute, HHMI, Kavli, LBNL, MathWorks, the Simons Foundation and INCF.
+
+**Access.** `pip install pynwb` for Python (`from pynwb import NWBHDF5IO; io = NWBHDF5IO('file.nwb','r'); nwb = io.read()`), MatNWB for MATLAB, `pip install neuroconv` to convert from vendor formats, `pip install nwbinspector` to check a file before upload, and Neurosift for browser-based inspection of remote files.
+
+**Caveats.** Free and open, but the schema is the real cost: expect a day or two before your first conversion, and neuroconv only covers the acquisition systems someone has already written an interface for. Reading a public NWB file is far easier than writing one. Streaming remote NWB from DANDI over fsspec/remfile avoids downloading terabytes but is slower than local reads.
+
+### [NEURON](https://www.neuron.yale.edu/neuron/)
+
+`Free` · beginner 2/5 · biophysical neuron and network simulator
+
+The standard simulator for empirically based models of individual neurons and networks with complex morphology and biophysics, currently version 9.0.2; membrane mechanisms are written in the NMODL language and models are built and driven from Python, HOC or a graphical interface. Most of the roughly 1,930 models in ModelDB are NEURON models.
+
+**Access.** `pip3 install neuron` on macOS and Linux (Windows uses a dedicated installer or WSL); runs on a laptop, in Google Colab, on EBRAINS and on the Neuroscience Gateway, and scales to HPC via MPI. The Yale documentation, the NEURON book chapters and annual summer courses are the entry points.
+
+**Caveats.** Free and open source, no account needed, and it runs on any laptop — which makes detailed single-cell modelling one of the few genuinely equipment-free neuroscience research paths. Version 9.0 moved MOD compilation to C++, so archival MOD files from older papers often need small edits before they compile. NMODL is a real language to learn; budget a week before your first original model.
+
 ### [Nilearn](https://nilearn.github.io/stable/)
 
 `Free` · beginner 4/5 · Python neuroimaging analysis
@@ -299,6 +491,16 @@ BSD-licensed Python library for statistical and machine learning analysis of bra
 **Access.** `pip install nilearn`; fetchers download example data on demand (`fetch_haxby()`, `fetch_atlas_schaefer_2018()`, `fetch_development_fmri()`, `fetch_oasis_vbm()`), so the tutorials run end to end on a laptop with no data of your own.
 
 **Caveats.** Nilearn analyses preprocessed data; it does not preprocess (pair it with fMRIPrep). The bundled atlases carry the licences of their original authors. The examples gallery is the real documentation — start there rather than the API reference.
+
+### [NITRC](https://www.nitrc.org/)
+
+`Free (registration), email` · beginner 3/5 · neuroimaging tool and data registry
+
+The NIH-funded NeuroImaging Tools and Resources Collaboratory: a registry of roughly 1,375 neuroimaging tools and resources across MR, EEG/MEG, CT and PET/SPECT, plus NITRC-IR, an XNAT image repository that distributes datasets including OASIS, and NITRC-CE, a preconfigured cloud computing environment image.
+
+**Access.** Browse and search tools without an account at nitrc.org; create a free account to download hosted datasets through NITRC-IR and to launch a NITRC-CE instance on AWS. Each tool entry links to its own site, licence, forum and version history.
+
+**Caveats.** The registry is broad but uneven — many listed tools are abandoned, so check the last release date and forum activity before investing in one. NITRC-CE runs on your own AWS account, so the image is free but the compute is billed to you. Its main practical value now is as the access gateway for datasets such as OASIS and the fcon_1000/INDI collections, and as a way to find niche tools that never reached PyPI or GitHub prominence.
 
 ### [OpenSesame](https://osdoc.cogsci.nl/)
 
@@ -320,6 +522,16 @@ Open-source stimulus presentation and experiment control for psychology and neur
 
 **Caveats.** The desktop app is fully free for in-lab studies. Pavlovia, the hosting service that funds development, is a paid credit system — but PsychoJS output is open source, so you can host it on your own server or through JATOS instead of paying. Timing on consumer laptops and in browsers is worse than on a lab machine; measure it if reaction time is your dependent variable.
 
+### [Psychtoolbox-3](https://psychtoolbox.org/)
+
+`Freemium` · beginner 2/5 · MATLAB/Octave stimulus presentation
+
+The long-standing MATLAB and GNU Octave toolbox for vision and psychophysics research, giving precise control of visual and auditory stimulus timing, OpenGL rendering, colour and gamma calibration, response collection and hardware I/O. Since version 3.0.20, prebuilt binaries on Windows and macOS require a paid subscription (from €50 net per node per year); Linux use remains free.
+
+**Access.** Install via the DownloadPsychtoolbox script, NeuroDebian packages on Linux, or the toolbox manager; then `Screen('OpenWindow', ...)` and `Screen('Flip')` for frame-accurate presentation. Source is on GitHub under mostly MIT-style licences.
+
+**Caveats.** The important caveat this catalogue exists for: PTB itself is open source and free to use on Linux, but from 3.0.20 onward the prebuilt mex files for Windows and macOS are paid (single node €50/year, six nodes €250, thirty €1,200, hundred €3,800, node-locked, not usable in VMs or containers). Compiling the mex files yourself, or running Linux, is the free route. PsychoPy is the free-everywhere alternative; PTB still wins on timing-critical low-level display control.
+
 ### [SpikeInterface](https://spikeinterface.readthedocs.io/)
 
 `Free` · beginner 2/5 · spike sorting and curation
@@ -339,6 +551,16 @@ The original mass-univariate analysis package for fMRI, PET, SPECT, EEG and MEG 
 **Access.** Download the release zip from the site and add it to your MATLAB path, then `spm fmri`. MATLAB is the usual dependency, but a precompiled standalone that runs against the free MATLAB Runtime, and partial GNU Octave compatibility, both remove the MATLAB licence cost.
 
 **Caveats.** SPM itself is free and open source; MATLAB is not, so use the standalone or Octave route unless you have a licence. Octave support is incomplete for some toolboxes. Batch scripting through matlabbatch is the only sane way to run more than a few subjects.
+
+### [suite2p](https://suite2p.readthedocs.io/)
+
+`Free` · beginner 3/5 · two-photon calcium imaging pipeline
+
+GPL-3 Python pipeline for two-photon and one-photon calcium imaging from the Mouseland group: rigid and non-rigid motion registration, automated ROI (cell) detection, neuropil-corrected signal extraction, a cell/not-cell classifier and spike deconvolution, plus a GUI for manual curation and visualisation of thousands of simultaneously recorded neurons.
+
+**Access.** `pip install suite2p[gui]` (Python 3.11 recommended), then run `suite2p` from a writable directory to launch the GUI, or drive it from a script with `suite2p.run_s2p(ops, db)`; outputs are numpy arrays (F.npy, spks.npy, stat.npy) ready for analysis.
+
+**Caveats.** Free and GPL-3, but redistribution requires credit and forbids private-repo redistribution. Registration of long recordings is RAM- and disk-hungry; a GPU helps but is not required. Deconvolved 'spikes' are an inference, not ground truth — report the parameters. CaImAn is the main alternative and handles one-photon/microendoscope data with different assumptions; reanalysing public Allen Brain Observatory or DANDI imaging data is the way in without a two-photon rig.
 
 ## Literature
 
@@ -488,6 +710,16 @@ Diamond open-access journal published by Linnaeus University Press with no publi
 
 **Caveats.** Free to publish and free to read. Open non-anonymous review is a real consideration — your reviewers' names and your responses are public. It is a small journal with modest visibility; weigh that against the zero cost and the fit for replications and null results that have nowhere else to go.
 
+### [Neurons, Behavior, Data analysis and Theory (NBDT)](https://nbdt.scholasticahq.com/)
+
+`Free, email` · beginner 3/5 · diamond OA computational neuroscience journal
+
+Diamond open-access journal (eISSN 2690-2664) launched in 2018 and run by a scientist-led collective, publishing computational, systems and behavioural neuroscience including methods, data analysis, theory and negative or replication results. Peer reviewed, CC BY, authors retain copyright, and DOAJ records no article processing charge and no submission fee.
+
+**Access.** Submit through the Scholastica platform at nbdt.scholasticahq.com; the journal runs an open, constructive review model and publishes reviews alongside accepted papers. Everything is free to read with no account.
+
+**Caveats.** No fees at any stage, which matters because most computational-neuroscience venues with comparable scope charge APCs in the thousands. It is a small journal with correspondingly modest visibility and slower throughput than a commercial title, and it is not indexed everywhere — check whether your assessment system counts it before committing. Good fit for methods papers, tutorials and results that fall between the big journals' scopes.
+
 ### [PCI Registered Reports (Peer Community In)](https://rr.peercommunityin.org/)
 
 `Free, email` · beginner 3/5 · free peer review and diamond OA
@@ -504,9 +736,9 @@ One of 21 thematic Peer Community In platforms, this one dedicated to Registered
 
 `Free, application` · beginner 2/5 · independent summer research fellowship
 
-A 14-week funded summer fellowship at the Marine Biological Laboratory in Woods Hole running from Memorial Day to the Saturday before Labor Day, in which fellows pursue their own independent research project with MBL housing provided, up to $5,000 for research supplies, loaned microscopes and equipment, childcare coverage for children aged 4-14, and access to animal facilities.
+A 14-week funded summer fellowship at the Marine Biological Laboratory in Woods Hole, starting the Monday of Memorial Day, in which roughly 7-10 fellows a year pursue their own independent research project. Support includes a stipend, housing for the fellow and spouse/partner and dependent children, a daily meal allowance, round-trip travel, laboratory space, animals and animal care, loaned or shipped equipment, and a research budget of up to $5,000 for supplies; the foundation puts the average total value at about $50,000.
 
-**Access.** Apply through grassfoundation.org with a research proposal that is feasible in 14 weeks, two letters of reference and a current research supervisor; applications close in early December for the following summer.
+**Access.** Apply through grassfoundation.org with a research proposal feasible in 14 weeks, references, and (if you propose to work in another investigator's MBL laboratory) a letter from that sponsoring investigator; the application for the 2027 fellowship opens 1 September 2026, with the closing date published on the fellowship timeline page. International fellows must hold a valid visa (J-1, H-1B, F-1 or F-1 OPT) covering the whole fellowship.
 
 **Caveats.** Highly competitive, and the design assumes you already have a project and the skills to run it independently. Practical gates: a valid US visa is required (or agreement to obtain one), and the foundation does not provide health or accident insurance, so you must arrange your own. Verify the exact deadline on the site — it moves by a few days each year.
 
@@ -562,6 +794,16 @@ Danielle Navarro's complete introductory-to-intermediate statistics textbook, wr
 
 **Caveats.** Free in every sense, including reuse in your own teaching. The author notes it is an artefact of its time — the R idioms predate much of the tidyverse, and some sections reflect an earlier stage of the replication-crisis debate. Still the most humane first statistics book for psychology students.
 
+### [Neurohackademy](https://neurohackademy.org/)
+
+`Free, application` · beginner 3/5 · neuroimaging data science summer school
+
+A two-week summer institute in neuroimaging and data science run at the University of Washington and online, combining a first week of hands-on lectures on Python, version control, cloud computing, machine learning and reproducibility with a second-week hackathon on participant projects. Past years' lecture recordings and materials are archived publicly on the site.
+
+**Access.** Watch the lecture archive and work through the linked notebooks with no account — this is the part that is open to everyone. Attending in person or online requires a competitive application through the site's application page in the spring; no credit or certification is offered.
+
+**Caveats.** The archived lectures are the realistic value for most readers: they are the best free video coverage of the modern Python neuroimaging stack taught by the people who maintain it. Attendance is selective and capped at a few dozen participants; check the current year's page for whether travel support is offered, as it varies with funding. Assumes some programming background.
+
 ### [Neuromatch Academy](https://neuromatch.io/courses/)
 
 `Freemium, application` · beginner 4/5 · computational neuroscience curriculum
@@ -603,6 +845,16 @@ A global network of hackathon-style neuroimaging events combining hands-on proje
 **Access.** Find a local or virtual event on brainhack.org, register (most local Brainhacks are free or nominal cost), and join a project — projects are proposed openly in advance on GitHub, and remote participation is normal.
 
 **Caveats.** Local event costs, dates and virtual options are set by each organiser, so confirm on the specific event page; the site's event listings can lag the current season. Most useful if you arrive with a concrete question or a dataset — passive attendance gets much less out of it than joining a project.
+
+### [ManyBabies](https://manybabies.org/)
+
+`Free, email` · beginner 3/5 · distributed developmental research network
+
+The developmental-psychology counterpart to the Psychological Science Accelerator: a consortium running large multi-lab replication and best-practice projects (MB1-MB9, plus MB-AtHome, MB-Demographics and ManyManys). MB1 alone pooled 69 labs in 16 countries testing 2,329 infants aged 3-15 months on infant-directed speech preference.
+
+**Access.** Join free through the Get Involved pages — the site states explicitly that access to an infant lab is not required, and there is contributor work in analysis, translation, coding and methods. Protocols, data, analysis code and materials are archived openly on OSF (e.g. osf.io/re95x for MB1) with walkthrough videos on Databrary.
+
+**Caveats.** For a researcher with no infant lab, the open MB datasets are directly reusable and the network is a realistic route to authorship on large-sample developmental work. Contributing data still needs local ethics approval and participant access. It is volunteer-run: projects run on multi-year timescales, and committee and coding work is a real commitment before authorship credit.
 
 ### [Neurostars](https://neurostars.org/)
 

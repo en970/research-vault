@@ -114,7 +114,7 @@ Free, open-source reference manager from the nonprofit Corporation for Digital S
 
 **Caveats.** The software is free and unlimited forever; only cloud file storage is metered — 300 MB free, then $20/year for 2 GB, $60/year for 6 GB, $120/year for unlimited. Two ways around this entirely: sync metadata only (unlimited and free) and keep PDFs local, or point file syncing at your own WebDAV server. Group library files draw on the group owner's quota. Beyond citation formatting, Zotero is the practical hub of a no-institution workflow: it stores the PDFs you legally obtain, and its saved searches and RSS reader make it a discovery tool as well.
 
-*Also listed under: physics, humanities, workflow-tools.*
+*Also listed under: physics, mathematics, humanities, workflow-tools.*
 
 ## Literature
 
@@ -352,7 +352,7 @@ Open catalogue of the scholarly record run by the OurResearch nonprofit: 322,147
 
 **Caveats.** IMPORTANT CHANGE: the API is now metered in dollars, not calls. A free account key gets $1 of usage per day (resets midnight UTC); with no key you get $0.10/day. Rates: single-entity lookups by ID or DOI are free and unlimited; list+filter $0.10 per 1,000 calls; keyword or semantic search $1 per 1,000 calls; cached PDF download $10 per 1,000. So $1/day buys roughly 10,000 filter calls (1M results) or ~1,000 searches or 100 PDFs. Browsing openalex.org draws on the same budget (~1.8x costlier per search than a direct API call). Overflow needs prepaid credit in $1 increments (expires after 3 months) or an annual plan (Member $5,000/yr, Member+ $10,000/yr, Partner from $20,000/yr). The data itself stays CC0 and the whole snapshot remains a free download — only serving and freshness are billed. The snapshot is quarterly, so it lags the live API by up to three months.
 
-*Also listed under: physics, chemistry, neuro-psych, social, publishing.*
+*Also listed under: physics, chemistry, medicine, mathematics, cs-ml, neuro-psych, social, publishing.*
 
 ### [OSF Preprints](https://osf.io/preprints/)
 
@@ -398,7 +398,7 @@ Public-private partnership giving institutions in eligible low- and middle-incom
 
 **Caveats.** This is an institutional programme, not an individual one — an unaffiliated researcher cannot register alone, and a researcher at an eligible institution that has not registered gets nothing until a librarian applies. Eligibility is determined by country group, so a poorly resourced institution in a high-income country is excluded entirely. Group A countries get free access; Group B institutions pay an annual fee. The same Group A/B lists are reused by many publishers to set APC waivers, so knowing your country's group is worth doing. Their website is behind a bot filter that blocked automated verification of current title counts, so I have not quoted any.
 
-*Also listed under: medicine, social, publishing.*
+*Also listed under: chemistry, medicine, social, publishing.*
 
 ### [ResearchGate](https://www.researchgate.net)
 
@@ -522,7 +522,7 @@ CERN-hosted open repository holding 7,191,588 records as of 2026-08-28. Accepts 
 
 **Caveats.** The default answer to 'where do I put this so it has a permanent identifier and someone can cite it' when you have no institutional repository. Anyone can deposit, so Zenodo carries no quality signal — that is a feature for self-archiving and a caveat for readers. Check your publisher's self-archiving policy (Open Policy Finder) before depositing an accepted manuscript; ShareYourPaper automates that check and deposits into Zenodo for you.
 
-*Also listed under: physics, mathematics, cs-ml, social, compute, publishing, workflow-tools.*
+*Also listed under: physics, chemistry, mathematics, cs-ml, social, compute, publishing, workflow-tools.*
 
 ## Funding
 

@@ -62,6 +62,8 @@ Layer over git and git-annex for version-controlling arbitrarily large files and
 
 **Caveats.** git-annex must be installed separately and is the main friction on Windows and macOS. The conceptual load is higher than DVC's; the free DataLad Handbook is the practical entry point. Used to distribute large neuroimaging collections (e.g. OpenNeuro datasets).
 
+*Also listed under: neuro-psych.*
+
 ### [Docker (Engine and Desktop)](https://docs.docker.com/desktop/)
 
 `Freemium` · beginner 2/5 · containers
@@ -134,7 +136,7 @@ Free and open statistics package with a spreadsheet interface designed to be fam
 
 **Caveats.** The desktop app is the free route; jamovi Cloud (browser version) has paid tiers. Module quality varies because modules are community-contributed R wrappers — check the underlying package and cite it.
 
-*Also listed under: social.*
+*Also listed under: medicine, social.*
 
 ### [JASP](https://jasp-stats.org/)
 
@@ -168,7 +170,7 @@ Open-source data-collection platform built for fieldwork: XLSForm-based question
 
 **Caveats.** The free plan enforces monthly submission, storage and transcription/translation limits (they have been tightened over time — check the current pricing page before planning a large study). Exceeding limits blocks new submissions, and storage over the limit for more than 90 days leads to deletion of media attachments, though not of submissions. Self-hosting the open-source stack removes the caps but requires Docker and sysadmin time.
 
-*Also listed under: social.*
+*Also listed under: medicine, social.*
 
 ### [LanguageTool](https://languagetool.org/)
 

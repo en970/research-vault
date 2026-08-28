@@ -77,7 +77,9 @@
       "beginner": 2,
       "notes": "git-annex must be installed separately and is the main friction on Windows and macOS. The conceptual load is higher than DVC's; the free DataLad Handbook is the practical entry point. Used to distribute large neuroimaging collections (e.g. OpenNeuro datasets).",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "neuro-psych"
+      ]
     },
     {
       "name": "Docker (Engine and Desktop)",
@@ -178,6 +180,7 @@
       "notes": "The desktop app is the free route; jamovi Cloud (browser version) has paid tiers. Module quality varies because modules are community-contributed R wrappers — check the underlying package and cite it.",
       "canonical": true,
       "also_in": [
+        "medicine",
         "social"
       ]
     },
@@ -225,6 +228,7 @@
       "notes": "The free plan enforces monthly submission, storage and transcription/translation limits (they have been tightened over time — check the current pricing page before planning a large study). Exceeding limits blocks new submissions, and storage over the limit for more than 90 days leads to deletion of media attachments, though not of submissions. Self-hosting the open-source stack removes the caps but requires Docker and sysadmin time.",
       "canonical": true,
       "also_in": [
+        "medicine",
         "social"
       ]
     },

@@ -1,10 +1,10 @@
 # Computer science & machine learning
 
-Part of [research-vault](../README.md). 61 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 77 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (10) · [Software](#software) (16) · [Literature](#literature) (9) · [Compute](#compute) (3) · [Publishing](#publishing) (5) · [Funding](#funding) (4) · [Learning](#learning) (9) · [Community](#community) (5)
+**Contents:** [Data](#data) (12) · [Software](#software) (18) · [Literature](#literature) (13) · [Compute](#compute) (6) · [Publishing](#publishing) (6) · [Funding](#funding) (4) · [Learning](#learning) (12) · [Community](#community) (6)
 
 ## Data
 
@@ -42,7 +42,7 @@ Deduplicated, filtered English web corpus of 25.9 billion documents built from 1
 
 `Free (registration), email` · beginner 4/5 · general ML dataset repository
 
-1,022,008 public datasets as of 2026-08-28, spanning text, image, audio, video and tabular ML, most auto-converted to Parquet with a browsable row-level viewer. The single largest general-purpose ML dataset host.
+1,022,357 public datasets as of 2026-08-28, spanning text, image, audio, video and tabular ML, most auto-converted to Parquet with a browsable row-level viewer. The single largest general-purpose ML dataset host.
 
 **Access.** pip install datasets; then load_dataset('HuggingFaceFW/fineweb', 'sample-10BT', streaming=True) — streaming avoids downloading terabytes. Browsing and most downloads work without an account.
 
@@ -88,6 +88,16 @@ Open platform pairing datasets with standardised 'tasks' (a dataset plus a fixed
 
 **Caveats.** This is an index of URLs, not images — link rot means a meaningful fraction no longer resolve, and downloading billions of images is not a laptop-scale job. The original LAION-5B was withdrawn entirely in December 2023 after Stanford's safety report; cite Re-LAION-5B specifically, and expect ethics review scrutiny for any work using it. The safety cleaning targeted known CSAM hashes only, not the wider NSFW/bias problems the corpus is known to have.
 
+### [Software Heritage](https://archive.softwareheritage.org/)
+
+`Free` · beginner 3/5 · universal source code archive
+
+Archive of publicly available source code with full development history: 438,895,010 origins, 29,438,032,436 unique file contents and 6,092,456,393 revisions as of 2026-08-28 (live counters API). It is the upstream from which BigCode built The Stack v2, and the standard way to cite code that has since disappeared from GitHub.
+
+**Access.** Web browse and search at archive.softwareheritage.org; unauthenticated REST API at https://archive.softwareheritage.org/api/1/ (e.g. /api/1/origin/search/<query>/); 'Save Code Now' archives a repository on demand; every artifact gets a permanent SWHID identifier you can put in a paper.
+
+**Caveats.** Reading and the REST API are free and keyless, but the web front end sits behind bot-protection that blocks scripted clients, and heavy API use needs a (free) token. Bulk access to the full graph and file contents is a separate arrangement with Software Heritage/INRIA rather than an open download — the same gate The Stack v2 entry describes. The archive preserves code under its original licences; archiving is not relicensing.
+
 ### [The Stack v2](https://huggingface.co/datasets/bigcode/the-stack-v2)
 
 `Free (registration), email` · beginner 2/5 · source-code corpus
@@ -107,6 +117,16 @@ Open platform pairing datasets with standardised 'tasks' (a dataset plus a fixed
 **Access.** pip install ucimlrepo; from ucimlrepo import fetch_ucirepo; iris = fetch_ucirepo(id=53) returns pandas frames. Direct CSV download also works from each dataset page.
 
 **Caveats.** Datasets are mostly tiny and old; several classics (e.g. Iris, Boston Housing) carry known measurement or fairness problems and should not be used to make substantive empirical claims. Licences vary per dataset and some are only 'cite this paper'.
+
+### [Wikimedia Dumps](https://dumps.wikimedia.org/)
+
+`Free` · beginner 3/5 · encyclopedic text corpus
+
+Complete monthly snapshots of every public Wikimedia wiki — Wikipedia in ~300 languages plus Wiktionary, Wikisource and others — as MediaWiki Content File Exports (wikitext plus metadata) and raw SQL table dumps. The cleanest openly licensed large text corpus, and a standard component of every open pretraining mix.
+
+**Access.** Direct download over HTTPS from dumps.wikimedia.org (start at /<wiki>/latest/, e.g. /enwiki/latest/); mirrors are listed for large pulls. Prebuilt parsed versions (wikimedia/wikipedia) are on the Hugging Face Hub if you would rather not run a wikitext parser.
+
+**Caveats.** Downloads are rate limited to 3 connections per IP and the Wikimedia Foundation User-Agent policy is enforced — set a descriptive User-Agent with contact details or you will be blocked. The older XML database backup dumps are now deprecated in favour of the Content File Exports. Bulk rendered HTML is not free: it is sold through Wikimedia Enterprise. Content is CC BY-SA (some CC0/public-domain), so share-alike obligations follow derivatives.
 
 ## Software
 
@@ -134,7 +154,7 @@ The maintained fork of OpenAI Gym, now the de facto RL API standard, curated by 
 
 `Free` · beginner 4/5 · pretrained model library
 
-Uniform loading, fine-tuning and inference API over the 3,028,707 models on the Hub (count as of 2026-08-28), covering text, vision, audio and multimodal architectures, with PyTorch as the primary backend.
+Uniform loading, fine-tuning and inference API over the 3,029,448 models on the Hub (count as of 2026-08-28), covering text, vision, audio and multimodal architectures, with PyTorch as the primary backend.
 
 **Access.** pip install transformers; from transformers import pipeline; pipe = pipeline('text-generation', model='Qwen/Qwen3-8B'). Companion packages: datasets (data), accelerate (multi-GPU/mixed precision), peft (LoRA/QLoRA), trl (SFT/DPO).
 
@@ -200,6 +220,16 @@ Ai2's 7B and 32B models (Base, Instruct and Think variants, released 2025) shipp
 
 **Caveats.** Apache-2.0 weights, with Ai2's Responsible Use Guidelines attached. This is the only major model family where you can actually audit and re-run the data pipeline, which makes it the right choice for data-attribution, memorisation and training-dynamics research. The pretraining corpus Dolma is ODC-BY; earlier Dolma v1 was 3 trillion tokens.
 
+### [Optuna](https://optuna.org/)
+
+`Free` · beginner 4/5 · hyperparameter optimisation
+
+Framework-agnostic hyperparameter optimisation library with define-by-run search spaces (ordinary Python conditionals and loops), pruning of unpromising trials, and parallel search across threads or processes without code changes. Requires Python 3.9 or newer.
+
+**Access.** pip install optuna; def objective(trial): x = trial.suggest_float('x', -10, 10); return (x-2)**2 — then study = optuna.create_study(); study.optimize(objective, n_trials=100); study.best_params. optuna-dashboard visualises studies; storage in SQLite or a database makes runs resumable and distributed.
+
+**Caveats.** MIT-licensed and entirely local — no account, no hosted service, no telemetry. Worth pairing with MLflow or Aim for logging, since Optuna stores trials but is not an experiment tracker. Its defaults (TPE sampler, median pruner) are good enough that reporting a tuned baseline costs little, which matters when reviewers ask whether your gain survives hyperparameter search.
+
 ### [Pythia scaling suite](https://huggingface.co/EleutherAI/pythia-6.9b)
 
 `Free` · beginner 3/5 · interpretability model suite
@@ -264,11 +294,21 @@ High-throughput LLM inference and serving engine built on PagedAttention for KV-
 
 `Free tier, email` · beginner 4/5 · hosted experiment tracking
 
-Hosted experiment tracking, sweeps and artifact lineage. The free personal tier includes 5 GB/month storage, 1 GB/month Weave ingestion and up to 5 model seats; a separate free academic licence grants Pro features with 200 GB storage and up to 100 seats.
+Hosted experiment tracking, sweeps and artifact lineage. The free personal tier includes 5 GB/month storage and 1 GB/month Weave ingestion with unlimited seats for personal development; a separate free academic licence grants Pro features with 200 GB storage, 25 GB/month Weave ingestion and up to 100 seats.
 
 **Access.** pip install wandb; wandb login; wandb.init(project='x'); wandb.log({'loss': l}). Sweeps are declared in YAML and run with wandb agent.
 
-**Caveats.** The generous academic tier requires an institutional email address — precisely the thing unaffiliated researchers do not have, so they are held to the 5 GB/month free tier. Overages are billed ($0.03/GB storage). Self-hosting is offered only as a single-seat 'personal' server explicitly barred from corporate use. If you need a free multi-user or fully offline setup, use MLflow or Aim.
+**Caveats.** The generous academic tier requires an institutional email address — precisely the thing unaffiliated researchers do not have, so they are held to the 5 GB/month free tier. Overages are billed at $0.03/GB for storage and $0.10/MB for Weave data ingestion, which is the one that surprises people. Self-hosting is offered only as a single-seat 'personal' server explicitly barred from corporate use. If you need a free multi-user or fully offline setup, use MLflow or Aim.
+
+### [XGBoost](https://xgboost.readthedocs.io/en/stable/)
+
+`Free` · beginner 4/5 · gradient-boosted decision trees
+
+Distributed gradient-boosting library, version 3.4.1 (released 2026-08-14), with bindings for Python, R, JVM, Julia, C, C++, Ruby and Swift, a scikit-learn-compatible estimator interface, GPU training, and distributed backends for Dask, Spark, Ray and Kubernetes. Still the default strong baseline on tabular data.
+
+**Access.** pip install xgboost; from xgboost import XGBClassifier; XGBClassifier(tree_method='hist', device='cuda').fit(X, y) — drop-in for sklearn pipelines and cross_val_score. R: install.packages('xgboost').
+
+**Caveats.** Apache-2.0. On tabular problems this and its siblings LightGBM and CatBoost routinely beat neural networks, so a paper claiming a deep model wins on tabular data needs a tuned boosting baseline to be credible — pair it with Optuna. Scales to billions of rows, but a single GPU or a laptop CPU covers most academic tabular datasets.
 
 ## Literature
 
@@ -291,6 +331,26 @@ Nearly 2.4 million e-prints; cs.LG, cs.CL, cs.CV and stat.ML are where essential
 **Access.** Web, daily listing emails, RSS per category, or the OAI-PMH and arXiv APIs (pip install arxiv for a Python client). Bulk full text is available via the requester-pays S3 bulk-access buckets.
 
 **Caveats.** Posting a first submission to a cs category requires endorsement by an existing arXiv author — the main friction for an unaffiliated first-time author; ask a collaborator or an author you have corresponded with. Since 2025-10-31, review articles and position papers in cs categories are only accepted if already peer-reviewed, with a journal reference and DOI supplied at submission. No peer review, so quality varies enormously.
+
+### [Cryptology ePrint Archive](https://eprint.iacr.org/)
+
+`Free, email` · beginner 4/5 · preprint archive (cryptography and security)
+
+IACR's preprint archive for cryptology, holding 27,529 papers from 1996 to 2026 (2,337 posted in 2025 and 1,822 in the first eight months of 2026). For cryptography this, not arXiv, is where results appear first — including most work on secure computation, zero-knowledge and privacy-preserving ML.
+
+**Access.** Free browse and full-text search; listings by year and by category (foundations, protocols, implementation, attacks and cryptanalysis, public-key, secret-key, applications). Metadata harvesting is supported for bulk work; authors submit and revise directly through the site.
+
+**Caveats.** Reading needs nothing; submitting needs an account and papers pass only a basic scope and quality check, not peer review — quality varies and withdrawn/broken results do appear. Papers are versioned and never silently replaced. The archive deliberately sets no cookies and embeds no third-party content, which makes it unusually safe to browse from restricted networks.
+
+### [CVF Open Access](https://openaccess.thecvf.com/menu)
+
+`Free` · beginner 5/5 · open conference proceedings (computer vision)
+
+Computer Vision Foundation's free archive of CVPR (2013-2026, including the new Findings track introduced at CVPR 2026), ICCV (2013-2025) and WACV (2020-2026) main conferences plus all their workshops. Papers are identical to the accepted versions except for a watermark; copyright stays with the authors.
+
+**Access.** Direct browse and PDF download per conference; each paper page carries the PDF, supplementary material and BibTeX, and per-year 'all papers' index pages make bulk metadata collection straightforward. No account, no paywall.
+
+**Caveats.** This is the missing vision counterpart to the ACL Anthology, PMLR and NeurIPS entries already in this list. ECCV is NOT here — it is published through ECVA (ecva.net) and Springer. The 'final published version' of CVPR/ICCV/WACV lives on IEEE Xplore behind a paywall, so cite the CVF version for open access but check the venue's preferred citation format.
 
 ### [DBLP](https://dblp.org/)
 
@@ -332,6 +392,16 @@ Complete free archive of Advances in Neural Information Processing Systems from 
 
 **Caveats.** The archive is the camera-ready record only; reviews and rebuttals for recent years live on OpenReview instead. Supplementary archives can be large, so fetch selectively.
 
+### [OpenAlex](https://openalex.org/)
+
+`Free tier, api-key` · beginner 3/5 · open bibliographic database
+
+Fully open index of scholarly work: 322,147,582 works, 126,053,818 authors, 255,810 sources and 136,136 institutions as of 2026-08-28 (live API counts), all released CC0 with no licence restrictions. The open successor to Microsoft Academic Graph and the free alternative to Scopus/Web of Science.
+
+**Access.** REST at https://api.openalex.org/works?filter=publication_year:2026,is_oa:true — works with no key. Free account gives an api_key with 10x the keyless daily budget; pip install pyalex wraps it. Full CC0 data snapshots are downloadable for local analysis.
+
+**Caveats.** Important 2026 change: the data is free but serving it is metered. Every account gets $1 of API usage per day free; beyond that it is pay-as-you-go or an annual plan. A hard 100 requests/second cap and per-query limits apply (max 100 per_page, 100 OR values per filter, 10,000 basic paging depth — use cursor paging past that). Casual keyless browsing still works. Metadata quality is broader but noisier than Semantic Scholar's; author disambiguation errors are common and user-fixable.
+
 ### [OpenReview](https://openreview.net/)
 
 `Free` · beginner 4/5 · open peer review archive
@@ -346,7 +416,7 @@ Nonprofit submission and review platform used by ICLR, NeurIPS, TMLR, ACL Rollin
 
 `Free` · beginner 4/5 · open conference proceedings
 
-339+ volumes from 2007 to 2026 carrying the official proceedings of ICML, AISTATS, COLT, UAI, CoRL and many workshops; every paper is a free PDF and authors retain copyright. ISSN 2640-3498.
+339 numbered volumes as of 2026-08-28 (the newest is Volume 339, RAISE 2026) carrying the official proceedings of ICML, AISTATS, COLT, UAI, CoRL and many workshops, plus reissued older volumes going back to AISTATS 1995; every paper is a free PDF and authors retain copyright. ISSN 2640-3498.
 
 **Access.** Browse by volume; each paper page has PDF, supplementary material and BibTeX. Volume metadata is published as machine-readable files in the PMLR GitHub repos.
 
@@ -362,7 +432,39 @@ Programmatic access to 214 million papers, 2.49 billion citations and 79 million
 
 **Caveats.** Unauthenticated calls share a single global pool that is heavily throttled during busy periods; a key is effectively required for anything beyond casual use, and introductory keyed limits start around 1 request/second. S2ORC full text covers open-access papers only. Key approval is manual and can take days.
 
+### [USENIX Proceedings](https://www.usenix.org/publications/proceedings)
+
+`Free` · beginner 4/5 · open proceedings (systems and security)
+
+Free full proceedings and per-paper PDFs for USENIX conferences — OSDI, NSDI, FAST, ATC, USENIX Security, SOUPS, LISA and others — the primary venues for systems, storage, networking and security research that ML infrastructure work is published in.
+
+**Access.** Search all papers at usenix.org/publications/proceedings, or go to a conference's 'Technical Sessions' page for the full-proceedings PDF plus per-paper PDF, slides, and presentation video. No membership or account needed to read.
+
+**Caveats.** Papers are open to registered attendees first and to everyone on the conference's publication date (USENIX Security '25 papers opened to all on 2025-08-13), so the very newest accepted papers can be embargoed for weeks — abstracts are public immediately. Copyright is retained by the authors. Attending or presenting still costs registration; only the archive is free.
+
 ## Compute
+
+### [ACCESS (Advanced Cyberinfrastructure Coordination Ecosystem)](https://allocations.access-ci.org/)
+
+`Free, application` · beginner 2/5 · national HPC and GPU allocations (US)
+
+NSF-funded allocation system for US national supercomputers, at no cost to the researcher, with four project tiers: Explore (400,000 ACCESS credits), Discover (1,500,000), Accelerate (3,000,000) and Maximize (awarded directly in resource units). More than 4,000 researchers run over 2.5 million jobs a month across ~2,000 projects.
+
+**Access.** Create an ACCESS account, then submit a request at allocations.access-ci.org: Explore needs a 1-page proposal and is accepted any time, Discover a 3-page, Accelerate a 10-page (all reviewed for eligibility/suitability), Maximize a panel-reviewed proposal accepted every 6 months. Credits are then exchanged for time on specific resources (GPU systems included).
+
+**Caveats.** The hard gate is affiliation: your account's email must match your institutional affiliation and free webmail domains (gmail.com, yahoo.com) are explicitly prohibited, so a fully unaffiliated researcher cannot be a PI. Work does not need to be grant-funded, and graduate-student projects and classroom use are explicitly welcome at the Explore tier. Explore is the right starting point — you can upgrade later.
+
+*Also listed under: chemistry.*
+
+### [Google Colab](https://colab.research.google.com/)
+
+`Free tier, email` · beginner 5/5 · free hosted GPU/TPU notebooks
+
+Hosted Jupyter notebooks with free-of-charge access to GPUs and TPUs; on the free version notebooks run for at most 12 hours and GPU access is, in Google's own words, 'heavily restricted' and not guaranteed. It is the default runtime that fast.ai, d2l.ai, Karpathy's lectures and most Hugging Face course chapters launch into.
+
+**Access.** Open any .ipynb at colab.research.google.com with a Google account, then Runtime > Change runtime type > T4 GPU / TPU. !pip install works per session; from google.colab import drive; drive.mount('/content/drive') persists files. Any GitHub notebook opens via colab.research.google.com/github/<owner>/<repo>/blob/<branch>/<path>.
+
+**Caveats.** Resources are explicitly not guaranteed and usage limits fluctuate; Google prioritises users actively typing in a notebook. VMs are deleted when idle and everything outside Drive is lost with them. The free tier bans SSH/remote desktops, interacting primarily through a non-notebook web UI, and running distributed-computing workers — accounts doing these can be terminated without warning. Pro/Pro+/Pay-As-You-Go buy compute units and better availability, not a guaranteed machine.
 
 ### [Hugging Face ZeroGPU Spaces](https://huggingface.co/docs/hub/spaces-zerogpu)
 
@@ -373,6 +475,16 @@ Dynamically allocated NVIDIA RTX Pro 6000 Blackwell GPUs (48 GB half-card defaul
 **Access.** Select ZeroGPU hardware in Space settings, then decorate GPU functions: import spaces; @spaces.GPU(duration=120). Free personal accounts in good standing (verified email, account older than 30 days) can host up to 2 ZeroGPU Spaces.
 
 **Caveats.** This is demo and short-inference compute, not training compute — the default per-call runtime is 60 seconds and the free daily budget is 5 minutes of GPU time, resetting 24 hours after first use. Gradio SDK only; torch.compile is unsupported (use ahead-of-time compilation); PyTorch 2.8+ required. Remaining quota determines queue priority, so free accounts wait longest.
+
+### [Kaggle Notebooks](https://www.kaggle.com/code)
+
+`Free tier, email` · beginner 5/5 · free GPU/TPU notebook sessions
+
+Free hosted Jupyter sessions with NVIDIA GPU (2x T4 or P100) and TPU accelerators on a weekly quota, wired directly into Kaggle's dataset and competition platform so any public dataset mounts read-only in one click. The companion compute to the Kaggle Datasets entry already in this list.
+
+**Access.** Web interface at kaggle.com/code — 'New Notebook', then Settings > Accelerator > GPU T4 x2 / TPU VM. Add data with 'Add Input' (search any Kaggle dataset or competition); outputs persist to /kaggle/working and can be published as a dataset or notebook version.
+
+**Caveats.** The published quota is roughly 30 GPU-hours and 20 TPU-hours per week (resetting weekly) with a 12-hour maximum session, but Kaggle bot-walls its docs pages to automated fetches, so I could not re-verify those figures against the live documentation on 2026-08-28 — read your current allowance from the session sidebar in the notebook editor, which is authoritative. Phone verification is required before accelerators and internet access are enabled. Idle sessions are killed; only /kaggle/working survives a commit.
 
 ### [NAIRR Pilot](https://nairrpilot.org/)
 
@@ -405,6 +517,16 @@ Centralised two-month reviewing cycles for the ACL family; you submit once, rece
 **Access.** Submit through OpenReview at the cycle deadline listed on aclrollingreview.org/dates; if not committed, resubmit to a later cycle with the previous reviews attached.
 
 **Caveats.** No submission fee, and the resulting papers land in the free ACL Anthology. Conference registration to present is a separate and substantial cost — ACL offers reduced rates and some volunteer/registration support, but budget for it before committing. Cycle deadlines are strict; check the dates page rather than assuming a fixed month.
+
+### [Dagstuhl LIPIcs](https://drops.dagstuhl.de/entities/series/LIPIcs)
+
+`Free` · beginner 3/5 · diamond open-access proceedings (theoretical CS)
+
+Leibniz International Proceedings in Informatics (ISSN 1868-8969), published by Schloss Dagstuhl, carrying peer-reviewed open-access proceedings for ~60 conference series including ICALP, CCC, ITCS, SoCG, ESA, STACS, CONCUR, DISC, ECOOP, SAT, MFCS and APPROX/RANDOM. Volume 391 (CONCUR 2026) is among the most recent.
+
+**Access.** All volumes are free PDFs on DROPS with per-paper BibTeX and DOIs; an OAI interface and Schema.org export support bulk metadata collection, and every paper is indexed in DBLP. Authors publish by having a paper accepted at a participating conference and following the LIPIcs LaTeX class.
+
+**Caveats.** No author-facing APC: LIPIcs charges 'moderate fees for the conference organizers', which venues fold into registration — so nothing is billed to you, but you cannot submit here independently, only via a participating conference. This fills the theory/algorithms hole in a list that is otherwise entirely ML: nothing else here covers ICALP/SoCG/ITCS-style work.
 
 ### [Journal of Machine Learning Research (JMLR)](https://jmlr.org/)
 
@@ -520,6 +642,16 @@ Twelve free hands-on courses plus the Open-Source AI Cookbook, covering LLMs, de
 
 **Caveats.** Written against the Hugging Face libraries throughout, so you learn the ecosystem alongside the concepts — good for getting productive fast, less good for framework-independent understanding. Course quality varies: the LLM and Deep RL courses are well maintained; several community-authored ones are patchier and can lag library changes.
 
+### [Mathematics for Machine Learning](https://mml-book.github.io/)
+
+`Free` · beginner 3/5 · mathematical prerequisites textbook
+
+Deisenroth, Faisal and Ong's Cambridge University Press book (April 2020), free as PDF from the companion site. Part I builds linear algebra, analytic geometry, matrix decompositions, vector calculus, probability and continuous optimisation; Part II derives linear regression, PCA, Gaussian mixture models and SVMs from those foundations.
+
+**Access.** Download the PDF from mml-book.github.io (the authors state they will keep PDFs freely available). Exercises with solutions, Jupyter tutorials and errata are in the linked GitHub repository.
+
+**Caveats.** Deliberately short and does not cover advanced ML — its purpose is to make other books readable, so use it as the prerequisite layer under Murphy, Goodfellow or Prince rather than as an ML course. Cite the published CUP edition, not the draft PDF.
+
 ### [Neural Networks: Zero to Hero (Andrej Karpathy)](https://karpathy.ai/zero-to-hero.html)
 
 `Free` · beginner 4/5 · from-scratch implementation course
@@ -550,6 +682,16 @@ Two MIT Press volumes — 'An Introduction' (2022) and 'Advanced Topics' (2023) 
 
 **Caveats.** Assumes comfort with linear algebra, multivariate calculus and probability — this is a reference and a graduate text, not a first course. CC BY-NC-ND on the drafts: no commercial use, no redistributing modifications. Cite the published MIT Press edition, not the draft.
 
+### [Spinning Up in Deep RL](https://spinningup.openai.com/en/latest/)
+
+`Free` · beginner 3/5 · deep reinforcement learning curriculum
+
+OpenAI's educational RL resource: a three-part introduction to RL theory (key concepts, taxonomy of algorithms, policy-gradient derivations), a curated 'Key Papers in Deep RL' reading list, exercises, benchmarks, and short well-documented implementations of VPG, TRPO, PPO, DDPG, TD3 and SAC.
+
+**Access.** Read free online; code at github.com/openai/spinningup, installed with pip from a clone. Each algorithm has a paired docs page and a single-file implementation short enough to read end to end — the point is reading them, not just running them.
+
+**Caveats.** Long-term support only — the code targets the old OpenAI Gym 4-tuple step API and older Python/TensorFlow versions, so expect to port to Gymnasium's 5-tuple (see the Gymnasium entry) before anything runs. MuJoCo benchmarks are optional. The canonical RL textbook, Sutton & Barto's Reinforcement Learning: An Introduction (2nd ed., MIT Press 2018), is free from the authors at incompleteideas.net/book/the-book-2nd.html, but that host serves plain HTTP with a broken TLS certificate, so it is listed here rather than as its own https entry.
+
 ### [Stanford CS224n (NLP with Deep Learning)](https://web.stanford.edu/class/cs224n/)
 
 `Free` · beginner 3/5 · public university course
@@ -570,6 +712,16 @@ Stanford's computer-vision course, most recently offered Spring 2026, with publi
 
 **Caveats.** Only the materials are public — no grading, no credit, no instructor access, and assignment solutions are not published. Video recordings lag the current syllabus by one or more years, so the slides and notes are the current artefact. The NumPy-from-scratch assignments are the single best exercise for understanding backpropagation concretely.
 
+### [The Elements of Statistical Learning](https://hastie.su.domains/ElemStatLearn/)
+
+`Free` · beginner 2/5 · statistical learning textbook
+
+Hastie, Tibshirani and Friedman's 2nd edition (Springer, February 2009), whose full PDF — the corrected 12th printing of January 2017 — is free from the authors' Stanford page. The standard graduate reference for the statistical view of ML: regularisation, trees and boosting, kernels, model assessment, unsupervised learning.
+
+**Access.** Direct download of hastie.su.domains/ElemStatLearn/printings/ESLII_print12.pdf; the same site carries datasets, errata and the 'what's new in the 2nd edition' summary. The gentler companion, An Introduction to Statistical Learning (ISLR/ISLP, with Python labs), is also free at statlearning.com.
+
+**Caveats.** Copyright is held by Springer, who permit the free online PDF — this is a publisher concession, not an open licence, so do not redistribute or remix it. Assumes real statistics and linear-algebra background, and predates deep learning entirely (nothing on transformers, representation learning or modern optimisation). Pair with Understanding Deep Learning for the modern half.
+
 ### [Understanding Deep Learning (Simon Prince)](https://udlbook.github.io/udlbook/)
 
 `Free` · beginner 4/5 · modern textbook with notebooks
@@ -581,6 +733,16 @@ MIT Press textbook whose full draft PDF is free from the author's site, covering
 **Caveats.** Repository materials are CC BY-NC-ND 4.0 — free to read and teach from, but no commercial reuse and no redistributing modified versions. The most current of the free deep-learning textbooks, and the one to prefer over Goodfellow et al. if you need transformers and diffusion covered properly.
 
 ## Community
+
+### [Cohere Labs Open Science Community](https://cohere.com/research/open-science)
+
+`Free, application` · beginner 3/5 · open research collective
+
+Open collaborative research community run by Cohere Labs, bringing together researchers, engineers, linguists and social scientists from 100+ countries to work on published ML research; it is the community that produced the Aya multilingual models and datasets. Membership is by open application, not institutional affiliation.
+
+**Access.** Apply through the form at cohere.com/research/open-science/application, then join the working groups, reading groups and open science talks. Contributions run through public repos and lead to co-authorship on community papers.
+
+**Caveats.** Distinct from the Cohere Labs Scholars Program already in this list: this is an unpaid volunteer community open year-round, not a salaried eight-month position. Like ML Collective, it rewards people who show up consistently on a project rather than those who ask for mentorship up front. Run by a commercial lab, so read the collaboration terms if you care about industry involvement in your work.
 
 ### [Deep Learning Indaba](https://deeplearningindaba.com/)
 

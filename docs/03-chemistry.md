@@ -1,10 +1,10 @@
 # Chemistry & materials science
 
-Part of [research-vault](../README.md). 60 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 83 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (18) · [Software](#software) (14) · [Literature](#literature) (5) · [Compute](#compute) (5) · [Publishing](#publishing) (7) · [Funding](#funding) (3) · [Learning](#learning) (5) · [Community](#community) (3)
+**Contents:** [Data](#data) (24) · [Software](#software) (27) · [Literature](#literature) (8) · [Compute](#compute) (5) · [Publishing](#publishing) (8) · [Funding](#funding) (3) · [Learning](#learning) (5) · [Community](#community) (3)
 
 ## Data
 
@@ -37,6 +37,26 @@ Curated library of Gaussian basis sets and effective core potentials, maintained
 **Access.** Web interface - pick basis set, elements and program format, then paste the block into your input. Also a documented REST API and `pip install basis_set_exchange` for scripted retrieval. The whole library downloads as tar.bz2 or zip.
 
 **Caveats.** Basis sets carry the citation obligations of their original papers; BSE metadata gives you the references and you are expected to cite them. Format converters are good but not infallible - sanity-check the first calculation against a small reference system.
+
+### [BindingDB](https://www.bindingdb.org/)
+
+`Free` · beginner 4/5 · protein-ligand binding affinities
+
+Public database of measured binding affinities (Ki, Kd, IC50, EC50) between drug-like small molecules and protein targets, reporting 3.2 million data points for 1.4 million compounds and 11,500 targets, of which 1.6 million data for 772,000 compounds and 4,800 targets have passed curator review.
+
+**Access.** Web search by target, compound, structural similarity or substructure; a RESTful API under /rwd/servlet/; and free bulk downloads as SDF, TSV and an Oracle/MySQL dump from the Downloads page. No account required.
+
+**Caveats.** Complements ChEMBL rather than duplicating it - BindingDB pulls in US patent and PDB-derived affinities that ChEMBL does not curate, and cross-links to both. Affinities come from heterogeneous assays; IC50 values in particular are not comparable across papers without the assay conditions. Data is free for use with attribution but check the current terms before redistributing a derived database.
+
+### [CAS Common Chemistry](https://commonchemistry.cas.org/)
+
+`Free` · beginner 5/5 · authoritative CAS Registry Number lookup
+
+CAS's open resource giving verified CAS Registry Numbers, systematic and common names, synonyms, structures, InChI/SMILES and basic properties for about 500,000 commonly encountered and regulated substances - the only free, authoritative source for CAS RNs, which are otherwise behind SciFinder.
+
+**Access.** Web search by name, CAS RN, SMILES or InChI, plus a documented public API at https://commonchemistry.cas.org/api/search?q=aspirin and /api/detail?cas_rn=50-78-2 - no key needed.
+
+**Caveats.** Licensed CC BY-NC 4.0, so commercial reuse is not covered - a real constraint if you are building a product. 500,000 substances is a curated slice; CAS's full registry of 165+ million substances stays behind paid CAS products, so uncommon compounds simply will not be there. PubChem is broader but its CAS numbers are depositor-supplied and less reliable, which is exactly why this entry matters.
 
 ### [CCDC Access Structures](https://www.ccdc.cam.ac.uk/structures/)
 
@@ -112,11 +132,21 @@ US DOE database of DFT-computed properties for inorganic crystals and molecules 
 
 *Also listed under: physics.*
 
+### [MolSSI QCArchive](https://qcarchive.molssi.org/)
+
+`Free` · beginner 3/5 · quantum chemistry reference data
+
+MolSSI's distributed compute and database platform for quantum chemistry, hosting a public server of millions of completed single-point, optimisation, torsion-drive and reaction datasets computed with Psi4, PySCF, Q-Chem, Terachem and others - the reference data behind the Open Force Field parameterisations. Client package qcportal 0.70 (2026-08-17), BSD-3-Clause.
+
+**Access.** `pip install qcportal`, then `from qcportal import PortalClient; c = PortalClient('https://api.qcarchive.molssi.org'); c.list_datasets()` - read access is anonymous. QCFractal lets you stand up your own server for a group's calculations.
+
+**Caveats.** Anonymous read is fine; submitting compute to the public server needs credentials from MolSSI. The data model (datasets, records, specifications) takes some reading before queries feel natural - start from the QCPortal tutorials. Useful mainly if you need consistent, reproducible reference energies rather than experimental values; check the method and basis of each dataset before pooling.
+
 ### [NIST Chemistry WebBook (SRD 69)](https://webbook.nist.gov/chemistry/)
 
 `Free` · beginner 5/5 · evaluated thermochemistry and spectra
 
-NIST Standard Reference Database 69: critically evaluated thermochemical data for neutral species, ions and clusters, thermophysical fluid properties, gas- and condensed-phase IR, mass spectra with retention indices, UV/Vis spectra, vibrational and electronic energy levels, ion energetics, Henry's law constants and diatomic constants. Data last updated 2025; DOI 10.18434/T4D303.
+NIST Standard Reference Database 69: critically evaluated thermochemical data for neutral species, ions and clusters, thermophysical fluid properties, gas- and condensed-phase IR, mass spectra with retention indices, UV/Vis spectra, vibrational and electronic energy levels, ion energetics, Henry's law constants and diatomic constants. The site's own footer reads 'Last update to the site: March, 2025'; DOI 10.18434/T4D303.
 
 **Access.** Web interface only - search by name, formula, IUPAC identifier, CAS number or structure, then read tables and spectra per species.
 
@@ -134,9 +164,9 @@ Open web NMR database for organic structures: 271,817 structures, 70,030 measure
 
 ### [NOMAD](https://nomad-lab.eu/nomad-lab/)
 
-`Free, email` · beginner 3/5 · computational materials archive
+`Free` · beginner 3/5 · computational materials archive
 
-Open repository for raw and normalised computational materials data: 19,425,275 uploaded entries covering 4,346,100 distinct materials and 129.3 TB of files, parsed from more than 60 simulation-code output formats. Its OPTIMADE endpoint reports 18,836,371 structures.
+Open repository for raw and normalised computational materials data: 19,425,275 uploaded entries covering 4,346,100 distinct materials and 129.3 TB of files, parsed from more than 80 simulation-code output formats. Its OPTIMADE endpoint reports 18,836,371 structures.
 
 **Access.** Web search and download, a documented REST API, and OPTIMADE at https://nomad-lab.eu/prod/v1/optimade/v1/structures . Upload your own calculations through the web UI or API; NOMAD Oasis is a self-hosted deployment for a group's own server.
 
@@ -150,7 +180,7 @@ Northwestern's database of DFT-calculated thermodynamic and structural propertie
 
 **Access.** Normally a REST API (https://oqmd.org/oqmdapi/formationenergy), an OPTIMADE endpoint, downloadable full database dumps, and the `qmpy` Python package from github.com/wolverton-research-group/qmpy.
 
-**Caveats.** Honest status check: on 2026-08-28 oqmd.org, its REST API and its OPTIMADE endpoint all returned HTTP 502, so nothing could be verified live. The qmpy codebase was last pushed 2026-06-29 and is clearly maintained, so this reads as a server outage rather than an abandoned project - but if you depend on OQMD, build around the downloadable dumps rather than the live API.
+**Caveats.** Honest status check: on 2026-08-28 oqmd.org, its REST API (/oqmdapi/formationenergy) and its OPTIMADE endpoint were all unreachable - HTTP 502 on first attempt and connection timeouts on re-check later the same day. The qmpy codebase was last pushed 2026-06-29 and is clearly maintained, so this reads as a sustained server outage rather than an abandoned project - but do not build a live-API dependency on OQMD right now; use the downloadable database dumps, or Materials Project and Alexandria for convex-hull screening in the meantime.
 
 *Also listed under: physics.*
 
@@ -164,6 +194,16 @@ Open-access chemical reaction database built for machine learning on reaction pr
 
 **Caveats.** Coverage is uneven: large donated pharma and US-patent datasets dominate, so the reaction-class distribution is skewed and negative results are scarce. The protobuf schema has a real learning curve compared with a CSV of SMILES. The website is a JavaScript app and does not degrade without JS.
 
+### [OpenKIM](https://openkim.org/)
+
+`Free` · beginner 3/5 · interatomic potentials repository
+
+NSF-funded curated repository of conventional and machine-learned interatomic potentials with a plug-and-play API, hosting roughly 1,531 potentials, 40 model drivers, 220,789 tests and 135,220 computed reference material properties, each model verified and benchmarked against known properties.
+
+**Access.** No account needed to browse or download. In LAMMPS use `kim init <model-name> metal` and `kim interactions`; in Python `pip install kimpy ase` then the ASE KIM calculator. Also works from DL_POLY, GULP, QUIP and pyiron.
+
+**Caveats.** The sweep's LAMMPS entry says 'the learning curve is in the potential, not the code' but points nowhere for potentials - this is where they live, with published property tests so you can see how a potential behaves for lattice constants, elastic constants and surface energies before you trust it. Individual models carry their own licences (mostly CDDL or LGPL) and their own citations. Verification tests tell you a potential is self-consistent, not that it is right for your system.
+
 ### [OPTIMADE](https://www.optimade.org/)
 
 `Free` · beginner 3/5 · federated materials query API
@@ -173,6 +213,16 @@ Common REST API and filter language that lets one query run unchanged against ma
 **Access.** `pip install optimade` for client and validator tools, or query any endpoint directly, e.g. https://www.crystallography.net/cod/optimade/v1/structures?page_limit=5 . Machine-readable provider list at https://providers.optimade.org/providers.json .
 
 **Caveats.** Implementations differ in completeness: some providers expose only the mandatory structure fields, provider-specific fields are prefixed and non-portable, and some endpoints return nothing useful. Verified live on 2026-08-28: Materials Project 154,387 structures, COD 534,832, NOMAD 18,836,371, Alexandria (PBE) 5,779,351; AFLOW and JARVIS returned 0 on an unfiltered count and OQMD was down.
+
+### [PseudoDojo](https://www.pseudo-dojo.org/)
+
+`Free` · beginner 3/5 · plane-wave pseudopotentials
+
+Curated, systematically validated pseudopotential tables covering H through Og in norm-conserving scalar-relativistic and fully-relativistic ONCVPSP flavours (v0.3-v0.5), NC SR 3+, and PAW (JTH 1.0/1.1), each at low, normal and high accuracy hints with published delta-gauge and ghost-state test results.
+
+**Access.** Web periodic table - choose flavour, format and accuracy, then download the whole table or a single element as psp8, UPF, PSML or XML for ABINIT, Quantum ESPRESSO, SIESTA or CP2K. Full HTML test reports per element show the validation data.
+
+**Caveats.** The sweep has Basis Set Exchange for Gaussian basis sets but nothing for plane-wave pseudopotentials - this and Materials Cloud's SSSP fill that hole. Never mix pseudopotentials from different tables in one calculation. The recommended cutoff hints are a starting point, not a substitute for your own convergence test. Cite van Setten et al., Comput. Phys. Commun. 226, 39 (2018).
 
 ### [PubChem](https://pubchem.ncbi.nlm.nih.gov/)
 
@@ -194,7 +244,37 @@ Free spectral database run by Japan's National Institute of Advanced Industrial 
 
 **Caveats.** Strictly a per-compound lookup tool - there is no API and no bulk download, and AIST's terms prohibit systematic downloading and redistribution. The interface is an old CGI frameset. Best used as an experimental cross-check on an assignment, not as a training corpus.
 
+### [ZINC (files.docking.org)](https://files.docking.org/)
+
+`Free` · beginner 3/5 · purchasable compound libraries for docking
+
+UCSF Shoichet lab's free distribution of commercially available compounds prepared for virtual screening: ZINC-20/15 collections (2D SMILES, 3D multi-protomer/multi-conformer files for docking, building blocks, vendor catalogues, benchmark sets) and the billion-scale ZINC-22 tranches, all as static downloadable files.
+
+**Access.** Browse and download directly from files.docking.org - no login for the static files. Interactive subset selection and per-molecule lookup run through cartblanche.docking.org and zinc.docking.org (the latter puts a captcha in front of automated clients).
+
+**Caveats.** The file index was last updated 2024-08-13, so check tranche dates against your needs. The site states you may not redistribute major portions without written permission from John Irwin, and gives no guarantee of molecule quality or purchasability - vendor availability drifts. Full ZINC-22 is terabyte-scale; take a tranche by molecular weight and logP band rather than the whole thing. This is the standard source for a docking screen library and there is no free equivalent.
+
 ## Software
+
+### [AiiDA](https://www.aiida.net/)
+
+`Free` · beginner 2/5 · computational workflow manager
+
+MIT-licensed Python workflow engine that submits, monitors and retries high-throughput calculations on Slurm, PBS, SGE, LSF and Torque clusters while recording every input, code and output in a queryable provenance graph. Over 100 community plugins including aiida-quantumespresso, aiida-vasp, aiida-cp2k and aiida-shell for arbitrary executables.
+
+**Access.** `pip install aiida-core`, then `verdi presto` for a zero-config profile, `verdi computer setup` for your cluster, and submit WorkChains from Python. Plugin registry and tutorials at aiida.net.
+
+**Caveats.** Pays for itself only above a few hundred calculations - for ten runs a shell script is faster to write. Real setup cost: a PostgreSQL/RabbitMQ service plus SSH access to your scheduler. It is the engine behind Materials Cloud's curated datasets, so an AiiDA archive is a directly publishable provenance record. Steep concept load (nodes, links, calcjobs, workchains) before the first useful result.
+
+### [AiZynthFinder](https://github.com/MolecularAI/aizynthfinder)
+
+`Free` · beginner 3/5 · retrosynthesis planning
+
+AstraZeneca's open-source retrosynthetic planning tool: Monte Carlo tree search (plus retro* and depth-first options) over neural-network-ranked reaction templates, terminating on a stock file of purchasable building blocks. Public release v4.4.1 (2025-12-09), MIT licence.
+
+**Access.** `pip install aizynthfinder`, then `download_public_data .` to fetch the USPTO-trained expansion policy and a ZINC stock file, and `aizynthcli --config config.yml --smiles "O=C(Nc1ccccc1)c1ccccc1"` or the Jupyter GUI.
+
+**Caveats.** The sweep has the Open Reaction Database as reaction data but no synthesis-planning tool - this is the open counterpart to Reaxys and SciFinder retrosynthesis. The public models are trained on US patent reactions, so routes skew to patent-common chemistry and ignore stereo- and chemoselectivity subtleties; treat output as suggestions for a chemist to triage. Stock files determine what counts as 'solved' - swap in your own supplier catalogue for realistic routes.
 
 ### [ASE (Atomic Simulation Environment)](https://ase-lib.org/)
 
@@ -206,6 +286,16 @@ Python framework for setting up, running, visualising and analysing atomistic si
 
 **Caveats.** ASE only orchestrates - you still need the underlying code installed and, for plane-wave DFT, real compute. Some Calculator interfaces are far better maintained than others; check the calculator's own page before trusting defaults. Governance now sits with an ASE Steering Committee and development is on GitLab.
 
+### [AutoDock Vina](https://vina.scripps.edu/)
+
+`Free` · beginner 3/5 · molecular docking
+
+Open-source protein-ligand docking program from Scripps, Apache-2.0 licensed, the most cited free docking engine. The maintained line is Vina 1.2.x (Eberhardt et al. 2021) with multi-ligand docking, macrocycle sampling and a Python API; AutoDock-GPU covers the GPU-accelerated AutoDock4 scoring function.
+
+**Access.** Download binaries or source from github.com/ccsb-scripps/AutoDock-Vina releases (no registration), then `vina --receptor rec.pdbqt --ligand lig.pdbqt --center_x .. --size_x .. --out out.pdbqt`. Prepare PDBQT inputs with Meeko (`pip install meeko`) or AutoDockTools.
+
+**Caveats.** The 2011 v1.1.2 material on vina.scripps.edu is legacy - take 1.2.x from GitHub. Scoring functions rank poses far better than they predict affinity; treat scores as an enrichment filter, not a binding constant. Input preparation (protonation, tautomers, flexible residues, box placement) is where most published docking errors originate. Cite Eberhardt et al., J. Chem. Inf. Model. 61, 3891 (2021) and Trott and Olson, J. Comput. Chem. 31, 455 (2010).
+
 ### [Avogadro 2](https://two.avogadro.cc/)
 
 `Free` · beginner 5/5 · molecular editor and visualiser
@@ -215,6 +305,26 @@ Free and open-source cross-platform molecular editor and 3D visualiser: build an
 **Access.** Download installers for Windows, macOS and Linux from two.avogadro.cc; plugin scripts add input generators for ORCA, Psi4, Gaussian, NWChem and others.
 
 **Caveats.** The fastest path from 'I have a molecule in mind' to 'I have a sane starting geometry'. Avogadro 1 and Avogadro 2 are separate codebases with different feature sets and some Avogadro 1 features were never ported. Not a replacement for a proper conformer search - pair it with CREST.
+
+### [CCDC Mercury](https://www.ccdc.cam.ac.uk/solutions/software/free-mercury/)
+
+`Free, email` · beginner 5/5 · crystal structure visualisation
+
+CCDC's free crystal structure visualiser and analyser: opens CIF, RES and mol2 files, builds packing diagrams and slices along planes, computes voids and intermolecular contacts, simulates powder XRD patterns from a structure, and exports publication-quality images.
+
+**Access.** Download the free Mercury installer for Windows, macOS or Linux from the CCDC downloads page (an email/account step is used to issue the download), then open a CIF and use Packing/Slicing, Contacts and the Powder Pattern tool.
+
+**Caveats.** Free Mercury is the viewer plus analysis tools; CSD searching, the Materials Module, full-interaction maps and the CSD Python API sit behind a paid CSD-Core licence - the same split as the Access Structures entry. The CCDC website renders client-side and its product pages did not resolve to a plain HTTP fetch on 2026-08-28, so confirm the current free-feature list in a browser before relying on a specific tool. Cite Macrae et al., J. Appl. Cryst. 53, 226 (2020).
+
+### [checkCIF (IUCr)](https://checkcif.iucr.org/)
+
+`Free` · beginner 4/5 · crystallographic data validation
+
+IUCr's free validation service for crystal structure CIFs: checks CIF syntax, cell and geometry consistency, space-group symmetry, displacement parameters, structure factors and possible duplicate structures, returning alerts graded A (serious), B and C. Every crystallography-publishing journal expects a checkCIF report with the submission.
+
+**Access.** Web form at checkcif.iucr.org - upload the CIF, optionally the .fcf structure factors, choose the alert level (A only, A+B, or A+B+C) and get an HTML or PDF report back. No account needed.
+
+**Caveats.** Run it before submission, not after review. Alerts are diagnostics, not verdicts - a level A alert can be legitimate for genuinely unusual chemistry, but you must write a validation response explaining it. The service is a front end to PLATON, so the same checks run locally if you install PLATON. Structure-factor checks only fire if you upload the .fcf.
 
 ### [CP2K](https://www.cp2k.org/)
 
@@ -226,6 +336,16 @@ GPL package for atomistic simulation of solid-state, liquid, molecular, periodic
 
 **Caveats.** The input format is deep and unforgiving for beginners - work from the official exercises and HOWTOs rather than from scratch. Strong on liquids and large periodic systems, less natural than Psi4 or ORCA for isolated-molecule property work.
 
+### [DeepChem](https://deepchem.io/)
+
+`Free` · beginner 3/5 · molecular machine learning
+
+MIT-licensed Python library for deep learning in drug discovery, quantum chemistry, materials science and biology, bundling molecular featurisers (ECFP, graph convolutions, ConvMol, SMILES tokenisers), model implementations, and loaders for standard benchmark datasets including MoleculeNet. Last pushed 2026-08-20; ~7,000 GitHub stars.
+
+**Access.** `pip install deepchem`, then `import deepchem as dc; tasks, datasets, transformers = dc.molnet.load_delaney(featurizer='GraphConv')` and fit one of the bundled models. Tutorials run in Colab with no local install.
+
+**Caveats.** The fastest route from a SMILES column to a validated model, and its scaffold-split utilities push you toward honest evaluation - random splits inflate molecular ML scores badly. The library is broad and unevenly maintained: some models and featurisers are stale, and dependency pinning (TensorFlow vs PyTorch backends) is a recurring install headache. Pair it with RDKit for the chemistry.
+
 ### [FAIR Chemistry (fairchem)](https://fair-chem.github.io/)
 
 `Free (registration), email` · beginner 3/5 · machine-learned interatomic potentials
@@ -235,6 +355,26 @@ Meta FAIR Chemistry's models and datasets for materials and quantum chemistry, i
 **Access.** `pip install fairchem-core`; model weights are pulled from Hugging Face (free account plus licence acceptance), then used as an ASE calculator for relaxations and property prediction.
 
 **Caveats.** Model weights sit behind Hugging Face licence acceptance rather than an unconditional download, and terms differ per model release - read them if your use is commercial. Inference on modest systems is fine on a CPU or a free-tier GPU; fine-tuning is not. The older opencatalystproject.org site is largely superseded by this one.
+
+### [GROMACS](https://www.gromacs.org/)
+
+`Free` · beginner 2/5 · biomolecular and soft-matter molecular dynamics
+
+Free and open-source molecular dynamics engine, the standard code for solvated biomolecules, lipids, polymers and liquids, with heavily hand-tuned SIMD kernels and CUDA/SYCL GPU offload. Version 2026.3 released June 2026 (2026.2 on 2026-05-06); LGPL-2.1.
+
+**Access.** `conda install -c conda-forge gromacs`, or build from source from gitlab.com/gromacs/gromacs; run `gmx pdb2gmx -f protein.pdb`, `gmx grompp -f md.mdp -c conf.gro -p topol.top -o md.tpr`, then `gmx mdrun -deffnm md`. `gmx` also ships ~100 analysis tools.
+
+**Caveats.** The sweep covers LAMMPS (materials MD) but nothing for solvated molecular systems - this is that gap. Force field and water model choice dominates the result, not the code; GROMACS ships AMBER, CHARMM, OPLS-AA and GROMOS ports but you must supply small-molecule parameters yourself (CGenFF, GAFF/acpype, OpenFF). Conda builds are generic and noticeably slower than a source build tuned to your CPU. Justin Lemkul's tutorials are the de facto onboarding path.
+
+### [GSAS-II](https://advancedphotonsource.github.io/GSAS-II-tutorials/)
+
+`Free` · beginner 2/5 · powder diffraction and Rietveld refinement
+
+Open-source Python crystallography package from Argonne National Laboratory for determination of crystal structures and diffraction-based materials characterisation: Rietveld and Le Bail refinement of x-ray and neutron powder data, single-crystal data, sequential and parametric refinements, small-angle scattering and image-plate integration. Documentation built from commit dcd09e, 2026-08-25.
+
+**Access.** Install with the GSAS2MAIN installer (Windows, macOS, Linux), or via pixi or pip; run the GUI, or script refinements headlessly with the `GSASIIscriptable` module. Tutorials with data files are on the project site.
+
+**Caveats.** The sweep has crystal-structure databases and DFT codes but nothing that turns a measured powder pattern into a refined structure - this is that tool, and it is free where TOPAS and HighScore are not. Rietveld refinement is unforgiving: background, peak-shape and preferred-orientation choices can produce a beautiful fit to a wrong model. Work through the official tutorials in order; the interface is functional rather than modern.
 
 ### [LAMMPS](https://www.lammps.org/)
 
@@ -248,6 +388,36 @@ GPL-2 classical molecular dynamics code focused on materials modelling, scaling 
 
 *Also listed under: physics.*
 
+### [MACE](https://github.com/ACEsuit/mace)
+
+`Free` · beginner 4/5 · machine-learned interatomic potentials
+
+Reference implementation of higher-order equivariant message-passing interatomic potentials, plus the widely used foundation models: MACE-MP-0 (89 elements, trained on ~1.6M Materials Project bulk structures, MIT licence) for inorganic materials and MACE-OFF (10 organic elements) for molecules, crystals and liquids.
+
+**Access.** `pip install mace-torch`, then `from mace.calculators import mace_mp; atoms.calc = mace_mp(model='medium', device='cuda')` and drive it with any ASE optimiser or MD engine. Weights download automatically from the mace-foundations releases; `mace_run_train` fine-tunes on your own data.
+
+**Caveats.** Complements the fairchem/UMA entry, and unlike UMA the MACE-MP-0 weights are MIT and need no Hugging Face licence acceptance - the practical default for someone who wants DFT-quality forces on a laptop GPU today. MACE-OFF is released under an Academic Software Licence, so commercial use differs from MACE-MP. Foundation models are trained on PBE-level data and inherit its errors; they extrapolate badly to chemistry absent from training (unusual oxidation states, charged defects, reactive transition states).
+
+### [MDAnalysis](https://www.mdanalysis.org/)
+
+`Free` · beginner 4/5 · trajectory analysis library
+
+Python library that reads, writes and analyses MD trajectories in a common object model across GROMACS, AMBER, NAMD, CHARMM, LAMMPS, DL_POLY and PDB formats, exposing coordinates as NumPy arrays with a text atom-selection language. Release package-2.10.0 (2025-10-17), LGPLv3+ (some parts LGPLv2.1+); NumFOCUS-sponsored.
+
+**Access.** `pip install MDAnalysis`, then `import MDAnalysis as mda; u = mda.Universe('topol.tpr','traj.xtc'); u.select_atoms('protein and name CA').positions`. Analysis modules cover RDF, RMSD/RMSF, hydrogen bonds, contacts and density.
+
+**Caveats.** Frame-by-frame iteration is pure Python and slow on multi-microsecond trajectories - use the parallel backends or MDTraj/`gmx` tools for heavy reductions. Topology readers vary in what metadata they recover, so charges or bonds present in one format may be absent in another. Pin the version: selection and analysis APIs have changed across 1.x to 2.x.
+
+### [Olex2](https://www.olexsys.org/olex2/)
+
+`Free` · beginner 4/5 · small-molecule crystal structure solution and refinement
+
+Integrated environment for small-molecule crystallography - structure solution, least-squares refinement, disorder and restraint handling, and publication CIF/report generation - wrapping SHELXT/SHELXL, olex2.refine and other engines behind one GUI. Official release version 1.5, for Windows, macOS and Linux.
+
+**Access.** Download the installer from olexsys.org (Windows, macOS, Linux) and open your .hkl/.ins or CIF; solve with SHELXT, refine with SHELXL or olex2.refine, then export the CIF straight into checkCIF.
+
+**Caveats.** OlexSys state Olex2 is 'completely free for anyone - industry, academia or students. No catch, no licence fees.' The bundled SHELX binaries carry their own licence terms from the SHELX distributor - academic use is free but registration at shelx.uni-goettingen.de is expected. The sweep listed crystal-structure databases but no refinement software; this plus checkCIF is the working half of that pipeline. It will happily refine a chemically nonsensical model - the software does not replace crystallographic judgement.
+
 ### [Open Babel](https://openbabel.org/)
 
 `Free` · beginner 4/5 · file format conversion
@@ -258,6 +428,16 @@ Chemical file-format translator and toolbox reading and writing over 110 formats
 
 **Caveats.** Format breadth is its strength; perception of aromaticity, bond orders and protonation states is its weakness, and round-tripping through Open Babel can silently change a molecule. Use RDKit for serious cheminformatics and reach for Open Babel when RDKit cannot read the format.
 
+### [OpenMM](https://openmm.org/)
+
+`Free` · beginner 3/5 · GPU molecular dynamics library
+
+MIT/LGPL molecular simulation toolkit driven from Python rather than input files, with custom force expressions evaluated on GPU, and hooks for ML/MM hybrid potentials. Version 8.6.0 released 2026-08-19, adding ReplicaExchangeSampler and ExpandedEnsembleSampler for multistate free-energy work.
+
+**Access.** `conda install -c conda-forge openmm`, then `from openmm.app import *; sim = Simulation(topology, system, integrator); sim.step(10000)`. `python -m openmm.testInstallation` checks which GPU platforms are live.
+
+**Caveats.** The natural host for machine-learned potentials in MD (openmm-torch, openmm-ml) and for alchemical free-energy protocols, which is why it sits alongside rather than under GROMACS. CustomForce expressions are powerful and easy to get subtly wrong - validate energies against a reference implementation. A single consumer GPU gets you real throughput; CPU-only runs are slow.
+
 ### [ORCA](https://www.faccts.de/orca/)
 
 `Free (registration), email` · beginner 3/5 · quantum chemistry (molecular)
@@ -266,7 +446,7 @@ Widely used quantum chemistry package from the Neese group covering semiempirica
 
 **Access.** Register on the ORCA Forum at orcaforum.kofo.mpg.de and download precompiled binaries for Linux, macOS and Windows; run from a plain-text input file. Drivable from ASE, Avogadro or the Python OPI interface.
 
-**Caveats.** Free for academic use only - it is NOT open source, ships as binaries, and commercial or industrial use requires a paid FACCTs licence. The licence is framed around academic use and eligibility for a fully unaffiliated independent researcher is ambiguous rather than explicitly granted; read the current EULA before relying on it. Support is the community forum, not a helpdesk.
+**Caveats.** Free for academic and personal use - it is NOT open source, ships as binaries, and commercial or industrial use requires a paid FACCTs licence. FACCTs state on faccts.de/orca that 'ORCA is and will remain free for academic and personal use' (checked 2026-08-28), so a personal, non-commercial user without an affiliation is covered; read the current EULA before any commercially adjacent use. Support is the community forum, not a helpdesk.
 
 ### [Psi4](https://psicode.org/)
 
@@ -316,11 +496,21 @@ GPL suite for electronic-structure calculations and materials modelling with pla
 
 `Free` · beginner 4/5 · cheminformatics toolkit
 
-The default open-source cheminformatics toolkit: substructure and SMARTS matching, fingerprints, descriptors, conformer generation, 2D depiction, reaction handling, scaffold analysis and ML featurisation, with a C++ core and Python API. Release 2026_03_5 was cut 2026-08-01 under BSD-3-Clause.
+The default open-source cheminformatics toolkit: substructure and SMARTS matching, fingerprints, descriptors, conformer generation, 2D depiction, reaction handling, scaffold analysis and ML featurisation, with a C++ core and Python API. Release 2026_03_6 was cut 2026-08-28 under BSD-3-Clause.
 
 **Access.** `pip install rdkit` (or `conda install -c conda-forge rdkit`), then `from rdkit import Chem; m = Chem.MolFromSmiles('CC(=O)Oc1ccccc1C(=O)O')`. Also has KNIME nodes and a PostgreSQL cartridge.
 
 **Caveats.** Runs comfortably on a laptop. The API is broad and the official docs assume some cheminformatics vocabulary - the RDKit Cookbook and Greg Landrum's blog hold most practical recipes. Descriptor and fingerprint defaults do change between releases, so pin the version in reproducible work.
+
+### [SwissADME](https://www.swissadme.ch/)
+
+`Free` · beginner 5/5 · ADME and drug-likeness web tool
+
+Free web tool from the Molecular Modelling Group of the University of Lausanne and the SIB Swiss Institute of Bioinformatics that computes physicochemical descriptors, lipophilicity (five logP models), water solubility, pharmacokinetics (GI absorption, BBB permeation, P-gp substrate, CYP inhibition), drug-likeness filters (Lipinski, Ghose, Veber, Egan, Muegge) and medicinal-chemistry alerts (PAINS, Brenk) from SMILES.
+
+**Access.** Paste a list of SMILES into the web form at swissadme.ch and read the BOILED-Egg plot and per-molecule table; results download as CSV. No account needed.
+
+**Caveats.** Predictions come from QSAR models trained on drug-like chemical space - they degrade sharply for inorganics, organometallics, very large molecules and unusual scaffolds, and they are a triage filter, not experimental data. Batch submissions are limited in practice by the browser form; there is no documented public API. Free for academic and commercial users; cite Daina, Michielin and Zoete, Sci. Rep. 7, 42717 (2017).
 
 ### [VESTA](https://jp-minerals.org/vesta/en/)
 
@@ -344,11 +534,21 @@ Grimme group's extended tight-binding package: GFN0/GFN1/GFN2-xTB and the GFN-FF
 
 ## Literature
 
+### [arXiv (cond-mat and physics.chem-ph)](https://arxiv.org/list/cond-mat.mtrl-sci/recent)
+
+`Free` · beginner 5/5 · preprint server
+
+The preprint server where most materials science and physical chemistry work appears first: cond-mat.mtrl-sci alone listed 50 new submissions for 2026-08-28. Relevant categories are cond-mat.mtrl-sci, cond-mat.soft, physics.chem-ph and physics.comp-ph; all full texts are free with no account.
+
+**Access.** Browse or search on arxiv.org; programmatic access via the arXiv API (http://export.arxiv.org/api/query?search_query=cat:cond-mat.mtrl-sci) or the full-text bulk data on AWS S3 (requester-pays). `pip install arxiv` wraps the API.
+
+**Caveats.** ChemRxiv covers synthetic and molecular chemistry; arXiv covers the computational, materials and physical-chemistry half, and the sweep had no entry for it. Posting needs an account and, for a first submission in a category, endorsement by an established author. No peer review - screening only. The API returns at most 2,000 results per request and asks for a 3-second delay between calls.
+
 ### [ChemRxiv](https://chemrxiv.org/)
 
 `Free` · beginner 5/5 · preprint server
 
-The chemistry preprint server, co-owned by the ACS, RSC, Chinese Chemical Society, German Chemical Society and Chemical Society of Japan. Crossref lists 55,218 records under its 10.26434 DOI prefix, 8,644 of them posted in 2026 (counted 2026-08-28).
+The chemistry preprint server, co-owned by the ACS, RSC, Chinese Chemical Society, German Chemical Society and Chemical Society of Japan. Crossref lists 55,230 records under its 10.26434 DOI prefix (counted 2026-08-28), roughly 8,600 of them posted in 2026.
 
 **Access.** Free full-text reading and download on the web; a public REST API under /engage/chemrxiv/public-api/v1/items for programmatic search. Posting a preprint is free after creating an account.
 
@@ -364,6 +564,16 @@ Curated, community-vetted index of open-access journals with per-journal metadat
 
 **Caveats.** APC data is publisher-reported and can lag actual policy - confirm on the journal's own author page before submitting. DOAJ inclusion is a signal about transparency, not about scientific standards; judge the editorial board and published content too.
 
+### [Europe PMC](https://europepmc.org/)
+
+`Free` · beginner 5/5 · life-science and chemistry literature search
+
+EMBL-EBI-hosted free literature database indexing abstracts and open-access full text from PubMed, PubMed Central, Agricola, patents, preprints and theses, with text-mined chemical, gene and disease annotations. A single search term returned 1,771,122 hits on 2026-08-28; full text is searchable, not just abstracts.
+
+**Access.** REST API with no key: https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22ionic%20liquid%22&format=json&pageSize=25 . Also an Annotations API for mined chemical entities, an OAI-PMH service and bulk open-access full-text downloads by FTP.
+
+**Caveats.** Stronger than OpenAlex for full-text search and for chemistry-in-biology literature; weaker for pure materials and physical chemistry, where arXiv and OpenAlex cover more. Only the open-access subset is full-text searchable and downloadable - abstracts only for the rest. Rate limits are informal; keep bulk requests polite and use the FTP dumps for text mining.
+
 ### [OpenAlex](https://openalex.org/)
 
 `Free` · beginner 4/5 · open bibliographic database
@@ -373,6 +583,16 @@ Free and open index of scholarly works, authors, institutions, sources and topic
 **Access.** REST API with no key; add your email for the polite pool: https://api.openalex.org/works?filter=primary_topic.field.id:fields/25,is_oa:true&mailto=you@example.org . Full monthly snapshots download from S3; `pip install pyalex` wraps the API.
 
 **Caveats.** The free tier is generous (100,000 calls/day in the polite pool) but a paid Premium tier exists for higher throughput and faster snapshots. Topic classification is automated and imperfect at sub-field level, and author disambiguation still merges and splits some names. Abstracts are stored as inverted indexes, not plain text.
+
+### [Research4Life](https://www.research4life.org/)
+
+`Free tier, credentialing` · beginner 2/5 · subscription journal access for low-income countries
+
+Public-private partnership of UN agencies (WHO, FAO, UNEP, WIPO, ILO), Cornell and Yale universities and 200+ publishers giving institutions in eligible low- and middle-income countries free or low-cost access to subscription journals, books and databases through five programmes: Hinari (health), AGORA (agriculture), OARE (environment), ARDI (innovation and technology, the one that carries most chemistry and materials titles) and GOALI (law).
+
+**Access.** Institutional, not individual: a university, research institute, government office, hospital or national library in an eligible country registers, and staff and students then log in through the Research4Life portal. Registration and eligibility checking are done on research4life.org.
+
+**Caveats.** Honest status check: research4life.org, its eligibility page and portal.research4life.org all returned HTTP 403 to automated fetches on 2026-08-28, so the current country lists, resource counts and fees could NOT be verified here - treat the URL as an entry point and confirm in a browser. Structurally, Group A countries get free access and Group B countries pay a modest annual institutional fee; individuals and institutions in high-income countries are not eligible, and unaffiliated researchers cannot register. Where it applies it is the single largest legal fix for paywalled chemistry literature, which is why it belongs in this catalogue despite the verification gap.
 
 ### [The Wikipedia Library](https://wikipedialibrary.wmflabs.org/)
 
@@ -521,6 +741,16 @@ EPFL-hosted open platform for computational materials science with four layers: 
 **Access.** All tools are browser-based and free; the Archive accepts uploads after registration and exposes a REST API (https://archive.materialscloud.org/api/records) and an OPTIMADE endpoint.
 
 **Caveats.** Archive deposits are moderated, so publication is not instant. The browser tools are the fastest legitimate way to generate a sane Quantum ESPRESSO input without installing anything. Services are hosted at CSCS and go down for scheduled maintenance. Cite Talirz et al., Sci. Data 7, 299 (2020) if you use the platform.
+
+### [Zenodo](https://zenodo.org/)
+
+`Free (registration), email` · beginner 5/5 · general-purpose data and software repository
+
+Open repository built and operated by CERN and OpenAIRE, running on CERN's data centre, that mints a DOI for every upload within seconds and versions records. The default home for chemistry data that has no domain repository - simulation trajectories, analysis notebooks, raw instrument files, software snapshots.
+
+**Access.** Register with an email, ORCID or GitHub account and upload through the web form, or use the REST API with a personal access token. GitHub integration archives a repository release automatically and returns a citable DOI.
+
+**Caveats.** Default per-record limit is 50 GB (larger by request); it is not a substitute for NOMAD or Materials Cloud when a domain repository exists, because Zenodo does not parse or index your file contents. You choose the licence, so choose deliberately - CC BY or CC0 for data, an OSI licence for code. Records are permanent once published; only new versions, not deletions, are possible.
 
 ## Funding
 

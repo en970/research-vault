@@ -440,7 +440,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Feature parity with commercial SEM software for the vast majority of published models; a few Mplus features (some mixture models, certain multilevel SEM specifications) are still missing or less mature. The lavaan website hosts a complete free tutorial that is the standard teaching resource.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -482,10 +482,8 @@
       "registration": "none",
       "beginner": 3,
       "notes": "A complete free replacement for ArcGIS Pro for the tasks social scientists actually need. It is memory-hungry on large rasters, and the plugin ecosystem varies in quality - stick to plugins with recent updates. Coordinate reference systems are the usual source of silent errors; set the project CRS deliberately.",
-      "canonical": true,
-      "also_in": [
-        "earth"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "QualCoder",

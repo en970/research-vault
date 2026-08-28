@@ -857,3 +857,5 @@ Community-maintained, free listing of online and hybrid research seminars, cours
 **Access.** Browse or search at researchseminars.org with no account; a free account lets you subscribe to series, export to your calendar, and list a seminar of your own.
 
 **Caveats.** Each series sets its own access rules — some need a registration form or a password from the organiser, so a listing is not always an open door. Coverage is strongest in mathematics and mathematical/theoretical physics; experimental series are thinly represented. Still, it is the most practical way for someone with no department to sit in on current research talks.
+
+*Also listed under: mathematics.*

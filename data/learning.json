@@ -444,7 +444,9 @@
       "beginner": 3,
       "notes": "Explicitly the prerequisite book, not an ML book — it teaches the mathematics so you can read the others. The instructor's solutions manual is available only from Cambridge on request; the student-facing exercise solutions are free.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "cs-ml"
+      ]
     },
     {
       "name": "MIT 18.06 Linear Algebra (Gilbert Strang)",
