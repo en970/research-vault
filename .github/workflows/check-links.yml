@@ -1,0 +1,67 @@
+name: check links
+
+# A catalogue cannot notice on its own that a service closed or a free tier
+# shrank. This runs the checker monthly and opens an issue when a URL is
+# genuinely gone, so the list ages visibly rather than silently.
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"   # 06:00 UTC on the first of each month
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/*.json"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check every URL
+        id: check
+        run: |
+          python3 scripts/check_links.py --timeout 25 --retry-timeout 45 | tee report.txt
+          echo "dead=$(python3 -c "
+          import json
+          r = json.load(open('data/link-report.json'))
+          print(sum(1 for x in r if x['verdict'] == 'dead'))
+          ")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: link-report
+          path: data/link-report.json
+
+      - name: Open an issue for dead links
+        if: steps.check.outputs.dead != '0' && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "The monthly link check found ${{ steps.check.outputs.dead }} dead URL(s)."
+            echo
+            echo '```'
+            grep -E "^  (DEAD|REDIRECT|UNREACHABLE)" report.txt || true
+            echo '```'
+            echo
+            echo "Full report: the \`link-report\` artifact on [this run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+            echo
+            echo "Entries marked \`manual\` are alive but refuse automated clients; they need no action."
+          } > body.md
+          gh issue create \
+            --title "Dead links found on $(date -u +%Y-%m-%d)" \
+            --body-file body.md \
+            --label "maintenance" || true
+
+      - name: Fail the build on dead links
+        if: steps.check.outputs.dead != '0'
+        run: exit 1
