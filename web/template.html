@@ -406,9 +406,10 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&l
 const safeUrl = u => /^https?:\/\//i.test(u) ? u : "";
 const catVar = c => CAT_ORDER.includes(c) ? `var(--c-${c})` : "var(--text-3)";
 
-function score(r, tokens) {
+function score(r, tokens, u) {
   const name = r.name.toLowerCase(), sub = (r.subcategory||"").toLowerCase();
-  const body = (r.summary + " " + (r.notes||"") + " " + r.access + " " + r.url).toLowerCase();
+  const body = [r.summary, r.notes||"", r.access, r.url, r.category, r.free,
+                r.registration||"", u.unit, u.title].join(" ").toLowerCase();
   let total = 0;
   for (const t of tokens) {
     let s = 0;
@@ -429,7 +430,7 @@ function matches() {
     if (state.unit && u.unit !== state.unit) continue;
     if (state.cats.size && !state.cats.has(r.category)) continue;
     if (state.noSignup && r.registration && r.registration !== "none") continue;
-    const s = tokens.length ? score(r, tokens) : 1;
+    const s = tokens.length ? score(r, tokens, u) : 1;
     if (s > 0) out.push({ u, r, s });
   }
   if (tokens.length) out.sort((a, b) => b.s - a.s || a.r.name.localeCompare(b.r.name));

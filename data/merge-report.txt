@@ -1,0 +1,18 @@
+[physics] no critic file — sweep used as-is
+[astronomy] no critic file — sweep used as-is
+[chemistry] no critic file — sweep used as-is
+[biology] no critic file — sweep used as-is
+[medicine] no critic file — sweep used as-is
+[earth] no critic file — sweep used as-is
+[mathematics] no sweep file — unit skipped
+[cs-ml] no sweep file — unit skipped
+[neuro-psych] no sweep file — unit skipped
+[social] no sweep file — unit skipped
+[econ-finance] no sweep file — unit skipped
+[humanities] no sweep file — unit skipped
+[literature-access] no sweep file — unit skipped
+[compute] no sweep file — unit skipped
+[publishing] no sweep file — unit skipped
+[funding] no sweep file — unit skipped
+[learning] no sweep file — unit skipped
+[workflow-tools] no sweep file — unit skipped

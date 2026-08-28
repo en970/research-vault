@@ -98,12 +98,14 @@ def all_resources(units: list[dict]):
 
 # ── commands ───────────────────────────────────────────────────────────────────
 
-def score(r: dict, tokens: list[str]) -> int:
+def score(r: dict, tokens: list[str], unit: dict | None = None) -> int:
     name = r["name"].lower()
     sub = r.get("subcategory", "").lower()
-    body = " ".join(
-        str(r.get(k, "")) for k in ("summary", "notes", "access", "url")
-    ).lower()
+    fields = ("summary", "notes", "access", "url", "category", "free", "registration")
+    body = " ".join(str(r.get(k, "")) for k in fields)
+    if unit:
+        body += " " + unit.get("unit", "") + " " + unit.get("title", "")
+    body = body.lower()
     total = 0
     for t in tokens:
         s = 0
@@ -149,7 +151,7 @@ def cmd_search(units, args):
     tokens = [t.lower() for t in args.query]
     hits = []
     for u, r in apply_filters(all_resources(units), args):
-        s = score(r, tokens) if tokens else 1
+        s = score(r, tokens, u) if tokens else 1
         if s > 0:
             hits.append((s, u, r))
     hits.sort(key=lambda h: (-h[0], h[2]["name"].lower()))
