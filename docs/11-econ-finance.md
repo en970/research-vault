@@ -1,18 +1,28 @@
 # Economics & finance
 
-Part of [research-vault](../README.md). 60 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 78 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (27) · [Software](#software) (10) · [Literature](#literature) (6) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (4) · [Learning](#learning) (5) · [Community](#community) (3)
+**Contents:** [Data](#data) (36) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
 
 ## Data
+
+### [AQR Data Sets](https://www.aqr.com/Insights/Datasets)
+
+`Free` · beginner 3/5 · asset pricing factor returns
+
+Public return files behind AQR's published papers: Betting Against Beta, Quality Minus Junk (factors plus 6- and 10-portfolio sorts), The Devil in HML's Details, Value and Momentum Everywhere, and the AQR momentum indices, in daily and monthly versions, with US series starting in the 1950s and international samples from 1986; the momentum index file was current through 31 July 2026 on 2026-08-28.
+
+**Access.** Direct Excel download per dataset from the datasets page, no account. Each file's first sheet documents construction and sample; pair with the Kenneth French library for the standard factors these are meant to be measured against.
+
+**Caveats.** Use is governed by AQR's terms of use and expects citation of the underlying paper; these are outputs, not inputs, so you cannot re-sort or extend them without the commercial security-level data (CRSP/Compustat/XpressFeed) they were built from. Update cadence differs by file — some refresh monthly, others were frozen at the paper's sample end, so check the last date in the sheet before assuming currency. Factor definitions differ in detail from French's (that is the point of the 'Devil in HML's Details' file), so do not treat AQR HML and French HML as the same series.
 
 ### [BIS Statistics](https://data.bis.org/)
 
 `Free` · beginner 3/5 · international banking & financial statistics
 
-The canonical source for cross-border banking (locational and consolidated banking statistics), OTC derivatives, debt securities, effective exchange rates, residential and commercial property prices, credit-to-GDP gaps, debt service ratios and a long central bank policy rate series. The public SDMX API served 23 BIS dataflows when queried on 2026-08-28.
+The canonical source for cross-border banking (locational and consolidated banking statistics), OTC derivatives, debt securities, effective exchange rates, residential and commercial property prices, credit-to-GDP gaps, debt service ratios and a long central bank policy rate series. The public SDMX API served 29 BIS dataflows when queried on 2026-08-28 (28 WS_* data flows plus the BIS_REL_CAL release calendar).
 
 **Access.** No key. SDMX v1 REST: https://stats.bis.org/api/v1/data/BIS,WS_CBPOL,1.0/... ; discover flows at https://stats.bis.org/api/v1/dataflow/BIS. Full-dataset CSV bulk files from data.bis.org. Also mirrored in DBnomics under provider BIS.
 
@@ -34,9 +44,19 @@ Programmatic access to CPS and CES employment and unemployment, CPI and PPI, JOL
 
 BACI reconciles UN Comtrade into a consistent bilateral trade panel covering more than 5,000 products and 200 countries (last updated January 2026). The Gravity database ships trade, GDP, population, distance, contiguity, language, colonial ties and trade agreements for all country pairs 1948-2020; TRADHIST extends bilateral trade and gravity back to 1827.
 
-**Access.** Direct download of CSV/Stata/parquet files from cepii.fr after a free account. R: `install.packages('cepiigravity')` for the gravity data.
+**Access.** Direct download of CSV/Stata/parquet files from cepii.fr after a free account. In R, read the files directly (`haven::read_dta()`, `arrow::read_parquet()`); the `cepiigravity` package is not on CRAN — the CEPII package that is on CRAN is `cepiigeodist` (GeoDist distances and country characteristics only).
 
 **Caveats.** Academic and non-commercial use with citation; BACI is derived from Comtrade so UN terms flow through. Full BACI is a multi-gigabyte panel — filter by year on read rather than loading the whole thing on a laptop. TRADHIST has not been updated since November 2016. For economic complexity measures rather than raw flows, Harvard Growth Lab's Atlas (atlas.hks.harvard.edu/data-downloads) publishes free cleaned trade covering 6,000+ products and 250 countries, with SITC from 1962 and HS from 1995.
+
+### [Damodaran Online data](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/data.html)
+
+`Free` · beginner 4/5 · valuation & cost-of-capital reference data
+
+Aswath Damodaran's annually rebuilt reference datasets for corporate finance: industry-average betas, costs of capital and debt, equity risk premiums and country risk premiums, trading multiples (PE, EV/EBITDA, price-to-book), operating margins, effective tax rates and reinvestment rates, split into US, Europe, Japan, emerging-market, China, India and global aggregates. The current vintage was updated on 9 January 2026, with the next major update stated for early January 2027.
+
+**Access.** Direct download of Excel/CSV files per dataset from the data page, no account; archived prior-year vintages are kept on the same site so you can pull a consistent annual series.
+
+**Caveats.** Industry aggregates only — company-level files were withdrawn because the underlying vendor licence no longer permits redistribution. Updated once a year, so figures are stale for most of the calendar and are wrong as of-date inputs for a specific valuation date. Industry groupings are Damodaran's own, not SIC/NAICS/GICS, so merging to any other dataset needs a hand-built crosswalk. These are teaching and benchmarking inputs, not audited data, and the estimation choices (e.g. how the implied ERP is computed) are documented in his papers and worth reading before citing.
 
 ### [DBnomics](https://db.nomics.world/)
 
@@ -78,13 +98,13 @@ Harmonised statistics for EU/EEA and candidate countries — national accounts, 
 
 **Caveats.** Reuse is free with attribution under the Commission's reuse policy. Microdata (EU-SILC, LFS, HBS) is a separate track: it requires a formal research-entity application through Eurostat's microdata access unit, is not open, and typically takes months — the API covers aggregates only.
 
-### [FDIC BankFind Suite API](https://banks.data.fdic.gov/docs/)
+### [FDIC BankFind Suite API](https://api.fdic.gov/banks/docs)
 
 `Free` · beginner 3/5 · US bank call reports & failures
 
 Institution-level data on every FDIC-insured US bank: charter and structure, branch locations, quarterly financial (call report) aggregates, failures, and merger history. Verified live and key-free on 2026-08-28 (1,286 California institutions returned).
 
-**Access.** No key. REST: https://banks.data.fdic.gov/api/institutions?filters=STNAME:California&fields=NAME,CITY,ASSET&limit=100 ; also /financials, /locations, /failures, /history endpoints. Plain `requests` + `pandas.json_normalize` is enough; results nest under data[].data.
+**Access.** No key. REST on the current host: https://api.fdic.gov/banks/institutions?filters=STNAME:California&fields=NAME,CITY,ASSET&limit=100 (verified live 2026-08-28, meta.total 1,286); also /banks/financials, /banks/locations, /banks/failures, /banks/history and /banks/summary. The old banks.data.fdic.gov/api/... paths 301-redirect here, which breaks clients that do not follow redirects or that POST. Plain `requests` plus `pandas.json_normalize` is enough; results nest under data[].data.
 
 **Caveats.** US-insured depositories only — no credit unions (that is NCUA), no bank holding company consolidated data (that is the Chicago Fed / FFIEC). Field names are call-report mnemonics; the data dictionary on the docs page is not optional reading. Historical panels have structural breaks at merger events that you must handle with the /history endpoint.
 
@@ -104,7 +124,7 @@ St. Louis Fed aggregator of US and international macro series (national accounts
 
 McCracken and Ng's monthly and quarterly balanced panels of US macro series, released as a single CSV with a transformation-code header row, plus archived monthly vintages. This is the standard benchmark dataset for factor models, dynamic factor forecasting and big-data macro papers.
 
-**Access.** Direct CSV download from the St. Louis Fed page (current.csv plus a vintage archive). Python: `pip install fredmd` or read the CSV directly — the first data row holds the transformation codes, so parse it separately. R: `install.packages('fbi')`.
+**Access.** Direct CSV download from the St. Louis Fed page (current.csv plus a monthly vintage archive). Python: read the CSV directly — the first data row holds the transformation codes, so parse it separately — or `pip install fredmd`. R: the `fbi` package is GitHub-only, `remotes::install_github('cykbennie/fbi')`; there is no CRAN release.
 
 **Caveats.** Not a raw data source: series are pre-selected and the transformation codes prescribe differencing/logging, which is the point but also a constraint. The panel composition changes across vintages as underlying FRED series get discontinued, so a paper that says 'FRED-MD' without naming the vintage is not reproducible.
 
@@ -174,9 +194,9 @@ Per-capita GDP and population estimates for 169 countries running up to 2022, wi
 
 `Free` · beginner 3/5 · occupational task & skill data
 
-US Department of Labor's occupational database: for roughly 900 SOC occupations it scores abilities, skills, knowledge, work activities, work context, tasks and technology use. The raw input behind most of the routine-task-intensity, offshorability and AI-exposure measures in the labour literature.
+US Department of Labor's occupational database: for the 1,016 occupations of the O*NET-SOC taxonomy it scores abilities, skills, knowledge, work activities, work context, tasks and technology use. Database release 31.0 is current (page last updated 25 August 2026), with 208 occupations re-surveyed in that release. It is the raw input behind most routine-task-intensity, offshorability and AI-exposure measures in the labour literature.
 
-**Access.** Direct download of the full database as text, Excel, MySQL, SQL Server or Oracle dumps — no account for bulk files. Web Services API at services.onetcenter.org needs a free registered account (verified reachable 2026-08-28). Python: `pip install onetsoc` or just read the tab-delimited files.
+**Access.** Direct download of the full database with no account, in Excel, CSV, JSON, MySQL/Oracle/SQL Server dumps and RDF serialisations (JSON-LD, N-Triples, RDF/XML, Turtle); an optional registration form is only requested from people building products on top of it. Web Services API at services.onetcenter.org needs a free registered account (verified reachable 2026-08-28). In Python just read the tab-delimited or CSV files with pandas.
 
 **Caveats.** Public domain, but you must credit O*NET and not imply endorsement. Ratings come from incumbent-worker and analyst surveys with modest per-occupation samples, and are updated on a rolling basis, so 'change over time' in O*NET partly reflects re-survey timing rather than real occupational change. SOC crosswalks between O*NET versions are non-trivial and are the usual source of silent merge errors.
 
@@ -186,7 +206,7 @@ US Department of Labor's occupational database: for roughly 900 SOC occupations 
 
 OECD's statistics portal covering national accounts, productivity, labour, taxation, health, education, trade and environment for OECD members plus partner economies. Its public SDMX endpoint exposed 1,546 dataflows when queried on 2026-08-28 (including flows mirrored from Eurostat and other agencies).
 
-**Access.** No key. SDMX REST: https://sdmx.oecd.org/public/rest/data/{agency},{dataflow},{version}/{key}?format=csvfilewithlabels. Discover flows at https://sdmx.oecd.org/public/rest/dataflow/all/all/latest. R: `install.packages('OECD')`. Python: `pip install pandasdmx` or `sdmx1`. CSV/Excel export from the web UI.
+**Access.** No key. SDMX REST: https://sdmx.oecd.org/public/rest/data/{agency},{dataflow},{version}/{key}?format=csvfilewithlabels. Discover flows at https://sdmx.oecd.org/public/rest/dataflow/all/all/latest (1,546 dataflows on 2026-08-28). Python: `pip install sdmx1` or `pandasdmx`. R: use `rsdmx` against the sdmx.oecd.org endpoint — the CRAN `OECD` package is version 0.2.5 from 2021-12-01 and predates the migration off stats.oecd.org, so install the maintained development version from github.com/expersso/OECD if you want that interface. CSV/Excel export from the web UI.
 
 **Caveats.** The old stats.oecd.org / OECD.Stat interface and its SDMX-JSON URLs were retired in favour of this one, so pre-2024 example code and dataset codes generally no longer resolve. Large unfiltered queries time out; filter by reference area and time period in the URL key rather than downloading everything.
 
@@ -210,6 +230,16 @@ Publicly released outputs of the Chetty-team administrative-data projects: the O
 
 **Caveats.** These are aggregated, noise-infused published statistics — the underlying IRS and Facebook microdata are not available to anyone outside the project, so you can use these as covariates or outcomes but cannot reproduce or extend the estimates. Cells are suppressed or noisy at small counts; the readme's noise-infusion notes matter for inference.
 
+### [Panel Study of Income Dynamics (PSID)](https://psidonline.isr.umich.edu/)
+
+`Free (registration), email` · beginner 2/5 · US household panel microdata
+
+The longest-running household panel in the world: begun in 1968 with roughly 4,800 US families and following them and their descendants annually to 1997 and biennially since, with income, employment, wealth, housing, expenditure, education and health, plus supplements on child development, transition to adulthood and immigrant samples.
+
+**Access.** Free account, then build extracts in the online Data Center (variable search across waves, custom cross-year files) or download whole-wave data with the supplied Stata/SAS/SPSS setup files. R: `install.packages('psidR')` assembles cross-wave panels from the downloaded files.
+
+**Caveats.** The genealogical design is the hard part: family and individual identifiers change across waves and building a clean person-year panel by hand takes days, which is what psidR or a published crosswalk saves you. Restricted geocode files (state, county, tract) require a separate contract and are not part of the public release. The site sits behind a bot challenge and could not be machine-verified on 2026-08-28 — it is browser-usable but not scriptable; the CRAN psidR page was reachable and current.
+
 ### [Penn World Table 11.0](https://www.rug.nl/ggdc/productivity/pwt/)
 
 `Free` · beginner 4/5 · cross-country national accounts
@@ -220,6 +250,16 @@ PPP-adjusted output, input, capital stock, employment, hours and productivity fo
 
 **Caveats.** Free with citation of the Feenstra-Inklaar-Timmer paper. Levels across PWT versions are not comparable — a growth rate computed by splicing PWT 10.x onto 11.0 is an artefact. Real GDP comes in expenditure-side (rgdpe), output-side (rgdpo) and chained (rgdpna) flavours that answer different questions; picking the wrong one is the classic beginner error.
 
+### [Robert Shiller online data](https://shillerdata.com/)
+
+`Free` · beginner 5/5 · long-run US market & housing series
+
+Shiller's monthly US stock market file (ie_data.xls): S&P composite price, dividends, earnings, CPI and long-term interest rates from January 1871 to the present with the cyclically adjusted price-earnings ratio (CAPE) and a total-return variant added in 2018; plus the long-run US home price index running back to 1890 and updated monthly.
+
+**Access.** Direct .xls download from shillerdata.com, no account, no key.
+
+**Caveats.** Nineteenth-century values are reconstructions spliced from Cowles and other historical sources, and several early series are interpolations of lower-frequency data — good for long-run illustration, weak for month-by-month inference. Trailing earnings are reported with a lag, so recent CAPE readings get revised. The files are legacy Excel with title rows and trailing footnotes: read with an explicit skiprows and trim the tail rather than assuming a clean rectangle.
+
 ### [SEC EDGAR APIs (submissions, XBRL companyfacts, full-text search)](https://www.sec.gov/search-filings/edgar-application-programming-interfaces)
 
 `Free` · beginner 4/5 · corporate filings & financial statements
@@ -229,6 +269,18 @@ Every filing by every SEC registrant since 1993-1994, with structured XBRL finan
 **Access.** No key; you must send a descriptive User-Agent with a contact email or you get 403. Endpoints: https://data.sec.gov/submissions/CIK0000320193.json (filing history), https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json (all tagged facts), https://data.sec.gov/api/xbrl/frames/us-gaap/Revenues/USD/CY2024Q1I.json (cross-section), and https://efts.sec.gov/LATEST/search-index?q=... for full-text search. Python: `pip install sec-edgar-downloader` or `edgartools`.
 
 **Caveats.** Rate-limited to roughly 10 requests/second under the SEC's fair-access policy; a User-Agent header identifying you is mandatory. XBRL tagging is inconsistent across filers and eras — the same economic quantity appears under different us-gaap tags, so cross-company panels need reconciliation work. This is the free substitute for Compustat fundamentals, and the honest caveat is that Compustat's value is precisely the normalisation you now have to do yourself. CRSP, Compustat and WRDS have no free tier at all: stop looking for one.
+
+### [The DHS Program (Demographic and Health Surveys)](https://dhsprogram.com/)
+
+`Free (registration), application` · beginner 3/5 · developing-country household health & demographic microdata
+
+Nationally representative household surveys in over 90 countries from more than 300 surveys (site figures, 2026-08-28) with fertility histories, child and maternal health, anthropometrics, mortality, nutrition, HIV biomarkers in some waves, and an asset-based wealth index; most surveys ship GPS coordinates for sampling clusters as a separate geographic dataset.
+
+**Access.** Free account, then a per-project dataset request describing the research; approved users download Stata, SPSS, SAS and flat files plus questionnaires and recode manuals. Model datasets download with no registration for practice. Indicator API at api.dhsprogram.com needs no key; R: `install.packages('rdhs')` handles login and extraction. Harmonised cross-survey versions via IPUMS DHS.
+
+**Caveats.** The dataset request is per project and per country and is reviewed (usually a day or two, not weeks), and redistribution of the microdata is prohibited — you share code and derived results. GPS cluster coordinates are deliberately displaced (up to 2 km urban, 5 km rural, with a 1% subsample up to 10 km), which caps the resolution of any spatial merge and should be modelled, not ignored. Surveys are repeated cross-sections, not panels; retrospective birth and sibling histories carry recall error that grows with distance from the interview.
+
+*Also listed under: medicine, social.*
 
 ### [Tiingo](https://www.tiingo.com/)
 
@@ -250,6 +302,28 @@ Official bilateral trade flows by reporter, partner, HS/SITC commodity code, dir
 
 **Caveats.** Bulk file downloads, async 'data delivery', and the higher 2.5M-record calls are premium-only and paid. For a full multi-year, all-country gravity panel the free tier is painful — use CEPII BACI instead, which is Comtrade already cleaned and reconciled. Mirror-statistics asymmetries (A's exports to B ≠ B's imports from A) are real and large; do not treat either side as truth.
 
+### [US Census Bureau Data API](https://www.census.gov/data/developers/data-sets.html)
+
+`Free (registration), api-key` · beginner 3/5 · US survey & business statistics API
+
+Programmatic access to the Census Bureau's public datasets: American Community Survey 1-year and 5-year tables, decennial census, Current Population Survey extracts, County Business Patterns, Business Dynamics Statistics, LEHD/LODES origin-destination employment, Small Area Income and Poverty Estimates and the economic censuses. The machine-readable catalogue at https://api.census.gov/data.json listed 1,798 dataset endpoints when queried on 2026-08-28.
+
+**Access.** Free API key from api.census.gov/data/key_signup.html — a key is now mandatory (a keyless request to https://api.census.gov/data/2023/acs/acs5?get=NAME,B01001_001E&for=state:06 returned a 'Missing Key' page on 2026-08-28). REST: append &key=YOURKEY to that URL. R: `install.packages('tidycensus')` then `get_acs(geography='county', variables='B19013_001', year=2023)`. Python: `pip install census` or `pip install censusdis`.
+
+**Caveats.** Variables are table codes (B19013_001E), not labels — read each dataset's variables.json before querying. Geography hierarchies are strict and dataset-specific: ACS 1-year exists only for areas above 65,000 population, so sub-county work means the 5-year file. Margins of error (…M variables) ship alongside every ACS estimate and belong in your inference, not the bin. The firm-level microdata behind CBP, BDS and LEHD is confidential and reachable only through a Federal Statistical Research Data Center application, which is a US-institution route.
+
+*Also listed under: social.*
+
+### [World Bank Enterprise Surveys](https://www.enterprisesurveys.org/)
+
+`Free (registration), email` · beginner 3/5 · firm-level survey microdata
+
+Nationally representative face-to-face surveys of registered private firms in over 160 economies (the site states coverage moving toward 180), covering access to and cost of finance, corruption and informal payments, electricity and infrastructure, competition, workforce, innovation and firm performance, with repeated waves and some country panels.
+
+**Access.** Aggregated indicators and country profiles browse free on enterprisesurveys.org; firm-level microdata after free registration and a stated research purpose on the data portal at login.enterprisesurveys.org, which serves Stata and CSV files with questionnaires and sampling documentation.
+
+**Caveats.** Formal registered firms above a size cutoff only — informal firms are a separate, much smaller survey programme, so any 'firms in country X' statement from this data excludes most of the actual business population in low-income countries. Sampling frames are often outdated business registries; use the supplied weights and read the country's implementation note. Questionnaires and stratification change between waves, so cross-wave comparability is limited to the harmonised core questions, and the panel subsets are documented separately from the cross-sections.
+
 ### [World Bank Microdata Library](https://microdata.worldbank.org/)
 
 `Free (registration), email` · beginner 3/5 · household survey microdata
@@ -270,15 +344,35 @@ Cross-country panel of development, macro and social indicators (WDI plus ~60 ot
 
 **Caveats.** Most of it is CC BY 4.0, but a minority of series are relicensed from third parties with tighter terms. Coverage is thin and irregular for low-income countries and for pre-1990 years; many 'country' values are World Bank estimates rather than reported national figures, which matters if you are estimating on a panel with gaps.
 
+### [World Bank Poverty and Inequality Platform (PIP)](https://pip.worldbank.org/)
+
+`Free` · beginner 3/5 · global poverty & distribution statistics
+
+The World Bank's official source for global poverty and distributional statistics computed from harmonised household surveys: headcount, poverty gap, squared gap, Watts index, mean and median welfare, Gini, and full decile shares for any user-specified poverty line. The /versions endpoint returned release 20260324 in both 2017-PPP and 2021-PPP vintages on 2026-08-28.
+
+**Access.** No key. REST: https://api.worldbank.org/pip/v1/pip?country=IDN&year=2019&povline=3.0&format=json returned Indonesia 2019 (SUSENAS, consumption): headcount 0.1085, Gini 0.3536 and all ten decile shares, verified live. Other endpoints: /versions, /countries, /aggregate. R: `install.packages('pipr')` then `get_stats(country='IDN', povline=3.0)`. Web interface with country profiles and a poverty calculator at pip.worldbank.org.
+
+**Caveats.** Poverty lines are tied to a PPP vintage: the 2021-PPP international line is $3.00/day and its counts are not comparable with the older $2.15 (2017-PPP) line — mixing vintages across a time series is the standard error. Welfare is consumption in some countries and income in others (flagged per row) and the two are not comparable in levels. Years without a survey are interpolated or extrapolated when fill_gaps=true; several countries have decade-long survey gaps behind apparently continuous series. India and a few other large countries carry documented comparability breaks.
+
 ### [World Inequality Database (WID.world)](https://wid.world/)
 
 `Free` · beginner 3/5 · income & wealth distribution
 
 Distributional national accounts — top income and wealth shares, full percentile distributions, and pre/post-tax series — built by combining tax records, surveys and national accounts rather than surveys alone, which is what lets it capture the top tail. Maintained by the World Inequality Lab.
 
-**Access.** Free bulk CSV download of the whole database, plus per-country tables from the web UI. R: `install.packages('wid')` then `download_wid(indicators='shweal', areas='US')`. Python: `pip install wid`.
+**Access.** Free bulk CSV download of the whole database plus per-country tables from the web UI, no account. R: `install.packages('wid')` (CRAN 0.0.3, 2026-07-28) then `download_wid(indicators='shweal', areas='US')`. Stata: `ssc install get-wid`. There is no maintained Python client — pull the bulk CSV and read it with pandas.
 
 **Caveats.** Coverage and method quality vary sharply by country and era: some series are solid tax-based estimates, others are regional imputations flagged in the metadata. Read the variable-code grammar (indicator + percentile + age + population) before querying; it is the main source of confusion. The imputation choices for top wealth are actively debated in the literature.
+
+### [World Integrated Trade Solution (WITS)](https://wits.worldbank.org/)
+
+`Free (registration), email` · beginner 2/5 · tariffs & trade policy data
+
+World Bank platform that joins UN Comtrade merchandise trade with UNCTAD TRAINS and WTO IDB/CTS tariff schedules — MFN and preferential applied rates at HS 6-digit and tariff-line level — plus non-tariff measures and derived indicators. Tariffs are the piece that Comtrade and CEPII BACI do not carry; the TRAINS metadata endpoint listed 481 country entities on 2026-08-28.
+
+**Access.** Web interface (register free for custom queries and bulk downloads). Public REST/SDMX API needs no key: https://wits.worldbank.org/API/V1/SDMX/V21/rest/data/DF_WITS_Tariff_TRAINS/.840.000.010121.reported/?startPeriod=2020&endPeriod=2020 returned SDMX-ML tariff data, and https://wits.worldbank.org/API/V1/wits/datasource/trn/country/ALL returns the code lists (both verified live).
+
+**Caveats.** The API rejects over-broad queries by design — you cannot ask for all reporters and all partners at once — and the older /datasource/TRN/reporter/... path style returned 403 for scripted clients on 2026-08-28, so build against the SDMX rest/data path. Tariff coverage is uneven: many developing countries report to TRAINS irregularly and missing years are genuinely missing, not zero. Applied rates ignore rules of origin and utilisation, so 'preferential rate available' is not 'preferential rate used'.
 
 ## Software
 
@@ -332,6 +426,16 @@ A complete cross-platform econometrics package with a point-and-click GUI and a 
 
 **Caveats.** The realistic answer for a student or department that cannot afford Stata or EViews and is not ready to write code: a menu-driven interface with textbook-matching output. Frontier methods (modern staggered DiD, causal ML, synthetic control variants) arrive here late or not at all — you will outgrow it for research, but it is excellent for teaching and for opening .dta files.
 
+### [grf (generalized random forests)](https://grf-labs.github.io/grf/)
+
+`Free` · beginner 3/5 · heterogeneous treatment effects
+
+Athey-Tibshirani-Wager generalized random forests in R: causal forests for experimental and selection-on-observables data, instrumental and local linear forests, quantile and survival forests, with honest splitting, out-of-bag conditional average treatment effect estimates, doubly robust average effects, best linear projection and RATE/TOC evaluation. CRAN 2.6.1 (2026-03-04).
+
+**Access.** `install.packages('grf')` then `cf <- causal_forest(X, Y, W)`, `average_treatment_effect(cf, target.sample='overlap')`, `test_calibration(cf)` and `best_linear_projection(cf, X)`. Python equivalents: EconML (`pip install econml`) and DoubleML.
+
+**Caveats.** Honest heterogeneity estimation needs samples most economics datasets do not have — with a few thousand observations the CATE surface is mostly noise, and test_calibration() exists to tell you that. The forest does not fix identification: run it on confounded data and you get well-tuned bias. Propensity overlap must be checked before interpreting subgroup effects, and data-mined subgroups still need a pre-specified or split-sample confirmation to be publishable.
+
 ### [linearmodels](https://bashtage.github.io/linearmodels/)
 
 `Free` · beginner 3/5 · Python panel & IV estimation
@@ -362,6 +466,26 @@ The reference open-source quantitative finance library: date and calendar conven
 
 **Caveats.** Modelled on C++ object hierarchies, so the Python API is verbose and unpythonic and the documentation assumes you know the finance. The permissive BSD licence means it is usable in proprietary work. Budget real time for the first curve bootstrap; after that the calendar and day-count machinery alone justifies it.
 
+### [rdrobust](https://rdpackages.github.io/rdrobust/)
+
+`Free` · beginner 3/5 · regression discontinuity estimation
+
+The Calonico-Cattaneo-Farrell-Titiunik implementation of local polynomial regression discontinuity estimation with data-driven MSE- and CER-optimal bandwidths and robust bias-corrected confidence intervals, for sharp, fuzzy and kink designs, with companion packages rddensity (manipulation testing), rdlocrand (randomisation inference near the cutoff) and rdmulti (multiple cutoffs and scores). CRAN 4.0.0 (2026-05-16); PyPI 2.0.0.
+
+**Access.** R: `install.packages('rdrobust')` then `rdrobust(y, x, c = 0)` for the estimate and `rdplot(y, x, c = 0)` for the binned-scatter figure. Python: `pip install rdrobust`. Stata: `net install rdrobust, from(https://raw.githubusercontent.com/rdpackages/rdrobust/master/stata)`.
+
+**Caveats.** Report the robust bias-corrected interval, not the conventional one — referees in economics now treat the conventional CI alone as a red flag. The estimate moves with the bandwidth, so show the sensitivity and say which bandwidth selector you used. Density (rddensity) and covariate-balance checks at the cutoff are separate steps this package does not run for you, and no software fixes a running variable that agents can manipulate.
+
+### [Sequence-Space Jacobian (SSJ)](https://github.com/shade-econ/sequence-jacobian)
+
+`Free` · beginner 2/5 · heterogeneous-agent macro modelling
+
+Auclert, Bardoczy, Rognlie and Straub's Python toolkit implementing the sequence-space Jacobian method from their 2021 Econometrica paper: it solves steady states, computes Jacobians of model blocks and produces linearised and nonlinear perfect-foresight transitions for heterogeneous-agent models (HANK, Krusell-Smith, Aiyagari). Version 1.0.0 on PyPI.
+
+**Access.** `pip install sequence-jacobian`; build a model as a DAG of `@simple` blocks and `het` household blocks, then `create_model([...])`, `.solve_steady_state()`, `.solve_jacobian()` and `.solve_impulse_linear()`. The repository ships runnable notebooks for the canonical HANK and Krusell-Smith examples; requires NumPy/SciPy/Numba only.
+
+**Caveats.** This is the gap Dynare does not cover — Dynare is representative-agent-first, and heterogeneous-agent transition dynamics used to require in-house code. You still need to know how to discretise an income process and solve the household problem; the toolkit assembles blocks, it does not diagnose a badly specified one. Estimation support is likelihood-based on the linearised model; full nonlinear Bayesian estimation is out of scope. Development is academic and episodic, so pin the version in a replication package.
+
 ### [statsmodels](https://www.statsmodels.org/)
 
 `Free` · beginner 4/5 · Python econometrics
@@ -371,6 +495,16 @@ The general-purpose statistical modelling library for Python: OLS/GLS/WLS with r
 **Access.** `pip install statsmodels`. Formula API mirrors R: `smf.ols('y ~ x + C(industry)', data=df).fit(cov_type='cluster', cov_kwds={'groups': df.firm})`. BSD-3 licensed.
 
 **Caveats.** Together with linearmodels and pyfixest this is the credible free replacement for Stata's core regression workflow. Panel and IV support is thinner here than in linearmodels — reach for the right library rather than forcing statsmodels. Some time-series APIs (tsa.arima vs tsa.arima_model) were reorganised across versions, so old tutorials import names that no longer exist.
+
+### [Synth, synthdid and scpi (synthetic control)](https://cran.r-project.org/package=Synth)
+
+`Free` · beginner 2/5 · synthetic control estimation
+
+The three implementations that span current synthetic control practice: Synth, the original Abadie-Diamond-Hainmueller donor-weighting estimator (CRAN 1.1-10, 2026-04-29); synthdid, the Arkhangelsky et al. synthetic difference-in-differences estimator (R, GitHub); and scpi, the Cattaneo-Feng-Palomba-Titiunik package that adds prediction intervals, multiple treated units and staggered adoption (scpi-pkg 4.0.0 on PyPI, plus R and Stata).
+
+**Access.** `install.packages('Synth')` then `dataprep(...)` followed by `synth(...)` and `path.plot()`; `remotes::install_github('synth-inference/synthdid')` then `synthdid_estimate(Y, N0, T0)`; `pip install scpi-pkg` or `install.packages('scpi')` for prediction intervals.
+
+**Caveats.** Classic Synth produces no standard errors: inference is placebo/permutation-based and with a small donor pool the achievable p-values are coarse (1/(N+1)). synthdid is the more robust default when pre-treatment fit is imperfect; scpi is what to use when you need honest uncertainty or have several treated units. All of them need a long, clean pre-treatment window — short pre-periods overfit donor weights and produce a beautiful fit that means nothing. Check that the treated unit lies inside the donor pool's convex hull before believing the weights.
 
 ### [yfinance](https://github.com/ranaroussi/yfinance)
 
@@ -404,6 +538,16 @@ arXiv's economics archive, live since September 2017, has three subject classes 
 
 **Caveats.** Posting to econ.* or q-fin.* requires endorsement from an existing arXiv author in that archive if you have no prior submissions — this is the one real barrier for unaffiliated researchers, and it is usually solved by emailing a co-author or a researcher who knows your work. Mainstream economics still posts working papers to RePEc/NBER/SSRN more than arXiv, so arXiv alone is not sufficient coverage of the field.
 
+### [IZA Discussion Papers](https://www.iza.org/publications/dp)
+
+`Free` · beginner 4/5 · labour economics working paper series
+
+The largest labour economics preprint series, listing 18,864 discussion papers on 2026-08-28 across employment, wages, education, migration, family, health, personnel and behavioural economics, from IZA's network of fellows and affiliates.
+
+**Access.** Every paper is a free PDF at the stable path https://docs.iza.org/dp{number}.pdf with no account (dp17000.pdf downloaded at 592 KB when checked on 2026-08-28). Browse and search at iza.org/publications/dp, subscribe free to subject-area alerts, or reach the same records through RePEc/IDEAS and EconStor.
+
+**Caveats.** Not peer reviewed: papers are screened for scope, and inclusion signals network membership rather than quality. Posting is restricted to IZA fellows and affiliates and their coauthors, so for an unaffiliated researcher this is a reading source, not a submission venue — MPRA is the route for that. IZA World of Labor (short evidence syntheses) is a separate free product with a different editorial process.
+
 ### [Journal of Economic Perspectives](https://www.aeaweb.org/journals/jep)
 
 `Free` · beginner 5/5 · free-to-read survey journal
@@ -418,11 +562,11 @@ The AEA's quarterly journal of accessible synthesis articles, written for econom
 
 `Free tier` · beginner 4/5 · working paper series
 
-Over 1,200 new papers a year from the National Bureau of Economic Research, historically the single most-read US working paper series. Papers older than 18 months are open access to everyone.
+Over 1,200 new papers a year from the National Bureau of Economic Research, historically the single most-read US working paper series. Every user of the site gets three complimentary downloads a year, and residents of countries whose PPP-adjusted GDP per capita is below $35,000 (2024, IMF) get complimentary access to the whole series.
 
 **Access.** Browse and download at nber.org/papers. Free weekly New This Week email digest after free registration. Recent papers are also usually on the authors' own pages, on RePEc, or in an institutional working paper series — checking there is the standard workaround.
 
-**Caveats.** Papers within 18 months of release sit behind a subscription for most users, with everyone allowed up to 3 such papers per year. Free current access is granted to journalists, US government employees, employees of NBER Corporate Associates, affiliates of subscribing institutions, and — directly relevant to this catalogue — residents of low-income countries.
+**Caveats.** The stated policy (nber.org/subscribe/working-papers-subscriptions-and-access, 2026-08-28) is: all users get three complimentary downloads annually; full complimentary subscriptions go to NBER Corporate Associates, journalists, US federal/state/local government employees with a .gov address, and residents of countries where PPP-adjusted GDP per capita is under $35,000 (2024, IMF) — a threshold that covers most of the world outside the richest economies and makes this series effectively free for much of this catalogue's audience. Institutional subscribers get IP-based access. When you are outside all of those, the standard workaround is the author's page, RePEc/IDEAS, or the same paper in a university or central bank working paper series.
 
 ### [RePEc / IDEAS](https://ideas.repec.org/)
 
@@ -443,6 +587,16 @@ Large social science preprint repository with deep economics, finance, accountin
 **Access.** Free account to download and to upload. Browse by network (Economics Research Network, Financial Economics Network) or search; papers download as PDFs. Abstract pages are indexed by search engines and by RePEc.
 
 **Caveats.** Owned by Elsevier since 2016, and that shapes it: some series are restricted, an optional paid promotion tier exists, and download counts drive a leaderboard culture that is not a quality signal. Papers are not peer reviewed and not version-controlled the way arXiv is. Posting here does not conflict with most journals' preprint policies, but check the target journal's rules.
+
+### [World Bank Open Knowledge Repository](https://openknowledge.worldbank.org/)
+
+`Free` · beginner 4/5 · development research repository
+
+The World Bank's open repository of its own research and reports: 41,509 items on 2026-08-28, of which 9,301 match the Policy Research Working Paper series, alongside World Development Reports, country diagnostics, impact evaluations, books and journal articles from the Bank's own titles.
+
+**Access.** Free full-text PDF download, no account. Machine access via the DSpace REST API: https://openknowledge.worldbank.org/server/api/discover/search/objects?query=inflation&size=20 (verified live), plus OAI-PMH harvesting for bulk metadata.
+
+**Caveats.** Most items are CC BY 3.0/4.0 IGO — unusually permissive for a large publisher — but co-published books and some third-party content carry tighter terms shown per record, so check before reusing figures. Policy Research Working Papers pass internal review, not peer review, and reflect Bank research priorities. The web front end is a JavaScript app: script the REST API rather than scraping pages.
 
 ## Compute
 
@@ -520,6 +674,16 @@ LSE- and Oxford-based centre funding policy-relevant research on growth in low-i
 
 **Caveats.** Calls open and close on a rolling schedule — the general call was closed when checked on 2026-08-28, with country- and theme-specific calls live — so subscribe to their alerts rather than checking once. IGC actively funds researchers based in the countries studied, which makes it one of the more realistic routes for economists at institutions in low- and middle-income countries. Research must be policy-relevant and tied to an IGC partner country.
 
+### [J-PAL research initiatives](https://www.povertyactionlab.org/initiatives)
+
+`Free, application` · beginner 2/5 · randomised evaluation funding
+
+J-PAL's thematic initiatives (King Climate Action Initiative, jobs, health, education, digital agriculture and others) run competitive requests for proposals funding pilots, full randomised evaluations and scale-ups, mostly in low- and middle-income countries. On 2026-08-28 two calls were open: K-CAI with proposals due 21 October 2026 and the UM6P-J-PAL applied agriculture lab (UJALA) due 30 October 2026; the other initiatives showed no active cycle.
+
+**Access.** Apply through the specific initiative's RFP page linked from povertyactionlab.org/initiatives; calls typically run in two stages (short proposal, then full proposal and budget) and require a named principal investigator plus an implementing partner and, usually, IRB clearance.
+
+**Caveats.** Eligibility is the real gate: most initiatives require at least one J-PAL affiliated professor (the network states more than 1,100 researchers) or an invited researcher on the team, so an unaffiliated applicant normally needs a co-PI inside the network. Some initiatives run smaller separate windows for PhD students or for researchers based in the study country — read each RFP's eligibility section rather than assuming. Most calls are closed at any moment, so treat this page as the calendar and check it monthly.
+
 ### [Partnership for Economic Policy (PEP)](https://www.pep-net.org/)
 
 `Free, application` · beginner 3/5 · Global South research grants and training
@@ -552,6 +716,16 @@ Scott Cunningham's book on causal inference for applied economists, free to read
 
 **Caveats.** More narrative and historical than The Effect — it explains where each method came from and why the profession adopted it, which helps when you need to justify a design to a referee. Cunningham's paid 'Mixtape Sessions' workshops are a separate commercial offering; the book itself is free.
 
+### [Coding for Economists](https://aeturrell.github.io/coding-for-economists/)
+
+`Free` · beginner 4/5 · Python research workflow book
+
+Arthur Turrell's free online book covering the whole Python research workflow for economists: environments and version control, pandas data cleaning and reshaping, visualisation, regression and generalised regression, causal inference, time series, text analysis, geospatial work, and reproducible Quarto write-ups. MIT-licensed, chapters are downloadable notebooks.
+
+**Access.** Read free in the browser at aeturrell.github.io/coding-for-economists; no account. Each chapter can be downloaded and run as a Jupyter notebook locally or in Colab.
+
+**Caveats.** Assumes Python is the decision already made; it will not help you choose between R, Stata and Python. The econometrics chapters are a practical tour, not a theory course — pair with The Effect or a graduate metrics text for identification and proofs. Library APIs move faster than the book, so occasional cells drift out of date between revisions.
+
 ### [CORE Econ](https://www.core-econ.org/)
 
 `Free` · beginner 5/5 · open economics textbooks
@@ -561,6 +735,16 @@ Free open-access economics textbooks used in undergraduate courses worldwide: Th
 **Access.** Read free in the browser at books.core-econ.org; no payment. Free optional registration unlocks additional instructor and learner materials. Doing Economics ships datasets and R/Excel walkthroughs.
 
 **Caveats.** Teaches economics starting from inequality, institutions and empirical evidence rather than the standard supply-and-demand-first sequence, which is a deliberate pedagogical stance rather than a neutral one. Some complementary materials are CC BY-NC-ND, meaning you may not redistribute modified versions. Doing Economics is the standout for someone teaching themselves applied work. For video-first learning, Marginal Revolution University (mru.org) offers 750+ free lessons with an openly free-market editorial slant, and MIT OpenCourseWare (ocw.mit.edu) publishes full graduate problem sets and solutions — but check course dates, since applied econometrics material from before roughly 2020 predates the staggered-DiD literature.
+
+### [NBER Methods Lectures](https://www.nber.org/conferences/methods-lectures)
+
+`Free` · beginner 3/5 · econometric methods video lectures
+
+Free video and slide archive of the methods lectures delivered at the NBER Summer Institute, in which the authors of new econometric methods teach them directly to applied researchers; the 2026 lecture was Melissa Dell and Ashesh Rambachan on estimation and inference with AI-generated data, and the archive runs back over a decade of Summer Institutes.
+
+**Access.** Watch free on nber.org with no account; each lecture page links slides and, for many lectures, code. The same video section carries other free NBER lecture series.
+
+**Caveats.** Lecture-level, not a course: these start where a graduate textbook stops and assume you already know the standard estimators. Coverage is what NBER chose to teach in a given summer, not a curriculum, and older lectures reflect the state of the art at the time — pre-2020 panel and DiD material predates the staggered-adoption corrections. The listing page is a JavaScript app, so browse it rather than scripting it.
 
 ### [QuantEcon](https://quantecon.org/lectures/)
 

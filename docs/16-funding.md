@@ -1,10 +1,10 @@
 # Funding, grants & recognition
 
-Part of [research-vault](../README.md). 56 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 68 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Publishing](#publishing) (1) · [Funding](#funding) (52) · [Learning](#learning) (1) · [Community](#community) (2)
+**Contents:** [Publishing](#publishing) (1) · [Funding](#funding) (63) · [Learning](#learning) (2) · [Community](#community) (2)
 
 ## Publishing
 
@@ -30,7 +30,7 @@ Micro-grants of at least $1,000, paid with no strings attached, to high-school a
 
 **Caveats.** Effectively North America only — the fund states international applicants may get limited support because of regulatory constraints. Amounts are small and this is a talent-scouting pipeline for a venture fund, so expect the framing to favour buildable artefacts over scholarly output.
 
-### [ACL Diversity & Inclusion and virtual subsidies](https://2026.aclweb.org/)
+### [ACL Diversity & Inclusion and virtual subsidies](https://www.aclweb.org/portal/)
 
 `Free, application` · beginner 3/5 · conference cost relief (NLP)
 
@@ -40,7 +40,7 @@ The Association for Computational Linguistics runs D&I subsidies and separate vi
 
 **Caveats.** Amounts, eligibility and deadlines are set fresh each year by that year's D&I chairs and are not stable across conferences — read the specific call rather than a previous year's terms. Sibling conferences (EMNLP, NAACL, EACL) run comparable schemes under the same umbrella.
 
-### [ACX Grants](https://www.astralcodexten.com/archive?sort=search&search=grants)
+### [ACX Grants](https://www.astralcodexten.com/)
 
 `Free, application` · beginner 4/5 · irregular open-call micro-grants
 
@@ -49,6 +49,16 @@ Grant rounds run by Scott Alexander on the Astral Codex Ten blog, funding indivi
 **Access.** Rounds are announced as blog posts with a Google Form; watch the blog or subscribe to the RSS feed. Past rounds also ran an associated impact market / mini-grants track.
 
 **Caveats.** Cadence is irregular and there is no standing application portal — no open round was visible on the blog as of 2026-08-28, and a June 2025 post ('Open Questions For Future ACX Grants Rounds') suggests the format is still being reconsidered. Grants are small and one-off; the strongest secondary benefit is visibility to the blog's donor-heavy readership.
+
+### [Africa Research Excellence Fund (AREF)](https://africaresearchexcellencefund.org.uk/)
+
+`Free, application` · beginner 3/5 · career-development fellowships for African health researchers
+
+UK-registered charity, with offices in The Gambia and London, funding early-career African health researchers: Research Development Fellowships have placed 83 fellows at 17 research centres in Africa, Europe and beyond, alongside leadership programmes and grant-writing workshops including a stream for women scientists. AREF reports investing over GBP 3M in 500 researchers who went on to win more than GBP 10M from other funders.
+
+**Access.** Apply to a specific call listed on the Funding Calls page; open on 2026-08-28 were the AREF-MRC Towards Leadership Programme 2026/2027 and a French-language essential grant-writing skills course for January/March 2027.
+
+**Caveats.** Amounts and durations are published per call rather than centrally, so the individual call document is the only reliable source. Scope is health and biomedical research by researchers based in Africa — no other regions or disciplines. Most schemes assume an institutional base in Africa and, for placement fellowships, a named host laboratory, so a fully unaffiliated applicant will struggle.
 
 ### [AIMS (African Institute for Mathematical Sciences)](https://aims.ac.za/)
 
@@ -112,15 +122,15 @@ Community-governed fund that invests directly in events building data-science sk
 
 **Caveats.** Grant amounts and the current round status are not stated on the landing page — the live call linked as of 2026-08-28 was themed 'Pushing the Boundaries of Research Software Engineering', so scope changes between cohorts. This funds events and community-building, not personal research time.
 
-### [CZI Essential Open Source Software for Science (EOSS)](https://chanzuckerberg.com/rfa/essential-open-source-software-for-science/)
+### [Commonwealth Scholarships (CSC UK)](https://cscuk.fcdo.gov.uk/scholarships/)
 
-`Free, application` · beginner 2/5 · grants for maintenance of scientific software
+`Free, application` · beginner 3/5 · national scholarship scheme (UK, Commonwealth)
 
-The most significant dedicated funder of maintenance work on open-source scientific software: Cycle 6 was $11.7M in partnership with the Kavli Foundation and Wellcome, with awards of $50,000–$200,000 per year for two years ($100,000–$400,000 total).
+UK government scheme awarding around 800 postgraduate and professional-development awards a year: Master's Scholarships, PhD Scholarships for least developed countries and vulnerable states, Shared Scholarships, and Commonwealth Fellowships and Startup Fellowships launching from 2026/27. The LDC PhD award covers approved return airfare, full tuition fees agreed directly between the CSC and the UK university, a stipend of GBP 1,712 a month (GBP 2,000 in the London metropolitan area), and study-travel and fieldwork grants.
 
-**Access.** Historically a letter of intent followed by a full proposal, submitted through CZI's grants portal by the software project's maintainers.
+**Access.** Applications go through the CSC Central online portal, but only via a nominating body — a national nominating agency, a UK university, or a listed non-governmental or charitable body. The CSC does not accept direct applications.
 
-**Caveats.** Dormant, and this matters: Cycle 6 closed on 17 October 2023 and no successor cycle has been announced. As of 2026-08-28 all 28 RFAs listed on CZI's science funding page were marked closed. Join the CZI science mailing list rather than waiting on the page. Awards were made to institutions or fiscal sponsors, not to individuals directly.
+**Caveats.** The nominating-body gate is the binding constraint: if your country's agency is not nominating this cycle there is no way in, whatever your record. Country eligibility is per scheme — the LDC PhD list is 17 countries (Bangladesh, The Gambia, Kiribati, Lesotho, Malawi, Mozambique, Nigeria, Pakistan, Rwanda, Sierra Leone, Solomon Islands, Sri Lanka, Tanzania, Togo, Tuvalu, Uganda, Zambia). Applicants must declare they could not otherwise afford to study in the UK. Windows differ by scheme; the LDC PhD page listed 8 September to 20 October 2027 (16:00 BST) for its next round on 2026-08-28.
 
 ### [DAAD Scholarship Database](https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/)
 
@@ -131,6 +141,18 @@ Free, filterable database of scholarships for international students, graduates 
 **Access.** Web interface, no account needed — set your country of residence and status, then read each programme's own terms and deadline.
 
 **Caveats.** The country filter refers to where you currently live and apply from, not your nationality; DAAD advises contacting them if you are applying from elsewhere. The database also indexes non-DAAD funders, whose entries DAAD does not guarantee — check terms with the programme itself. Monthly stipend amounts are on the individual programme pages, not the search results.
+
+### [Dimensions (free version)](https://www.dimensions.ai/products/free/)
+
+`Free (registration), email` · beginner 4/5 · funded-award and research intelligence (global)
+
+Free personal-use tier of the Dimensions database: more than 140 million publications and 29 million datasets, with records linked to the grants, clinical trials, patents and policy documents that fund or cite them. It is the broadest free route to see which funder paid for a given paper outside the US-only NIH RePORTER and NSF Award Search.
+
+**Access.** Free account at app.dimensions.ai — full-text search with filters for researcher, source title, category and open-access status, plus export, ORCID linking and reference saving via ReadCube.
+
+**Caveats.** The free tier is licensed for personal, non-commercial use only. Grants appear as linked context on publication records rather than as a fully searchable and analysable grants database — that, and the institutional analytics, sit behind the paid tier, so this does not replace a real grants search for a funder you already know. Funder coverage is strongest for large English-language funders and thin for national agencies in the Global South.
+
+*Also listed under: literature-access.*
 
 ### [DrivenData](https://www.drivendata.org/competitions/)
 
@@ -151,6 +173,26 @@ Always-open fund making grants typically in the $10k–$150k range (rarely above
 **Access.** Rolling online application form on the fund page; contact transformativeai [at] effectivealtruismfunds.org with questions.
 
 **Caveats.** This fund replaced the Long-Term Future Fund, which EA Funds closed — old LTFF links now redirect here, so guides that still name the LTFF are out of date. Scope is restricted to work on risks and impacts from transformative AI; a general independent-research salary request outside that scope will not fit.
+
+### [EMBO Postdoctoral Fellowships](https://www.embo.org/funding/fellowships-grants-and-awards/postdoctoral-fellowships/)
+
+`Free, application` · beginner 2/5 · life-science postdoctoral fellowship
+
+Up to two years of support for life-science postdocs, providing a salary or stipend, a relocation allowance, support for fellows with children, and a place on an EMBO Laboratory Leadership course. Applications are accepted year-round against periodic hard deadlines; the next is Friday 22 January 2027, 14:00 CET.
+
+**Access.** Direct online application by the candidate through the EMBO portal, with the agreement of the proposed host laboratory. No application fee.
+
+**Caveats.** International mobility is a hard requirement, and you need at least one first-author peer-reviewed paper or accepted refereed preprint, so this is not a route straight out of a thesis with nothing published. From the Autumn 2026 round a single host laboratory may back only one candidate per selection round, and from Autumn 2027 re-application is barred entirely — one submission per researcher, ever. Stipend amounts are set per host country and are not published as one global figure.
+
+### [EMBO Scientific Exchange Grants](https://www.embo.org/funding/fellowships-grants-and-awards/scientific-exchange-grants/)
+
+`Free, application` · beginner 4/5 · short research-visit travel grant
+
+Grants funding research exchanges of up to three months between laboratories in EMBO-eligible countries, covering the visiting researcher's travel and subsistence at published rates. Applications are accepted throughout the year with no fixed deadline.
+
+**Access.** Online application on the EMBO site at any time; download the guidelines plus the subsistence-rate and travel-allowance documents before setting a budget, since the rates are fixed per country.
+
+**Caveats.** Eligibility is defined by country pairs — both your home and host country must be on EMBO's eligible list — so check the eligibility page first, because most refusals here are structural rather than scientific. It funds the visit only: no salary at home, no consumables, no bench fees. This is the lowest-friction EMBO route for a researcher with no travel budget who needs to learn a technique or start a collaboration.
 
 ### [Emergent Ventures](https://www.mercatus.org/emergent-ventures)
 
@@ -192,6 +234,16 @@ Single entry point for European Union funding calls, including Horizon Europe, t
 
 **Caveats.** Almost all calls require a legal-entity applicant, usually with a host organisation, so an unaffiliated individual cannot submit alone. The portal is dense and the terminology is its own dialect — start from the topic's work programme document. Reading past evaluation criteria and funded-project abstracts here is free competitive intelligence even if you never apply.
 
+### [EURAXESS](https://euraxess.ec.europa.eu/jobs/search)
+
+`Free` · beginner 4/5 · research job, funding and hosting database (Europe)
+
+European Commission portal carrying what it describes as the largest database of research job, funding and hosting offers in Europe, operating across 43 European countries and 9 worldwide hubs; 7,698 offers were listed on 2026-08-28, filterable by offer type (job / funding / hosting), country, 300+ research fields, researcher profile R1-R4 and funding programme (Horizon Europe, Erasmus+ and others).
+
+**Access.** Web interface — search and read any offer without logging in; a free account only adds saved searches and email alerts for new or expiring offers. You then apply to the host institution named in the offer, not to EURAXESS.
+
+**Caveats.** Listings are posted by institutions, so completeness and quality vary and expired offers linger in results. Most funding entries assume a European host organisation, and the portal awards nothing itself — it is an index. Non-European researchers can use it freely, but many indexed schemes carry mobility or residency conditions set by the underlying funder, not visible in the search summary.
+
 ### [Experiment](https://experiment.com/)
 
 `Free (registration), email` · beginner 4/5 · crowdfunding for research projects
@@ -216,9 +268,9 @@ Three-minute pitch competition for students and early-career professionals acros
 
 `Free, application` · beginner 3/5 · non-salaried early-career fellowship
 
-Year-long fellowship for early-career scientists and engineers in secure AI, longevity biotechnology, nanotechnology, neurotechnology and 'existential hope', providing introductions to senior researchers and funders, paid travel to one technical workshop and one Vision Weekend, seminar membership and quarterly career calls.
+Year-long fellowship for early-career scientists and engineers in secure AI, longevity biotechnology, nanotechnology, neurotechnology, space and 'existential hope', providing introductions to senior scientists, funders and mentors, paid travel to one technical workshop and one Vision Weekend, seminar-group membership with presentation slots, priority access to Foresight's AI Nodes in San Francisco and Berlin, and quarterly career calls.
 
-**Access.** Open application on the fellowship page; as of 2026 the site was taking applications for a forthcoming cohort.
+**Access.** Open application on the fellowship page; on 2026-08-28 applications were open for the 2028 cohort, with no deadline published. Third-party nominations of candidates are also accepted; questions to fellowship@foresight.org.
 
 **Caveats.** No stipend or research budget is disclosed — the value is network and travel, not salary, so it does not replace income. Focus areas are narrow and the community skews toward Bay Area / Berlin technologists.
 
@@ -236,7 +288,7 @@ US government programme funding non-US citizens to undertake graduate study or r
 
 `Free, email` · beginner 4/5 · recurring support for research software maintainers
 
-Recurring or one-off sponsorship of open-source maintainers, supported in over 100 regions. GitHub charges no fee on sponsorships from personal accounts, so 100% reaches the developer; sponsorships from organisation accounts carry up to 6% (3% card processing, which invoiced billing removes, plus 3% service fee).
+Recurring or one-off sponsorship of open-source maintainers, with 103 regions supported globally as stated on the Sponsors page. GitHub charges no fee on sponsorships from personal accounts, so 100% reaches the developer; sponsorships from organisation accounts carry up to 6% (3% credit-card processing, which invoiced billing removes, plus a 3% GitHub service fee).
 
 **Access.** Enable a Sponsors profile on your GitHub account, add sponsor tiers, and surface the Sponsors button on your repositories; payouts go to a bank account or Stripe Connect in a supported region.
 
@@ -253,6 +305,16 @@ Paid, mentored programme placing newcomers on open-source projects for a 12+ wee
 **Caveats.** Open to anyone 18+ who is a student OR an open-source beginner (fewer than about ten prior contributions), eligible to work in their country of residence, and accepted at most once before; residents of US-embargoed countries are excluded. Stipend amounts vary by project size and country tier and are not published on the FAQ — check the current programme rules. Competition for slots at popular organisations is heavy and proposals written without prior contact with mentors rarely succeed.
 
 *Also listed under: physics, cs-ml, learning, workflow-tools.*
+
+### [Grand Challenges](https://gcgh.grandchallenges.org/challenges)
+
+`Free, application` · beginner 3/5 · open global-health and development calls
+
+Family of open funding calls started by the Gates Foundation in 2003 and now run with government, foundation and nonprofit partners on four continents; partners have collectively funded more than 4,300 projects in more than 120 countries. Calls are topic-specific with their own deadlines — 2026 examples include AI-Enabled Consumer Engagement to Advance Family Planning (21 July 2026) and Innovations in Decentralized Pan-Orthoebolavirus Diagnostics (6 July 2026). The historic Grand Challenges Explorations line (2007-2020) made $100,000 seed grants on short applications.
+
+**Access.** Browse the challenges list and apply to a specific call through the portal linked from that call; proposals are typically short and are reviewed without requiring preliminary data.
+
+**Caveats.** Every call sets its own eligibility, and most require a legal entity able to receive and account for funds, so an unaffiliated individual generally needs an institutional or fiscal host. Live and archived calls appear in the same list across 26 pages — check status and deadline on each. Scope is global health and development as those partners define it; work outside that framing has no home here.
 
 ### [Grants.gov](https://www.grants.gov/)
 
@@ -273,6 +335,16 @@ Three-year, non-renewable fellowships in the life sciences with a living allowan
 **Access.** Two-stage application on the HFSP portal. For the 2027 cycle: LOI portal opens 12 March 2026, LOI initiation 5 May 2026, LOI submission 12 May 2026, full proposal 24 September 2026, outcome March 2027, fellowship starts between 1 April 2027 and 1 January 2028.
 
 **Caveats.** Nationality is unrestricted but mobility is mandatory: you cannot hold the fellowship in your country of nationality, and you must not have lived, studied or worked in the proposed host country for more than 12 months before it starts. An approved host institution and named supervisor are required at application, so the host search has to happen a year ahead. Allowance amounts vary by host country and are not fixed globally.
+
+### [Humboldt Research Fellowship](https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship)
+
+`Free, application` · beginner 3/5 · postdoctoral fellowship in Germany
+
+Alexander von Humboldt Foundation fellowship for non-German researchers to work in Germany: EUR 3,000 per month for 6-24 months for postdocs (doctorate within the last 4 years) or EUR 3,600 per month for 6-18 months for experienced researchers (doctorate within 12 years). Adds a health-insurance subsidy, travel costs, family allowances for accompanying dependants and an optional 2-4 month German language course; the stay can be split into up to three visits across three years.
+
+**Access.** Direct online application by the researcher — no institutional nomination. Three calls a year closing 15 March, 15 July and 15 November; each round closes early once it reaches 800 applications, so submit well before the date.
+
+**Caveats.** You must secure a German host who signs a mentoring agreement and confirms facilities (the host separately receives a monthly research allowance of EUR 800 in the sciences, EUR 500 in the humanities), so finding the host is the real work and should start a year out. You must not have spent more than 90 days in Germany in the 18 months before submitting, which disqualifies anyone already there; German nationals qualify only after 10+ years abroad.
 
 ### [ICML Financial Aid](https://icml.cc/Conferences/2026/FinancialAid)
 
@@ -302,7 +374,7 @@ One academic year (1 September–31 August) in Trieste, Italy, in high energy/co
 
 **Access.** Online application via ICTP's e-applications portal with transcripts and degrees in English, English-proficiency evidence and two references from senior scientists; questions to diploma@ictp.it.
 
-**Caveats.** Eligibility is tightly drawn: generally under 28, an MSc (or an exceptionally strong BSc) in physics, mathematics or a related field, and citizenship of a UN, UNESCO or IAEA member state. Self-funded candidates may attend if they can prove adequate resources. This is the strongest single bridge from an under-resourced undergraduate education into a competitive PhD.
+**Caveats.** The programme page showed 'Call: To be announced' on 2026-08-28, so there was no open application at that date — watch the page rather than assuming a fixed annual window. Eligibility is tightly drawn: generally under 28, an MSc (or an exceptionally strong BSc) in physics, mathematics or a related field, fluency in English, and citizenship of a UN, UNESCO or IAEA member state. Tuition is free for every admitted student; the roughly ten scholarships per field, reserved for candidates from developing countries, are what cover travel and living costs. Self-funded candidates may attend if they can prove adequate resources.
 
 ### [Idea Wild](https://ideawild.org/apply/)
 
@@ -324,7 +396,7 @@ The International Mathematical Union's grant arm for developing countries: the A
 
 **Access.** Each programme has its own application page and deadline under mathunion.org/cdc; several require nomination or endorsement by a mathematician or a host department.
 
-**Caveats.** Amounts are mostly not published on the overview page — read each programme page. Some routes (Breakout Graduate Fellowship, Volunteer Lecturer) run through institutions or nominators rather than direct individual application, so identify a sponsor early. Mathematics only.
+**Caveats.** Amounts are mostly not published on the overview page — read each programme page. The 686 ICM 2026 travel grants were awarded from roughly 2,000 applications worldwide. The only deadline live on 2026-08-28 was the Abel Visiting Scholar Program for Graduate Students, 15 September 2026 (recently extended). Some routes (Breakout Graduate Fellowship, Volunteer Lecturer Program, GRAID) run through institutions or nominators rather than direct individual application, so identify a sponsor early. Mathematics only.
 
 *Also listed under: mathematics.*
 
@@ -347,6 +419,16 @@ Lightweight page for one-off tips, monthly memberships, commissions and digital-
 **Access.** Web interface — create a page, connect Stripe or PayPal, and link it from your writing. A free account plus an optional paid 'Gold' tier with extra features.
 
 **Caveats.** Payment-processor fees always apply on top of whatever the platform charges; verify the current fee schedule before promising sponsors anything. Patreon is the larger alternative with more membership tooling but a higher platform cut. Income here tracks audience size, so it is a supplement to a research programme, not a foundation for one.
+
+### [LFX Mentorship](https://lfx.linuxfoundation.org/tools/mentorship/)
+
+`Free, email` · beginner 4/5 · paid remote open-source mentorship
+
+Paid remote mentorships on Linux Foundation and CNCF open-source projects. Mentee stipends start from a base of $6,000 USD adjusted by each country's purchasing-power-parity value, producing a range of $1,000 to $6,600, paid in instalments against evaluations and delivered milestones. Since 2019 more than 190 mentees have completed 96 mentorship programmes.
+
+**Access.** Browse open mentorship projects on the platform at mentorship.lfx.dev, then apply to a specific project with a short proposal. Free to apply.
+
+**Caveats.** Payment is milestone-gated: miss evaluations or deliverables and instalments stop. The PPP adjustment means a mentee in a low-income country receives materially fewer nominal dollars than one in the United States for the same work. Projects are cloud-native and infrastructure software rather than scientific computing, so for a domain researcher the return is engineering skill and a public contribution record, not progress on their own research.
 
 ### [Manifund](https://manifund.org/)
 
@@ -376,7 +458,7 @@ Grants for conservation of individual species — plants, animals and fungi — 
 
 **Access.** Online application during one of three annual windows; open to individuals as well as organisations, worldwide.
 
-**Caveats.** Applications were closed as of 2026-08-28; the next window opens 15 September 2026 and closes 15 October 2026, followed by windows announced for 2027. Grants are species-specific — a habitat or policy project without a clear focal species is a poor fit. Maximum award size is not stated on the grants page; check the guidelines in the portal.
+**Caveats.** Applications were closed on 2026-08-28. The grants page lists the next window as 15 September to 15 October 2026 (response late December), then 4-31 January 2027 (response late April 2027) and 1-31 May 2027 (response end of September 2027), and states that submission deadlines are inflexible. Grants are species-specific — a habitat or policy project without a clear focal species is a poor fit. Maximum award size is not stated on the grants page; read the guidelines in the portal at application.speciesconservation.org.
 
 *Also listed under: biology.*
 
@@ -522,6 +604,16 @@ German government-owned body that invests public money in foundational open-sour
 
 **Caveats.** The agency's own site returned HTTP 403 to automated checks on 2026-08-28, so the programme details above come from secondary documentation — confirm current calls, amounts and eligibility on the site before planning around it. Funding targets infrastructure the German and European digital economy depends on; a niche scientific package with few downstream users is a poor fit.
 
+### [The Company of Biologists Travelling Fellowships](https://www.biologists.com/travelling-fellowships/)
+
+`Free, application` · beginner 4/5 · lab-visit travel grant
+
+Awards of up to GBP 3,000 for graduate students and postdoctoral researchers to make a collaborative research visit to another laboratory, offered through the journals Development, Journal of Cell Science and Journal of Experimental Biology. Two rounds in 2026: 7 August (travel starting after 21 September) and 23 October (travel starting after 7 December).
+
+**Access.** Direct online application to the scheme run by the relevant journal — no nationality restriction and no institutional grants office required.
+
+**Caveats.** Only one person per laboratory may apply in a given round; travel must begin within six months of the award and must not start before the decision date, so there is no retrospective funding. A recipient may win only once every two years across all three journals. Your project has to sit within the scope of the journal you apply through, which rules out most non-organismal and non-cell-biology work.
+
 ### [The Rufford Foundation](https://www.rufford.org/)
 
 `Free, application` · beginner 4/5 · small conservation grants for individuals
@@ -554,6 +646,16 @@ Grants of up to USD 30,000 (with equipment and supplies capped at USD 20,000) to
 
 **Caveats.** TWAS states that no call will open in 2026 — the last deadline was 3 April 2025, so treat this as a 2027-or-later target and watch the deadlines page. Eligibility is narrow: nationals of developing countries, PhD held, age 45 or under, employed at a university or research institute in one of the 66 science-and-technology-lagging countries TWAS lists, and not already holding a TWAS or OWSD grant. It explicitly does not cover salaries, student pay, field expenses, travel, laptops, tablets, drones or laboratory animals.
 
+### [UKRI Funding Finder](https://www.ukri.org/opportunity/)
+
+`Free` · beginner 4/5 · funding opportunity database (UK)
+
+Official searchable index of funding opportunities across the nine UK Research and Innovation councils; 141 opportunities were listed on 2026-08-28, filterable by status (open, closed, upcoming), council, funding type (fellowship, grant, loan, other) and opening or closing date.
+
+**Access.** Free web search, no account needed. Each opportunity page carries the full call document, eligibility text and deadline; submission itself goes through the UKRI Funding Service with a UK host organisation.
+
+**Caveats.** Almost every opportunity requires the applicant to be based at a UK research organisation eligible for that council's funding, or to be a UK-registered business, so for an unaffiliated or non-UK researcher this is intelligence rather than money. The useful free product is the call documents themselves: they state assessment criteria explicitly, which is rare and worth reading before writing any proposal anywhere.
+
 ### [Wikimedia Research Fund](https://meta.wikimedia.org/wiki/Wikimedia_Research_Fund)
 
 `Free, application` · beginner 3/5 · open grants including unaffiliated researchers
@@ -562,9 +664,19 @@ Annual fund for research on Wikimedia projects, open to individuals, groups and 
 
 **Access.** Letter of intent then full proposal, submitted through OpenReview. In the 2025–26 round the LOI deadline was 16 January 2026, LOI decisions 6 February, full proposals 3 April, final notifications 1 May 2026.
 
-**Caveats.** As of 2026-08-28 Type I and II proposals for this round are closed; Type 3 (event and community-building) submissions remain open. Applicants must be established Wikimedia researchers or established researchers entering the field, cannot have been WMF employees in the last 24 months, and cannot be in an advisee/advisor relationship with committee chairs. Review is public on OpenReview.
+**Caveats.** No round was open on 2026-08-28. In the 2025-26 round the single-stage deadline of 3 April 2026 covered all Type 3 proposals as well as advanced Type 1-2, with final notifications on 1 May 2026 and funded work able to start from 1 July 2026 — so Type 3 is not a rolling route. Applicants may hold at most three open grants (organisations five), the minimum request is over USD 2,000, applications must be in English, and you cannot have been a Wikimedia Foundation employee or contractor in the last 24 months. Review is public on OpenReview.
 
 *Also listed under: social.*
+
+### [Zindi](https://zindi.world/)
+
+`Free (registration), email` · beginner 4/5 · data-science prize competitions (emerging markets)
+
+AI and data-science challenge platform and professional network for emerging markets, launched in 2018, with members across more than 185 countries. Challenges are posted by companies, NGOs and government bodies, carry cash prizes and a public leaderboard record; Zindi reports that 1 in 5 users got a data-science or AI job through their profile.
+
+**Access.** Free account, then join a challenge, download the data and submit predictions against a held-out leaderboard. Hackathons and no-prize learning challenges also run continuously.
+
+**Caveats.** The zindi.africa domain now redirects to zindi.world. Prize pools, eligibility and country restrictions are set per challenge — read the rules tab, because some restrict prizes to residents of specific African countries and some require the winning solution to be licensed to the sponsor. Datasets are smaller and problems more applied than Kaggle's, which means less crowding but also smaller purses; for a newcomer the realistic payoff is a portfolio and a network, not income.
 
 ## Learning
 
@@ -577,6 +689,18 @@ A free 6- or 12-week self-directed programming retreat, available in person in B
 **Access.** Written application plus two pair-programming interviews; no degree, no CV screen, and researchers using it to build computational skills or a research tool are a normal fit.
 
 **Caveats.** Free to attend but not free to live through — you cover your own housing and living costs for the batch, which is the real barrier. Recurse has historically offered need-based living-expense grants for people from groups under-represented in programming; the grants page did not resolve on 2026-08-28, so ask admissions directly rather than assuming. The remote batch removes the New York cost problem entirely.
+
+### [Rising Scholars (formerly AuthorAID)](https://risingscholars.net/)
+
+`Free (registration), email` · beginner 5/5 · research-writing and grant-proposal training for the Global South
+
+INASP's rebranded AuthorAID network: a free global community of more than 14,000 researchers from 175 countries, offering free online courses in research communication, proposal writing and community-engaged research on its Moodle platform, a library of nearly 900 resources, and mentoring matches between early-career and experienced researchers.
+
+**Access.** Free registration on the site, then enrol in a course, browse the resource library, or request or offer mentoring. Courses are online and asynchronous.
+
+**Caveats.** The old authoraid.info domain now 301-redirects here, so older links, syllabi and citations still name the previous brand. It awards no research money itself — the value is that the proposal-writing course and the mentor matching are aimed squarely at making a first grant application competitive. Course cohorts run on a schedule, so you may wait for the next intake. Material is pitched at researchers in low- and middle-income countries.
+
+*Also listed under: learning.*
 
 ## Community
 

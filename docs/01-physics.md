@@ -506,8 +506,6 @@ NASA-funded literature database operated by the Smithsonian Astrophysical Observ
 
 **Caveats.** Reading and searching need no account; only the API, saved libraries and alerts require a free login. API rate limits are per-endpoint daily allowances reported in X-RateLimit headers. Coverage is deepest in astronomy, astrophysics, gravitation and space physics — for condensed matter or nuclear work INSPIRE or OpenAlex serve better. The classic UI is migrating to SciX, so bookmarked URLs may move.
 
-*Also listed under: earth.*
-
 ### [OpenAlex](https://openalex.org)
 
 `Free` · beginner 4/5 · open bibliographic index
@@ -857,5 +855,3 @@ Community-maintained, free listing of online and hybrid research seminars, cours
 **Access.** Browse or search at researchseminars.org with no account; a free account lets you subscribe to series, export to your calendar, and list a seminar of your own.
 
 **Caveats.** Each series sets its own access rules — some need a registration form or a password from the organiser, so a listing is not always an open door. Coverage is strongest in mathematics and mathematical/theoretical physics; experimental series are thinly represented. Still, it is the most practical way for someone with no department to sit in on current research talks.
-
-*Also listed under: mathematics.*

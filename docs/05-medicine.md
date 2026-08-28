@@ -212,8 +212,6 @@ USAID-funded Demographic and Health Surveys: nationally representative household
 
 **Caveats.** Microdata access is per-project and per-country: you must describe your study and request each country's files, and approval is manual, usually taking days. GPS files require a separate request. Redistribution of microdata is prohibited. Surveys use complex multi-stage designs, so weights and clustering are mandatory in analysis.
 
-*Also listed under: social.*
-
 ### [UMLS Metathesaurus](https://www.nlm.nih.gov/research/umls/index.html)
 
 `Free (registration), api-key` · beginner 2/5 · biomedical terminology

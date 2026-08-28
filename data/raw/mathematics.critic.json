@@ -6,24 +6,48 @@
       "url": "https://www.sympy.org/",
       "category": "software",
       "subcategory": "symbolic computation in Python",
-      "summary": "BSD-licensed pure-Python computer algebra system covering symbolic algebra, calculus, equation and ODE solving, linear algebra, number theory, combinatorics, geometry and LaTeX/code output. Current release 1.14.0; its only hard dependency is mpmath, which supplies the arbitrary-precision floating point.",
-      "access": "pip install sympy (or conda install -c conda-forge sympy); then 'from sympy import symbols, integrate; x = symbols(\"x\"); integrate(x**2, x)'. Zero-install browser shell at live.sympy.org.",
+      "summary": "BSD-licensed pure-Python computer algebra system covering symbolic algebra, calculus, equation and ODE solving, linear algebra, number theory, combinatorics, geometry and LaTeX/code output. Current release 1.14.0 (27 April 2025); its only hard dependency is mpmath, which supplies the arbitrary-precision floating point.",
+      "access": "pip install sympy (or conda install -c conda-forge sympy); then 'from sympy import symbols, integrate; x = symbols(\"x\"); integrate(1/(x**2+1), x)'. Also bundled inside SageMath and available in any Jupyter kernel, including Binder and Colab.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "Being pure Python, it is far slower than the FLINT/Singular-backed systems on large Groebner bases, factorisation or high-precision work - move to SageMath or OSCAR when objects get big. simplify() is heuristic and not canonical, so symbolic equality needs care (use simplify(a-b) == 0 patterns, not a == b)."
+      "notes": "Being pure Python, it is far slower than the FLINT/Singular-backed systems on large Groebner bases, factorisation or high-precision work - move to SageMath or OSCAR when objects get big. simplify() is heuristic and not canonical, so symbolic equality needs care (use simplify(a-b) == 0 patterns, not a == b). The sympy.org front page still advertises 1.12 from 2023, so check PyPI or GitHub for the current release."
     },
     {
       "name": "FLINT (Fast Library for Number Theory)",
       "url": "https://flintlib.org/",
       "category": "software",
       "subcategory": "arbitrary-precision arithmetic library",
-      "summary": "LGPL v3+ C library providing arithmetic over the integers, rationals, algebraic, real, complex and p-adic numbers, finite fields and number fields, plus polynomials, power series, matrices, LLL, factorisation and special functions. The 3.0 release comprises about 8,000 documented functions, 3,500 test programs and 900,000 lines of code, and includes the ball-arithmetic code formerly distributed as Arb.",
-      "access": "Distribution packages or conda-forge; Python bindings: pip install python-flint (0.9.0), then 'from flint import arb; arb.pi()'. It is also the arithmetic backend inside SageMath, OSCAR/Nemo, Singular, Macaulay2, Maple and Mathematica, so many users get it indirectly.",
+      "summary": "LGPL v3+ C library providing arithmetic over the integers, rationals, algebraic, real, complex and p-adic numbers, finite fields and number fields, plus polynomials, power series, matrices, LLL, factorisation and special functions. Since 3.0 it absorbed Arb (ball arithmetic), Antic (algebraic numbers) and Calcium (exact reals/complexes); the project describes about 8,000 documented functions, 3,500 test programs and 900,000 lines of code. Latest release 3.6.0 (29 June 2026).",
+      "access": "Distribution packages or conda-forge; Python bindings: pip install python-flint (0.9.0, 3 July 2026; wheels for CPython 3.10-3.14 on Windows, macOS, Linux and WebAssembly), then 'from flint import arb; arb.pi()'. It is also the arithmetic backend inside SageMath, OSCAR/Nemo, Singular and Macaulay2, so many users get it indirectly.",
       "free": "free",
       "registration": "none",
       "beginner": 2,
       "notes": "A library, not an interactive system - expect C or Python glue rather than a REPL. Ball arithmetic returns certified enclosures only if you actually read the radius; ignoring it turns a rigorous computation into a plausible-looking number. Source builds need GMP and MPFR."
+    },
+    {
+      "name": "mpmath",
+      "url": "https://mpmath.org/",
+      "category": "software",
+      "subcategory": "arbitrary-precision special functions",
+      "summary": "BSD-licensed pure-Python library for real and complex floating-point arithmetic at arbitrary precision: elementary and special functions (gamma, Riemann zeta with the Riemann-Siegel expansion, Bessel, elliptic, hypergeometric, Meijer G, Jacobi theta), numerical quadrature, differentiation, root finding, linear algebra and ODEs. Version 1.4.0, released 23 February 2026; no dependencies beyond Python 3.",
+      "access": "pip install mpmath; then 'from mpmath import mp, zeta, mpc; mp.dps = 50; zeta(mpc(0.5, 14.134725))'. It is SymPy's numerical backend and ships inside SageMath, so it is often already installed.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Pure Python, so it is slow next to FLINT/Arb on heavy work, and results are heuristically accurate rather than rigorously bounded - use FLINT ball arithmetic when you need a proof-grade enclosure. This is the natural companion for actually evaluating the functions that DLMF only documents."
+    },
+    {
+      "name": "Maxima",
+      "url": "https://maxima.sourceforge.io/",
+      "category": "software",
+      "subcategory": "general-purpose computer algebra system",
+      "summary": "GPL computer algebra system descended from Macsyma: symbolic differentiation and integration, Taylor series, Laplace transforms, ODEs, systems of linear equations, polynomials, sets, lists, vectors, matrices and tensors, with exact rationals, arbitrary-precision integers and variable-precision floats plus 2D/3D plotting. Released under the GPL in 1998 by William Schelter and updated frequently since.",
+      "access": "Distribution packages or the installers on maxima.sourceforge.io; three interfaces ship together - the 'maxima' command line, the wxMaxima notebook GUI and XMaxima. Also callable from SageMath (maxima_calculus) and from a SageMathCell in the browser.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Its own Lisp-flavoured language, and its integration and simplification are weaker than commercial systems on hard inputs. The documentation is a reference manual rather than a tutorial; wxMaxima is the realistic entry point. For research-scale algebra, Singular/PARI/OSCAR are the better tools - Maxima's niche is fast, dependency-light symbolic calculus."
     },
     {
       "name": "GroupNames",
@@ -36,6 +60,42 @@
       "registration": "none",
       "beginner": 4,
       "notes": "A single-maintainer academic page rather than a versioned database - cite it with an access date. Orders with more than 300 groups (128, 192, 256, 288, 320, 384, 432, 448, 480) are split into separate listings and are the least convenient to browse; for anything past order 500 use GAP's SmallGroups library directly."
+    },
+    {
+      "name": "ATLAS of Finite Group Representations (Version 3)",
+      "url": "https://brauer.maths.qmul.ac.uk/Atlas/v3/",
+      "category": "data",
+      "subcategory": "finite group representations",
+      "summary": "Version 3.004 of the ATLAS holds 5,215 explicit representations of about 716 groups - sporadic, alternating, linear, classical, exceptional Lie type and miscellaneous - as permutation and matrix representations. For M11, for instance, it gives permutation representations on 11, 12, 55, 66 and 165 points and matrices over Z, Z[i2], GF(2), GF(3), GF(4), GF(5), GF(11) and GF(25).",
+      "access": "Browse by family at brauer.maths.qmul.ac.uk/Atlas/v3/; each representation has a details page with standard generators and downloadable generator files. Programmatic route: in GAP, LoadPackage(\"atlasrep\") (package 2.1.12, 19 August 2026) then AtlasGenerators(\"M11\", 1), which fetches the same data over the network.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Maintained by Robert Wilson and collaborators at Queen Mary University of London. Versions 2 and 3 of the site coexist and old links point at v2. Data is supplied as is, with provenance sometimes only implicit, and the standard generators must be used exactly as specified or results are not comparable with the literature. Assumes real familiarity with computational group theory."
+    },
+    {
+      "name": "Catalogue of Lattices",
+      "url": "https://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/",
+      "category": "data",
+      "subcategory": "lattices and sphere packings",
+      "summary": "Nebe-Sloane catalogue of about 160,000 lattices covering dimensions 1 to 40 with selected examples up to dimension 248: root, laminated, unimodular, modular, extremal and perfect lattices, the Leech, Niemeier and Barnes-Wall families, with Gram matrices, minima, kissing numbers, densities and theta-series data.",
+      "access": "Direct download per lattice in standard .std format, plus a gzipped archive (about 1 MB) of all .std files; conversion scripts are provided to read the data into GAP, MAGMA, MAPLE, MACSYMA and PARI.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "A static hand-built HTML catalogue: no search, no API, no versioning, and navigation is by index page. Some sections are pointers into the literature rather than downloadable data, and MAGMA - one of the supported output formats - is commercial. Cite the catalogue and the original papers, as the maintainers ask."
+    },
+    {
+      "name": "Mathematics Genealogy Project",
+      "url": "https://www.mathgenealogy.org/",
+      "category": "data",
+      "subcategory": "academic genealogy database",
+      "summary": "Database of doctoral advisor-student lineages in the mathematical sciences: 341,501 records as stated on its homepage on 28 August 2026, each giving the degree-granting institution, year, dissertation title and advisor(s). Hosted by the Department of Mathematics at North Dakota State University in association with the American Mathematical Society.",
+      "access": "Web interface: quick search by name or advanced search by institution, year and country; each record links up to advisors and down to students, and corrections or new entries go through the site's 'submit data' form.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Volunteer-run and badly backlogged: the site states that submissions received after 1 October 2025 (new entries) and 18 August 2025 (updates) were still unprocessed as of August 2026, and asks people not to chase them. Coverage is thinner outside Europe and North America, older records can be wrong or conflated, and there is no API or bulk download."
     },
     {
       "name": "Magma Calculator",
@@ -54,24 +114,36 @@
       "url": "https://colab.research.google.com/",
       "category": "compute",
       "subcategory": "hosted Jupyter notebooks",
-      "summary": "Hosted Jupyter notebooks on Google VMs with notebooks stored in Google Drive. The FAQ states free-tier notebooks 'run for at most 12 hours', that free-tier users get a standard system memory profile, and that 'access to expensive resources like GPUs is heavily restricted' without a paid plan.",
+      "summary": "Hosted Jupyter notebooks on Google VMs with notebooks stored in Google Drive. The FAQ states free-tier notebooks 'can run for at most 12 hours, depending on availability and your usage patterns', that GPU and TPU types 'available in Colab vary over time', and that priority, memory and longer runtimes are what the paid tiers buy.",
       "access": "Sign in with a Google account and open a new notebook; root-level installs work, so '!pip install snappy python-flint sympy' and '!apt-get install -y pari-gp' give a working mathematics stack on a machine you do not own.",
       "free": "free-tier",
       "registration": "email",
       "beginner": 5,
-      "notes": "Runtimes are pre-emptible and recycled when idle - anything not written back to Drive or a repo is lost. GPU/TPU allocation on the free tier is unpredictable and can be refused for hours. Needs a Google account, and the terms make it unsuitable for confidential or embargoed data."
+      "notes": "Runtimes are pre-emptible and recycled when idle - anything not written back to Drive or a repo is lost. GPU/TPU allocation on the free tier is unpredictable and can be refused for hours. No SageMath kernel out of the box (installing Sage in a session is slow and fragile - use CoCalc or SageMathCell instead). Needs a Google account, and the terms make it unsuitable for confidential or embargoed data."
     },
     {
       "name": "HAL (Hyper Articles en Ligne)",
       "url": "https://hal.science/",
       "category": "literature",
       "subcategory": "open archive and preprint server",
-      "summary": "France's national open archive, run by the CNRS's CCSD: 4,644,279 records in total of which 53,402 carry the mathematics domain code (API counts taken 2026-08-28). Deposits are permanent, get a stable HAL identifier, and are the deposit route feeding the Episciences overlay journals.",
-      "access": "Search or query the API without an account: https://api.archives-ouvertes.fr/search/?q=domainAllCode_s:math&rows=20&wt=json . Depositing needs a free hal.science account; the form takes the PDF plus metadata and returns a citable identifier.",
+      "summary": "France's national open archive, run by the CNRS's CCSD: about 4.64 million records in total (4,644,610 returned by its search API on 2026-08-28), of which roughly 53,000 carry the mathematics domain code. Deposits are permanent, get a stable HAL identifier, and are the deposit route feeding the Episciences overlay journals (EPIGA, Annals of Formalized Mathematics).",
+      "access": "Search or query the API without an account: https://api.archives-ouvertes.fr/search/?q=domainAllCode_s:math&rows=20&wt=json . Depositing needs a free hal.science account; the form takes the PDF plus metadata, can forward the deposit to arXiv, and returns a citable identifier.",
       "free": "free",
       "registration": "email",
       "beginner": 4,
-      "notes": "Unlike arXiv there is no endorsement system, which makes HAL a realistic first-deposit route for unaffiliated researchers; deposits are still moderated for scope and rights and can take several days. The interface and most documentation are French-first, and the public web front end sits behind a bot check (Anubis), so scripted access must go through the API."
+      "notes": "Unlike arXiv there is no endorsement system, which makes HAL a realistic first-deposit route for unaffiliated researchers; deposits are still moderated for form, scope and rights and can take several days. The interface and most documentation are French-first, and the public web front end sits behind a bot check (Anubis), so scripted access must go through the API. Mathematicians still look on arXiv, so cross-deposit rather than substituting."
+    },
+    {
+      "name": "Project Euclid",
+      "url": "https://projecteuclid.org/",
+      "category": "literature",
+      "subcategory": "journal hosting platform",
+      "summary": "Platform for independent and society publishers in mathematics and statistics, created by Cornell University Library in 2000 and now managed by Duke University Press: over 100 journals and book series and roughly 2.5 million pages, mixing fully open-access titles with subscription ones.",
+      "access": "Search or browse at projecteuclid.org and use the open-access marker/filter; open articles are direct PDF downloads with no account, and many subscription titles have free back-runs.",
+      "free": "freemium",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "A large part of the platform is subscription-only - 'Euclid Prime' alone is a 27-title paid bundle - so check the open-access icon before assuming access. Some journals hosted here are fully open access with no author charges; others sit behind a moving wall. No bulk download, and its search is weaker than zbMATH for literature discovery."
     },
     {
       "name": "OpenAlex",
@@ -102,12 +174,12 @@
       "url": "https://researchseminars.org/",
       "category": "community",
       "subcategory": "online seminar and conference listings",
-      "summary": "Community-maintained listing of online and hybrid research seminars, series and conferences, built by people from the LMFDB project. On 2026-08-28 it carried 285 series tagged Mathematics (against 85 physics and 65 computer science), each with time-zone-adjusted schedules, speakers, abstracts and joining details.",
+      "summary": "Community-maintained listing of online and hybrid research seminars, series and conferences, built by people from the LMFDB project and open source at github.com/roed314/seminars. On 2026-08-28 it carried 285 series tagged Mathematics (against 85 physics and 65 computer science), each with time-zone-adjusted schedules, speakers, abstracts and joining details.",
       "access": "Browse or filter by topic, language, institution and date without an account; organisers create a free account to list and manage a series.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "Still labelled beta. Listings are only as current as the organisers keep them - series go stale after a term, and some joining links are given out on request rather than published. The single best route into research talks for someone with no seminar culture locally."
+      "notes": "Running since April 2020 and still labelled beta. Listings are only as current as the organisers keep them - series go stale after a term, coverage is dense in some communities (number theory, category theory, combinatorics) and empty in others, and some joining links are given out on request rather than published. The single best route into research talks for someone with no seminar culture locally."
     },
     {
       "name": "Encyclopedia of Mathematics",
@@ -119,7 +191,19 @@
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Licensing is split: original Springer articles remain under Springer copyright, while new articles and edits made on the site are CC BY-SA - check an article's history before reusing text. Many entries are 1990s translations, excellent for definitions and orientation but dated on anything post-2000."
+      "notes": "Licensing is split: original Springer articles remain under Springer copyright, while new articles and edits made on the site are CC BY-SA - check an article's history before reusing text. Many entries are 1990s translations, excellent for definitions and orientation but dated on anything post-2000. Availability is patchy: repeated requests to the site returned HTTP 502 on 2026-08-28, so keep a local copy of anything you rely on."
+    },
+    {
+      "name": "Wolfram MathWorld",
+      "url": "https://mathworld.wolfram.com/",
+      "category": "learning",
+      "subcategory": "online mathematics encyclopaedia",
+      "summary": "Free online mathematics encyclopaedia with 14,353 entries, assembled over more than 25 years by Eric W. Weisstein with thousands of contributors; strongest on formulas, special functions, named constants, integer sequences and the cross-references between them.",
+      "access": "Web interface, free to read with no account; each entry has a stable URL and a citation block, and many carry Wolfram Language input for the objects described.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Copyright Wolfram Research (c) 1999-2026 under their terms of use, not an open licence: free to read, not free to republish or mine wholesale. Not peer reviewed - it has a long-known tail of errors and idiosyncratic conventions, so verify anything load-bearing against DLMF or a textbook. Many entries route you toward Mathematica or Wolfram Alpha, which are not free."
     },
     {
       "name": "Carmin.tv",
@@ -143,45 +227,63 @@
       "free": "free",
       "registration": "email",
       "beginner": 4,
-      "notes": "The journal's own domain combinatorialtheory.org did not resolve over HTTPS on 2026-08-28 and over HTTP redirects to a page returning 404, so navigate via eScholarship. Like the Algebraic Combinatorics case, this is a usable precedent when arguing for a board to leave a paywalled publisher."
+      "notes": "The journal's own domain combinatorialtheory.org did not serve content to standard clients on 2026-08-28, so navigate via eScholarship. Like the Algebraic Combinatorics case, this is a usable precedent when arguing for a board to leave a paywalled publisher."
     },
     {
       "name": "New York Journal of Mathematics",
       "url": "https://nyjm.albany.edu/",
       "category": "publishing",
       "subcategory": "diamond OA generalist journal",
-      "summary": "Generalist mathematics journal established in 1993 as the first electronic general mathematics journal; free to readers and, in its own words, 'completely free to the author'. DOAJ records no APCs, CC BY and eISSN 1076-9803. Hosted by SUNY Albany, with mirror sites and an NYJM Monographs series.",
-      "access": "Every volume is a free PDF download from the journal site or its mirrors; submission instructions are on the 'For Authors' page.",
+      "summary": "Generalist mathematics journal established in 1993 as the first electronic general mathematics journal; free to readers and, in its own words, 'completely free to the author'. DOAJ records no APCs and eISSN 1076-9803; since 2022 papers carry CC BY 4.0 with authors retaining copyright, and refereeing is single-blind. Hosted by the University at Albany, with mirror sites and an NYJM Monographs series.",
+      "access": "Every volume is a free download from the journal site or its mirrors; submission instructions are on the 'For Authors' page.",
       "free": "free",
       "registration": "email",
       "beginner": 4,
-      "notes": "Run on university infrastructure by a small volunteer staff: the site is plain HTML and there is no modern submission portal, which some authors find off-putting. Editorial standards are those of a solid generalist journal - a paper must be 'new, correct, significant, and interesting to a broad audience'."
+      "notes": "Run on university infrastructure by a small volunteer staff: the site is plain HTML and editorial handling is by direct correspondence rather than a modern submission portal, which some authors find off-putting. Standards are those of a solid generalist journal - a paper must be 'new, correct, significant, and interesting to a broad audience' - and visibility depends heavily on also posting to arXiv."
+    },
+    {
+      "name": "Theory and Applications of Categories (TAC)",
+      "url": "https://tac.mta.ca/tac/",
+      "category": "publishing",
+      "subcategory": "diamond OA journal, category theory",
+      "summary": "Refereed electronic journal for category theory and its applications, publishing since Volume 1 in 1995 and at Volume 45 in 2026. The journal states plainly that 'The journal is free'; authors retain copyright to their articles and full texts are free PDFs. It also runs the TAC Reprints series, which republishes classic out-of-print categorical texts.",
+      "access": "Submission requirements at tac.mta.ca/tac/authinfo.html; all volumes download free from the home site at Mount Allison University, with mirrors including EMIS and Library and Archives Canada.",
+      "free": "free",
+      "registration": "email",
+      "beginner": 3,
+      "notes": "Use https://tac.mta.ca/ - the www. host presents a certificate that does not cover that name, so www.tac.mta.ca fails TLS validation. Mirrors can lag the home site, which the journal itself warns about. Scope is strictly categorical, and it is volunteer-run, so refereeing times vary."
     },
     {
       "name": "Ars Inveniendi Analytica",
       "url": "https://ars-ojs-utexas.tdl.org/ars",
       "category": "publishing",
       "subcategory": "diamond OA journal, analysis",
-      "summary": "Peer-reviewed journal for mathematical analysis with volumes running from 2021 to 2026, hosted on the University of Texas Digital Library's OJS instance and stating that it is completely free for authors and readers.",
+      "summary": "Peer-reviewed journal for mathematical analysis with volumes running from 2021 to 2026, hosted on the University of Texas Digital Library's OJS instance and describing itself as 'completely free for authors and readers'.",
       "access": "All articles are free PDFs from the journal site; submit through the OJS system after creating a free account.",
       "free": "free",
       "registration": "email",
       "beginner": 3,
-      "notes": "Not listed in DOAJ as of 2026-08-28 and small in volume (a handful of papers per year), so check how your evaluation committee treats it before sending your only paper of the year. The old ars-inveniendi-analytica.com address now redirects to the UT Digital Library host - update stored links and bibliographies."
+      "notes": "Not listed in DOAJ as of 2026-08-28 and small in volume (a handful of long papers per year), so check how your evaluation committee treats it before sending your only paper of the year. Scope is nonlinear analysis, PDE and calculus of variations rather than analysis at large. The old ars-inveniendi-analytica.com address now 301-redirects to the UT Digital Library host - update stored links and bibliographies."
     }
   ],
   "corrections": [
     {
       "name": "polymake",
       "field": "summary",
-      "new_value": "Open-source system for polytopes, polyhedra and fans, and also simplicial complexes, matroids, graphs and tropical hypersurfaces. Latest stable release 4.15.",
+      "new_value": "Open-source system for polytopes, polyhedra and fans, and also simplicial complexes, matroids, graphs and tropical hypersurfaces. Latest stable release 4.15 (download page, revised 28 July 2026).",
       "reason": "The polymake download page listed 'Get latest stable release: 4.15' on 2026-08-28; the sweep's '4.11' is several releases out of date."
     },
     {
       "name": "polymake",
       "field": "notes",
       "new_value": "Several install routes are offered today: a source tarball (41 MB, or a 7 MB minimal version), prebuilt tarballs for Linux and macOS that bundle a suitable perl, Debian/Fedora/Gentoo/Ubuntu packages, Homebrew, nightly Docker images, the Polymake.jl Julia interface and a browser 'try online' version (with restrictions, including missing visualisation). The prebuilt tarball remains the safest route when a distribution's perl version is awkward.",
-      "reason": "The perl 5.38 refactoring warning the sweep quotes is no longer on the download page, and the sweep's claim that 4.11 is the current version and the tarball is the only safe route is out of date - the page now advertises 4.15 plus Docker and Julia routes."
+      "reason": "The perl 5.38 refactoring warning the sweep quotes is no longer on the download page, and the sweep's claim that 4.11 is current and the tarball is the only safe route is out of date - the page now advertises 4.15 plus Docker and Julia routes."
+    },
+    {
+      "name": "SageMath",
+      "field": "access",
+      "new_value": "conda install -c conda-forge sage is the recommended route on Linux and macOS; distribution packages or a source build also work. Linux binaries have been discontinued, and macOS binaries are published through the 3-manifolds GitHub releases page linked from sagemath.org/download.html. Then 'sage' for the REPL or the Sage Jupyter kernel. Windows users go through WSL. Zero-install options: SageMathCell and CoCalc.",
+      "reason": "sagemath.org/download.html on 2026-08-28 states that Linux binaries are discontinued and routes macOS users to the 3-manifolds GitHub releases; the sweep's generic 'or the official binaries' will fail for Linux readers."
     },
     {
       "name": "Lean 4 and mathlib",
@@ -190,10 +292,40 @@
       "reason": "The live mathlib_stats page reported 135,940 definitions and 286,121 theorems on 2026-08-28, not 135,880/285,890; these figures move daily, so the summary should carry the date."
     },
     {
+      "name": "The Rocq Prover (formerly Coq)",
+      "field": "summary",
+      "new_value": "Interactive theorem prover and dependently-typed programming language with over 40 years of development behind its core type theory; current release 9.2.0 (27 March 2026) and Rocq Platform 2026.07.0 (30 July 2026). Home of the Mathematical Components library and the formal proofs of the Four Colour and Feit-Thompson theorems.",
+      "reason": "Release dates read from rocq-prover.org on 2026-08-28. The sweep's parenthetical that 9.2.0 is 'also the long-term support release' could not be confirmed on the site, and the platform pages pair 2026.07.0 with more than one Rocq version, so the unverifiable claim is dropped and the verifiable dates added."
+    },
+    {
+      "name": "Regina",
+      "field": "access",
+      "new_value": "Packages for Linux distributions, macOS (download or App Store) and 64-bit Windows, or build from source; use the GUI, the command-line tools, or the Python module. Quickest route for scripting: pip install regina - self-contained wheels, version 7.4.1 of 23 December 2025, macOS 10.15+ and Linux only, Python interface without GUI - then 'import regina; t = regina.Example3.figureEight()'.",
+      "reason": "The sweep omits the PyPI wheels, which are the fastest install and how most people script Regina; confirmed on pypi.org/project/regina and regina-normal.github.io on 2026-08-28. Windows has packages but no wheels, which matters."
+    },
+    {
+      "name": "SnapPy",
+      "field": "access",
+      "new_value": "pip install snappy; then 'from snappy import Manifold; M = Manifold(\"m004\"); M.volume()'; standalone GUI applications for macOS/Linux/Windows; runs inside SageMath (10.8 and later; current Sage is 10.9) for verified and number-theoretic computations.",
+      "reason": "Naming SageMath 10.8 exactly reads as a version requirement; Sage 10.9 is the current stable release and SnapPy works there too."
+    },
+    {
+      "name": "nauty and Traces",
+      "field": "url",
+      "new_value": "https://users.cecs.anu.edu.au/~bdm/nauty/",
+      "reason": "Brendan McKay's ANU page is the primary distribution site and serves valid HTTPS, listing nauty 2.9.3 stable (plus beta 2.9.4b8); https://pallini.di.uniroma1.it/ fails TLS validation from a standard client on 2026-08-28 ('unable to get local issuer certificate'), so it is a poor canonical link."
+    },
+    {
       "name": "House of Graphs",
       "field": "summary",
       "new_value": "A searchable database of 29,224 'interesting' graphs (totalElements reported by its own API on 2026-08-28) with computed invariants, plus a meta-directory pointing at complete generated lists (cubic graphs, snarks, fullerenes, hypohamiltonian graphs and so on).",
       "reason": "The API returned totalElements 29,224 on 2026-08-28, not 29,217; the count grows as graphs are contributed, so date the figure."
+    },
+    {
+      "name": "ISGCI - Information System on Graph Classes and their Inclusions",
+      "field": "summary",
+      "new_value": "An encyclopaedia of graph classes holding 1,691 classes, 242,656 inclusions, 28,919 problem-complexity results and 51,902 bounds (site figures, last updated 2026-05-10), recording inclusions with witnesses and references, forbidden-subgraph characterisations, and the complexity of problems such as colourability, independent set, domination and recognition on each class.",
+      "reason": "graphclasses.org homepage counts read 2026-08-28. The sweep gave no scale, and the site's '2001-2014' attribution line makes it look abandoned when it is still being updated (speed and self-complementarity pages added in 2025)."
     },
     {
       "name": "MathOverflow",
@@ -202,22 +334,64 @@
       "reason": "The site's own question index showed 168,133 questions on 2026-08-28; the sweep's 168,130 is already stale, which is inherent to a live counter."
     },
     {
-      "name": "Zenodo",
+      "name": "Numdam",
       "field": "summary",
-      "new_value": "CERN-operated general-purpose repository that mints a DOI for datasets, code snapshots, notes and slides. Zenodo's policy page states a total file size limit of 50 GB per record, with higher quotas requestable and granted case by case.",
-      "reason": "Zenodo's policies page states only the 50 GB per-record limit plus case-by-case increases; the sweep's specific '100 files' and 'up to 200 GB on request' figures are not supported by that page and should not be asserted."
+      "new_value": "Full text of French research mathematics: about 75,719 articles from 120 journals and seminars, 706 books in 8 collections and 416 theses - over 1.4 million pages - including the Bourbaki, Cartan and Chevalley seminars, conference proceedings, lecture notes and doctoral theses, mostly digitised from first issues and extended with newer material supplied by publishers.",
+      "reason": "Counts read from numdam.org on 2026-08-28; the sweep described the scope but gave no scale, which is what tells a reader whether it is worth searching."
+    },
+    {
+      "name": "arXiv (mathematics archive)",
+      "field": "notes",
+      "new_value": "Reading needs nothing; submitting does. First-time submitters must be endorsed by an established arXiv author in that archive, and the automatic route is narrower than it sounds: per info.arxiv.org/help/endorsement.html your account may be endorsed automatically only if you have claimed ownership of a paper a co-author already submitted AND your email meets arXiv's institutional-email criteria - an institutional address by itself does not do it. This is the single biggest practical obstacle for unaffiliated researchers, so line up an endorser before you finish the paper (HAL has no endorsement requirement if you need a fallback archive). arXiv is not peer reviewed and moderators can reclassify or reject submissions.",
+      "reason": "The sweep implies an institutional email alone triggers automatic endorsement; the help page requires both the institutional email and a claimed co-authored paper. Getting this wrong sends exactly the readers this catalogue targets down a dead end."
     },
     {
       "name": "Overleaf",
       "field": "notes",
       "new_value": "The free compile timeout is the binding constraint: long documents, big TikZ pictures or heavy bibliographies can fail to compile until you pay (paid tiers advertise 24x the basic timeout) - a local TeX Live install has no such limit. The free plan also keeps only the previous 24 hours of document history and excludes track changes, Git/GitHub/Dropbox sync and advanced reference search. Many universities buy site licences, which unaffiliated researchers cannot use.",
-      "reason": "Checked on the Overleaf plans page 2026-08-28: unlimited projects, 1 collaborator per project and 5 AI uses per day are correct, but the free plan's 24-hour history cap and the exclusion of track changes/integrations are material caveats the sweep omits."
+      "reason": "Checked on the Overleaf plans page 2026-08-28: unlimited projects, 1 collaborator per project, 5 AI uses per day and a 'basic compile timeout' are all correct, but the free plan's 24-hour history cap and the exclusion of track changes and integrations are material caveats the sweep omits."
     },
     {
-      "name": "SnapPy",
+      "name": "CoCalc",
+      "field": "url",
+      "new_value": "https://cocalc.ai/",
+      "reason": "https://cocalc.com/ returns 308 Permanent Redirect to https://cocalc.ai/ (checked 2026-08-28); the service has rebranded. Documentation remains at doc.cocalc.com."
+    },
+    {
+      "name": "CoCalc",
+      "field": "notes",
+      "new_value": "Trial limits confirmed at doc.cocalc.com/trial.html on 2026-08-28: 'You do not have direct Internet access' (no git clone, no pip install from PyPI - uploads from your own machine only), hardware 'enough to run a basic Jupyter notebook' but not serious computation, a small idle timeout and limited overall session duration. On the other hand 'trial projects do not expire at the moment', so occasional small computations genuinely are free; sustained work needs a paid licence or pay-as-you-go credits. Note the domain move to cocalc.ai.",
+      "reason": "The sweep's limits are right but unsourced; this pins them to the current documentation and adds the domain change a reader hits immediately."
+    },
+    {
+      "name": "Kerodon",
       "field": "access",
-      "new_value": "pip install snappy; then 'from snappy import Manifold; M = Manifold(\"m004\"); M.volume()'; standalone GUI applications for macOS/Linux/Windows; runs inside SageMath (10.8 and later; current Sage is 10.9) for verified and number-theoretic computations.",
-      "reason": "Naming SageMath 10.8 exactly reads as a version requirement; Sage 10.9 is the current stable release and SnapPy works there too."
+      "new_value": "Read online at kerodon.net and navigate by permanent tag (the Gerby interface, the same software the Stacks Project uses); every tag has a stable URL of the form kerodon.net/tag/XXXX and is the correct way to cite a result. Comments are open on every section. Currently 10 chapters in two parts (Foundations; Higher Category Theory).",
+      "reason": "No PDF or LaTeX-source download is offered from the kerodon.net home page or its about page (checked 2026-08-28; /about/ 404s and /about describes only the Gerby infrastructure), so the sweep's 'download the PDF' should not be asserted."
+    },
+    {
+      "name": "J.S. Milne's course notes and books",
+      "field": "notes",
+      "new_value": "Terse and demanding in the way research-level notes are; some titles also exist as inexpensive paperbacks. Not CC-licensed: the author asks that you link to the top level of the site rather than repost his files elsewhere, and that you cite the published versions where they exist. Revision dates differ sharply per item (Tannakian Categories July 2026, the Algebraic Geometry notes November 2024), so record the version you actually used.",
+      "reason": "jmilne.org/math read 2026-08-28: the stated terms are specific (link, do not repost; cite the published version) and per-item dates vary, which matters when citing."
+    },
+    {
+      "name": "Mathematisches Forschungsinstitut Oberwolfach",
+      "field": "access",
+      "new_value": "Check which programmes you can actually enter: the weekly Workshops (45-48 participants) are by personal invitation from the Director on the organisers' recommendation, and Mini-Workshops are decided about six months ahead from proposals. The self-application routes are the Oberwolfach Seminars (applications to the Director; roughly 24 PhD students and postdocs per seminar), the Arbeitsgemeinschaft (application to the organisers, who select participants to give the talks), and the Research Fellows / Leibniz Fellows schemes, where researchers apply directly. All participants in the scientific programme receive full board and lodging, and several programmes have grants covering travel costs.",
+      "reason": "mfo.de/scientific-program on 2026-08-28 states workshop participation is by personal invitation. The sweep's 'apply directly through the institute's programme pages' would send an unaffiliated reader to apply to a closed programme; the genuinely open doors need naming."
+    },
+    {
+      "name": "IMU Commission for Developing Countries (CDC) grants",
+      "field": "summary",
+      "new_value": "The International Mathematical Union's grant programmes for mathematicians in developing countries, as listed on the CDC pages in August 2026: the Abel Visiting Scholar Program for Graduate Students (month-long research visits abroad; deadline 15 September 2026), the IMU-Simons Research Fellowship Program (collaborative research visits, funded by the Simons Foundation), the IMU Breakout Graduate Fellowship Program, the Conference Support Program (partial support for conferences in developing countries, including participant travel), and the Volunteer Lecturer Program, which sends lecturers to run intensive courses of 10 days to several weeks at universities that request them.",
+      "reason": "mathunion.org/cdc on 2026-08-28 lists the Abel scheme only in its graduate-student form and names the Conference Support Program and Breakout Graduate Fellowship explicitly; the sweep's generic phrasing hid the actual programme names and the September deadline an applicant needs."
+    },
+    {
+      "name": "AIM problem lists",
+      "field": "notes",
+      "new_value": "The interactive lists live on the separate aimpl.org host, whose TLS certificate has expired (checked 2026-08-28: the connection fails with 'certificate has expired'), so browsers interpose a warning and scripted fetches fail outright - use the PDF versions from the aimath.org index instead. Lists are dated snapshots: check whether a problem has since been solved before investing in it.",
+      "reason": "Sharper and correct diagnosis. The sweep says the host 'did not respond over HTTPS'; it does respond, but with an expired certificate - a different fix and a different risk signal."
     }
   ],
   "removals": [],

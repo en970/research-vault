@@ -658,8 +658,6 @@ Free access to IBM's utility-scale quantum processors: up to 10 minutes of QPU t
 
 **Caveats.** Open Plan instances can only be created in the us-east region. Ten minutes is a hard cap - develop against local simulators and spend hardware time only on final runs. Noise on current hardware means quantum chemistry results are demonstrations, not production numbers; do not present them as competitive with classical methods.
 
-*Also listed under: physics.*
-
 ### [Kaggle Notebooks](https://www.kaggle.com/docs/notebooks)
 
 `Free tier, email` · beginner 4/5 · hosted notebooks with GPU/TPU

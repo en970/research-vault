@@ -1,0 +1,254 @@
+{
+  "unit": "literature-access",
+  "additions": [
+    {
+      "name": "bioRxiv",
+      "url": "https://www.biorxiv.org",
+      "category": "literature",
+      "subcategory": "life-sciences preprint server",
+      "summary": "Preprint server for the life sciences, operated by the non-profit openRxiv and founded at Cold Spring Harbor Laboratory. OpenAlex indexes 341,681 bioRxiv preprints as of 2026-08-28, with 45,182 posted in 2025 alone; posting is free and every preprint is free to read from the day it appears.",
+      "access": "Free reading and PDF download with no account at biorxiv.org. JSON API with no key: `https://api.biorxiv.org/details/biorxiv/2026-08-01/2026-08-28` for metadata by date range, or `/details/biorxiv/{DOI}` for one preprint. Per-subject RSS feeds and email alerts; records are also searchable in Europe PMC with `SRC:PPR`.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Screening covers scope, plagiarism, non-scientific content and dual-use concerns — not validity. Nothing here is peer reviewed, and a substantial share of preprints never reach a journal, so check for a published version before citing. Authors pick from six licences, several of which forbid reuse, so check the licence before text mining. Posting requires an account. api.biorxiv.org refused connections from the network used for this check on 2026-08-28; the website and the Europe PMC route both worked, so have a fallback if you script against it."
+    },
+    {
+      "name": "medRxiv",
+      "url": "https://www.medrxiv.org",
+      "category": "literature",
+      "subcategory": "health-sciences preprint server",
+      "summary": "Preprint server for clinical and public-health research, run by openRxiv with BMJ and Yale. OpenAlex indexes 86,455 medRxiv preprints as of 2026-08-28, 84,273 of them open access; epidemiological and trial results frequently appear here months before journal publication.",
+      "access": "Free reading, no account. Same API shape as bioRxiv: `https://api.biorxiv.org/details/medrxiv/{start-date}/{end-date}`. Subject RSS feeds and email alerts; indexed in Europe PMC under `SRC:PPR`.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Screening is stricter than bioRxiv's because of clinical risk, but nothing is peer reviewed and medRxiv itself warns that preprints must not guide clinical practice or be reported as established information. Case reports and anything with identifiable patient data are rejected. Same six-licence choice as bioRxiv, so check reuse terms before mining."
+    },
+    {
+      "name": "SSRN",
+      "url": "https://www.ssrn.com",
+      "category": "literature",
+      "subcategory": "social science preprint repository",
+      "summary": "Preprint and working-paper repository owned by Elsevier (RELX), strongest in law, economics, finance, management and accounting. OpenAlex indexes 1,667,992 SSRN works as of 2026-08-28 (source S4210172589), effectively all free to read; in law and finance this is where working papers circulate first and get cited for years before journal publication.",
+      "access": "Free full-text PDF from ssrn.com; a free account is needed for some downloads and for posting. Because SSRN blocks scripted access, find papers through Google Scholar or OpenAlex (`https://api.openalex.org/works?filter=locations.source.id:S4210172589`) and follow the link out.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Commercial and Elsevier-owned, unlike arXiv or OSF Preprints: there is no open API and no bulk download, and an unauthenticated fetch of ssrn.com returned HTTP 403 on 2026-08-28. Nothing is peer reviewed, and papers can be withdrawn by the author or removed by the platform, so archive a copy of anything you cite. Series curated by sponsoring institutions are a weak quality signal at best."
+    },
+    {
+      "name": "SciELO",
+      "url": "https://www.scielo.org",
+      "category": "literature",
+      "subcategory": "Latin American and Iberian OA network",
+      "summary": "Open-access publishing and indexing network for Latin America, the Caribbean, Spain, Portugal and South Africa: 2,274 journals and 1,427,429 articles in the ArticleMeta index as of 2026-08-28, all free to read, mostly in Spanish and Portuguese alongside English. Also runs SciELO Preprints and SciELO Data.",
+      "access": "Web search at search.scielo.org and per-country collections (scielo.br, scielo.org.mx and others). Machine access via the ArticleMeta API with no key: `https://articlemeta.scielo.org/api/v1/article/identifiers/?collection=scl&limit=100`, plus per-collection OAI-PMH. Records also flow into Crossref, DOAJ and OpenAlex.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "The largest body of research on Latin American health, agriculture, education and social policy, much of it invisible in Anglophone indexes — but interface and content are Spanish/Portuguese first, so English-only keyword searches will badly under-retrieve. search.scielo.org and analytics.scielo.org both returned HTTP 403 to automated fetches on 2026-08-28 while the ArticleMeta API answered normally; script against ArticleMeta, browse in a browser. Metadata completeness varies by national collection."
+    },
+    {
+      "name": "African Journals Online (AJOL)",
+      "url": "https://www.ajol.info",
+      "category": "literature",
+      "subcategory": "African journal aggregator",
+      "summary": "Non-profit platform founded in 1998 hosting 977 African-published peer-reviewed journals from 40 countries (370 Nigeria, 115 South Africa, 82 Kenya), with 288,357 full-text articles of which 172,840 are open access and 51,307 sit in journals that charge authors nothing. Counts read from the AJOL site on 2026-08-28.",
+      "access": "Free web search and browse at ajol.info by journal, country, subject or keyword; open-access articles download as PDF with no account. Journals run on OJS with per-journal tables of contents and RSS.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Only 459 of the 977 journals are fully open access (283 of those charge no author fee); for the rest AJOL lists abstracts and full text must be requested or purchased. Coverage of African scholarship is far better than Scopus or Web of Science, but indexing elsewhere is thin, so this literature is easy to miss entirely if you search only the big indexes. No documented public API — plan on browsing or harvesting the OJS endpoints."
+    },
+    {
+      "name": "dblp computer science bibliography",
+      "url": "https://dblp.org",
+      "category": "literature",
+      "subcategory": "computer science bibliography",
+      "summary": "Curated computer-science bibliography run by Schloss Dagstuhl – Leibniz Center for Informatics: 8,733,004 publications, 4,184,231 authors, 7,150 conferences and 1,901 journals as of 2026-08-28, with hand-maintained author disambiguation. All metadata is CC0.",
+      "access": "Web search at dblp.org; search API with no key — `https://dblp.org/search/publ/api?q=transformer&format=json&h=100` plus `/search/author/api` and `/search/venue/api`. One-click BibTeX on every record, monthly XML and RDF dumps, and a SPARQL endpoint at sparql.dblp.org.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Metadata only: no abstracts, no citation counts and no full text, though records link out to DOIs and open versions. Scope is computer science and immediate neighbours; anything else is out of scope by design. The curated author pages are the reason to prefer dblp over Google Scholar for CS publication lists and co-authorship analysis, but homonyms still need checking. For bulk work use the dumps rather than hammering the API."
+    },
+    {
+      "name": "NASA ADS (Astrophysics Data System)",
+      "url": "https://ui.adsabs.harvard.edu",
+      "category": "literature",
+      "subcategory": "astronomy and physics literature",
+      "summary": "NASA-funded literature index for astronomy, astrophysics, planetary science and physics, covering journal articles, arXiv e-prints, conference proceedings, theses and scanned historical literature, with full-text search, citation and reference links, and links out to observational data archives. It is the field-standard discovery tool in astronomy.",
+      "access": "Free web search at ui.adsabs.harvard.edu (no account needed to search). For the API, create a free account, generate a token under user settings, then `curl -H 'Authorization: Bearer <token>' 'https://api.adsabs.harvard.edu/v1/search/query?q=exoplanet&fl=bibcode,title'`. Python client `pip install ads`. Endpoints for search, metrics, BibTeX export and personal libraries.",
+      "free": "free-registration",
+      "registration": "api-key",
+      "beginner": 4,
+      "notes": "Rate limits are per endpoint per day and reported in the `X-RateLimit-Limit` response header — the documented example is 5,000 queries/day — resetting at UTC midnight; email adshelp@cfa.harvard.edu for details or a raise. Browsing and exporting citations in the web interface need no token at all. Use is governed by the ADS terms of use, which restrict redistribution of the holdings. Coverage falls away sharply outside astronomy and physics."
+    },
+    {
+      "name": "INSPIRE-HEP",
+      "url": "https://inspirehep.net",
+      "category": "literature",
+      "subcategory": "high-energy physics literature",
+      "summary": "Literature database for high-energy physics operated jointly by CERN, DESY, Fermilab and SLAC: 1,881,232 literature records as of 2026-08-28, linked to curated author profiles, institutions, experiments, conferences, jobs and data. Records merge arXiv e-prints, journal versions, reports and theses into one entry.",
+      "access": "Web search at inspirehep.net; open REST API with no key — `https://inspirehep.net/api/literature?q=dark+matter&fields=titles,arxiv_eprints&size=25` returns JSON, and appending `?format=bibtex` to any record URL gives a ready citation. Metadata is CC0 and bulk records are downloadable.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Scope is strictly high-energy physics and its neighbours — astronomy is better served by NASA ADS and general physics by arXiv. The curated author profile is the accepted way to present a HEP publication record, but claiming yours requires an ORCID login. The API is unmetered on a small publicly funded service, so throttle voluntarily and cache."
+    },
+    {
+      "name": "HAL (Hyper Articles en Ligne)",
+      "url": "https://hal.science",
+      "category": "literature",
+      "subcategory": "national open repository (France)",
+      "summary": "France's national open archive, run by the CNRS Centre for Direct Scientific Communication: 4,644,610 records as of 2026-08-28, of which 1,787,345 carry a deposited full-text file. All disciplines, and the default deposit route for French public research, so it holds French-language scholarship, theses and grey literature that Anglophone indexes miss.",
+      "access": "Free web search at hal.science. Solr-backed API with no key: `https://api.archives-ouvertes.fr/search/?q=apprentissage+profond&fq=submitType_s:file&rows=100&wt=json&fl=title_s,uri_s,fileMain_s`; OAI-PMH at api.archives-ouvertes.fr/oai/hal. Depositing your own work needs a free account.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The web front end sits behind an Anubis proof-of-work bot check and refused an automated fetch on 2026-08-28, while the API answered normally — script against the API, browse in a browser. Only about 38% of records carry full text; the rest are metadata-only references. Interface and much of the metadata are in French, so French-language query terms materially change what you retrieve."
+    },
+    {
+      "name": "OpenReview",
+      "url": "https://openreview.net",
+      "category": "literature",
+      "subcategory": "open peer review records",
+      "summary": "Non-profit peer-review platform built by Andrew McCallum's lab at UMass Amherst that publishes submissions together with their reviews, rebuttals, meta-reviews and decisions — at many venues including rejected papers. It runs review for ICLR, NeurIPS, ACL-family and many other machine-learning venues, with no fee to submit or to read.",
+      "access": "Free browsing and search at openreview.net. Public REST API v2: `https://api2.openreview.net/notes?content.venueid=ICLR.cc/2025/Conference&limit=1000`; Python client `pip install openreview-py`, then `openreview.api.OpenReviewClient(baseurl='https://api2.openreview.net')`. Web interface source is AGPL-3.0.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The reviews themselves are the point: reading accepted and rejected papers' reviews is the cheapest available training in how a field actually judges work, which matters most for someone with no local mentor. What is public depends on each venue's configuration — some hide reviews, some hide rejected submissions. A raw unauthenticated API call was diverted to a bot-check challenge on 2026-08-28, so use openreview-py with a free account rather than plain HTTP fetches. Older venues (mostly pre-2024) still sit on API v1 at api.openreview.net."
+    },
+    {
+      "name": "VOSviewer",
+      "url": "https://www.vosviewer.com",
+      "category": "software",
+      "subcategory": "bibliometric network visualisation",
+      "summary": "Free desktop tool from CWTS at Leiden University for constructing and visualising bibliometric networks — co-authorship, co-citation, bibliographic coupling and term co-occurrence maps. Version 1.6.21 (12 June 2026) imports records from OpenAlex, Crossref, Europe PMC, Semantic Scholar, Lens, PubMed, Scopus and Web of Science, and can query OpenAlex and Europe PMC directly from inside the application.",
+      "access": "Download for Windows, macOS (native Apple Silicon) and Linux from vosviewer.com; requires Java. Either load an exported records file (RIS, CSV, BibTeX) or use the built-in API connections, then export the map as an image or publish it through VOSviewer Online.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Free of charge, but it is a GUI application rather than a scriptable library — for reproducible pipelines use bibliometrix in R and keep VOSviewer for the figure. Because it now queries OpenAlex, Crossref and Europe PMC directly, you can produce a publishable science map with no Scopus or Web of Science subscription, which was not true a few years ago. Large corpora need generous Java heap settings, and cluster labels always need human interpretation."
+    },
+    {
+      "name": "Open Knowledge Maps",
+      "url": "https://openknowledgemaps.org",
+      "category": "literature",
+      "subcategory": "visual topic mapping",
+      "summary": "Charitable non-profit search service that turns a query into a clustered visual map of the most relevant results, drawn from BASE (over 400 million outputs from more than 11,000 sources in 400+ languages) and from PubMed, covering 25 output types including datasets and software. Free, no account, supported by library and institutional memberships.",
+      "access": "Enter a query at openknowledgemaps.org, choose the BASE or PubMed base index, and a map builds in about a minute; clusters expand into the underlying records with links to open-access full text. Each map gets a permanent URL you can cite or share; institutions can embed components in their own discovery systems.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Best used at the very start of an unfamiliar topic to see the shape of a literature. It is not a systematic search tool: a map covers a top-ranked slice of results, not the full result set, so never report it as your search. Cluster labels are generated automatically and are sometimes vague or misleading. Throughput is best-effort on donation funding."
+    },
+    {
+      "name": "ASReview LAB",
+      "url": "https://github.com/asreview/asreview",
+      "category": "software",
+      "subcategory": "systematic review screening",
+      "summary": "Open-source active-learning tool from Utrecht University for title-and-abstract screening: you label records, the model re-ranks what is left, and relevant records surface early — an approach validated in a Nature Machine Intelligence paper. Apache-2.0 licensed and runs entirely on your own machine, with no data leaving it.",
+      "access": "`pip install asreview` then `asreview lab` opens a local web app in your browser. Import a CSV, RIS, XLSX or TSV export from any database, screen interactively, export the labelled dataset. A simulation mode replays an already-completed review to estimate how much screening effort the model would have saved.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "It reorders the screening queue; it does not decide inclusion, and stopping early is a methodological choice you must justify and report in your PRISMA flow. Needs Python and a records export, so there is a setup step that a hosted tool like Rayyan avoids. Screening only — no search building, no full-text stage, no data extraction. Recent major releases changed the interface and project format, so older tutorials may not match your install."
+    },
+    {
+      "name": "Rayyan",
+      "url": "https://www.rayyan.ai",
+      "category": "software",
+      "subcategory": "systematic review screening",
+      "summary": "Hosted screening tool for systematic reviews with blinded multi-reviewer workflows, duplicate detection, exclusion reasons and AI relevance ranking. The free plan allows 3 active reviews, 2 invited reviewers and 1 sample; paid plans start at $4.99/user/month billed annually (pricing page, 2026-08-28).",
+      "access": "Free account at rayyan.ai; import RIS, CSV or EndNote exports, screen title/abstract with include/exclude/maybe labels and reasons, resolve conflicts between reviewers, then export decisions. Mobile app available, with limited access on the free plan.",
+      "free": "freemium",
+      "registration": "email",
+      "beginner": 5,
+      "notes": "Rayyan was effectively unlimited for years and is now capped; 3 active reviews and 2 collaborators is the constraint that bites on a real project. PRISMA flow diagrams, auto-resolve duplicates and unlimited samples are paid (Essential $4.99/month billed annually or $8.33/month quarterly; Advanced $8.33/month annually; Business $41.67 per licence/month with a five-licence minimum, i.e. $2,500/year). Your records sit on their servers, which some ethics approvals do not permit — ASReview runs locally if that matters."
+    },
+    {
+      "name": "Think. Check. Submit.",
+      "url": "https://thinkchecksubmit.org",
+      "category": "publishing",
+      "subcategory": "venue vetting checklist",
+      "summary": "Free checklist for deciding whether a journal or book publisher can be trusted with your manuscript, run by a cross-sector coalition of ALPSP, AUP, COPE, DOAJ, ISSN, LIBER, OAPEN, OASPA, STM and UKSG. Separate checklists for journals and for book publishers, with translations including Japanese, Spanish and Portuguese.",
+      "access": "Work through the journal or book checklist at thinkchecksubmit.org against the venue's own website; downloadable PDFs, posters and videos are provided for reuse in training and are openly licensed.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "It is a procedure, not a blacklist — deliberately, since blacklists are contested and go stale. Working through it honestly takes about fifteen minutes and requires you to actually check things (DOAJ indexing, editorial board affiliations, a real postal address, transparent fees). It tells you whether a venue is legitimate and transparent, not whether it is any good scholarly company for your paper."
+    }
+  ],
+  "corrections": [
+    {
+      "name": "PubMed and PubMed Central (E-utilities)",
+      "field": "summary",
+      "new_value": "PubMed holds 41,074,375 citation records (verified 2026-08-28 with `esearch.fcgi?db=pubmed&term=all[sb]`); PubMed Central holds roughly 12.3 million full-text articles, about 8.2 million of them inside the open-access filter. MeSH indexing makes PubMed the most precisely searchable biomedical corpus in existence.",
+      "reason": "The live E-utilities total on 2026-08-28 is 41,074,375, not the 40,909,560 quoted. The PMC figures could not be re-verified programmatically in this check, so they are now stated as approximate rather than as false precision."
+    },
+    {
+      "name": "Internet Archive Scholar",
+      "field": "notes",
+      "new_value": "Search this when a DOI resolves to a dead link — it is the best chance of recovering a paper from a defunct journal. Contrary to earlier reports, scholar.archive.org served full content to an automated fetch on 2026-08-28 and the stated corpus (85,899,891 papers) was confirmed on the page; there is still no documented public search API, so use the Fatcat catalogue API at fatcat.wiki or the bulk metadata dumps for anything systematic. Development has been quiet for some time and metadata quality is uneven compared with Crossref or OpenAlex, but the archive itself is live and searchable.",
+      "reason": "The claim that the interface 'now sits behind a JavaScript bot check, so scripted fetching fails' is wrong as of 2026-08-28: an automated request returned the full page including the corpus figure."
+    },
+    {
+      "name": "Elicit",
+      "field": "notes",
+      "new_value": "Verified on the public pricing page, 2026-08-28: Basic (free) gives unlimited search across 138M+ papers, unlimited summaries, unlimited chat with papers including full text, source display and Zotero import, but only 'limited usage' of the Research Agent and Research Reports. The paid ladder is now Pro at $49/user/month (billed annually as $588), Scale at $169/user/month ($2,028/year) and Enterprise on request — the $11 Plus tier and $39 Pro price quoted earlier no longer appear, and no academic price list is shown publicly. Export (RIS/CSV/BIB/PDF/DOCX) is not listed among Basic features, so treat export as paid and confirm before building a workflow on it. As with all LLM extraction, verify every extracted value against the paper before it enters your analysis.",
+      "reason": "Elicit's published prices have changed: on 2026-08-28 the pricing page lists Basic / Pro $49 / Scale $169 / Enterprise, with no $11 Plus tier, no $39 Pro and no visible academic price list."
+    },
+    {
+      "name": "Free Journal Network",
+      "field": "summary",
+      "new_value": "Non-profit membership network of scholar-controlled journals operating on the Fair Open Access model: no charges to readers and no charges to authors. 99 member journals are listed as of 2026-08-28 — 37 in mathematical sciences, 27 in natural sciences, medicine and engineering, 16 in social sciences and 15 in humanities and law.",
+      "reason": "The entry gave no size or discipline breakdown; the member-journal list on 2026-08-28 shows 99 journals with that distribution, which also substantiates the existing note that the network skews mathematical."
+    },
+    {
+      "name": "Publish or Perish",
+      "field": "summary",
+      "new_value": "Free desktop application by Anne-Wil Harzing that retrieves citations from multiple backends (Google Scholar, Crossref, OpenAlex, Semantic Scholar, PubMed and others) and computes citation metrics including the h-index and its variants for individual academics, journals or research areas. The current release is version 8, issued 1 November 2021; the product page itself was last updated 1 July 2026.",
+      "reason": "'Actively maintained — the guide page was last updated in July 2026' overstates it. The page footer does read 1 July 2026, but the software has been on version 8 since 1 November 2021, which is what a user needs to know."
+    },
+    {
+      "name": "CORE",
+      "field": "notes",
+      "new_value": "The API is documented as usable without registration but capped at one batch request or five single requests per 10 seconds; note that on 2026-08-28 an unauthenticated call to `https://api.core.ac.uk/v3/search/works` returned HTTP 403, as did core.ac.uk itself, so plan on registering for a free key rather than assuming anonymous access works. Registered organisational keys get faster rates but those are 'typically not free'; free licences are assessed case by case at registration, and Supporting/Sustaining Members get the fast rate as a benefit. FastSync and bespoke contracts are commercial. Because CORE harvests repositories, records include preprints, theses and accepted manuscripts alongside published versions — check the version before citing. The 452M papers / 57M full texts figures could not be re-verified in this check because the site blocks automated access.",
+      "reason": "Anonymous v3 API access returned HTTP 403 during this check, so 'usable without registration' is optimistic as stated, and the headline counts are currently unverifiable from outside a browser — readers should know both."
+    }
+  ],
+  "removals": [],
+  "checked": [
+    "OpenAlex",
+    "Crossref REST API",
+    "Semantic Scholar Academic Graph API",
+    "OpenAIRE Graph",
+    "CORE",
+    "BASE (Bielefeld Academic Search Engine)",
+    "Unpaywall",
+    "Europe PMC",
+    "PubMed and PubMed Central (E-utilities)",
+    "DOAJ (Directory of Open Access Journals)",
+    "Internet Archive Scholar",
+    "The Wikipedia Library",
+    "JSTOR free read-online access",
+    "ERIC (Education Resources Information Center)",
+    "arXiv",
+    "Zenodo",
+    "ShareYourPaper",
+    "Free Journal Network",
+    "Retraction Watch Database (via Crossref)",
+    "Litmaps",
+    "ResearchRabbit",
+    "Elicit",
+    "Zotero",
+    "EndNote Click",
+    "Publish or Perish",
+    "Dimensions (free version)",
+    "Emailing the corresponding author",
+    "Lens.org"
+  ]
+}

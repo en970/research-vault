@@ -60,7 +60,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Registering your own trial (rather than reading) needs a free PRS organisation account, which normally requires an institutional sponsor. Unaffiliated investigators are usually better served by another WHO primary registry that registers free of charge — PACTR (pactr.samrc.ac.za) for Africa, CTRI for India, ANZCTR for Australia/New Zealand. WHO ICTRP (trialsearch.who.int) federates all of them for searching. Posted results cover only a minority of completed studies.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -286,10 +286,8 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Microdata access is per-project and per-country: you must describe your study and request each country's files, and approval is manual, usually taking days. GPS files require a separate request. Redistribution of microdata is prohibited. Surveys use complex multi-stage designs, so weights and clustering are mandatory in analysis.",
-      "canonical": true,
-      "also_in": [
-        "social"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "UMLS Metathesaurus",
@@ -526,7 +524,7 @@
       "registration": "email",
       "beginner": 5,
       "notes": "The free tier covers a typical two-person student review, but PRISMA flow-diagram generation, automatic duplicate resolution, unlimited mobile use and more than 2 reviewers require the paid Essential plan or higher. Essential is $4.99 per seat per month billed annually, or $8.33 per month billed quarterly, and raises the free-reviewer allowance from 2 to 5. Your records are uploaded to a third-party service — check that this is acceptable for unpublished or sensitive datasets, and prefer ASReview if not.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -750,7 +748,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "A mixture of fully open access and subscription or request-a-copy titles; the article page states which. Journal quality varies widely across the platform, so check editorial board, described peer review process and indexing status. For African clinical and public health work this is often where the regionally relevant literature actually lives, and PubMed covers it poorly.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -806,7 +804,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Scope is restricted to reviews with a health-related outcome; scoping reviews and reviews already past data extraction are normally rejected, so register before you screen. Editorial checking adds days to weeks. The Open Science Framework registries are the usual fallback for out-of-scope reviews.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -904,7 +902,7 @@
       "registration": "none",
       "beginner": 2,
       "notes": "Free online only; the authors note a print version may follow, and the text is revised without full change documentation, so cite the version date. Demanding — parts II and III assume comfortable regression and some probability. It is the standard reference behind target trial emulation, now the expected framing for observational treatment-effect studies.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

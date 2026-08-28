@@ -1,12 +1,24 @@
 # Publishing, identity & preservation
 
-Part of [research-vault](../README.md). 59 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 73 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (1) · [Software](#software) (3) · [Literature](#literature) (10) · [Publishing](#publishing) (36) · [Funding](#funding) (3) · [Learning](#learning) (2) · [Community](#community) (4)
+**Contents:** [Data](#data) (2) · [Software](#software) (5) · [Literature](#literature) (13) · [Publishing](#publishing) (43) · [Funding](#funding) (3) · [Learning](#learning) (2) · [Community](#community) (5)
 
 ## Data
+
+### [figshare](https://figshare.com/)
+
+`Free tier, email` · beginner 5/5 · general-purpose repository with DOI minting
+
+General-purpose repository that mints DataCite DOIs for datasets, figures, posters, preprints, theses and software. A free figshare.com account is documented as getting 20 GB of private storage, individual files up to 20 GB, a maximum of 500 items, 500 files per item, and 100 projects and 100 collections.
+
+**Access.** Web upload at figshare.com after signing up. Public REST API needs no key for reads: curl 'https://api.figshare.com/v2/articles?page_size=1'; deposits use a personal token (Applications settings). OAI-PMH endpoint at https://api.figshare.com/v2/oai?verb=Identify; a GitHub integration archives a tagged release and mints a DOI for it.
+
+**Caveats.** Anything larger than the 20 GB quota or a 20 GB file needs paid Figshare+ or an institutional repository (Amazon S3 caps any single file at 5 TB regardless). Published items are permanent — a public DOI cannot simply be deleted. figshare is a Digital Science (Holtzbrinck) product, so this is corporate rather than community-governed infrastructure; Zenodo is the non-profit equivalent with a larger 50 GB per-record allowance.
+
+*Also listed under: compute.*
 
 ### [Zenodo](https://zenodo.org/)
 
@@ -49,6 +61,28 @@ Browser-based collaborative LaTeX editor with a free plan at $0/month allowing 1
 **Access.** Web interface at overleaf.com; start from a journal template in the gallery, or import a .zip / link a GitHub repo (Git integration is a paid feature). Several publishers, including IEEE and Springer, offer direct submission from Overleaf.
 
 **Caveats.** The free tier limits you to one collaborator per project (different people per project is fine) and imposes a shorter compile timeout, which bites on long documents with many figures — the usual workaround is to precompile figures to PDF or move to a local TeX Live install, which is free and unlimited. Git/Dropbox sync, track changes and full document history are paid. Overleaf is owned by Digital Science.
+
+### [Quarto](https://quarto.org/)
+
+`Free` · beginner 3/5 · manuscript authoring and publishing
+
+Open-source scientific publishing system from Posit (v1.9.38, released 2026-05-25) that renders one .qmd or notebook source into a journal-ready PDF/LaTeX, MS Word, a website and a MECA submission package, with executable Python, R, Julia and Observable code blocks and BibTeX citations.
+
+**Access.** Install the platform package from quarto.org/docs/download (or 'brew install quarto'), then 'quarto render paper.qmd'. Journal formats come from 'quarto use template <org>/<template>' (community-maintained templates for ACM, Elsevier, AGU and others); works from VS Code, RStudio, Jupyter or a plain text editor. Manuscript projects are documented at quarto.org/docs/manuscripts.
+
+**Caveats.** PDF output needs a TeX installation — 'quarto install tinytex' handles that. Journal templates are community-maintained and can lag publisher style changes, so check the target journal's own class file before submitting. It is an authoring toolchain, not a reference manager: pair it with Zotero plus Better BibTeX for the .bib file. Overleaf remains easier for co-authors who will not install anything.
+
+*Also listed under: workflow-tools.*
+
+### [Zotero](https://www.zotero.org/)
+
+`Free tier, email` · beginner 5/5 · reference manager
+
+Free, open-source reference manager from the non-profit Corporation for Digital Scholarship: a browser Connector saves citations plus PDFs from journal pages, and word-processor plugins insert citations and bibliographies in any CSL style. Library metadata syncing is free and unlimited; attached files use 300 MB of free Zotero Storage, above which plans cost $20/year for 2 GB, $60/year for 6 GB or $120/year unlimited (prices listed 2026-08-28).
+
+**Access.** Download the desktop app for macOS/Windows/Linux at zotero.org/download plus the browser Connector; cite while writing with the Word, LibreOffice or Google Docs plugin. Local use needs no account; sync needs a free account, and attachments can go to your own WebDAV server instead of Zotero Storage. Web API with a key from Settings > Security: curl 'https://api.zotero.org/users/<userID>/items?limit=5'
+
+**Caveats.** Data syncing (items, notes, tags) is free and unlimited — only file attachments count against the 300 MB, so a PDF-heavy library hits the cap fast; WebDAV avoids paying but you must supply the server. Group-library file storage is billed to the group owner, not the members. Automatic metadata capture is imperfect for scanned PDFs and small publishers, so audit imported records before submission.
 
 ## Literature
 
@@ -114,6 +148,16 @@ Free author profile with automatic publication matching, citation counts, h-inde
 
 **Caveats.** Any Google account works — an institutional email only adds a 'verified email at' line, it is not required to have a profile. There is no API and scraping is blocked, so metrics cannot be pulled programmatically; use OpenAlex for that. Automatic matching pulls in wrong papers and merges distinct authors, so audit the list. Citation counts include non-peer-reviewed sources and are inflated relative to Scopus/WoS — say which source you used when you quote a number.
 
+### [OpenAIRE Explore](https://explore.openaire.eu/)
+
+`Free` · beginner 3/5 · open science aggregator and funder linking
+
+EU-funded aggregator that links publications, datasets, software and projects harvested from thousands of repositories; its public API reported 237,292,434 publications on 2026-08-28. Its distinctive use is showing a funder that a given output is open and connected to a specific grant.
+
+**Access.** Search at explore.openaire.eu. Free REST API, no key: curl 'https://api.openaire.eu/search/publications?title=reproducibility&size=1&format=json'; a newer Graph API and bulk dumps are documented at graph.openaire.eu. Claiming links between a paper, a dataset and a project is done from a free account.
+
+**Caveats.** Metadata quality is inherited from source repositories, so duplicates and thin records are common and author disambiguation is weaker than OpenAlex's. Project linking is built around EU grant identifiers; other funders are covered unevenly. The legacy search API coexists with the newer Graph API — check the developer docs before building anything long-lived on an endpoint.
+
 ### [OpenAlex](https://openalex.org/)
 
 `Free` · beginner 4/5 · open bibliographic database
@@ -123,6 +167,28 @@ Fully open index of scholarly works and their metadata, successor to Microsoft A
 **Access.** REST API, no key: curl 'https://api.openalex.org/works?filter=author.orcid:0000-0002-1825-0097&mailto=you@example.com'. Python client: pip install pyalex. Whole-corpus snapshots are downloadable from an S3 bucket for local analysis.
 
 **Caveats.** Adding &mailto= puts you in the faster 'polite pool'; anonymous use is rate-limited. Author disambiguation is automated and imperfect — you can claim and correct your own author record, which is the practical fix. Institution and funder coverage is thinner outside Europe and North America.
+
+### [OpenCitations](https://opencitations.net/)
+
+`Free` · beginner 3/5 · open citation data
+
+CC0 citation infrastructure from the Research Centre for Open Scholarly Metadata at the University of Bologna: the INDEX holds citation links between works and META holds the bibliographic records behind them, both queryable per DOI with no key — a free stand-in for Scopus or Web of Science citation counts.
+
+**Access.** REST API, no key: curl 'https://api.opencitations.net/index/v2/citation-count/doi:10.1186/1756-8722-6-59' (returned 217 on 2026-08-28) and 'https://api.opencitations.net/meta/v1/metadata/doi:10.1186/1756-8722-6-59'. Also SPARQL endpoints (sparql.opencitations.net), an OCI resolver, and complete CC0 dumps at download.opencitations.net.
+
+**Caveats.** Coverage depends on publishers depositing open references in Crossref, so counts run lower than Scopus in fields whose publishers keep references closed — say which source a number came from when you quote it. Use the api.opencitations.net host and the v2 index paths; the older opencitations.net/index/api/... URLs redirect. Bulk dumps are very large; query the API for one-off lookups.
+
+### [PubMed Central (PMC) and NIHMS](https://pmc.ncbi.nlm.nih.gov/)
+
+`Free` · beginner 4/5 · biomedical full-text archive and funder deposit route
+
+The US National Library of Medicine's free full-text archive of biomedical and life-science literature — over 11.3 million articles as of FY2025 — and the mandated destination for manuscripts from NIH and partner-funder awards, deposited through the NIH Manuscript Submission system (NIHMS). Some content is released only after a publisher embargo.
+
+**Access.** Search and read at pmc.ncbi.nlm.nih.gov. Programmatic access via E-utilities with no key: curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pmc&term=reproducibility&retmode=json&retmax=2', then efetch for full records; the OA subset is downloadable in bulk over FTP/S3 for text mining. Authors (or their journals) deposit accepted manuscripts at nihms.nih.gov.
+
+**Caveats.** Reading is open to everyone, but depositing is not a general-purpose route — NIHMS only accepts manuscripts attached to a participating funder's award, so unfunded or unaffiliated authors use a preprint server or Zenodo instead. Only the OA subset may be redistributed or text-mined; the rest is free to read only. Europe PMC covers the same literature with a European funder deposit route.
+
+*Also listed under: medicine, neuro-psych.*
 
 ### [Retraction Watch Database (via Crossref)](https://api.labs.crossref.org/data/retractionwatch)
 
@@ -156,6 +222,18 @@ Database of legally posted open access copies harvested from repositories, prepr
 
 ## Publishing
 
+### [African Journals Online (AJOL)](https://www.ajol.info/)
+
+`Free` · beginner 5/5 · African-published journal platform
+
+Non-profit platform operating since 1998 that indexes and hosts African-published peer-reviewed journals: the site reported 977 journals on 2026-08-28, of which 459 are open access and 283 charge authors nothing, across 288,357 full-text articles (172,840 open access, 51,307 in no-fee open access journals). Each partner journal carries a JPPS (Journal Publishing Practices and Standards) rating.
+
+**Access.** Web search and browse at ajol.info by subject, country, JPPS rating, or the 'No fee Open Access (Free To Read & Free for Authors)' list — that list is the practical shortlist of diamond venues published in Africa. Submission goes through each journal's own site; reading open access titles needs no account.
+
+**Caveats.** Not everything indexed is free to read: 459 of the 977 journals are open access and the rest show abstracts only. The JPPS rating is AJOL's own assessment of publishing practice and is not equivalent to DOAJ indexing — check both before submitting. Coverage is African-published journals specifically, so a Nigerian author publishing in a European title will not appear here. The service is donation-funded.
+
+*Also listed under: medicine, literature-access.*
+
 ### [arXiv](https://arxiv.org/)
 
 `Free (registration), email` · beginner 3/5 · preprint server (physics, maths, CS, quantitative biology, economics)
@@ -184,11 +262,9 @@ Minimal preregistration service built around eight fixed questions, producing a 
 
 Free preprint archive for the life sciences, founded by Cold Spring Harbor Laboratory in 2013 and now operated by the non-profit openRxiv. Preprints are not peer-reviewed, edited or typeset, but every submission is screened for offensive or non-scientific content, dual-use risk and plagiarism.
 
-**Access.** Web submission at biorxiv.org/submit-a-manuscript; most major journals accept direct transfer from bioRxiv. Free metadata API, no key: curl 'https://api.biorxiv.org/details/biorxiv/2026-08-01/2026-08-02/0' returns DOIs, titles, authors and version history for a date range.
+**Access.** Web submission at biorxiv.org/submit-a-manuscript; most major journals accept direct transfer from bioRxiv. Free metadata API documented at api.biorxiv.org: curl 'https://api.biorxiv.org/details/biorxiv/2026-08-01/2026-08-02/0'. That API returned HTTP 500 on every documented endpoint when checked on 2026-08-28, so for a working feed in the meantime use the RSS at https://connect.biorxiv.org/biorxiv_xml.php?subject=all or query bioRxiv DOIs (prefix 10.1101) through the Crossref API.
 
 **Caveats.** No endorsement system, but screening can reject work judged non-scientific, and there is no formal appeal path. Posting a preprint is compatible with almost all life-science journals, but check the target journal first — a small number still treat it as prior publication. Once posted, a preprint cannot be deleted, only withdrawn with a public notice.
-
-*Also listed under: biology, neuro-psych.*
 
 ### [ChemRxiv](https://chemrxiv.org/)
 
@@ -202,6 +278,18 @@ Free preprint server for chemistry and related sciences, operated by the America
 
 *Also listed under: chemistry.*
 
+### [ClinicalTrials.gov](https://clinicaltrials.gov/)
+
+`Free, application` · beginner 3/5 · clinical trial registry
+
+The US NLM trial registry, holding 600,762 registered studies as reported by its own API on 2026-08-28. ICMJE member journals require prospective registration in a WHO-recognised registry such as this one before the first participant is enrolled, and US-regulated trials must also post summary results here.
+
+**Access.** Search free at clinicaltrials.gov; REST API v2, no key: curl 'https://clinicaltrials.gov/api/v2/studies?query.cond=asthma&pageSize=1' and 'https://clinicaltrials.gov/api/v2/stats/size' for corpus statistics. Registering a study requires a PRS (Protocol Registration and Results System) account, applied for through the PRS site; individual investigator accounts exist for those without a sponsoring organisation.
+
+**Caveats.** Reading and the API need nothing; registering does — PRS accounts are normally issued to organisations and an individual account has to be applied for and approved, which takes days, so start before you enrol anyone. Registration must be prospective: registering after enrolment begins will not satisfy ICMJE and many journals will refuse the paper outright. Results-reporting duties under FDAAA carry legal penalties for covered US trials. Researchers elsewhere can use their national WHO primary registry instead — several (for example ANZCTR, CTRI) charge nothing, while ISRCTN charges a fee.
+
+*Also listed under: medicine.*
+
 ### [cOAlition S Journal Checker Tool and Rights Retention Strategy](https://journalcheckertool.org/)
 
 `Free` · beginner 3/5 · OA compliance and author rights
@@ -212,7 +300,7 @@ Free tool that tells you, for a given journal + funder + institution combination
 
 **Caveats.** Built around cOAlition S funders, so it is far less useful if your funder is not in the coalition, and it assumes you have a funder at all. Rights retention is legally contested by some publishers; a few respond by desk-rejecting manuscripts carrying the statement. It is a legitimate route, but know that it can cost you a venue.
 
-### [Creative Commons licence chooser](https://chooser-beta.creativecommons.org/)
+### [Creative Commons licence chooser](https://creativecommons.org/chooser/)
 
 `Free` · beginner 5/5 · licensing
 
@@ -286,6 +374,18 @@ Non-profit association of journals that meet Fair Open Access criteria: scholar-
 
 **Caveats.** A directory, not a publisher — it does not host anything. Membership is concentrated in mathematics, linguistics and parts of physics and psychology; many fields have thin or no coverage. Use it alongside the DOAJ no-APC filter rather than instead of it, since DOAJ is far larger.
 
+### [HAL](https://hal.science/)
+
+`Free (registration), email` · beginner 3/5 · national open archive (multidisciplinary)
+
+France's national open archive, run by CCSD/CNRS: the API reported 4,644,665 records on 2026-08-28, of which 1,787,362 carry a deposited full text. It accepts preprints, accepted manuscripts, theses, conference papers, software and datasets, and is the deposit layer that Episciences overlay journals publish on top of.
+
+**Access.** Web deposit at hal.science after creating an account; SWORD and API deposit are supported for bulk work. Free search API, no key: curl 'https://api.archives-ouvertes.fr/search/?q=title_t:reproducibility&rows=5&wt=json'. Every deposit gets a HAL identifier with version history, and can be pushed to arXiv or given a DOI on request.
+
+**Caveats.** The documentation frames HAL as being for researchers affiliated with an academic institution, French or foreign — there is no automated affiliation check, but an unaffiliated depositor is outside the stated audience. Every deposit is moderated before going live, so posting is not instant, and a deposited file cannot be withdrawn on a whim. The web interface is French-first and sits behind an Anubis proof-of-work challenge that blocks plain HTTP clients; the search API is unaffected.
+
+*Also listed under: mathematics, literature-access.*
+
 ### [JMLR and TMLR](https://jmlr.org/)
 
 `Free, email` · beginner 3/5 · diamond OA machine-learning journals
@@ -328,11 +428,21 @@ Community-supported open access book publisher in linguistics with 35 series and
 
 Free preprint server for medical, clinical and health-sciences research, run by openRxiv alongside bioRxiv. It applies stricter screening than bioRxiv because of the risk of clinical harm from unreviewed findings.
 
-**Access.** Web submission at medrxiv.org/submit-a-manuscript. Same free metadata API family as bioRxiv: curl 'https://api.biorxiv.org/details/medrxiv/2026-08-01/2026-08-02/0'.
+**Access.** Web submission at medrxiv.org/submit-a-manuscript. Same metadata API family as bioRxiv (curl 'https://api.biorxiv.org/details/medrxiv/2026-08-01/2026-08-02/0'), but that API returned HTTP 500 on all endpoints on 2026-08-28 — fall back to the medRxiv RSS feeds at connect.medrxiv.org or to Crossref queries on the 10.1101 DOI prefix.
 
 **Caveats.** Submissions must carry ethics-approval and trial-registration statements where applicable, and some categories (for example single case reports and work implying immediate clinical action) are restricted or refused. Screening is slower than bioRxiv and rejection is more common; budget days, not hours.
 
-*Also listed under: medicine.*
+### [MPRA (Munich Personal RePEc Archive)](https://mpra.ub.uni-muenchen.de/)
+
+`Free (registration), email` · beginner 4/5 · working-paper repository (economics)
+
+Repository run by the University Library of LMU Munich holding 61,601 records on 2026-08-28, created specifically for economists who want their work in the RePEc network but are not affiliated with an institution that runs a working-paper series. Deposits propagate into RePEc, so they surface in IDEAS and EconPapers, where economists actually search and where NEP subject mailings are generated.
+
+**Access.** Web deposit at mpra.ub.uni-muenchen.de after free registration (EPrints software); papers appear in RePEc within about a day and get a RePEc handle. OAI-PMH endpoint available for harvesting; browse and download need no account.
+
+**Caveats.** The single most useful venue in economics for an unaffiliated author — it exists for exactly that case. Screening is light but submissions must be scholarly economics, and papers already published elsewhere can be removed on a publisher's request. Papers are identified by RePEc handles, not DOIs, so deposit a copy in Zenodo as well if you need a DOI. Deposits are versioned and superseded versions stay visible.
+
+*Also listed under: econ-finance.*
 
 ### [Open Library of Humanities](https://www.openlibhums.org/)
 
@@ -354,7 +464,9 @@ Jisc-run database of publisher and journal open access policies: which version (
 
 **Access.** Web interface at openpolicyfinder.jisc.ac.uk — search by journal title or ISSN and read the per-version deposit conditions. A free API is available for programmatic lookups after requesting a key.
 
-**Caveats.** Rebranded from Sherpa Romeo; old sherpa.ac.uk/romeo links and any guide that still calls it Sherpa Romeo point at the same service. It records what the publisher states, which is not always what an individual contract says — the signed publishing agreement wins in a dispute. Coverage of small and non-English publishers is patchy.
+**Caveats.** Rebranded from Sherpa Romeo; old sherpa.ac.uk/romeo links and any guide that still calls it Sherpa Romeo point at the same service. The API is being migrated to a new platform — the site's own updates (07/05/2026) record the migration window being extended to July 2026 — so an old Sherpa API key or integration may need moving; request a new key from the site. It records what the publisher states, which is not always what an individual contract says: the signed publishing agreement wins in a dispute. Coverage of small and non-English publishers is patchy.
+
+*Also listed under: literature-access.*
 
 ### [Open Research Europe](https://open-research-europe.ec.europa.eu/)
 
@@ -372,11 +484,9 @@ European Commission publishing platform using the post-publication open peer rev
 
 Free, open-source platform that hosts the peer review process for major machine-learning venues (ICLR, NeurIPS, TMLR and many workshops), publishing reviews, author rebuttals and decisions openly alongside submissions. It is also a public, queryable archive of what reviewers actually said.
 
-**Access.** Web interface at openreview.net with a free account; submissions go through whichever venue's page is open. Public API, no key needed for reads: curl 'https://api2.openreview.net/notes?content.venue=ICLR%202025%20poster&limit=5'; Python client: pip install openreview-py.
+**Access.** Web interface at openreview.net with a free account; submissions go through whichever venue's page is open. Programmatic reads now go through the Python client rather than plain curl: pip install openreview-py, then openreview.api.OpenReviewClient(baseurl='https://api2.openreview.net', username=..., password=...) and client.get_notes(content={'venue': 'ICLR 2025 poster'}). An unauthenticated curl to api2.openreview.net/notes returns HTTP 403 'Challenge verification required'.
 
-**Caveats.** Whether reviews stay public and whether rejected submissions remain visible is set per venue, not by OpenReview. Profile creation now asks for affiliation history and, for some venues, a verifiable institutional email or a DBLP record — unaffiliated researchers can still register but may face extra checks before being allowed to review.
-
-*Also listed under: cs-ml.*
+**Caveats.** Whether reviews stay public and whether rejected submissions remain visible is set per venue, not by OpenReview. Signing up without an institutional address is possible but moderated: the documentation says personal-email profiles are all moderated, that 'Independent Researcher' must be entered as the current position (which locks the institution domain), and that a profile whose Education and Career History lists only 'Independent Researcher' will be rejected until another institution record is added — so expect delay and have a past affiliation ready.
 
 ### [ORCID](https://orcid.org/)
 
@@ -404,7 +514,7 @@ Free project workspace from the Center for Open Science combining file storage, 
 
 Free preprint hosting for 32 community-branded servers as of 2026-08-28, including PsyArXiv (psychology), SocArXiv (sociology), EdArXiv (education), MetaArXiv (metascience), EcoEvoRxiv, AfricArXiv, Law Archive, SportRxiv and Thesis Commons. Each preprint gets a DOI and is indexed in Crossref, Google Scholar and OpenAlex.
 
-**Access.** Web submission: pick a server (e.g. osf.io/preprints/psyarxiv) and choose 'Add a preprint'; an OSF account covers all of them. Enumerate providers via the free API: curl 'https://api.osf.io/v2/preprint_providers/?page[size]=100'.
+**Access.** Web submission: pick a server (e.g. osf.io/preprints/psyarxiv) and choose 'Add a preprint'; an OSF account covers all of them. Enumerate providers via the free API: curl 'https://api.osf.io/v2/providers/preprints/?page[size]=100' (32 providers on 2026-08-28). The older /v2/preprint_providers/ route still answers but returns a deprecation warning: 'This route is deprecated and will be unavailable after version 2.7'.
 
 **Caveats.** The provider list includes legacy servers that have gone quiet or migrated elsewhere — EarthArXiv and engrXiv, for instance, still appear in the API but now run on their own platforms. Check that a server has recent postings before choosing it. Moderation is per-server: some pre-moderate, some post-moderate, and a few accept almost anything in scope.
 
@@ -442,7 +552,19 @@ Free multidisciplinary preprint platform that assigns a DOI and a version histor
 
 **Access.** Web submission at preprints.org (account required); choose a subject area, upload, and the preprint is posted after screening, typically within a few working days.
 
-**Caveats.** Operated by MDPI, which some communities associate with aggressive solicitation and variable editorial standards in its journals — the preprint server itself is free and does not obligate you to submit to an MDPI journal, but expect marketing email. Prefer a field-specific server (arXiv, bioRxiv, an OSF server) when one exists; use this as the fallback.
+**Caveats.** Operated by MDPI, which some communities associate with aggressive solicitation and variable editorial standards in its journals — the preprint server itself is free and does not obligate you to submit to an MDPI journal, but expect marketing email. The site returns HTTP 403 to command-line clients (bot protection), so use a browser. It is genuinely active: DOI prefix 10.20944 holds 135,665 records with new ones registered the same day it was checked (2026-08-28). Prefer a field-specific server (arXiv, bioRxiv, an OSF server) when one exists; use this as the fallback.
+
+### [PROSPERO](https://www.crd.york.ac.uk/prospero/)
+
+`Free (registration), email` · beginner 3/5 · systematic review protocol registration
+
+International register of systematic review protocols, run by the Centre for Reviews and Dissemination at the University of York. Registration is free and produces a public, date-stamped record with a CRD42-prefixed number that journals, PRISMA reporting and Cochrane-style methods sections expect to see cited.
+
+**Access.** Web interface only: create an account at crd.york.ac.uk/prospero, complete the structured protocol form, and CRD staff check it before the record is published (usually days rather than hours). Records are publicly searchable and are updated as the review progresses, with an audit trail of changes.
+
+**Caveats.** Scope is limited to reviews with a health-related outcome, and registration must be prospective — submissions from reviews that have already finished data extraction are refused, so register before you start screening. Reviews outside health belong in OSF Registries instead. The site is a JavaScript application with no usable public API, so records cannot be harvested from a plain HTTP client and the policy pages are not machine-readable; confirm current scope rules in the browser before relying on them.
+
+*Also listed under: medicine.*
 
 ### [protocols.io](https://www.protocols.io/)
 
@@ -453,8 +575,6 @@ Platform for writing, versioning and publishing step-by-step research protocols.
 **Access.** Web interface at protocols.io: create a protocol, then 'Publish' to mint a DOI and make it citable and forkable. REST API and mobile apps available; many journals accept a protocols.io DOI in place of a long methods section.
 
 **Caveats.** The free tier is designed around publishing openly — private/unpublished work is capped at 2 protocols, and features aimed at labs and companies (unlimited private protocols, extra storage, SSO, compliance features) are paid. Publishing a protocol is permanent, like any DOI. The site is behind bot protection, so command-line fetching of pages fails.
-
-*Also listed under: biology.*
 
 ### [Quantum](https://quantum-journal.org/)
 
@@ -478,6 +598,8 @@ Platinum open access, GitHub-based journal that publishes explicit replications 
 
 **Caveats.** No fees for authors or readers. Volume is low and review depends on volunteers, so timelines are unpredictable. Scope is strictly replication of computational work — not new results — and you must produce a genuinely independent implementation, not rerun the original authors' code.
 
+*Also listed under: cs-ml.*
+
 ### [Research Square](https://www.researchsquare.com/)
 
 `Free (registration), email` · beginner 4/5 · multidisciplinary preprint platform
@@ -487,6 +609,18 @@ Free multidisciplinary preprint platform with DOIs and public commenting, plus a
 **Access.** Web submission at researchsquare.com ('Submit a Preprint'); or opt into In Review when submitting to a participating journal, which posts the preprint automatically and exposes review milestones.
 
 **Caveats.** Preprint posting is free; the co-located AJE editing, translation and figure-formatting services are paid and heavily advertised — you never have to buy them. In Review only works with participating publishers, mostly Springer Nature titles.
+
+### [Review Commons](https://www.reviewcommons.org/)
+
+`Free, email` · beginner 3/5 · journal-independent peer review
+
+Free journal-independent refereeing platform launched by ASAPbio and EMBO with support from bioRxiv, medRxiv and HHMI: one submission produces a full set of referee reports, the reviews and your response are posted publicly with the preprint, and you may then take that package to any of roughly 25 affiliate journals (including eLife, EMBO Journal, PLOS Biology, PLOS Genetics, Genome Biology and Genes & Development) instead of starting review from scratch.
+
+**Access.** Submit the manuscript through the platform linked from reviewcommons.org (reviewcommons.msubmit.net); review is organised by Review Commons editors, then reports and author replies are posted alongside the bioRxiv/medRxiv preprint. Transferring to an affiliate journal afterwards is optional and done from the platform.
+
+**Caveats.** No charge to authors at any stage, but scope is the life sciences and not every submission is sent out for review. Reviews transfer, decisions do not — each affiliate journal still makes its own call and may ask for more. It saves a duplicated review round rather than time on the first one, so budget a normal review cycle before you can submit anywhere.
+
+*Also listed under: biology.*
 
 ### [Rogue Scholar](https://rogue-scholar.org/)
 
@@ -508,13 +642,11 @@ Regional open access publishing network with national collections for Argentina,
 
 **Caveats.** Fee policies are set per journal, not centrally — the great majority levy nothing, but confirm on the journal's page. Much of the content is in Portuguese and Spanish, and multilingual publishing is encouraged. Indexing in Scopus/WoS varies by title, which matters if you are assessed on those databases.
 
-*Also listed under: medicine.*
-
 ### [SciPost](https://scipost.org/)
 
 `Free, email` · beginner 3/5 · diamond OA journals with open refereeing (physics and beyond)
 
-Scientist-run publishing house with genuinely no author charges — DOAJ records SciPost Physics Core, SciPost Physics Proceedings and SciPost Physics Codebases as having no APCs and no other charges. Referee reports and author replies are published alongside accepted papers.
+Scientist-run publishing house with genuinely no author charges — DOAJ records all six SciPost journals (SciPost Physics, SciPost Physics Core, SciPost Physics Lecture Notes, SciPost Physics Codebases, SciPost Physics Proceedings and SciPost Physics Community Reports) as having no APC and no other charges. Referee reports and author replies are published alongside accepted papers.
 
 **Access.** Web submission at scipost.org: deposit the manuscript on arXiv first, then submit the arXiv identifier to the chosen SciPost journal. Refereeing is open — invited reports and contributed comments appear publicly on the submission page during review.
 
@@ -530,7 +662,7 @@ Universal archive that harvests and preserves publicly available source code wit
 
 **Access.** Use 'Save Code Now' at archive.softwareheritage.org/save/ to trigger immediate archiving of a public Git/Mercurial/SVN repository URL, then copy the SWHID (e.g. swh:1:rev:...) from the archived object and cite it in your paper. REST API documented under archive.softwareheritage.org/api/.
 
-**Caveats.** Archives only publicly accessible repositories; nothing private, and no way to remove code once archived except through a documented takedown process. The archive site sits behind a JavaScript proof-of-work challenge, so scripted API access from a plain HTTP client can fail. SWHIDs identify code, not a publication — pair them with a Zenodo DOI when you need a citable, described release.
+**Caveats.** Archives only publicly accessible repositories; nothing private, and no way to remove code once archived except through a documented takedown process. The REST API does answer plain HTTP clients — https://archive.softwareheritage.org/api/1/origin/search/numpy/?limit=1 returned HTTP 200 on 2026-08-28 — but the browsable web pages and Save Code Now sit behind a JavaScript challenge, so drive those from a browser. SWHIDs identify code, not a publication — pair them with a Zenodo DOI when you need a citable, described release.
 
 *Also listed under: cs-ml, compute, workflow-tools.*
 
@@ -544,8 +676,6 @@ Large working-paper repository, strongest in law, economics, finance, management
 
 **Caveats.** Owned by Elsevier, which makes some researchers prefer a scholar-run alternative; it is genuinely free to post and read, but it is not an open-infrastructure project and its metadata is not as openly reusable as arXiv's or OSF's. Not all papers receive DOIs. Bot protection blocks scripted access.
 
-*Also listed under: social, econ-finance.*
-
 ### [TechRxiv](https://www.techrxiv.org/)
 
 `Free (registration), email` · beginner 4/5 · preprint server (electrical engineering and computer science)
@@ -554,7 +684,17 @@ IEEE-operated preprint server for electrical engineering, computer science and r
 
 **Access.** Web submission at techrxiv.org — create an account and upload; IEEE membership is not required to post. DOIs are registered with Crossref, so metadata is retrievable through the Crossref API.
 
-**Caveats.** The site is behind bot protection and does not render without JavaScript, so scripted or command-line access will fail — use a browser. Confirm current submission terms on the site itself: IEEE has changed the platform and policies more than once since launch.
+**Caveats.** The site is behind Cloudflare and does not render without JavaScript, so scripted or command-line access fails — use a browser. Check that it is still posting before you choose it: TechRxiv's Crossref DOI prefix 10.36227 registered 1,534 records in the first quarter of 2026 and zero since 2026-03-31 (Crossref API, checked 2026-08-28), and none of its content appears in DataCite, so new postings may have paused. Confirm current submission terms on the site itself; IEEE has changed platform and policy more than once since launch.
+
+### [Wayback Machine Save Page Now](https://web.archive.org/save)
+
+`Free` · beginner 5/5 · web citation preservation
+
+Internet Archive service that captures a live URL on demand and returns a permanent dated snapshot (web.archive.org/web/<timestamp>/<url>), which is how you make a cited web page, dataset landing page or policy document citable after it changes or disappears. A free availability API reports whether a URL is already archived and when.
+
+**Access.** Paste the URL into the form at web.archive.org/save. Check existing captures with no key: curl 'https://archive.org/wayback/available?url=example.com'. A free archive.org account unlocks outlink capture, screenshots, emailed results and the SPN2 API (S3-style keys from archive.org/account/s3.php).
+
+**Caveats.** Anonymous saves are rate-limited — a plain command-line request to /save returned HTTP 429 on 2026-08-28, so use the web form or sign in for scripted work. Pages behind logins, paywalls or crawler blocks cannot be captured, and site owners can have captures excluded later, so a snapshot is durable but not legally guaranteed. Cite the snapshot URL together with the access date.
 
 ## Funding
 
@@ -572,7 +712,7 @@ Application-based programme covering registration and, in some cases, travel and
 
 `Free tier, application` · beginner 3/5 · APC waivers
 
-PLOS publishes standard fees (PLOS ONE research articles $2,477 as listed on 2026-08-28) alongside two relief routes: authors at institutions in Research4Life Group A countries publish free in any PLOS journal, Group B authors publish free in PLOS Biology, PLOS Medicine and PLOS Sustainability and Transformation and pay a reduced $940 elsewhere; and the Publication Fee Assistance programme covers all or part of the fee for authors who demonstrate financial need.
+PLOS publishes standard fees (PLOS ONE research articles $1,852–$2,477 depending on article type; most other titles $2,596–$3,165, listed 2026-08-28) alongside two relief routes: authors based at institutions in Research4Life Group A countries publish free in any PLOS journal and Group B authors publish free in PLOS Biology, PLOS Medicine and PLOS Sustainability and Transformation and pay a reduced $940 elsewhere — in both cases only where the research had no external funding; and the Publication Fee Assistance programme covers all or part of the fee for authors who demonstrate financial need.
 
 **Access.** Apply at the point of manuscript submission — tick the Research4Life box, or complete the PFA application form; PFA decisions usually arrive within 10 business days and are kept away from editors and reviewers so they cannot affect the editorial decision.
 
@@ -592,7 +732,7 @@ Public-private partnership giving institutions in eligible low- and middle-incom
 
 ## Learning
 
-### [The Turing Way](https://the-turing-way.netlify.app/)
+### [The Turing Way](https://book.the-turing-way.org/)
 
 `Free` · beginner 5/5 · open handbook for reproducible research
 
@@ -601,6 +741,8 @@ Openly written, CC BY handbook covering reproducible research, project design, c
 **Access.** Read online at the-turing-way.netlify.app; the whole book is on GitHub, so you can clone it, cite chapters, reuse figures under CC BY, or open a pull request to fix something.
 
 **Caveats.** Broad rather than deep — it orients you and points onward rather than replacing a specialist text. Chapters vary in maturity because they are community-written, and some carry visible 'work in progress' notices. Its examples lean UK/EU and computational.
+
+*Also listed under: social, literature-access, learning, workflow-tools.*
 
 ### [Think. Check. Submit.](https://thinkchecksubmit.org/)
 
@@ -655,3 +797,15 @@ Non-profit platform where anyone can write, request or collaboratively produce s
 **Access.** Web interface at prereview.org: log in with ORCID, find a preprint by DOI, and write a review with a guided template. Also offers PREreview Clubs (group review), Live Reviews (scheduled collaborative sessions), free peer-review training, and periodic review-a-thons.
 
 **Caveats.** Login is via ORCID. A PREreview is not a journal decision and carries no formal weight in most hiring or tenure processes, though it is a legitimate, visible way to build a reviewing record when no editor has ever invited you. Coverage is heaviest in the life sciences.
+
+### [PubPeer](https://pubpeer.com/)
+
+`Free (registration), email` · beginner 4/5 · post-publication peer review
+
+Free 'online journal club' operated by the non-profit PubPeer Foundation where any publication carrying a DOI, PubMed ID or arXiv ID can be discussed in public. It is the main venue where image duplication, statistical impossibilities and data-integrity problems surface, frequently ahead of a journal correction or retraction, and authors are alerted when their paper is commented on.
+
+**Access.** Web interface at pubpeer.com — paste a DOI, PMID or arXiv ID to find or open a thread. Browser extensions for Firefox, Chrome and Safari flag commented papers inside PubMed results and on journal sites; a Zotero plugin highlights commented references in your own library. Commenting needs an account; if you have no indexed publication the FAQ says to email them and they will usually create one manually, and anonymous commenting via an access code is supported.
+
+**Caveats.** There is no public API yet — the FAQ says one is coming and asks you to request a key. Comments are moderated and the site has been on the receiving end of legal action from commented-on authors, so keep claims factual and to publicly verifiable evidence; the FAQ recommends Tor for the strongest anonymity. A PubPeer thread carries no formal status: to get a paper corrected you still have to write to the journal.
+
+*Also listed under: literature-access.*

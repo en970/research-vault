@@ -1,10 +1,10 @@
 # Free compute & storage
 
-Part of [research-vault](../README.md). 51 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 62 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (6) · [Software](#software) (3) · [Compute](#compute) (31) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
+**Contents:** [Data](#data) (10) · [Software](#software) (5) · [Compute](#compute) (36) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
 
 ## Data
 
@@ -38,6 +38,16 @@ Object storage with a permanent free monthly allowance of 10 GB-month of Standar
 
 **Caveats.** Zero egress is the reason to pick R2 for a dataset people will download repeatedly — the same download pattern on S3 can produce a four-figure bill. But 10 GB free is small, and the free tier covers Standard storage only, not Infrequent Access. If you connect other metered services to the bucket, those services still bill you. No DOI, no preservation guarantee: this is hosting, not archiving.
 
+### [EUDAT B2DROP](https://www.eudat.eu/services/b2drop)
+
+`Free (registration), email` · beginner 5/5 · European research file sync-and-share
+
+Nextcloud-based sync-and-share service run by the EUDAT collaborative data infrastructure, with a default quota of 20 GB per user free of charge, offered 'for any researcher', reachable through the web GUI, desktop clients and WebDAV.
+
+**Access.** Register at b2drop.eudat.eu with a B2ACCESS identity, then sync with the Nextcloud desktop or mobile client, or mount over WebDAV. Files can be pushed on to B2SHARE when a dataset is ready to be published with a persistent identifier.
+
+**Caveats.** 20 GB is for active working data and collaborator sharing, not archiving: B2DROP makes no preservation commitment and is not a repository — publish through B2SHARE or Zenodo instead. Larger quotas require a premium or community arrangement negotiated with EUDAT. The service is aimed at European researchers and its continuity depends on EU project funding.
+
 ### [Globus](https://www.globus.org/subscriptions)
 
 `Free tier, credentialing` · beginner 3/5 · large-scale research file transfer
@@ -58,6 +68,18 @@ Free accounts get 100 GB of private storage and 'best-effort' public storage, wi
 
 **Caveats.** Read the wording carefully: public storage is best-effort, not a guarantee, and Hugging Face reserves the right to require a paid plan for large uploads — they also offer case-by-case storage grants for high-impact open work (contact datasets@ or models@ with download/citation evidence). A dataset card is required for large datasets, and Parquet or WebDataset formats are expected. Not a preservation archive: no DOI, no commitment to keep anything. Mirror anything citable to Zenodo.
 
+### [Internet Archive](https://archive.org/)
+
+`Free (registration), email` · beginner 4/5 · free unlimited public file hosting
+
+Nonprofit archive that hosts uploaded public items — datasets, scans, audio, video, software — at no charge; its help pages state 'At this time we have no fees for uploading and preserving materials' and that 'as an archive our intention is to store and make materials in perpetuity'. The Archive estimates permanent storage costs it about $2 per gigabyte.
+
+**Access.** Free account at archive.org, then the web upload form, or scripted with the official client: pip install internetarchive; ia upload <identifier> data/*.csv --metadata='title:My dataset' --metadata='licenseurl:https://creativecommons.org/licenses/by/4.0/'. Every item gets a permanent details page plus direct HTTPS download URLs under archive.org/download/<identifier>/.
+
+**Caveats.** No DOI, no dataset versioning, no curation and no contractual preservation guarantee — 'intention' is not a commitment, and items can be removed on copyright or policy grounds, so deposit only material you hold rights to and mirror anything citable to Zenodo. Items are public by default. Filenames must be plain ASCII (letters, digits, dash, underscore, period) and the identifier must be unique; use the CLI, not the browser, for bulk or multi-GB uploads.
+
+*Also listed under: humanities.*
+
 ### [Open Storage Network (OSN)](https://www.openstoragenetwork.org/get-involved/get-an-allocation/)
 
 `Free tier, application` · beginner 2/5 · large S3-compatible research storage allocations
@@ -68,7 +90,39 @@ Distributed storage cloud for the US research community. Allocations of a minimu
 
 **Caveats.** Gated by ACCESS eligibility, so a US institutional affiliation is required in practice. It is active/staging/sharing storage, not an archive: no DOIs, no curation and no long-term preservation commitment, so do not treat an OSN bucket as the permanent home of a published dataset. Requests over 50 TB mean hosting your own pod.
 
+### [rclone](https://rclone.org/)
+
+`Free` · beginner 3/5 · multi-cloud file transfer and sync
+
+Open-source command-line tool for managing files on over 70 cloud storage products (S3-compatible object stores, Google Drive, Dropbox, WebDAV, SFTP and others), with one-way sync, bidirectional bisync, mounting remote storage as a local disk, MD5/SHA1 integrity checks on every transfer and server-side copies that avoid routing data through your machine.
+
+**Access.** curl https://rclone.org/install.sh | sudo bash, then rclone config to define a remote, and e.g. rclone sync ./data r2:my-bucket --progress --checksum. rclone mount remote:path /mnt/point exposes remote storage as a filesystem; rclone check verifies two locations match.
+
+**Caveats.** This is the practical glue between the free storage tiers listed here — moving a dataset from an institutional share to Cloudflare R2, Backblaze B2 or an OSN bucket without staging it on your laptop. Credentials in the config file are obscured, not encrypted, unless you set a config password. Server-side copy only works within one provider; anything cross-provider transits the machine running rclone, so run long moves on a server or inside tmux, not on a laptop that sleeps.
+
+### [Registry of Open Data on AWS](https://registry.opendata.aws/)
+
+`Free` · beginner 3/5 · sponsored hosting and anonymous access for large public datasets
+
+Index of public datasets held in AWS S3 (NOAA, NASA, NIH, EPA, Sentinel, Allen Institute and others) that can be read anonymously from the buckets. The linked AWS Open Data Sponsorship Program 'covers the cost of storing and sharing publicly available, high-value, cloud-optimized datasets' for data providers, with application decisions generally within two weeks.
+
+**Access.** Find the bucket on registry.opendata.aws, then read without credentials: aws s3 ls --no-sign-request s3://<bucket>/ , or boto3 with botocore.UNSIGNED. Many datasets also expose STAC catalogues or Parquet for direct querying. Providers apply at application.opendata.aws.
+
+**Caveats.** Reading the data is free; computing over it is not — the design assumes you run EC2/Athena/SageMaker in the same region, and cross-region or to-internet egress from your own account is billed to you. AWS states that the datasets 'are not provided and maintained by AWS': licences, update cadence and documentation quality vary per dataset. Sponsorship is granted per dataset and periodically renewed, so this is hosting, not preservation.
+
 ## Software
+
+### [Apptainer](https://apptainer.org/)
+
+`Free` · beginner 3/5 · containers for HPC clusters
+
+Linux Foundation container system (formerly Singularity), BSD 3-clause licensed, built for shared HPC systems: an immutable single-file SIF image format supporting cryptographic signatures and encryption, and a security model where 'you are the same user inside a container as outside, and cannot gain additional privilege on the host system by default'.
+
+**Access.** Install from your distribution's packages, then convert and run any Docker/OCI image: apptainer pull docker://python:3.12 produces python_3.12.sif, and apptainer exec --nv image.sif python script.py runs it with GPU passthrough. The .sif is one file you can scp to a cluster and cite alongside a paper.
+
+**Caveats.** Most HPC sites refuse Docker because it needs a privileged daemon, so Apptainer (or the Singularity CE / SingularityPRO forks, whose commands are near-identical but versions differ) is what is actually installed — check which your site runs. Building images generally needs root or --fakeroot on a machine you control, so the usual pattern is build locally, copy the SIF up. Bind mounts of site filesystems are configured by the sysadmin, not by you.
+
+*Also listed under: workflow-tools.*
 
 ### [Google AI Studio / Gemini API free tier](https://ai.google.dev/pricing)
 
@@ -92,6 +146,18 @@ MIT-licensed C/C++ inference engine for open-weight language models, with 1.5- t
 
 *Also listed under: cs-ml.*
 
+### [nf-core](https://nf-co.re/)
+
+`Free` · beginner 3/5 · portable, reproducible analysis pipelines
+
+Community collection of 156 curated Nextflow pipelines (RNA-seq, variant calling, metagenomics, proteomics, single-cell and more) built to shared guidelines and MIT licensed, with dependencies resolved automatically through Docker, Singularity/Apptainer or Conda and releases tested on AWS.
+
+**Access.** curl -s https://get.nextflow.io | bash, then: nextflow run nf-core/rnaseq --input samplesheet.csv --outdir results --genome GRCh38 -profile singularity. Execution profiles retarget the same command at a laptop, a Slurm/PBS cluster, Kubernetes or AWS/Azure/Google batch without editing the pipeline.
+
+**Caveats.** The pipelines are free, the compute is not: they are designed to be pointed at whatever allocation you have, and a full human-scale run costs tens to hundreds of core-hours plus multi-GB reference downloads. Check nf-core/configs for a ready-made institutional profile for your cluster before hand-tuning resource requests. Scope is overwhelmingly bioinformatics; Nextflow itself is general-purpose.
+
+*Also listed under: biology.*
+
 ### [Ollama](https://ollama.com/)
 
 `Freemium` · beginner 5/5 · local model runner
@@ -104,6 +170,16 @@ One-command local runner for open-weight models, wrapping the same GGML/llama.cp
 
 ## Compute
 
+### [ARDC Nectar Research Cloud](https://ardc.edu.au/services/ardc-nectar-research-cloud/)
+
+`Free tier, credentialing` · beginner 3/5 · Australian national research cloud
+
+Australia's national OpenStack research cloud, free at the point of use: institutional login gives an immediate trial project, and a project allocation requested through the Nectar dashboard runs for up to 12 months with renewals possible.
+
+**Access.** Sign in at the Nectar dashboard (dashboard.rc.nectar.org.au) through the Australian Access Federation, then launch VMs from Horizon, the OpenStack CLI or Terraform. University of Auckland credentials also work for New Zealand users.
+
+**Caveats.** Gated on an Australian (or the specified New Zealand) institutional identity through AAF; researchers without one must go through an alternative eligibility route and may not qualify at all. Allocations expire after at most 12 months and must be renewed with a short justification. As with any IaaS cloud, a running instance consumes the allocation whether or not it is busy — shelve or delete when idle. GPU flavours are limited and requested separately.
+
 ### [AWS Free Tier](https://aws.amazon.com/free/)
 
 `Free tier, email` · beginner 2/5 · cloud free tier (credit-based)
@@ -112,7 +188,7 @@ New accounts get $100 in credits immediately and can earn up to $100 more; the a
 
 **Access.** Sign up at aws.amazon.com, then aws-cli or boto3. For research the practical uses are S3 for data staging, EC2 spot for short batch runs, and Athena/Open Data on AWS for querying hosted public datasets.
 
-**Caveats.** This is the post-2025 model and it is materially worse for researchers than the old 12-month free tier: a credit balance with a hard six-month clock rather than a recurring monthly allowance. Card required. AWS's dedicated 'Cloud Credit for Research' programme page no longer resolves — do not plan on it; route research credit requests through CloudBank or an institutional agreement instead.
+**Caveats.** This is the post-2025 model and it is materially worse for researchers than the old 12-month free tier: a credit balance with a hard six-month clock rather than a recurring monthly allowance. AWS states the account 'closes on its own 6 months after you open it or when your credits run out, whichever comes first' and that 'you won't be charged unless you convert to a Paid plan' — so the failure mode is losing the account, not a surprise bill, provided you never convert. Export anything you care about before the clock runs out. AWS's dedicated 'Cloud Credit for Research' programme page no longer resolves — do not plan on it; route research credit requests through CloudBank or an institutional agreement instead.
 
 ### [Azure for Students](https://azure.microsoft.com/en-us/free/students)
 
@@ -128,7 +204,7 @@ $100 of Azure credit valid for 12 months with no credit card required, renewable
 
 `Free (registration), email` · beginner 4/5 · neuroimaging pipelines with donated compute
 
-Free, open-source platform for reproducible MRI, EEG and MEG analysis that runs published Apps on 'millions of free computing hours supported by NSF and donated cycles', with storage and access to several major HPC resources included on registration. Reports over 2,000 users.
+Free, open-source platform for reproducible MRI, EEG and MEG analysis that runs over 400 published Apps on 'millions of free computing hours supported by NSF and donated cycles', with storage and access to several major HPC resources included on registration. Reports over 2,000 users worldwide.
 
 **Access.** Sign up at brainlife.io, upload or import a BIDS dataset, then run Apps (fMRIPrep, FreeSurfer, tractography and others) from the web interface; every run is versioned and citable.
 
@@ -146,6 +222,16 @@ NSF testbed of 400+ nodes across three sites where you get bare-metal, root-leve
 
 **Caveats.** Scope is narrower than people assume: it is 'broadly available to members of the US Computer Science research community and its international collaborators working in the open community on cloud research'. International researchers can apply independently only with a strong record of publications in open venues. Students cannot be PIs. Commercial projects are not eligible. Bare metal means you handle the OS — expect a real learning curve.
 
+### [CHPC South Africa (Lengau)](https://www.chpc.ac.za/)
+
+`Free, application` · beginner 2/5 · African national HPC with free academic access
+
+South Africa's national supercomputing centre, funded by the Department of Science and Innovation. Its Lengau cluster is a petascale Dell system with 30 NVIDIA V100 GPU nodes and 4 PB of parallel Lustre storage, and has served over 2,000 active users who have consumed more than a billion core-hours.
+
+**Access.** Apply for an account through the CHPC user portal at users.chpc.ac.za; work is then submitted over SSH to the cluster's batch scheduler. Free academic access covers universities, research institutions, public non-commercial public-interest projects and NGOs.
+
+**Caveats.** Access is re-evaluated for renewal every six months. Commercial users pay R0.45 + VAT per core-hour under a 12-month agreement. The public pages do not spell out whether applicants outside South Africa qualify — ask before planning around it, and expect a South African host institution to be the practical route. GPU capacity (30 V100 nodes) is modest and contended, and this is a conventional batch cluster, so Linux and scheduler competence is assumed.
+
 ### [Copernicus Data Space Ecosystem](https://dataspace.copernicus.eu/)
 
 `Free tier, email` · beginner 4/5 · free Earth observation data plus hosted processing
@@ -154,7 +240,7 @@ The full Copernicus Sentinel-1/2/3/5P archive plus Copernicus service products (
 
 **Access.** Register at dataspace.copernicus.eu, then either the browser JupyterLab, or from your own machine: pip install openeo and connect('openeo.dataspace.copernicus.eu').authenticate_oidc(), which pushes the computation to their cluster.
 
-**Caveats.** Data download is genuinely unlimited-ish and free; the processing services are metered. Free-tier openEO and Sentinel Hub quotas (processing units per month, requests per minute) are small — enough to develop and run modest area/time studies, not a continental time series. Larger quotas are a paid plan.
+**Caveats.** Data download is free but metered, and the free-tier numbers are published: 12 TB/month of transfer for immediately-available data (0.1 TB/month for deferred/offline data), after which bandwidth is throttled to 1 MB/s; 4 concurrent S3/OData/STAC connections; 10,000 openEO processing units per month with 12 requests and 300 processing units per minute; 50,000 Sentinel Hub requests per month; 2 concurrent processing jobs. That is enough to develop and run modest area/time studies, not a continental time series. Larger quotas are a paid plan.
 
 *Also listed under: earth.*
 
@@ -166,7 +252,7 @@ NSF-originated open science workspace with the Discovery Environment (containeri
 
 **Access.** Create a free account at user.cyverse.org, request access to the Discovery Environment, then launch apps or VICE sessions from de.cyverse.org.
 
-**Caveats.** The free tier was cut back in 2025 and you should know how: since June 2025 basic accounts cannot share files or create public links, and since March 2025 data quotas are enforced with automatic sweeps that permanently delete over-quota data. Paid add-ons are $100 per 5,000 compute hours and $250/TB/year for storage. CyVerse also removes inactive accounts and their data after notice.
+**Caveats.** CyVerse's own pricing table puts a Basic account at 200 compute units per year alongside the 5 GB Data Store quota, so read 'several hundred compute hours' conservatively. The free tier was cut back in 2025 and you should know how: since June 2025 basic accounts cannot share files or create public links, and since March 2025 data quotas are enforced with automatic sweeps that permanently delete over-quota data ('Data removed by automatic sweep cannot be recovered'). Paid add-ons are $100 per 5,000 compute hours and $250/TB/year for storage. CyVerse also removes inactive accounts and their data after notice.
 
 ### [Digital Research Alliance of Canada](https://alliancecan.ca/en/services/advanced-research-computing/accessing-resources)
 
@@ -186,7 +272,17 @@ The UK's HPC facility for the STFC theory community, spanning four services: dat
 
 **Access.** Apply through dirac.ac.uk/getting-access. Seedcorn is the low-friction entry point for testing whether your code scales before committing to a RAC proposal.
 
-**Caveats.** Scope is narrow: particle physics, astronomy, cosmology and nuclear physics theory, with a UK-based PI. Free at the point of use but competitive; the RAC call is annual, so missing it means waiting or using Seedcorn/Director's Discretionary. DiRAC also runs a Research Software Engineering team and training academy that allocated projects can draw on.
+**Caveats.** Scope is narrow: particle physics, astronomy, cosmology and nuclear physics theory, with a UK-based PI. Free at the point of use but competitive; the RAC call is annual (RAC19 proposals closed 17 September 2026), so missing it means waiting or using Seedcorn/Director's Discretionary. Seedcorn is capped at 100,000 x86 core-hours or 1,000 GPU hours, to be used within three months of allocation — enough to benchmark and scale-test a code, not to run a campaign. DiRAC also runs a Research Software Engineering team and training academy that allocated projects can draw on.
+
+### [EGI Notebooks](https://www.egi.eu/service/notebooks/)
+
+`Free tier, credentialing` · beginner 4/5 · European federated JupyterHub with sponsored quota
+
+JupyterHub service operated by the EGI federation for European research. The pre-configured offer gives each user 4 vCPU cores, 6 GB RAM and 10 GB block storage, with Julia, Python, R, Octave and MATLAB kernels and real-time collaborative editing; scientific communities can get customised deployments with their own hardware and authentication.
+
+**Access.** Log in with an EGI Check-in identity and request the sponsored quota from egi.eu/service/notebooks; the notebook environment mounts EGI storage so data can stay in the federation. The sister EGI Cloud Compute service offers trial VMs of up to 4 vCPU, 8 GB RAM and 100 GB block storage.
+
+**Caveats.** The sponsored quota is small and granted per user or per project rather than published as a standing entitlement; sustained work is expected to move to a community allocation or a negotiated 'custom access' agreement. Login goes through EGI Check-in, which in practice favours researchers with an institutional or EU-project identity. No GPU in the default offer, and 10 GB of block storage means results must be exported.
 
 ### [EOSC EU Node](https://open-science-cloud.ec.europa.eu/)
 
@@ -196,7 +292,7 @@ The first operational node of the EOSC Federation, in production, offering a cre
 
 **Access.** Log in at open-science-cloud.ec.europa.eu with home institutional credentials (eduGAIN federation) and request services from the marketplace; each service is metered against a credit balance.
 
-**Caveats.** Credit quotas are not published on the public pages — you find out your allowance after registering, and it is modest. Federated login effectively assumes an institutional or eduGAIN-recognised identity, which is a barrier for unaffiliated researchers. The node is new and the Commission does not publish forward service timelines, so treat long-term availability as unsettled.
+**Caveats.** Credits are assigned automatically when you first log in, so you discover your personal allowance only after registering, and it is modest; coordinators of European Commission-funded research and innovation projects can request up to 40,000 credits. Federated login effectively assumes an institutional or eduGAIN-recognised identity, which is a barrier for unaffiliated researchers. The node is new and the Commission does not publish forward service timelines, so treat long-term availability as unsettled.
 
 ### [EuroHPC Joint Undertaking](https://eurohpc-ju.europa.eu/access-our-supercomputers/access-policy-and-faq_en)
 
@@ -238,6 +334,16 @@ Cloud dev containers attached to a repository. GitHub Free personal accounts get
 
 **Caveats.** Core-hours, not wall-clock hours: 120 core-hours is 60 h on a 2-core machine or 30 h on a 4-core one. No GPU at any tier that is free. With no payment method on file, usage is simply blocked when the quota runs out — you can still export changes to a branch. Stop codespaces manually; idle ones keep billing storage.
 
+### [GitLab CI/CD free tier](https://docs.gitlab.com/ci/pipelines/compute_minutes/)
+
+`Free tier, email` · beginner 3/5 · CI runners as batch compute
+
+Free-tier GitLab.com namespaces receive 400 compute minutes per month on GitLab-hosted shared runners. Public projects accepted into the GitLab for Open Source program are charged at a 0.5 cost factor (1 quota minute per 2 minutes of job time) and public forks of those projects at 0.008 (1 minute per 125 minutes of job time).
+
+**Access.** Add .gitlab-ci.yml at the repo root; use 'rules:' or pipeline schedules for recurring analyses and 'artifacts:' to keep outputs. Registering your own machine as a project runner (gitlab-runner register) makes execution free of quota entirely.
+
+**Caveats.** Materially smaller than GitHub Actions: 400 minutes/month versus 2,000, and there is no blanket free allowance for public repositories unless you are admitted to the GitLab for Open Source programme. No GPU on shared runners. Same acceptable-use limit as any CI service — this is for pipelines attached to your repository, not a general compute farm. Self-hosted runners are the realistic route to sustained capacity.
+
 ### [Google Cloud Free Tier](https://docs.cloud.google.com/free/docs/free-cloud-features)
 
 `Free tier, email` · beginner 3/5 · cloud free trial and always-free products
@@ -257,8 +363,6 @@ Hosted Jupyter notebooks with intermittent free GPU and TPU runtimes. Google's o
 **Access.** Web interface; open any .ipynb from Google Drive or a GitHub URL (colab.research.google.com/github/<user>/<repo>/blob/<branch>/nb.ipynb). Runtime > Change runtime type to pick a GPU. Install per session with !pip install; mount Drive with google.colab.drive for anything that must survive.
 
 **Caveats.** The single most important caveat: the free tier is not a place to run long jobs. Google explicitly says access to GPUs is 'heavily restricted' on the free plan, and heavy users get downgraded to CPU-only for hours at a time. SSH/remote desktops, distributed computing and mining are prohibited by the FAQ. Checkpoint to Drive every few minutes or expect to lose work.
-
-*Also listed under: physics, chemistry, medicine, earth, mathematics, cs-ml, econ-finance.*
 
 ### [Google Earth Engine (noncommercial access)](https://earthengine.google.com/noncommercial/)
 
@@ -281,6 +385,18 @@ Free CPU Spaces (2 vCPU, 16 GB) plus ZeroGPU, which allocates NVIDIA RTX Pro 600
 **Caveats.** ZeroGPU is for interactive inference, not training: quota is measured in minutes of GPU time per day and resets 24 h after first use. Gradio SDK only; torch.compile is unsupported (use ahead-of-time compilation). Free personal accounts may host at most 2 ZeroGPU Spaces, and only if the account has a verified email and is over 30 days old. Free Spaces sleep when idle.
 
 *Also listed under: cs-ml.*
+
+### [IBM Quantum (Open Plan)](https://quantum.cloud.ibm.com/docs/guides/plans-overview)
+
+`Free tier, api-key` · beginner 3/5 · free quantum processor time
+
+IBM's Open Plan gives no-cost access to IBM Quantum QPUs, capped at up to 10 minutes of QPU execution time per 28-day rolling window; as of 2026 active Open Plan users can additionally opt in to 180 extra minutes spread over 12 months. IBM positions it for people 'learning quantum computing and exploring IBM quantum technology'.
+
+**Access.** Create an account at quantum.cloud.ibm.com to get an API token, then pip install qiskit qiskit-ibm-runtime and submit through QiskitRuntimeService with the Sampler or Estimator primitives. Local simulation with qiskit-aer is unlimited and needs no account.
+
+**Caveats.** The 10 minutes is metered device execution, not wall-clock: it goes a long way for small circuits with few shots and evaporates on large batched jobs, and queue waits on shared open devices can run to hours. Which QPUs are reachable on the Open Plan changes over time, so record backend name and calibration date for reproducibility. Sustained or large-scale work needs the paid Pay-As-You-Go plan or an academic/network agreement.
+
+*Also listed under: physics, chemistry.*
 
 ### [Jetstream2](https://jetstream-cloud.org/)
 
@@ -311,8 +427,6 @@ Free hosted notebooks with a fixed weekly accelerator quota (NVIDIA GPU and TPU 
 **Access.** Web interface: New Notebook > Settings > Accelerator, and 'Add Data' to attach any Kaggle dataset or competition data at /kaggle/input. Scripted use: pip install kaggle, then kaggle kernels push / kaggle datasets download -d <owner>/<slug> with an API token from your account page.
 
 **Caveats.** Phone verification is required before the GPU/TPU and internet toggles appear at all — a real barrier in some countries. The remaining weekly quota is displayed in the session sidebar; treat that number as authoritative, because Kaggle has changed the allowance before and its documentation sits behind a bot wall. Quota resets weekly, not monthly, and idle sessions burn it.
-
-*Also listed under: physics, chemistry, medicine, cs-ml.*
 
 ### [Modal](https://modal.com/pricing)
 
@@ -392,7 +506,7 @@ Perpetually free Arm compute: the first 1,500 OCPU-hours and 9,000 GB-hours per 
 
 `Free tier, application` · beginner 2/5 · high-throughput computing (many small jobs)
 
-A distributed pool of opportunistic capacity contributed by US campuses, for high-throughput workloads. OSG's own fit guidance: ideal jobs use a single core, no GPU, under 10 hours, a few GB of RAM and under 500 MB of input/output; still advantageous up to 8 cores, 1 GPU, 20 hours, 40 GB RAM and 10 GB I/O.
+A distributed pool of opportunistic capacity contributed by US campuses, for high-throughput workloads. OSG's own fit guidance: ideal jobs use a single core, no GPU, under 10 hours of walltime, a few GB of RAM, under 500 MB of input and under 1 GB of output, run as 1000s of concurrent jobs; still advantageous up to 8 cores, 1 GPU, 20 hours, 40 GB RAM and 10 GB of input/output.
 
 **Access.** Request an account at portal.osg-htc.org, then submit HTCondor jobs from an OSG access point: condor_submit job.sub with 'queue 10000' over a parameter list. Containers via Apptainer.
 
@@ -494,7 +608,7 @@ CERN-operated repository that mints a DOI for any research output — data, code
 
 **Access.** Web upload, or the REST API at https://zenodo.org/api/deposit/depositions with a personal access token. The GitHub integration mints a fresh DOI on every release, plus a concept DOI that always points at the latest version.
 
-**Caveats.** No fees at any size covered here; deposits beyond the standard allowance need a support request explaining the case. Zenodo does not curate — metadata quality is entirely on you, and a bad record is a permanent bad record since DOIs are not withdrawn. Choose the licence at upload; changing it later on a published record is awkward.
+**Caveats.** The default per-record allowance is 100 files and 50 GB; through the storage-management interface a record can be raised to 200 GB total, and anything beyond that needs a support request explaining the case. Zenodo does not curate — metadata quality is entirely on you, and a bad record is a permanent bad record since DOIs are not withdrawn. Choose the licence at upload; changing it later on a published record is awkward.
 
 ## Funding
 

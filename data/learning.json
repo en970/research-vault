@@ -50,6 +50,31 @@
       "also_in": []
     },
     {
+      "name": "Google Colaboratory",
+      "url": "https://colab.research.google.com/",
+      "category": "compute",
+      "subcategory": "free notebook execution with GPU",
+      "summary": "Hosted Jupyter environment that runs notebooks in the browser with free access to GPUs and TPUs — the machine on which most of the deep-learning curricula in this list are actually meant to be run. Free-tier notebooks run for at most 12 hours per session and are subject to idle timeouts and dynamic usage limits that Google states deliberately fluctuate and are not published.",
+      "access": "Open colab.research.google.com with a Google account; any GitHub notebook opens at https://colab.research.google.com/github/<owner>/<repo>/blob/<branch>/<path>.ipynb, and Runtime > Change runtime type selects a GPU or TPU.",
+      "free": "free-tier",
+      "registration": "email",
+      "beginner": 5,
+      "notes": "Free GPU is availability-based, not guaranteed: at busy times you get CPU only, and heavy users are throttled. Nothing persists between sessions unless you mount Google Drive. Google's FAQ prohibits crypto mining, password cracking, deepfakes, remote-control access and running distributed-compute workers. Requires a Google account, which is a hard barrier in some jurisdictions. Longer runtimes, premium GPUs and high-RAM machines are the paid Colab Pro / Pro+ / pay-as-you-go tiers.",
+      "canonical": true,
+      "also_in": [
+        "physics",
+        "chemistry",
+        "medicine",
+        "earth",
+        "mathematics",
+        "cs-ml",
+        "social",
+        "econ-finance",
+        "compute",
+        "workflow-tools"
+      ]
+    },
+    {
       "name": "Journal of Open Source Education (JOSE)",
       "url": "https://jose.theoj.org/",
       "category": "publishing",
@@ -141,11 +166,39 @@
       "also_in": []
     },
     {
+      "name": "Academic Phrasebank (University of Manchester)",
+      "url": "https://www.phrasebank.manchester.ac.uk/",
+      "category": "learning",
+      "subcategory": "academic writing phrase reference",
+      "summary": "John Morley's phrase bank of attested academic formulations, organised by the moves of a research paper — introducing work, referring to sources, describing methods, reporting results, discussing findings, writing conclusions — and by general function: being cautious, being critical, classifying, comparing and contrasting, defining terms, describing trends and quantities, explaining causality, giving examples and signalling transitions.",
+      "access": "Web interface, no account; navigate by paper section from the top menu or by language function from the left menu, and adapt the pattern into your own draft.",
+      "free": "freemium",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "The website is complete and free; an expanded PDF and Kindle edition is sold separately. Mind the host: the bare phrasebank.manchester.ac.uk now 302-redirects to a Manchester blogs landing page, so bookmark the www. address. Written for academic writers whose first language is not English but now used mostly by native speakers. It supplies phrasing only — reusing its generic patterns is accepted practice, but it will not fix an argument that does not work.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "Advanced R (2nd edition)",
+      "url": "https://adv-r.hadley.nz/",
+      "category": "learning",
+      "subcategory": "R programming (advanced)",
+      "summary": "Hadley Wickham's 2nd edition, free in full on the web: R foundations (names and values, vectors, subsetting, control flow, functions, environments, conditions), functional programming (functionals, function factories, function operators), object-oriented programming across base types, S3, R6 and S4, metaprogramming (expressions, quasiquotation, evaluation, translating code), and techniques for debugging, measuring and improving performance, and calling C++ via Rcpp.",
+      "access": "Read at adv-r.hadley.nz; the bookdown source is on GitHub, and a separate community-written solutions manual covers the exercises. The 1st edition remains online at adv-r.had.co.nz.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Prose is CC BY-NC-SA 4.0, code MIT with a citation request. It assumes you already write R competently — start with R for Data Science if you do not. The OOP chapters cover S3, S4 and R6 only. The CRC Press print edition is paid; the website is the same content.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "AIM Open Textbook Initiative",
       "url": "https://textbooks.aimath.org/",
       "category": "learning",
       "subcategory": "curated open textbooks (mathematics)",
-      "summary": "The American Institute of Mathematics maintains an editorial-board-vetted list of roughly 80 approved open mathematics textbooks spanning 20+ course levels, from pre-calculus through linear algebra, abstract algebra, real and complex analysis, combinatorics and machine learning. Many titles are flagged as WCAG-accessible.",
+      "summary": "The American Institute of Mathematics maintains an editorial-board-vetted list of approved open mathematics textbooks organised into 23 course categories — liberal arts math, elementary and intermediate algebra, college algebra and precalculus, trigonometry, math for elementary teachers, business calculus, calculus, linear algebra, differential equations, introduction to proofs, game theory, discrete math, combinatorics, computing and numerical analysis, number theory, abstract algebra, real analysis, complex analysis, geometry and topology, probability, statistics, logic, and data science and machine learning. Many titles are flagged as WCAG-accessible.",
       "access": "Web list; each title links to the author's own site for free PDF, HTML and (often) LaTeX source.",
       "free": "free",
       "registration": "none",
@@ -227,6 +280,20 @@
       "also_in": []
     },
     {
+      "name": "Computational and Inferential Thinking (Berkeley Data 8)",
+      "url": "https://inferentialthinking.com/",
+      "category": "learning",
+      "subcategory": "introductory data science textbook",
+      "summary": "The 2nd-edition textbook for UC Berkeley's Data 8 by Adhikari, DeNero and Wagner: 18 chapters running from Python basics and tabular data through visualisation, randomness, sampling, the bootstrap, confidence intervals, hypothesis testing, regression, classification and prediction updating — inference taught by simulation rather than by closed-form formula.",
+      "access": "Read free at inferentialthinking.com; the Jupyter Book source and per-chapter notebooks are at github.com/data-8/textbook, and the course's Table interface installs with `pip install datascience` (e.g. `Table.read_table('data.csv').group('col')`).",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "CC BY-NC-ND 4.0 — free to read and share, no derivatives. Deliberately non-mathematical: it builds sampling intuition by resampling and will not prepare you for a theory course. It also teaches Berkeley's pedagogical `datascience` Table API rather than pandas, so the code does not transfer directly to a working analysis stack — budget time for that translation.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Convex Optimization (Boyd & Vandenberghe)",
       "url": "https://web.stanford.edu/~boyd/cvxbook/",
       "category": "learning",
@@ -283,6 +350,22 @@
       "also_in": []
     },
     {
+      "name": "Deep Learning (Goodfellow, Bengio and Courville)",
+      "url": "https://www.deeplearningbook.org/",
+      "category": "learning",
+      "subcategory": "deep learning textbook",
+      "summary": "MIT Press (2016) text in three parts: applied mathematics and machine learning basics (linear algebra, probability and information theory, numerical computation), modern practical deep networks (feedforward nets, regularization, optimization, convolutional and sequence models, practical methodology), and deep learning research (chapters 13-20 on representation learning, structured probabilistic models, Monte Carlo methods, partition functions, approximate inference and generative models).",
+      "access": "Read chapter by chapter in the browser at deeplearningbook.org, no account; exercises and lecture slides for each chapter are linked from the same index page.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "HTML only. The authors state their MIT Press contract prevents them distributing a PDF — 'a sort of weak DRM required by our contract' — so offline reading means saving pages one at a time, a real cost on an intermittent connection. Published 2016 and never revised: nothing on transformers, diffusion models or modern scaling. Still the standard reference for the underlying mathematics.",
+      "canonical": true,
+      "also_in": [
+        "cs-ml"
+      ]
+    },
+    {
       "name": "Dive into Deep Learning (d2l.ai)",
       "url": "https://d2l.ai/",
       "category": "learning",
@@ -308,7 +391,21 @@
       "free": "free-registration",
       "registration": "email",
       "beginner": 4,
-      "notes": "Audit access is time-boxed: edX states auditors 'can only access the materials for as long as the course is active, generally 4-12 weeks', after which the course closes to you. No graded work in most courses, no instructor feedback, no certificate. edX's own site currently announces a forthcoming subscription plan, so the free tier's shape may change again; check the enrolment box before investing time in a course.",
+      "notes": "Audit access is time-boxed to the period the course run is open, after which the course closes to you — verify the enrolment box before investing time, because the limits differ per course and per partner. No graded work in most courses, no instructor feedback, no certificate. Checked on 2026-08-28: edx.org was promoting a percentage-off code for certificates and programs, and no subscription plan was announced on the homepage; edX's support site blocks automated clients, so the precise wording of the current audit policy must be read in a browser on the course's own enrolment page.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "ELIXIR TeSS",
+      "url": "https://tess.elixir-europe.org/",
+      "category": "learning",
+      "subcategory": "life-science training registry",
+      "summary": "ELIXIR's training portal, indexing 3,525 training materials, 216 upcoming training events, 131 content providers and 31 training workflows across bioinformatics, research data management, HPC and related life-science skills, harvested automatically from provider sites and annotated with EDAM scientific topics for filtering.",
+      "access": "Browse and facet-filter at tess.elixir-europe.org; there is a public JSON API — https://tess.elixir-europe.org/materials.json_api?page%5Bsize%5D=50 returns paged records with a meta.results-count, and materials.json / events.json give plain JSON. Free registration lets you register your own materials, events or a provider profile.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "It is an index, not a host — quality and availability depend entirely on the upstream provider and dead links do appear. Coverage is Europe-weighted: VIB, SIB, EMBL-EBI and de.NBI dominate the event listings, so most 'upcoming events' are physically in Europe even when the material behind them is open. The HTML site sits behind bot protection, so scripted access should use the JSON endpoints.",
       "canonical": true,
       "also_in": []
     },
@@ -379,7 +476,7 @@
       "url": "https://greenteapress.com/wp/",
       "category": "learning",
       "subcategory": "free programming and statistics books",
-      "summary": "A dozen free books under open licences that permit copying and modification: Think Python (3rd ed), Think Stats (3rd ed), Think Bayes (2nd ed), Think DSP, Think Complexity (2nd ed), Think Data Structures, Think Java (2nd ed), Modeling and Simulation in Python, Elements of Data Science and Astronomical Data in Python.",
+      "summary": "Roughly seventeen free books under open licences that permit copying and modification: Think Python (3rd ed), Think Stats (3rd ed), Think Bayes (2nd ed), Think DSP, Think Complexity (2nd ed), Think Data Structures, Think Java (2nd ed), Think OS, Think C++, Modeling and Simulation in Python, Physical Modeling in MATLAB, Elements of Data Science, Astronomical Data in Python, Data Structures and Information Retrieval in Python, The Little Book of Semaphores, and How to Think Like a (Functional) Programmer: OCaml Version.",
       "access": "Direct download in several electronic formats; several titles ship as runnable Jupyter notebooks (Elements of Data Science, Astronomical Data in Python, Modeling and Simulation in Python).",
       "free": "free",
       "registration": "none",
@@ -405,6 +502,20 @@
       ]
     },
     {
+      "name": "Khan Academy",
+      "url": "https://www.khanacademy.org/",
+      "category": "learning",
+      "subcategory": "foundational mathematics and science courses",
+      "summary": "501(c)(3) non-profit publishing 840+ free courses covering core academic subjects for K-12 and early college — mathematics through multivariable calculus, differential equations, linear algebra and statistics, plus physics, chemistry, biology, economics and computing — with auto-graded practice and mastery tracking. Reports 227 million registered users and 104.9 million learners in the 2024-2025 school year.",
+      "access": "Web interface; videos and articles are readable with no account, and a free account unlocks practice exercises, mastery tracking and unit tests. The video library is mirrored on the Khan Academy YouTube channel for low-bandwidth or offline use.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "The ceiling is early undergraduate — there is nothing at graduate level, and the value for a researcher is repairing one specific missing prerequisite (linear algebra, multivariable calculus, intro statistics) rather than following a curriculum. Content is CC BY-NC-SA. The Khanmigo AI tutor is a separate product and is not part of the free core in all regions.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "LibreTexts",
       "url": "https://libretexts.org/",
       "category": "learning",
@@ -423,12 +534,12 @@
       "url": "https://mantra.ed.ac.uk/",
       "category": "learning",
       "subcategory": "research data management course",
-      "summary": "Free self-paced course from the University of Edinburgh Research Data Service in eight units: research data in context, data management planning, organising data, preparing data for archiving, keeping research data safe, protecting sensitive data, FAIR sharing and access, plus hands-on data handling tutorials in R, SPSS, ArcGIS and NVivo. Last updated May 2025.",
+      "summary": "Free self-paced course from the University of Edinburgh Research Data Service in seven units — research data in context, data management planning, organising data, preparing data for archiving, keeping research data safe, protecting sensitive data, FAIR sharing and access — plus a set of hands-on data handling tutorials that practise manipulating open datasets in R, Python, ArcGIS and SPSS. Site footer records the last update as August 2026.",
       "access": "Web interface, no registration, no login; work through units in any order.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "UK/EU-flavoured on legal and ethical points (GDPR, UK funder expectations) — adapt the compliance sections to your jurisdiction. The software practicals assume access to SPSS, ArcGIS and NVivo, which are not free; the R practical is the one you can complete with no licences.",
+      "notes": "UK/EU-flavoured on legal and ethical points (GDPR, UK funder expectations) — adapt the compliance sections to your jurisdiction. Of the four software practicals, SPSS and ArcGIS need commercial licences; the R and Python tutorials are the ones you can complete with no paid software at all. Licensed CC BY 4.0. No registration, no login, no assessment and no certificate.",
       "canonical": true,
       "also_in": []
     },
@@ -543,6 +654,20 @@
       ]
     },
     {
+      "name": "NPTEL",
+      "url": "https://nptel.ac.in/",
+      "category": "learning",
+      "subcategory": "university course video archive (India)",
+      "summary": "Indian Ministry of Education programme run by seven IITs (Bombay, Delhi, Guwahati, Kanpur, Kharagpur, Madras, Roorkee) and IISc Bangalore: 3,200+ courses available for self-study as web and video lectures in engineering, science and humanities, reporting 1.86 billion views and 5.62 million YouTube subscribers.",
+      "access": "Browse and stream at nptel.ac.in/courses with no account; complete lecture playlists are also on the NPTEL YouTube channels, and NPTEL distributes course hard disks for users without reliable bandwidth.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Content is CC BY-NC-SA. Certification is the paid part and is geographically limited: NPTEL's FAQ states you must 'join the course, submit weekly Assignments, register+pay for exams & finally write the in-person-at-centre proctored exams', and the centres are in India. Production quality and recency vary enormously across a two-decade archive — check the run year before relying on a course's software instructions.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Open Textbook Library",
       "url": "https://open.umn.edu/opentextbooks",
       "category": "learning",
@@ -567,6 +692,34 @@
       "registration": "none",
       "beginner": 5,
       "notes": "CC BY-NC-SA 3.0 with some third-party content excluded. Explicitly no credit, degree or certificate. It is a closed selection of introductory courses, not a growing library, and nothing here is at graduate seminar level.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "OpenIntro",
+      "url": "https://www.openintro.org/book/",
+      "category": "learning",
+      "subcategory": "open statistics textbooks",
+      "summary": "Non-profit publisher of free statistics textbooks — OpenIntro Statistics (4th edition), Introduction to Modern Statistics, Intro Stat for Life & Biomedical Sciences, Advanced High School Statistics, Intro Stat with Randomization & Simulation — plus pilot mathematics titles (College Algebra and Trigonometry, APEX Calculus, Linear Algebra). Each statistics title ships with lecture videos, slides, datasets and labs in R, Python, SAS, Stata, jamovi, JASP and Rguroo.",
+      "access": "Direct PDF download from openintro.org/book — the store lists the PDF as free and you skip the optional contribution by setting the price to $0. Labs, slides and datasets download from each book's own page; there is no account step.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Introductory level only — this is the first-course text, not a graduate methods reference, and it stops well short of mixed models, causal inference or Bayesian methods. Print copies cost $25 (b/w) to $40 (colour). Some instructor ancillaries (full solution sets, test banks) are gated behind a verified-instructor request. Licences are per title; check openintro.org/license before reusing.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "OpenLearn (The Open University)",
+      "url": "https://www.open.edu/openlearn/",
+      "category": "learning",
+      "subcategory": "free short courses (UK Open University)",
+      "summary": "The Open University's free-learning site: hundreds of structured short courses plus articles, videos and interactives across nine subject areas — digital & computing, education & development, health/sports/psychology, history & the arts, languages, money & business, nature & environment, science/maths/technology, and society/politics/law — extracted from OU distance-teaching modules written for independent study without a tutor.",
+      "access": "Read any course without an account; a free account lets you enrol, track progress, and collect a digital badge or statement of participation on most courses.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Badges and statements of participation are free but carry no academic credit and no OU module credit — the credit-bearing OU modules are a separate paid product. Material is written for a general and undergraduate audience; almost nothing is at research level. Most content is CC BY-NC-SA with some third-party items excluded. Because it is genuinely designed for unsupported distance study, the pedagogy holds up better solo than most lecture-capture archives.",
       "canonical": true,
       "also_in": []
     },
@@ -598,6 +751,22 @@
       "canonical": true,
       "also_in": [
         "physics"
+      ]
+    },
+    {
+      "name": "Probabilistic Machine Learning (Kevin Murphy)",
+      "url": "https://probml.github.io/pml-book/",
+      "category": "learning",
+      "subcategory": "machine learning textbooks",
+      "summary": "Kevin Murphy's MIT Press series — 'Probabilistic Machine Learning: An Introduction' (2022) and 'Probabilistic Machine Learning: Advanced Topics' (2023), successors to the 2012 'Machine Learning: A Probabilistic Perspective' — published with free draft PDFs, one Colab notebook per chapter reproducing every figure, supplementary chapters, and a solutions PDF for the non-starred exercises.",
+      "access": "Download the draft PDFs from the GitHub-hosted links on probml.github.io/pml-book; figure code lives in the probml/pyprobml repository and every figure link inside the PDF opens the corresponding Colab, which installs its own dependencies.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "The free files are pre-publication drafts under CC BY-NC-ND (most recent posted draft dated 2025-04-18), so numbering does not match the printed hardbacks, which are paid. Mathematically demanding — assumes probability, linear algebra and optimisation at roughly the level of the mml-book already in this list.",
+      "canonical": true,
+      "also_in": [
+        "cs-ml"
       ]
     },
     {
@@ -643,6 +812,20 @@
       "registration": "none",
       "beginner": 5,
       "notes": "US-academic conventions throughout. It answers formatting and mechanics questions definitively; it does not teach scientific argument structure — pair it with a field-specific writing course. Note that no institutional login is needed, which is unusual among writing-centre resources.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "Python Data Science Handbook",
+      "url": "https://jakevdp.github.io/PythonDataScienceHandbook/",
+      "category": "learning",
+      "subcategory": "scientific Python textbook",
+      "summary": "Jake VanderPlas's handbook to the classical analysis stack in five parts — IPython, NumPy, pandas, Matplotlib and scikit-learn — with the complete text published free online and as executable Jupyter notebooks.",
+      "access": "Read the full text at jakevdp.github.io/PythonDataScienceHandbook; clone github.com/jakevdp/PythonDataScienceHandbook for the notebooks, or open any chapter straight into Colab from the badges in that repository.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Text is CC BY-NC-ND (no derivatives allowed), code is MIT. Coverage stops at scikit-learn — nothing on deep learning, and some pandas idioms predate the current API, so run the notebooks against pinned versions or expect deprecation warnings. The printed O'Reilly edition is paid and adds nothing over the site.",
       "canonical": true,
       "also_in": []
     },
@@ -701,6 +884,36 @@
       "registration": "email",
       "beginner": 5,
       "notes": "Note the URL change — authoraid.info now redirects here, and old bookmarks and citations point at the former name. Courses run in cohorts rather than continuously, so check the schedule. The mentoring is the distinctive part: it is the closest thing to a free supervisor for an unaffiliated or isolated researcher.",
+      "canonical": false,
+      "also_in": []
+    },
+    {
+      "name": "Rosalind",
+      "url": "https://rosalind.info/problems/locations/",
+      "category": "learning",
+      "subcategory": "bioinformatics programming exercises",
+      "summary": "Problem-solving platform for learning bioinformatics through code, in five tracks: Python Village (programming basics), Bioinformatics Stronghold (core algorithms — alignment, dynamic programming, genome assembly), Bioinformatics Armory (the same problems solved with existing tools), the Bioinformatics Textbook Track (companion to Compeau and Pevzner's Bioinformatics Algorithms) and Algorithmic Heights (companion to Dasgupta, Papadimitriou and Vazirani).",
+      "access": "Free account, then open a problem, download the dataset it generates for you, compute the answer in any language and paste it back into the browser for automatic checking.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Described on the site as '100% community funded', a joint UC San Diego / Saint Petersburg project, and it runs on donations — stable but not actively developed. Datasets are generated per user, so answers cannot be copied. There is no certificate and no feedback beyond pass/fail on each dataset, and the Armory track depends on external web services whose interfaces have drifted since the problems were written.",
+      "canonical": true,
+      "also_in": [
+        "biology"
+      ]
+    },
+    {
+      "name": "Saylor University (formerly Saylor Academy)",
+      "url": "https://www.saylor.org/",
+      "category": "learning",
+      "subcategory": "free self-paced courses with free certificates",
+      "summary": "Non-profit offering 160+ tuition-free self-paced online courses — arts & humanities (12), business administration (51), computer science (17), English as a second language (5), professional development (45), science & mathematics (10), social science (19) — plus a separate category of ACE-recommended credit exams. Reports over 3 million enrolled students.",
+      "access": "Free account at learn.saylor.org, enrol at any time with no cohort, work through the Moodle course and sit the final exam in the browser; passing issues a free, verifiable certificate.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Content authored by Saylor is CC BY 3.0, explicitly excluding the final exams. Certificates are free but are not accredited credit: credit exists only where a receiving institution chooses to honour the ACE credit recommendation, which it is under no obligation to do, and the credit-transfer step is administered separately from the free course. Level is undergraduate and vocational — nothing here is graduate research training. The organisation has rebranded from 'Saylor Academy'; old links still resolve.",
       "canonical": true,
       "also_in": []
     },
@@ -788,7 +1001,9 @@
       "beginner": 5,
       "notes": "Self-study on the lessons is completely free. Attending an *official* workshop is not: hosts pay a workshop fee, and Instructor Training is a paid, seat-limited service (see the site's pricing page). The lessons assume a laptop on which you can install software — that is the only hardware barrier.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "social"
+      ]
     },
     {
       "name": "The Feynman Lectures on Physics (online edition)",
@@ -847,12 +1062,8 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Prose CC BY 4.0, code MIT. The single best answer to 'how should I actually organise a computational project' for someone with no local mentor. Written by contributors from many countries and disciplines, so depth varies chapter to chapter.",
-      "canonical": true,
-      "also_in": [
-        "social",
-        "literature-access",
-        "workflow-tools"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "Cross Validated (Stack Exchange)",

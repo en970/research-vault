@@ -646,7 +646,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Apache 2.0 and fully runnable locally with Docker or Apptainer, but realistic genome-scale runs of pipelines like sarek need tens of gigabytes of RAM - plan on a shared cluster or cloud. Reference genome assets (iGenomes) are large; specify only what you need. Free training with a ready-made Codespaces environment is at https://training.nextflow.io/.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -956,7 +956,7 @@
       "registration": "email",
       "beginner": 3,
       "notes": "No charge to authors. Editorial pre-screening means not every submission is sent for review, and scope is limited to the listed life-science areas. The submission system is live, but the platform's own blog has not been updated since April 2024 - confirm current affiliate participation before planning a route to a specific journal.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -1096,7 +1096,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Requires JavaScript. Teaches algorithms in isolation rather than the real toolchain - you will not learn BAM files, workflow managers or cluster jobs here. Difficulty rises steeply after the first dozen Stronghold problems. Best used alongside a practical course, not instead of one.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**1025 resources** across **18 fields** — 790 free outright, 640 usable with no account at all. Verified 2026-08-28.
+**1115 resources** across **18 fields** — 862 free outright, 706 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -49,18 +49,18 @@ sixty seconds. Those distinctions are the content.
 | [Biology & life sciences](docs/04-biology.md) | 83 | data (36), software (18), learning (6) |
 | [Medicine & health sciences](docs/05-medicine.md) | 72 | data (24), software (15), literature (10) |
 | [Earth, climate & environmental science](docs/06-earth.md) | 84 | data (36), software (17), learning (7) |
-| [Mathematics](docs/07-mathematics.md) | 74 | software (17), publishing (14), learning (10) |
-| [Computer science & machine learning](docs/08-cs-ml.md) | 77 | software (18), literature (13), data (12) |
-| [Neuroscience & psychology](docs/09-neuro-psych.md) | 85 | software (35), data (20), literature (7) |
-| [Social sciences](docs/10-social.md) | 60 | data (26), software (11), literature (9) |
-| [Economics & finance](docs/11-econ-finance.md) | 60 | data (27), software (10), literature (6) |
-| [Linguistics & humanities](docs/12-humanities.md) | 60 | data (23), software (15), publishing (6) |
-| [Literature access & discovery](docs/13-literature-access.md) | 59 | literature (32), software (8), learning (6) |
-| [Free compute & storage](docs/14-compute.md) | 51 | compute (31), data (6), publishing (6) |
-| [Publishing, identity & preservation](docs/15-publishing.md) | 59 | publishing (36), literature (10), community (4) |
-| [Funding, grants & recognition](docs/16-funding.md) | 56 | funding (52), community (2), publishing (1) |
-| [Learning materials](docs/17-learning.md) | 59 | learning (49), funding (3), publishing (2) |
-| [Research workflow software](docs/18-workflow-tools.md) | 60 | software (33), literature (6), learning (6) |
+| [Mathematics](docs/07-mathematics.md) | 82 | software (19), publishing (15), data (12) |
+| [Computer science & machine learning](docs/08-cs-ml.md) | 82 | software (20), data (14), literature (13) |
+| [Neuroscience & psychology](docs/09-neuro-psych.md) | 92 | software (38), data (21), literature (10) |
+| [Social sciences](docs/10-social.md) | 83 | data (33), software (16), literature (12) |
+| [Economics & finance](docs/11-econ-finance.md) | 78 | data (36), software (14), literature (8) |
+| [Linguistics & humanities](docs/12-humanities.md) | 76 | data (30), software (22), publishing (7) |
+| [Literature access & discovery](docs/13-literature-access.md) | 74 | literature (43), software (11), publishing (6) |
+| [Free compute & storage](docs/14-compute.md) | 62 | compute (36), data (10), publishing (6) |
+| [Publishing, identity & preservation](docs/15-publishing.md) | 73 | publishing (43), literature (13), software (5) |
+| [Funding, grants & recognition](docs/16-funding.md) | 68 | funding (63), learning (2), community (2) |
+| [Learning materials](docs/17-learning.md) | 73 | learning (62), funding (3), compute (2) |
+| [Research workflow software](docs/18-workflow-tools.md) | 76 | software (44), literature (7), publishing (6) |
 
 The first 12 are fields of study. The rest cut across all of them: the parts of research that are the same whatever you work on.
 <!-- FIELDS:END -->

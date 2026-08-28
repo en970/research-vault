@@ -1,0 +1,268 @@
+{
+  "unit": "workflow-tools",
+  "additions": [
+    {
+      "name": "Nextflow",
+      "url": "https://www.nextflow.io/",
+      "category": "software",
+      "subcategory": "workflow manager",
+      "summary": "Apache-2.0 dataflow workflow engine (v26.04.6, July 2026) that runs the same pipeline unchanged on a laptop, on SLURM/SGE/LSF/PBS/HTCondor clusters, on Kubernetes and on AWS/Azure/Google Cloud, with per-process Conda, Docker or Apptainer environments and '-resume' caching of completed tasks; the nf-core community publishes ready-made pipelines such as nf-core/rnaseq and nf-core/sarek.",
+      "access": "'curl -s https://get.nextflow.io | bash' (or 'conda create --name nf-env bioconda::nextflow'); needs Bash 3.2+ and Java 17-26. Run an existing pipeline with 'nextflow run nf-core/rnaseq -profile singularity -resume', or write your own main.nf of processes and channels.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "The Groovy-based DSL2 is a steeper climb than Snakemake's Python for people who only know Python/R, and Java 17+ is a hard requirement (support for older Java was dropped in 25.04). The engine and all nf-core pipelines are free; the Seqera Platform (hosted monitoring and launching, from the company that employs the core developers) is a separate commercial product with a limited free tier."
+    },
+    {
+      "name": "Apptainer (formerly Singularity)",
+      "url": "https://apptainer.org/",
+      "category": "software",
+      "subcategory": "HPC containers",
+      "summary": "Linux Foundation container platform for shared clusters (v1.5.3, July 2026): an image is one portable SIF file, the process runs as your own user with no daemon and no privilege escalation, and your files and GPUs are visible inside by default — which is why HPC centres that forbid Docker allow this.",
+      "access": "Usually already installed on clusters ('module load apptainer'); locally via distro packages. Convert and run a Docker image: 'apptainer build r.sif docker://rocker/r-ver:4.4', then 'apptainer exec --nv r.sif Rscript analysis.R' ('--nv' passes through NVIDIA GPUs) or 'apptainer shell r.sif'.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Open source under a BSD-3-Clause-style licence; root is not needed to run if user namespaces are enabled. Building from a definition file usually still needs root or '--fakeroot', so many people build on a laptop and copy the .sif to the cluster. Sylabs' SingularityCE/SingularityPRO is the forked sibling with near-identical commands — check which one your cluster runs before writing docs for collaborators."
+    },
+    {
+      "name": "DVC (Data Version Control)",
+      "url": "https://dvc.org/",
+      "category": "software",
+      "subcategory": "data versioning and pipelines",
+      "summary": "Apache-2.0 Git companion (3.67.1) that keeps large data and model files out of the repository: Git tracks small .dvc pointer files while the content lives in an S3, Google Cloud Storage, Azure, Google Drive, SSH/SFTP, WebDAV or HTTP remote, and 'dvc repro' reruns only the pipeline stages whose dependencies changed; it also tracks experiments and metrics.",
+      "access": "'pip install dvc' plus a remote extra ('pip install \"dvc[s3]\"'); then 'dvc init', 'dvc add data/raw.csv', 'git commit', 'dvc remote add -d store s3://bucket/path', 'dvc push'. Collaborators clone the Git repo and run 'dvc pull'.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "DVC is free but you supply the storage, and free-tier cloud buckets are small; a university S3-compatible store or a plain SSH remote is the cheapest route. The repository now lives at github.com/treeverse/dvc (it moved from Iterative), and the hosted Studio dashboard is a separate commercial product. For fetch-on-demand access to very large nested datasets, DataLad is the more common choice in academia; DVC is more ML-flavoured."
+    },
+    {
+      "name": "OpenRefine",
+      "url": "https://openrefine.org/",
+      "category": "software",
+      "subcategory": "data cleaning",
+      "summary": "BSD-3-Clause desktop tool (3.10.x, 2026) for messy tabular data: faceting, clustering of near-duplicate values (fingerprint, n-gram, phonetic), GREL transformations, splitting and reshaping columns, and reconciliation of free-text names against Wikidata and other reconciliation services. Data are processed locally and every step is recorded as a replayable JSON operation history.",
+      "access": "Download for Windows (bundled Java), macOS or Linux (needs a Java runtime), run it, and work at http://127.0.0.1:3333; import CSV/TSV/Excel/JSON/XML/RDF, clean, then export the cleaned table and the operation history JSON so the same cleaning can be replayed on the next batch.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Nothing is uploaded anywhere, which makes it usable for sensitive data. It is memory-bound: the default JVM heap comfortably handles a few hundred thousand rows, and larger files need the heap raised in the settings. Save the operation history alongside the raw file — that, not the cleaned CSV, is the reproducible artefact."
+    },
+    {
+      "name": "Google Colab (free tier)",
+      "url": "https://colab.research.google.com/",
+      "category": "compute",
+      "subcategory": "hosted notebooks with GPU",
+      "summary": "Hosted Jupyter notebooks stored in Google Drive and executed on Google VMs. Free sessions run for at most 12 hours, idle sessions are reclaimed, and GPU access is free but rationed: Google states that access to GPUs is 'heavily restricted' on the free tier and deliberately does not publish the quota, which fluctuates with demand.",
+      "access": "Web interface with a Google account; open any .ipynb from Drive or GitHub (colab.research.google.com/github/<user>/<repo>/blob/main/nb.ipynb), then Runtime > Change runtime type to request a GPU. Install extras per session with '!pip install' and persist outputs by mounting Drive ('from google.colab import drive; drive.mount(\"/content/drive\")').",
+      "free": "free-tier",
+      "registration": "email",
+      "beginner": 5,
+      "notes": "Nothing survives the session except what you write to Drive, and a free session can be cut off mid-run when demand is high, so checkpoint long jobs. Notebooks execute on Google infrastructure outside your institution — check ethics and data-protection constraints before uploading participant data. Colab Pro, Pro+ and pay-as-you-go compute units are the paid escape hatch; Binder and Kaggle are the free alternatives when Colab is throttled."
+    },
+    {
+      "name": "Kaggle Notebooks",
+      "url": "https://www.kaggle.com/code",
+      "category": "compute",
+      "subcategory": "hosted notebooks with GPU/TPU",
+      "summary": "Free hosted Python/R notebooks with a published weekly accelerator quota (30 GPU hours per week at the time of writing, plus a separate TPU allowance), sessions capped at around 12 hours, background 'Save & Run All' execution, and free hosting for datasets that any notebook can attach.",
+      "access": "Free account, then Create > Notebook; Settings > Accelerator picks GPU or TPU and Settings > Internet enables package installs; attach a Kaggle Dataset or upload your own, and use 'Save & Run All (Commit)' so the run continues after you close the browser. Notebooks and datasets are shareable by URL or downloadable as .ipynb.",
+      "free": "free-tier",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Quotas are set unilaterally by Kaggle and have changed repeatedly — the live remaining hours are shown in the session sidebar, and the docs are behind a bot check, so verify before planning around a number. Phone verification is required before a notebook may use an accelerator or reach the internet. Sessions are ephemeral apart from /kaggle/working output, and uploaded data sit on US infrastructure (public datasets are visible to everyone), so it is unsuitable for confidential material."
+    },
+    {
+      "name": "ASReview LAB",
+      "url": "https://asreview.nl/",
+      "category": "software",
+      "subcategory": "systematic review screening",
+      "summary": "Apache-2.0 active-learning tool from Utrecht University (asreview 3.0.8 on PyPI, June 2026) for title/abstract screening: you label a few relevant and irrelevant records, and the model reorders the remaining thousands so relevant papers surface early; it also has a simulation mode to benchmark models against an already-screened dataset.",
+      "access": "'pip install asreview' (Python 3.10+), then 'asreview lab' opens the interface in your browser; import a RIS/CSV/Excel/TSV export from PubMed, Scopus, Web of Science or a reference manager, screen interactively, and export the labelled dataset.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Everything runs locally, so confidential or embargoed record sets never leave the machine. Active learning changes the screening order, not the inclusion criteria: you still decide when to stop, and stopping rules are a live methodological debate — report the model, the seed set and the stopping criterion in the methods. No built-in dual-reviewer conflict resolution in the way Rayyan or Covidence provide it."
+    },
+    {
+      "name": "Rayyan (free plan)",
+      "url": "https://www.rayyan.ai/",
+      "category": "software",
+      "subcategory": "systematic review screening",
+      "summary": "Web tool for collaborative title/abstract screening: import RIS/EndNote/CSV exports, blind two-reviewer screening with conflict resolution, duplicate detection, keyword highlighting and relevance predictions. The free plan allows 3 active reviews, 2 invited reviewers and 1 sample.",
+      "access": "Web interface with a free account; upload the search exports from each database, invite collaborators, screen with include/exclude/maybe labels and reasons, then export decisions as RIS or CSV for the PRISMA count.",
+      "free": "free-tier",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "The free tier is much narrower than it used to be: PRISMA flow diagrams, auto-resolving duplicates, unlimited samples and more than 3 active reviews start at $4.99/seat/month billed annually, and AI extraction features are dearer. Records are stored on Rayyan's servers, which some ethics approvals do not permit. ASReview is the fully local, fully free alternative if you can install Python."
+    },
+    {
+      "name": "G*Power",
+      "url": "https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower",
+      "category": "software",
+      "subcategory": "statistical power analysis",
+      "summary": "Free power-analysis program from Heinrich Heine University Düsseldorf (3.1.9.7 for Windows, March 2020; 3.1.9.6 for macOS, February 2020) covering a priori, post hoc, sensitivity and criterion analyses for t, F, chi-square, z and exact tests — including ANOVA/ANCOVA designs, correlations, and linear, logistic and Poisson regression — with plots of power against sample size.",
+      "access": "Download the Windows or macOS binary from the department page (no account); choose test family, statistical test and type of power analysis, enter effect size, alpha and desired power to get N, and use 'X-Y plot for a range of values' to produce the power curve figure a grant or preregistration needs.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Free for everyone including commercial users, but closed source and redistribution is prohibited. No native Apple Silicon build yet (an Intel build under Rosetta is the current route), and there is no scripting layer, so record your inputs manually in the preregistration for reproducibility. For designs it does not cover — multilevel/mixed models, SEM, complex simulations — use R (pwr, simr, WebPower) instead."
+    },
+    {
+      "name": "protocols.io (Open Research plan)",
+      "url": "https://www.protocols.io/",
+      "category": "publishing",
+      "subcategory": "protocol and methods sharing",
+      "summary": "Platform for writing, versioning, running and publishing step-by-step experimental protocols. The free 'Open Research' plan is $0 forever with unlimited public protocols that receive DOIs, up to 2 private protocols, and long-term preservation via CLOCKSS plus mirroring to the Internet Archive and GitHub.",
+      "access": "Free account, then write or fork an existing protocol, keep it private while you iterate, and publish to mint a citable DOI you reference in the methods section; published protocols are readable without an account, and a REST API is available for programmatic access.",
+      "free": "free-tier",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Only 2 private protocols on the free plan — unlimited private protocols, team workspaces, SAML SSO, audit trails and 21 CFR Part 11 signatures are the paid Enterprise product. Publishing is irreversible: a published protocol gets a DOI and is archived, so check for unpublished methods, personal data and institutional restrictions first. It replaces a supplementary-methods PDF, not a lab notebook — for daily bench records use an ELN such as eLabFTW."
+    },
+    {
+      "name": "eLabFTW",
+      "url": "https://www.elabftw.net/",
+      "category": "software",
+      "subcategory": "electronic lab notebook",
+      "summary": "AGPLv3 electronic lab notebook and inventory system (5.6.x, August 2026) with timestamped and signable experiment entries, reusable templates, a resources database for plasmids, chemicals, antibodies and equipment, a booking scheduler, fine-grained permissions, and export to PDF, ZIP and the .eln interchange format. No features are held back behind a paywall.",
+      "access": "Self-hosted: run the elabftw/elabimg container with Docker or Podman on a lab server or VPS behind HTTPS, then everyone works in the browser. Deltablot (the developers) sell hosted instances and support for groups without sysadmin capacity.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Somebody has to run, update and back up the server — the real blocker for a lone researcher, so ask whether your institution already operates an instance. Trusted RFC 3161 timestamping is built in, but some timestamping authorities charge. It is an ELN, not a LIMS: sample logistics and instrument integration are basic compared with dedicated systems."
+    },
+    {
+      "name": "ORCID",
+      "url": "https://orcid.org/",
+      "category": "publishing",
+      "subcategory": "researcher identifier",
+      "summary": "Free persistent 16-digit identifier from a non-profit registry, used by most publishers, funders and repositories to attach works, affiliations, funding and peer-review activity to the right person and to survive name changes, transliteration and namesakes; the researcher controls per-item visibility and can export the record.",
+      "access": "Register free at orcid.org/register with an email address, add works by DOI search-and-link (Crossref/DataCite) or BibTeX import, then paste the iD into manuscript submission and grant systems; public records are readable at https://pub.orcid.org/v3.0/{orcid}/record and an annual public data file is released for bulk use.",
+      "free": "free",
+      "registration": "email",
+      "beginner": 5,
+      "notes": "Free for individuals permanently — institutions pay membership for the Member API that writes into records, which is why some universities auto-populate yours. Token access to the Public API needs registered client credentials. Only what you mark public is visible, and auto-population depends on publishers pushing data, so most records still need manual curation."
+    },
+    {
+      "name": "OpenAlex",
+      "url": "https://openalex.org/",
+      "category": "literature",
+      "subcategory": "bibliographic database and API",
+      "summary": "Open catalogue of scholarship from the non-profit OurResearch and the successor to Microsoft Academic Graph: 322 million works and 126 million author records (checked 28 August 2026) plus sources, institutions, topics, funders and citation links, released as a CC0 public-domain dataset.",
+      "access": "REST API, e.g. 'https://api.openalex.org/works?filter=doi:10.1038/nature12373' or filters on institution, year and topic; add '&mailto=you@example.org' for the polite pool. Python client: 'pip install pyalex'. For bulk work take the free full snapshot from the s3://openalex bucket rather than paging the API; web interface at openalex.org.",
+      "free": "free-tier",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "The API is now metered: an account gets $1 of API usage per day free (calls are priced at $0.0001, i.e. roughly 10,000 calls/day), resetting at 00:00 UTC, and anonymous requests get far less (response headers showed a $0.10/day ceiling on 28 Aug 2026); beyond that it is prepaid credit in $1 increments or annual Member plans from $5,000/yr. The data themselves remain free and CC0, so the snapshot is the route for large analyses. Author disambiguation, affiliations and abstracts (stored as inverted indexes) all contain errors — verify before publishing counts."
+    },
+    {
+      "name": "PsychoPy",
+      "url": "https://www.psychopy.org/",
+      "category": "software",
+      "subcategory": "experiment builder",
+      "summary": "GPL-3 application for building and running behavioural experiments (2026.2.3, August 2026) with a graphical Builder, a Python Coder view and frame-accurate stimulus timing on standard hardware; the same study exports to JavaScript (PsychoJS) so it can be run in a browser for online data collection.",
+      "access": "Standalone installer for Windows/macOS, or 'pip install psychopy' into a dedicated environment; assemble routines and loops in Builder, press Run, and trial data are written as CSV plus a full log. 'Sync to Pavlovia' publishes the online version.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "The desktop app is free and open source; running studies online through Pavlovia costs per-participant credits or an institutional licence, and self-hosting the generated PsychoJS is possible but fiddly. Timing accuracy depends on your monitor, OS and drivers — run the bundled timing tests rather than assuming it. Free alternatives: OpenSesame (GPL) for desktop, jsPsych or lab.js for browser studies."
+    },
+    {
+      "name": "VOSviewer",
+      "url": "https://www.vosviewer.com/",
+      "category": "software",
+      "subcategory": "bibliometric mapping",
+      "summary": "Free tool from CWTS, Leiden University (1.6.21, June 2026) for building and visualising co-authorship, co-citation, bibliographic-coupling and keyword co-occurrence maps; it reads Web of Science, Scopus, Dimensions and Lens exports and queries Crossref, Europe PMC, Semantic Scholar and OpenAlex directly through their APIs. VOSviewer Online renders and shares the same maps in a browser.",
+      "access": "Download the Java application for Windows/macOS/Linux (no account) or use app.vosviewer.com; 'Create > Create a map based on bibliographic data' from a downloaded export or an API query, then tune clustering resolution and export the map as PNG/SVG or a shareable .json.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Free of charge but not open source — it is freeware, so you cannot inspect or fork the clustering implementation. Web of Science, Scopus and Dimensions inputs need a subscription to export; OpenAlex, Crossref and Europe PMC keep the whole workflow free. Maps are exploratory: cluster count and boundaries move with the resolution parameter, so report the settings you used."
+    },
+    {
+      "name": "bibliometrix / biblioshiny",
+      "url": "https://www.bibliometrix.org/",
+      "category": "software",
+      "subcategory": "R bibliometrics",
+      "summary": "Open-source R package on CRAN for science mapping — descriptive bibliometrics, co-citation and coupling networks, collaboration maps, thematic and conceptual-structure maps, Lotka's law — with 'biblioshiny', a Shiny front end that runs the whole workflow without writing code; imports Scopus, Web of Science, PubMed, Dimensions, Lens, Cochrane and OpenAlex data.",
+      "access": "'install.packages(\"bibliometrix\")'; then 'library(bibliometrix); biblioshiny()' opens the GUI in a browser, or script it: 'M <- convert2df(file, dbsource = \"pubmed\", format = \"pubmed\"); results <- biblioAnalysis(M)'.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Needs R, and the richest inputs (Scopus, Web of Science) require subscription access to export — PubMed, OpenAlex and Lens keep it usable without one. Results are highly sensitive to deduplication and author-name normalisation, so check the merged records before reporting counts. Cite Aria & Cuccurullo (2017), Journal of Informetrics 11(4), 959-975."
+    }
+  ],
+  "corrections": [
+    {
+      "name": "QualCoder",
+      "field": "summary",
+      "new_value": "LGPL-3 desktop QDA application (latest release 3.8.2, 26 February 2026) in Python/Qt that codes text (txt, docx, odt, html, md, epub, rtf, PDF) plus images, audio and video, with hierarchical codes, memos, case and attribute management, coder comparison with kappa, and visual reports.",
+      "reason": "The sweep says 'version 4, 2026'. The GitHub releases API shows the latest release is 3.8.2, published 2026-02-26; there is no version 4. Version numbers are the kind of claim a reader checks first."
+    },
+    {
+      "name": "QualCoder",
+      "field": "access",
+      "new_value": "Download from GitHub releases: Windows installer or portable exe, a macOS app bundle for Apple Silicon, and a Linux (Ubuntu) executable; or run from source in a virtualenv ('pip install -r requirements.txt'). Each project is a local folder with an SQLite database, and projects can be imported from Taguette .sqlite3 files.",
+      "reason": "The sweep says only Windows and macOS builds exist; the 3.8.2 release also ships a Linux executable, and the macOS build is Apple Silicon only (Intel Mac users must run from source) — a material detail for someone on an older machine."
+    },
+    {
+      "name": "Sioyek",
+      "field": "notes",
+      "new_value": "Keyboard-driven and vim-flavoured; there is no annotation sync or library management, so pair it with Zotero (whose built-in reader covers ordinary highlighting) or, on macOS, Skim. Maintenance has slowed sharply: the last stable release is v2.0.0 from December 2022, with only a 'sioyek3' alpha since and several hundred open issues, so treat it as a stable-but-static tool rather than an actively developed one.",
+      "reason": "Recommending a PDF reader without saying its last stable release was over three years ago misleads a reader choosing a tool to depend on. Verified via the GitHub releases API (tag v2.0.0, published 2022-12-16)."
+    },
+    {
+      "name": "Software Sustainability Institute Fellowship",
+      "field": "url",
+      "new_value": "https://www.software.ac.uk/programmes/fellowship-programme",
+      "reason": "The catalogued URL 302-redirects to the /programmes/ path; using the canonical destination avoids a future dead link. Amount (GBP 4,000 over 15 months) verified as still correct on the live page."
+    },
+    {
+      "name": "The Missing Semester of Your CS Education",
+      "field": "summary",
+      "new_value": "MIT course (2026 edition) of nine lectures with videos, notes and exercises on the shell, the command-line environment, development environment and tools, debugging and profiling, version control with Git, packaging and shipping code, agentic coding, 'beyond the code', and code quality — precisely the tooling research training skips.",
+      "reason": "The sweep's topic list is one edition out of date: the current 2026 lecture list adds 'Agentic Coding' and 'Beyond the Code', which is the main thing that changed and the reason to revisit the course."
+    },
+    {
+      "name": "GitHub Free",
+      "field": "summary",
+      "new_value": "Free personal plan with unlimited public and private repositories and unlimited collaborators, 2,000 GitHub Actions minutes per month and 500 MB of storage shared between Actions artifacts and Packages for private repos (Actions is unmetered on public repos), plus GitHub Pages for public repositories.",
+      "reason": "GitHub's billing docs state the 500 MB allowance is shared between Actions artifact storage and Packages, not a separate Packages quota; a manuscript-building workflow that uploads PDF artifacts consumes the same 500 MB."
+    }
+  ],
+  "removals": [],
+  "checked": [
+    "Zotero",
+    "Better BibTeX for Zotero",
+    "Unpaywall",
+    "Hypothesis",
+    "Sioyek",
+    "Overleaf (free plan)",
+    "Typst",
+    "Quarto",
+    "Obsidian",
+    "GitHub Free",
+    "GitHub Codespaces (free tier)",
+    "Binder (mybinder.org)",
+    "Snakemake",
+    "Docker (Engine and Desktop)",
+    "JASP",
+    "Taguette",
+    "QualCoder",
+    "ELAN",
+    "LimeSurvey Community Edition",
+    "KoboToolbox",
+    "Bioicons",
+    "OSF (Open Science Framework)",
+    "Zenodo",
+    "Journal of Open Source Software (JOSS)",
+    "Outreachy",
+    "NumFOCUS Small Development Grants",
+    "Software Sustainability Institute Fellowship",
+    "The Missing Semester of Your CS Education",
+    "Inkscape",
+    "Software Heritage"
+  ]
+}

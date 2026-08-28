@@ -1,10 +1,10 @@
 # Research workflow software
 
-Part of [research-vault](../README.md). 60 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 76 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (1) · [Software](#software) (33) · [Literature](#literature) (6) · [Compute](#compute) (2) · [Publishing](#publishing) (4) · [Funding](#funding) (4) · [Learning](#learning) (6) · [Community](#community) (4)
+**Contents:** [Data](#data) (1) · [Software](#software) (44) · [Literature](#literature) (7) · [Compute](#compute) (4) · [Publishing](#publishing) (6) · [Funding](#funding) (4) · [Learning](#learning) (6) · [Community](#community) (4)
 
 ## Data
 
@@ -21,6 +21,36 @@ Free research project workspace from the Center for Open Science: versioned file
 *Also listed under: neuro-psych, compute, publishing.*
 
 ## Software
+
+### [Apptainer (formerly Singularity)](https://apptainer.org/)
+
+`Free` · beginner 3/5 · HPC containers
+
+Linux Foundation container platform for shared clusters (v1.5.3, July 2026): an image is one portable SIF file, the process runs as your own user with no daemon and no privilege escalation, and your files and GPUs are visible inside by default — which is why HPC centres that forbid Docker allow this.
+
+**Access.** Usually already installed on clusters ('module load apptainer'); locally via distro packages. Convert and run a Docker image: 'apptainer build r.sif docker://rocker/r-ver:4.4', then 'apptainer exec --nv r.sif Rscript analysis.R' ('--nv' passes through NVIDIA GPUs) or 'apptainer shell r.sif'.
+
+**Caveats.** Open source under a BSD-3-Clause-style licence; root is not needed to run if user namespaces are enabled. Building from a definition file usually still needs root or '--fakeroot', so many people build on a laptop and copy the .sif to the cluster. Sylabs' SingularityCE/SingularityPRO is the forked sibling with near-identical commands — check which one your cluster runs before writing docs for collaborators.
+
+### [ASReview LAB](https://asreview.nl/)
+
+`Free` · beginner 3/5 · systematic review screening
+
+Apache-2.0 active-learning tool from Utrecht University (asreview 3.0.8 on PyPI, June 2026) for title/abstract screening: you label a few relevant and irrelevant records, and the model reorders the remaining thousands so relevant papers surface early; it also has a simulation mode to benchmark models against an already-screened dataset.
+
+**Access.** 'pip install asreview' (Python 3.10+), then 'asreview lab' opens the interface in your browser; import a RIS/CSV/Excel/TSV export from PubMed, Scopus, Web of Science or a reference manager, screen interactively, and export the labelled dataset.
+
+**Caveats.** Everything runs locally, so confidential or embargoed record sets never leave the machine. Active learning changes the screening order, not the inclusion criteria: you still decide when to stop, and stopping rules are a live methodological debate — report the model, the seed set and the stopping criterion in the methods. No built-in dual-reviewer conflict resolution in the way Rayyan or Covidence provide it.
+
+### [bibliometrix / biblioshiny](https://www.bibliometrix.org/)
+
+`Free` · beginner 3/5 · R bibliometrics
+
+Open-source R package on CRAN for science mapping — descriptive bibliometrics, co-citation and coupling networks, collaboration maps, thematic and conceptual-structure maps, Lotka's law — with 'biblioshiny', a Shiny front end that runs the whole workflow without writing code; imports Scopus, Web of Science, PubMed, Dimensions, Lens, Cochrane and OpenAlex data.
+
+**Access.** 'install.packages("bibliometrix")'; then 'library(bibliometrix); biblioshiny()' opens the GUI in a browser, or script it: 'M <- convert2df(file, dbsource = "pubmed", format = "pubmed"); results <- biblioAnalysis(M)'.
+
+**Caveats.** Needs R, and the richest inputs (Scopus, Web of Science) require subscription access to export — PubMed, OpenAlex and Lens keep it usable without one. Results are highly sensitive to deduplication and author-name normalisation, so check the merged records before reporting counts. Cite Aria & Cuccurullo (2017), Journal of Informetrics 11(4), 959-975.
 
 ### [Bioicons](https://bioicons.com/)
 
@@ -74,6 +104,26 @@ Containers freeze an entire software environment, OS libraries included, so an a
 
 **Caveats.** Organisations above the size thresholds need a paid Desktop subscription (Engine on Linux is unaffected). Docker Hub rate-limits anonymous pulls. Most HPC clusters forbid Docker: use Apptainer/Singularity, which converts Docker images and needs no root. Podman is a daemonless, fully open-source drop-in for most commands.
 
+### [DVC (Data Version Control)](https://dvc.org/)
+
+`Free` · beginner 3/5 · data versioning and pipelines
+
+Apache-2.0 Git companion (3.67.1) that keeps large data and model files out of the repository: Git tracks small .dvc pointer files while the content lives in an S3, Google Cloud Storage, Azure, Google Drive, SSH/SFTP, WebDAV or HTTP remote, and 'dvc repro' reruns only the pipeline stages whose dependencies changed; it also tracks experiments and metrics.
+
+**Access.** 'pip install dvc' plus a remote extra ('pip install "dvc[s3]"'); then 'dvc init', 'dvc add data/raw.csv', 'git commit', 'dvc remote add -d store s3://bucket/path', 'dvc push'. Collaborators clone the Git repo and run 'dvc pull'.
+
+**Caveats.** DVC is free but you supply the storage, and free-tier cloud buckets are small; a university S3-compatible store or a plain SSH remote is the cheapest route. The repository now lives at github.com/treeverse/dvc (it moved from Iterative), and the hosted Studio dashboard is a separate commercial product. For fetch-on-demand access to very large nested datasets, DataLad is the more common choice in academia; DVC is more ML-flavoured.
+
+### [eLabFTW](https://www.elabftw.net/)
+
+`Free` · beginner 2/5 · electronic lab notebook
+
+AGPLv3 electronic lab notebook and inventory system (5.6.x, August 2026) with timestamped and signable experiment entries, reusable templates, a resources database for plasmids, chemicals, antibodies and equipment, a booking scheduler, fine-grained permissions, and export to PDF, ZIP and the .eln interchange format. No features are held back behind a paywall.
+
+**Access.** Self-hosted: run the elabftw/elabimg container with Docker or Podman on a lab server or VPS behind HTTPS, then everyone works in the browser. Deltablot (the developers) sell hosted instances and support for groups without sysadmin capacity.
+
+**Caveats.** Somebody has to run, update and back up the server — the real blocker for a lone researcher, so ask whether your institution already operates an instance. Trusted RFC 3161 timestamping is built in, but some timestamping authorities charge. It is an ELN, not a LIMS: sample logistics and instrument integration are basic compared with dedicated systems.
+
 ### [ELAN](https://archive.mpi.nl/tla/elan)
 
 `Free` · beginner 3/5 · audio/video annotation
@@ -96,6 +146,18 @@ MIT-licensed CTranslate2 reimplementation of OpenAI's Whisper speech recognition
 
 **Caveats.** Model weights are MIT-licensed and downloaded once (hundreds of MB to several GB). Accuracy varies sharply by language, accent and recording quality, and Whisper hallucinates plausible text over silence or noise — always check against the audio. GPU use requires matching cuBLAS/cuDNN libraries. For a GUI use noScribe; whisper.cpp is another CPU-friendly route.
 
+### [G*Power](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower)
+
+`Free` · beginner 4/5 · statistical power analysis
+
+Free power-analysis program from Heinrich Heine University Düsseldorf (3.1.9.7 for Windows, March 2020; 3.1.9.6 for macOS, February 2020) covering a priori, post hoc, sensitivity and criterion analyses for t, F, chi-square, z and exact tests — including ANOVA/ANCOVA designs, correlations, and linear, logistic and Poisson regression — with plots of power against sample size.
+
+**Access.** Download the Windows or macOS binary from the department page (no account); choose test family, statistical test and type of power analysis, enter effect size, alpha and desired power to get N, and use 'X-Y plot for a range of values' to produce the power curve figure a grant or preregistration needs.
+
+**Caveats.** Free for everyone including commercial users, but closed source and redistribution is prohibited. No native Apple Silicon build yet (an Intel build under Rosetta is the current route), and there is no scripting layer, so record your inputs manually in the preregistration for reproducibility. For designs it does not cover — multilevel/mixed models, SEM, complex simulations — use R (pwr, simr, WebPower) instead.
+
+*Also listed under: neuro-psych.*
+
 ### [Git](https://git-scm.com/)
 
 `Free` · beginner 3/5 · version control
@@ -110,7 +172,7 @@ The GPL-2 distributed version control system underneath nearly every reproducibl
 
 `Free (registration), email` · beginner 4/5 · code hosting and CI
 
-Free personal plan with unlimited public and private repositories and unlimited collaborators, 2,000 GitHub Actions minutes and 500 MB Packages storage per month for private repos (Actions is unmetered on public repos), plus GitHub Pages for public repositories.
+Free personal plan with unlimited public and private repositories and unlimited collaborators, 2,000 GitHub Actions minutes per month and 500 MB of storage shared between Actions artifacts and Packages for private repos (Actions is unmetered on public repos), plus GitHub Pages for public repositories.
 
 **Access.** Create a repo in the browser or with the gh CLI, push over HTTPS/SSH; automate tests, manuscript builds or data pipelines with .github/workflows/*.yml; publish project sites with Pages.
 
@@ -136,7 +198,7 @@ Free and open statistics package with a spreadsheet interface designed to be fam
 
 **Caveats.** The desktop app is the free route; jamovi Cloud (browser version) has paid tiers. Module quality varies because modules are community-contributed R wrappers — check the underlying package and cite it.
 
-*Also listed under: medicine, social.*
+*Also listed under: medicine, neuro-psych, social.*
 
 ### [JASP](https://jasp-stats.org/)
 
@@ -194,6 +256,16 @@ Free, self-hostable open-source survey platform (stable 7.0.11 as of August 2026
 
 *Also listed under: social.*
 
+### [Nextflow](https://www.nextflow.io/)
+
+`Free` · beginner 2/5 · workflow manager
+
+Apache-2.0 dataflow workflow engine (v26.04.6, July 2026) that runs the same pipeline unchanged on a laptop, on SLURM/SGE/LSF/PBS/HTCondor clusters, on Kubernetes and on AWS/Azure/Google Cloud, with per-process Conda, Docker or Apptainer environments and '-resume' caching of completed tasks; the nf-core community publishes ready-made pipelines such as nf-core/rnaseq and nf-core/sarek.
+
+**Access.** 'curl -s https://get.nextflow.io | bash' (or 'conda create --name nf-env bioconda::nextflow'); needs Bash 3.2+ and Java 17-26. Run an existing pipeline with 'nextflow run nf-core/rnaseq -profile singularity -resume', or write your own main.nf of processes and channels.
+
+**Caveats.** The Groovy-based DSL2 is a steeper climb than Snakemake's Python for people who only know Python/R, and Java 17+ is a hard requirement (support for older Java was dropped in 25.04). The engine and all nf-core pipelines are free; the Seqera Platform (hosted monitoring and launching, from the company that employs the core developers) is a separate commercial product with a limited free tier.
+
 ### [noScribe](https://github.com/kaixxx/noScribe)
 
 `Free` · beginner 5/5 · offline interview transcription
@@ -224,6 +296,18 @@ MPL-2.0 command-line tool that adds a searchable, selectable text layer under th
 
 **Caveats.** Output quality depends on scan resolution (300 dpi or better) and on having the right Tesseract language pack; handwriting and complex historical typefaces still do badly. Tesseract itself (Apache-2.0, 100+ languages) can be used directly on loose images.
 
+### [OpenRefine](https://openrefine.org/)
+
+`Free` · beginner 4/5 · data cleaning
+
+BSD-3-Clause desktop tool (3.10.x, 2026) for messy tabular data: faceting, clustering of near-duplicate values (fingerprint, n-gram, phonetic), GREL transformations, splitting and reshaping columns, and reconciliation of free-text names against Wikidata and other reconciliation services. Data are processed locally and every step is recorded as a replayable JSON operation history.
+
+**Access.** Download for Windows (bundled Java), macOS or Linux (needs a Java runtime), run it, and work at http://127.0.0.1:3333; import CSV/TSV/Excel/JSON/XML/RDF, clean, then export the cleaned table and the operation history JSON so the same cleaning can be replayed on the next batch.
+
+**Caveats.** Nothing is uploaded anywhere, which makes it usable for sensitive data. It is memory-bound: the default JVM heap comfortably handles a few hundred thousand rows, and larger files need the heap raised in the settings. Save the operation history alongside the raw file — that, not the cleaned CSV, is the reproducible artefact.
+
+*Also listed under: humanities.*
+
 ### [Overleaf (free plan)](https://www.overleaf.com/)
 
 `Free tier, email` · beginner 5/5 · collaborative LaTeX editor
@@ -246,13 +330,25 @@ GPL document converter between Markdown, LaTeX, HTML, DOCX, ODT, EPUB, JATS, reS
 
 **Caveats.** Journal DOCX templates and complex LaTeX macros rarely survive conversion untouched; budget time for cleanup. PDF output needs a separate engine installed (TeX Live, Typst or a HTML-to-PDF tool).
 
+### [PsychoPy](https://www.psychopy.org/)
+
+`Free` · beginner 4/5 · experiment builder
+
+GPL-3 application for building and running behavioural experiments (2026.2.3, August 2026) with a graphical Builder, a Python Coder view and frame-accurate stimulus timing on standard hardware; the same study exports to JavaScript (PsychoJS) so it can be run in a browser for online data collection.
+
+**Access.** Standalone installer for Windows/macOS, or 'pip install psychopy' into a dedicated environment; assemble routines and loops in Builder, press Run, and trial data are written as CSV plus a full log. 'Sync to Pavlovia' publishes the online version.
+
+**Caveats.** The desktop app is free and open source; running studies online through Pavlovia costs per-participant credits or an institutional licence, and self-hosting the generated PsychoJS is possible but fiddly. Timing accuracy depends on your monitor, OS and drivers — run the bundled timing tests rather than assuming it. Free alternatives: OpenSesame (GPL) for desktop, jsPsych or lab.js for browser studies.
+
+*Also listed under: neuro-psych.*
+
 ### [QualCoder](https://github.com/ccbogel/QualCoder)
 
 `Free` · beginner 3/5 · qualitative analysis
 
-LGPL-3 desktop QDA application (version 4, 2026) in Python/Qt that codes text (txt, docx, odt, html, md, epub, rtf, PDF) plus images, audio and video, with hierarchical codes, memos, case and attribute management, coder comparison with kappa, and visual reports.
+LGPL-3 desktop QDA application (latest release 3.8.2, 26 February 2026) in Python/Qt that codes text (txt, docx, odt, html, md, epub, rtf, PDF) plus images, audio and video, with hierarchical codes, memos, case and attribute management, coder comparison with kappa, and visual reports.
 
-**Access.** Download the Windows or macOS build from GitHub releases, or run from source in a virtualenv ('pip install -r requirements.txt'); each project is a local folder with an SQLite database.
+**Access.** Download from GitHub releases: Windows installer or portable exe, a macOS app bundle for Apple Silicon, and a Linux (Ubuntu) executable; or run from source in a virtualenv ('pip install -r requirements.txt'). Each project is a local folder with an SQLite database, and projects can be imported from Taguette .sqlite3 files.
 
 **Caveats.** Functional rather than polished, and there is no cloud collaboration — team coding means passing the project folder around. The optional AI features call external LLM APIs; sending interview transcripts to a third-party API may breach your ethics approval, so leave them off unless cleared.
 
@@ -267,6 +363,16 @@ MIT-licensed publishing system built on Pandoc that renders .qmd documents mixin
 **Access.** Install the CLI (installers, Homebrew, or 'quarto install tinytex' for PDF), then 'quarto render report.qmd' / 'quarto preview'; editors: VS Code, RStudio, JupyterLab, Positron, or any text editor.
 
 **Caveats.** Needs a working R or Python install for code execution and TeX (TinyTeX is enough) for PDF. Journal article templates ('quarto use template') exist for a limited set of publishers; anything else still needs manual reformatting at submission.
+
+### [Rayyan (free plan)](https://www.rayyan.ai/)
+
+`Free tier, email` · beginner 4/5 · systematic review screening
+
+Web tool for collaborative title/abstract screening: import RIS/EndNote/CSV exports, blind two-reviewer screening with conflict resolution, duplicate detection, keyword highlighting and relevance predictions. The free plan allows 3 active reviews, 2 invited reviewers and 1 sample.
+
+**Access.** Web interface with a free account; upload the search exports from each database, invite collaborators, screen with include/exclude/maybe labels and reasons, then export decisions as RIS or CSV for the PRISMA count.
+
+**Caveats.** The free tier is much narrower than it used to be: PRISMA flow diagrams, auto-resolving duplicates, unlimited samples and more than 3 active reviews start at $4.99/seat/month billed annually, and AI extraction features are dearer. Records are stored on Rayyan's servers, which some ethics approvals do not permit. ASReview is the fully local, fully free alternative if you can install Python.
 
 ### [renv](https://rstudio.github.io/renv/)
 
@@ -362,6 +468,16 @@ Rust-written Python package and project manager that replaces pip, pip-tools, pi
 
 **Caveats.** Young compared with pip and conda, and it does not solve non-Python system dependencies (GDAL, CUDA, BLAS variants) — for those, conda-forge or a container is still the practical route. Made by a venture-funded company (Astral), though the tool itself is permissively licensed.
 
+### [VOSviewer](https://www.vosviewer.com/)
+
+`Free` · beginner 4/5 · bibliometric mapping
+
+Free tool from CWTS, Leiden University (1.6.21, June 2026) for building and visualising co-authorship, co-citation, bibliographic-coupling and keyword co-occurrence maps; it reads Web of Science, Scopus, Dimensions and Lens exports and queries Crossref, Europe PMC, Semantic Scholar and OpenAlex directly through their APIs. VOSviewer Online renders and shares the same maps in a browser.
+
+**Access.** Download the Java application for Windows/macOS/Linux (no account) or use app.vosviewer.com; 'Create > Create a map based on bibliographic data' from a downloaded export or an API query, then tune clustering resolution and export the map as PNG/SVG or a shareable .json.
+
+**Caveats.** Free of charge but not open source — it is freeware, so you cannot inspect or fork the clustering implementation. Web of Science, Scopus and Dimensions inputs need a subscription to export; OpenAlex, Crossref and Europe PMC keep the whole workflow free. Maps are exploratory: cluster count and boundaries move with the resolution parameter, so report the settings you used.
+
 ### [Zettlr](https://www.zettlr.com/)
 
 `Free` · beginner 4/5 · academic Markdown editor
@@ -404,6 +520,16 @@ Free open-source desktop reference manager whose library format is plain BibTeX/
 
 **Caveats.** No paid tier and no vendor cloud: syncing is your job (git, Nextcloud, or a shared SQL database). PDF management is weaker than Zotero's; many people run JabRef only for the LaTeX-side bibliography.
 
+### [OpenAlex](https://openalex.org/)
+
+`Free tier, email` · beginner 4/5 · bibliographic database and API
+
+Open catalogue of scholarship from the non-profit OurResearch and the successor to Microsoft Academic Graph: 322 million works and 126 million author records (checked 28 August 2026) plus sources, institutions, topics, funders and citation links, released as a CC0 public-domain dataset.
+
+**Access.** REST API, e.g. 'https://api.openalex.org/works?filter=doi:10.1038/nature12373' or filters on institution, year and topic; add '&mailto=you@example.org' for the polite pool. Python client: 'pip install pyalex'. For bulk work take the free full snapshot from the s3://openalex bucket rather than paging the API; web interface at openalex.org.
+
+**Caveats.** The API is now metered: an account gets $1 of API usage per day free (calls are priced at $0.0001, i.e. roughly 10,000 calls/day), resetting at 00:00 UTC, and anonymous requests get far less (response headers showed a $0.10/day ceiling on 28 Aug 2026); beyond that it is prepaid credit in $1 increments or annual Member plans from $5,000/yr. The data themselves remain free and CC0, so the snapshot is the route for large analyses. Author disambiguation, affiliations and abstracts (stored as inverted indexes) all contain errors — verify before publishing counts.
+
 ### [Sioyek](https://github.com/ahrm/sioyek)
 
 `Free` · beginner 3/5 · PDF reader for papers
@@ -412,7 +538,7 @@ GPL-3 PDF reader built for research papers and textbooks: jump to a cited refere
 
 **Access.** Installers for Windows/macOS/Linux from GitHub releases, or 'brew install --cask sioyek' / distro packages; keybindings and behaviour configured in a plain-text prefs file.
 
-**Caveats.** Keyboard-driven and vim-flavoured; there is no annotation sync or library management, so pair it with Zotero (whose built-in reader covers ordinary highlighting) or, on macOS, Skim.
+**Caveats.** Keyboard-driven and vim-flavoured; there is no annotation sync or library management, so pair it with Zotero (whose built-in reader covers ordinary highlighting) or, on macOS, Skim. Maintenance has slowed sharply: the last stable release is v2.0.0 from December 2022, with only a 'sioyek3' alpha since and several hundred open issues, so treat it as a stable-but-static tool rather than an actively developed one.
 
 ### [Unpaywall](https://unpaywall.org/)
 
@@ -456,6 +582,28 @@ Cloud VS Code environments defined by a devcontainer.json in the repository; per
 
 **Caveats.** The quota is core-hours, so a 4-core machine burns it twice as fast as a 2-core one. Codespaces stop after 30 minutes idle by default and unused ones are deleted after a retention period; commit and push anything you care about. No GPU on the free tier, and usage beyond the quota is only billable if you add a payment method.
 
+### [Google Colab (free tier)](https://colab.research.google.com/)
+
+`Free tier, email` · beginner 5/5 · hosted notebooks with GPU
+
+Hosted Jupyter notebooks stored in Google Drive and executed on Google VMs. Free sessions run for at most 12 hours, idle sessions are reclaimed, and GPU access is free but rationed: Google states that access to GPUs is 'heavily restricted' on the free tier and deliberately does not publish the quota, which fluctuates with demand.
+
+**Access.** Web interface with a Google account; open any .ipynb from Drive or GitHub (colab.research.google.com/github/<user>/<repo>/blob/main/nb.ipynb), then Runtime > Change runtime type to request a GPU. Install extras per session with '!pip install' and persist outputs by mounting Drive ('from google.colab import drive; drive.mount("/content/drive")').
+
+**Caveats.** Nothing survives the session except what you write to Drive, and a free session can be cut off mid-run when demand is high, so checkpoint long jobs. Notebooks execute on Google infrastructure outside your institution — check ethics and data-protection constraints before uploading participant data. Colab Pro, Pro+ and pay-as-you-go compute units are the paid escape hatch; Binder and Kaggle are the free alternatives when Colab is throttled.
+
+### [Kaggle Notebooks](https://www.kaggle.com/code)
+
+`Free tier, email` · beginner 4/5 · hosted notebooks with GPU/TPU
+
+Free hosted Python/R notebooks with a published weekly accelerator quota (30 GPU hours per week at the time of writing, plus a separate TPU allowance), sessions capped at around 12 hours, background 'Save & Run All' execution, and free hosting for datasets that any notebook can attach.
+
+**Access.** Free account, then Create > Notebook; Settings > Accelerator picks GPU or TPU and Settings > Internet enables package installs; attach a Kaggle Dataset or upload your own, and use 'Save & Run All (Commit)' so the run continues after you close the browser. Notebooks and datasets are shareable by URL or downloadable as .ipynb.
+
+**Caveats.** Quotas are set unilaterally by Kaggle and have changed repeatedly — the live remaining hours are shown in the session sidebar, and the docs are behind a bot check, so verify before planning around a number. Phone verification is required before a notebook may use an accelerator or reach the internet. Sessions are ephemeral apart from /kaggle/working output, and uploaded data sit on US infrastructure (public datasets are visible to everyone), so it is unsuitable for confidential material.
+
+*Also listed under: physics, chemistry, medicine, cs-ml, social, compute.*
+
 ## Publishing
 
 ### [Journal of Open Source Software (JOSS)](https://joss.theoj.org/)
@@ -467,6 +615,28 @@ Developer-friendly open-access journal for research software with roughly 3,700 
 **Access.** Submit at joss.theoj.org with a repository URL and a paper.md plus paper.bib; the review runs as a public GitHub issue with named reviewers; accepted papers get a Crossref DOI and are indexed in DOAJ and Scopus.
 
 **Caveats.** Scope is real software of scholarly value: it needs documentation, tests, contribution guidelines and an OSI-approved licence, and a single analysis script will be rejected as out of scope. Review is volunteer-run, so timelines vary from weeks to months. Sister journals (JOSE for educational material) use the same model.
+
+### [ORCID](https://orcid.org/)
+
+`Free, email` · beginner 5/5 · researcher identifier
+
+Free persistent 16-digit identifier from a non-profit registry, used by most publishers, funders and repositories to attach works, affiliations, funding and peer-review activity to the right person and to survive name changes, transliteration and namesakes; the researcher controls per-item visibility and can export the record.
+
+**Access.** Register free at orcid.org/register with an email address, add works by DOI search-and-link (Crossref/DataCite) or BibTeX import, then paste the iD into manuscript submission and grant systems; public records are readable at https://pub.orcid.org/v3.0/{orcid}/record and an annual public data file is released for bulk use.
+
+**Caveats.** Free for individuals permanently — institutions pay membership for the Member API that writes into records, which is why some universities auto-populate yours. Token access to the Public API needs registered client credentials. Only what you mark public is visible, and auto-population depends on publishers pushing data, so most records still need manual curation.
+
+### [protocols.io (Open Research plan)](https://www.protocols.io/)
+
+`Free tier, email` · beginner 4/5 · protocol and methods sharing
+
+Platform for writing, versioning, running and publishing step-by-step experimental protocols. The free 'Open Research' plan is $0 forever with unlimited public protocols that receive DOIs, up to 2 private protocols, and long-term preservation via CLOCKSS plus mirroring to the Internet Archive and GitHub.
+
+**Access.** Free account, then write or fork an existing protocol, keep it private while you iterate, and publish to mint a citable DOI you reference in the methods section; published protocols are readable without an account, and a REST API is available for programmatic access.
+
+**Caveats.** Only 2 private protocols on the free plan — unlimited private protocols, team workspaces, SAML SSO, audit trails and 21 CFR Part 11 signatures are the paid Enterprise product. Publishing is irreversible: a published protocol gets a DOI and is archived, so check for unpublished methods, personal data and institutional restrictions first. It replaces a supplementary-methods PDF, not a lab notebook — for daily bench records use an ELN such as eLabFTW.
+
+*Also listed under: biology, publishing.*
 
 ### [rOpenSci Software Peer Review](https://ropensci.org/software-review/)
 
@@ -530,7 +700,7 @@ Software Freedom Conservancy internship programme for people who face underrepre
 
 **Caveats.** Eligibility is based on underrepresentation and on being free to work full time during the internship, not on being enrolled anywhere. The mandatory contribution phase takes weeks of unpaid work before selection, which is a real cost to weigh.
 
-### [Software Sustainability Institute Fellowship](https://www.software.ac.uk/fellowship-programme)
+### [Software Sustainability Institute Fellowship](https://www.software.ac.uk/programmes/fellowship-programme)
 
 `Free, application` · beginner 2/5 · fellowship
 
@@ -586,7 +756,7 @@ Openly licensed (CC-BY) lesson materials from Software Carpentry, Data Carpentry
 
 `Free` · beginner 5/5 · course
 
-MIT course (2026 edition) of nine lectures with videos, notes and exercises on the shell, command-line environment, editors and dev tooling, debugging and profiling, version control, packaging and shipping code, and code quality — precisely the tooling research training skips.
+MIT course (2026 edition) of nine lectures with videos, notes and exercises on the shell, the command-line environment, development environment and tools, debugging and profiling, version control with Git, packaging and shipping code, agentic coding, 'beyond the code', and code quality — precisely the tooling research training skips.
 
 **Access.** Watch the lecture videos on YouTube and work the exercises in the notes on the site; no enrolment, no account.
 

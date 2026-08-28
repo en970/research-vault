@@ -1,0 +1,280 @@
+{
+  "unit": "humanities",
+  "additions": [
+    {
+      "name": "childes-db",
+      "url": "https://langcog.github.io/childes-db-website/",
+      "category": "data",
+      "subcategory": "child-language corpora in tabular form",
+      "summary": "Tabular, versioned rebuild of the CHILDES transcripts: release 2026.1 holds 24.2 million utterances across 89 million tokens, with Universal Dependencies morphology, dependency parses, speech acts, Japanese romanization and phonological data added, hosted and versioned on Redivis.",
+      "access": "R: `install.packages(\"childesr\")` then `get_utterances(collection = \"Eng-NA\")`; Python: `pip install childespy`; or direct SQL against the database. Interactive Shiny browsers on the site. childes-db.stanford.edu redirects here.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Not a replacement for TalkBank: it is a periodic snapshot of CHILDES reshaped into tables, so it lags the live archive and carries no audio or video, and none of the non-CHILDES TalkBank banks. Utterance counts change between releases, so record the version (e.g. 2026.1) you queried. Cite both childes-db and the original corpus contributors."
+    },
+    {
+      "name": "Open English WordNet",
+      "url": "https://en-word.net/",
+      "category": "data",
+      "subcategory": "lexical database (wordnet)",
+      "summary": "Community-maintained open successor to Princeton WordNet, currently 120,068 synsets and 153,261 entries, linking English words into synonym sets with definitions and hypernym, meronym and antonym relations. Released annually and interlinked with wordnets for other languages.",
+      "access": "Web search on the site; documented JSON API; bulk downloads in WN-LMF XML, RDF/Turtle and SQLite. Python: `pip install wn`, then `wn.download('oewn:2024')` (check `wn.projects()` for the current release id) and `wn.synsets('bank')`, which also fetches Open Multilingual WordNet data.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "CC BY 4.0, which is cleaner for redistribution than Princeton WordNet's custom licence. Sense inventories have drifted from Princeton WordNet 3.0, so counts are not directly comparable with older NLP papers, and NLTK's bundled `wordnet` corpus is still Princeton 3.0. Coverage of technical and very recent vocabulary is uneven."
+    },
+    {
+      "name": "Montreal Forced Aligner",
+      "url": "https://montreal-forced-aligner.readthedocs.io/en/latest/",
+      "category": "software",
+      "subcategory": "forced alignment of speech to transcript",
+      "summary": "Command-line forced aligner (v3.4.2, August 2026) that takes audio plus an orthographic transcript and returns word- and phone-level time-aligned TextGrids using Kaldi acoustic models. Ships pretrained acoustic models, pronunciation dictionaries and grapheme-to-phoneme models for dozens of languages, distributed through Hugging Face since version 3.4.",
+      "access": "`conda install -c conda-forge montreal-forced-aligner`, then `mfa model download acoustic english_us_arpa` and `mfa align corpus/ dictionary acoustic_model output/`. Output TextGrids open directly in Praat and ELAN.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Free and open source. The Kaldi dependency chain means conda is the only reliable install route; plain pip installs frequently fail. Alignment needs a pronunciation dictionary for your language, so for an undescribed language you must build one or train G2P first. CPU-only works but is slow on hours of audio, and noisy field recordings degrade alignment badly."
+    },
+    {
+      "name": "OpenRefine",
+      "url": "https://openrefine.org/",
+      "category": "software",
+      "subcategory": "data cleaning and reconciliation",
+      "summary": "Desktop tool (v3.10.1, March 2026) that runs in your browser for cleaning messy tabular data: faceting, clustering of near-duplicate spellings, GREL and regex transformations, unlimited undo, and reconciliation of names, places and concepts against external authorities including Wikidata and the Getty vocabularies.",
+      "access": "Direct download for macOS, Windows and Linux; runs locally on 127.0.0.1:3333, so data never leaves your machine. Imports CSV/TSV/XML/JSON/Excel; exports cleaned data plus the full operation history as JSON so a cleaning run is reproducible and reviewable.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Open source (BSD). Java-based with a small default heap — a file of a million rows needs the memory setting raised before it will load. Reconciliation against Wikidata is rate-limited and slow in large batches. It cleans, links and normalises; it does not analyse or visualise, so pair it with a stats or plotting tool."
+    },
+    {
+      "name": "Gephi",
+      "url": "https://gephi.org/",
+      "category": "software",
+      "subcategory": "network visualisation and analysis",
+      "summary": "Desktop application for exploring networks from ten to ten million nodes: ForceAtlas2 and Fruchterman-Reingold layouts, modularity-based community detection, centrality measures, interactive filtering and high-resolution PNG/PDF/SVG export. Current release 0.11.2 (May 2026); Gephi Lite v1.0 (October 2025) runs a subset in the browser.",
+      "access": "Direct download for macOS, Windows and Linux; imports CSV edge lists, GEXF and GraphML. Gephi Lite needs no installation. For scripted analysis of the same graphs use `pip install networkx` or R's igraph and export to GEXF for the visual pass.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "GPL, source fully available. Java-based and memory-hungry: raise the JVM heap before loading a large graph and expect instability on very large networks on a modest laptop. Force-directed layout is exploratory, not deterministic — the same data laid out twice looks different, so record layout parameters if a figure must be reproducible."
+    },
+    {
+      "name": "quanteda",
+      "url": "https://quanteda.io/",
+      "category": "software",
+      "subcategory": "R framework for quantitative text analysis",
+      "summary": "R package (v4.5.0) for corpus management and quantitative text analysis: ICU-compliant tokenisation, document-feature matrices, keyword-in-context, collocations, keyness against a reference corpus, dictionary methods and text models, with companion packages quanteda.textstats, quanteda.textplots and quanteda.textmodels.",
+      "access": "`install.packages(\"quanteda\")`; `corpus(txt) |> tokens() |> dfm()` then `textstat_frequency()` or `textstat_keyness()`. Read files of any format with the companion `readtext` package.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "GPL-3. Handles corpora of hundreds of thousands of documents on a laptop, which is exactly where AntConc runs out of memory — the natural next tool after a GUI concordancer. Version 4 changed several function signatures, so code and tutorials written for 2.x/3.x may not run unchanged. It counts features; for lemmatisation and parsing you still need udpipe, spacyr or Stanza."
+    },
+    {
+      "name": "Lexibank",
+      "url": "https://lexibank.clld.org/",
+      "category": "data",
+      "subcategory": "cross-linguistic lexical wordlists",
+      "summary": "Aggregates 134 standardised lexical datasets covering 5,477 languages, 3,205 Concepticon concept sets and 1,734,794 word forms, with segmented phonetic transcriptions in a uniform CLDF format so wordlists from unrelated sources can be compared directly.",
+      "access": "Browse at lexibank.clld.org; every dataset is a CLDF release on Zenodo and a repository under github.com/lexibank. Python: `pip install pylexibank cldfbench pyconcepticon`; read any CLDF wordlist with `pip install pycldf` and run phylogenetic or colexification analyses with LingPy.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "CC BY 4.0 for the aggregate, but component datasets carry their own licences — check before redistributing. Depends on Concepticon (v3.4.0) for concept mapping and Glottolog for language identification, so all three versions must be recorded together for a reproducible analysis. Transcriptions are normalised automatically and inherit errors from the source dictionaries."
+    },
+    {
+      "name": "DOAB (Directory of Open Access Books)",
+      "url": "https://www.doabooks.org/",
+      "category": "literature",
+      "subcategory": "open-access scholarly book index",
+      "summary": "Index of peer-reviewed open-access books; its OAI-PMH feed exposed 127,804 records (books and chapters) on 28 August 2026, each linking to a free full-text download, most of them hosted in the associated OAPEN Library, which itself exposes 58,186 records.",
+      "access": "Web search at doabooks.org; PDFs (often ePub too) download with no account, usually from library.oapen.org. Bulk metadata by OAI-PMH: `https://directory.doabooks.org/oai/request?verb=ListRecords&metadataPrefix=oai_dc`; OAPEN also has a REST API at library.oapen.org/rest/.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "DOAB indexes rather than hosts most files, so a publisher's dead link occasionally leaves a record with no working download. Licences vary by title from CC BY to CC BY-NC-ND — check per book before reuse or text mining. Coverage is strongest for European, especially German- and Dutch-funded, monographs and thinner for Anglophone university presses."
+    },
+    {
+      "name": "IIIF (International Image Interoperability Framework)",
+      "url": "https://iiif.io/",
+      "category": "software",
+      "subcategory": "image delivery and annotation standard",
+      "summary": "Open specifications for serving and describing digitised images and AV: Image API 3.0 (crop, scale, rotate and reformat through URL parameters), Presentation API 3.0 (manifests describing an object's structure and metadata), plus Content Search 2.0, Authorization Flow 2.0, Change Discovery 1.0 and Content State 1.0. Backed by a consortium of 68 institutional members.",
+      "access": "No installation: paste any IIIF manifest URL into Mirador (projectmirador.org) or the Universal Viewer. Pull a page region straight into a script with `{image-base}/{region}/{size}/{rotation}/{quality}.jpg`, or parse manifests with `pip install iiif-prezi3`. Gallica, the Bodleian, the Vatican Library and most large digitised collections publish manifests.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "A standard, not a service: it gives uniform access to what institutions have chosen to publish and does nothing about undigitised or restricted material. Rights statements travel inside the manifest and vary per object — a IIIF endpoint is not permission to reuse the image. Version 2 manifests remain widespread and differ from 3.0, so parsers must handle both."
+    },
+    {
+      "name": "Getty Vocabularies",
+      "url": "https://www.getty.edu/research/tools/vocabularies/",
+      "category": "data",
+      "subcategory": "art-historical controlled vocabularies",
+      "summary": "Five thesauri for the visual arts: AAT (materials, techniques, styles, periods), TGN (current and historical place names), ULAN (artists, architects, firms, patrons), CONA (individual works) and the Iconography Authority, each with hierarchies, variant and non-English names, scope notes and stable identifiers.",
+      "access": "Web search per vocabulary; SPARQL endpoint at vocab.getty.edu/sparql; full Linked Open Data dumps (N-Triples/RDF), XML and relational-table releases from the Getty download centre; a reconciliation service that plugs directly into OpenRefine for matching your own name and place columns.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Open Data Commons Attribution (ODC-By) 1.0 — reusable, including commercially, with attribution. Coverage is deepest for Western European and North American art and much thinner elsewhere, and ULAN and TGN carry historical biases in who counted as an artist and which places were named. Updated continuously, so cache a dated dump if results must be reproducible."
+    },
+    {
+      "name": "PCIbex",
+      "url": "https://doc.pcibex.net/",
+      "category": "software",
+      "subcategory": "online psycholinguistic experiments",
+      "summary": "Free open-source builder for web-based language experiments — self-paced reading, acceptability judgements, maze tasks, forced choice, audio and video presentation, audio recording, mouse and eye tracking — written in a JavaScript-based DSL that requires no JavaScript background. The PCIbex Farm hosts and runs experiments and collects results at no charge.",
+      "access": "Create a free account at farm.pcibex.net, edit the experiment in the browser IDE, share the participant link, download results as CSV. Tutorial and full documentation at doc.pcibex.net; source on GitHub if you prefer to self-host.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 3,
+      "notes": "Farm hosting is grant- and donation-funded (currently supported by MindCORE) with no published quota, so a large or long-running study should be self-hosted rather than assumed free indefinitely. It runs experiments but does not recruit — participants still cost money through Prolific, MTurk or your own pool. Results arrive as raw event rows needing reshaping before analysis."
+    },
+    {
+      "name": "MALLET",
+      "url": "https://mimno.github.io/Mallet/",
+      "category": "software",
+      "subcategory": "topic modelling and text classification",
+      "summary": "Java toolkit for statistical NLP: LDA plus hierarchical and Pachinko allocation topic models with a fast Gibbs sampler, document classification (naive Bayes, MaxEnt, decision trees) and sequence tagging (HMM, MEMM, CRF). The topic-model implementation that most digital humanities tutorials, including Programming Historian lessons, assume.",
+      "access": "Download the release, then `bin/mallet import-dir --input texts/ --output docs.mallet` followed by `bin/mallet train-topics --input docs.mallet --num-topics 20 --output-state state.gz`. Drivable from R via the `mallet` package or from Python via `little-mallet-wrapper`.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Apache 2.0, usable for research or commercial work. Requires a Java runtime, which is the usual stumbling block for humanists. The project moved from mallet.cs.umass.edu to GitHub Pages, so older tutorial links redirect. The number of topics is your choice rather than something the model learns, results shift between runs unless you fix the random seed, and topics mean nothing until a human interprets them."
+    },
+    {
+      "name": "Digital Humanities Quarterly (DHQ)",
+      "url": "https://dhq.digitalhumanities.org/",
+      "category": "publishing",
+      "subcategory": "diamond open-access DH journal",
+      "summary": "Peer-reviewed open-access journal of the Alliance of Digital Humanities Organizations, publishing digital humanities research, case studies, reviews and experimental digital work. The current issue is volume 20 number 2 (2026), a special issue on Latin American and Latinx public digital humanities. No fees for authors or readers.",
+      "access": "Read every article free in HTML with no account; articles are TEI-encoded and the underlying XML is available. Submissions go through the editorial process documented on the site.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Licensed CC BY-ND 4.0 — free to redistribute, but derivatives are not permitted, which is more restrictive than the CC BY used by most diamond journals. Review and production times are long, often a year or more, which is the standing complaint against it. Scope is digital humanities method and theory, not humanities scholarship in general."
+    },
+    {
+      "name": "Papyri.info",
+      "url": "https://papyri.info/",
+      "category": "data",
+      "subcategory": "Greek and Latin documentary papyri",
+      "summary": "Aggregates and cross-links the Duke Databank of Documentary Papyri (transcribed texts), the Heidelberger Gesamtverzeichnis (metadata), APIS (catalogue records and images) and Trismegistos identifiers into one searchable corpus of documentary papyri, with a peer-reviewed editing platform for submitting corrections.",
+      "access": "Web search and browse; every text is EpiDoc TEI XML, and the entire corpus lives in the git repository github.com/papyri/idp.data (about 2.9 GB, updated daily — last push 28 August 2026), which is the practical route for bulk work.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Texts and metadata are openly licensed (Creative Commons Attribution); confirm the licence file in idp.data before redistributing, and note that the linked page images belong to holding institutions and are not redistributed. The website sits behind a Duke University bot check that returns a challenge to scripted requests, so use the GitHub repository for anything programmatic. Scope is documentary papyri — contracts, letters, receipts — not literary texts."
+    },
+    {
+      "name": "English-Corpora.org",
+      "url": "https://www.english-corpora.org/",
+      "category": "data",
+      "subcategory": "web query interface for large English corpora",
+      "summary": "Mark Davies's family of large English corpora behind a single query interface: COCA (one billion words of American English), COHA (historical American English), NOW (web news, growing continuously), iWeb, GloWbE (global web English), the TV and Movies corpora, a Wikipedia corpus and the BNC. Supports KWIC concordances, collocates, frequency by genre and decade, and direct comparison between corpora.",
+      "access": "Web interface only; a free account (email) is required beyond a small number of anonymous queries. Results export to CSV/Excel from the browser.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Two limits matter. First, free accounts carry per-day query caps that are lifted only by paid academic or institutional licences, and the quotas have been revised repeatedly — read the current limits on the site rather than any secondary source. Second, the server returns HTTP 403 to every scripted request (verified 28 August 2026), so it cannot sit inside a pipeline, and you cannot download the underlying full text: that is sold separately through corpusdata.org. It is a query service, not a corpus you can own."
+    },
+    {
+      "name": "Leipzig Corpora Collection (Wortschatz)",
+      "url": "https://wortschatz.uni-leipzig.de/en/download",
+      "category": "data",
+      "subcategory": "monolingual sentence corpora, many languages",
+      "summary": "Uniformly built sentence corpora derived from news, web and Wikipedia text for several hundred languages, distributed in fixed sizes from 10,000 to 1 million sentences per package, each with precomputed word frequency and co-occurrence tables. For many smaller languages it is the only ready-made downloadable corpus.",
+      "access": "Choose language, source and size on the download page and take the archive (plain-text sentences, word lists, co-occurrence tables). Programmatic access through the REST API at api.wortschatz-leipzig.de, which has a live Swagger UI documenting the word-frequency, collocation and sentence endpoints.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Downloads are licensed CC BY-NC — non-commercial only, which rules out some model training and redistribution; check the licence file inside each package. Sentences are shuffled and deduplicated, so there is no document or discourse context, and the news and web provenance makes the genre narrow. The download pages sit behind an anti-bot proof-of-work challenge (verified 28 August 2026), so fetch them in a real browser and use the REST API for scripted work."
+    }
+  ],
+  "corrections": [
+    {
+      "name": "DPLA (Digital Public Library of America)",
+      "field": "summary",
+      "new_value": "Aggregates records from US libraries, archives and museums through a network of state and regional hubs; the front page reported 53,442,810 images, texts, videos and sounds on 28 August 2026. The DPLA network has also contributed over 11.25 million files to Wikimedia Commons.",
+      "reason": "The sweep said the index was 'approaching 55 million items'. The live counter on dp.la reads 53,442,810 (checked 2026-08-28), so the figure was rounded up past the actual number."
+    },
+    {
+      "name": "Grambank",
+      "field": "summary",
+      "new_value": "Global database of grammatical structure: 2,467 language varieties coded for 195 features, giving 441,663 datapoints (362,025 excluding 'not known'), coded from grammars and grammar sketches. Actively maintained by the MPI for Evolutionary Anthropology as part of the Glottobank consortium.",
+      "reason": "The sweep said only 'over 2,000 languages and 195 features' and gave no datapoint count; grambank.clld.org states 2,467 varieties, 195 features and 441,663 datapoints, which the catalogue's own precision standard calls for."
+    },
+    {
+      "name": "ELDP (Endangered Languages Documentation Programme)",
+      "field": "summary",
+      "new_value": "The main international funder dedicated to endangered-language documentation, hosted since 2021 at the Berlin-Brandenburgische Akademie der Wissenschaften and having funded over 500 documentation projects. Offers Rapid grants (small, fast-turnaround), Documentation grants (full projects), Legacy material grants (digitising and cataloguing existing collections) and a new Archiving Fellowship for alumni to complete and deposit collections, plus grantee training.",
+      "reason": "The sweep omitted the current host institution and the recently added Archiving Fellowship, both stated on eldp.net (checked 2026-08-28). The move from SOAS to Berlin matters because much older guidance still points at SOAS."
+    },
+    {
+      "name": "ELDP (Endangered Languages Documentation Programme)",
+      "field": "notes",
+      "new_value": "The 2027 grant round is open as of August 2026 with an application deadline of 1 October 2026, and ELDP is running online office hours for applicants. Grants are competitive and applications are substantial documents; the Rapid grant is the realistic entry point. Deposit of the resulting materials in an accessible archive is a condition. Check the current call for eligibility — requirements around institutional affiliation and career stage differ between grant types and have changed between rounds.",
+      "reason": "The sweep's note gave no concrete deadline, which is the single most actionable fact for an applicant. eldp.net currently advertises the 2027 round with a 1 October 2026 deadline (checked 2026-08-28)."
+    },
+    {
+      "name": "OPUS",
+      "field": "summary",
+      "new_value": "Aggregates 1,214 parallel corpora covering 1,038 languages and roughly 102.9 billion sentence pairs; the largest collections are OpenSubtitles (27.2B, 26.5% of OPUS), NLLB (22.7B) and CCMatrix (17.1B).",
+      "reason": "Corpus and language totals check out exactly against opus.nlpl.eu, but CCMatrix is listed as 17.1 billion sentence pairs (16.61% of OPUS), not 17.2 billion."
+    },
+    {
+      "name": "Voyant Tools",
+      "field": "notes",
+      "new_value": "Time-sensitive and still unresolved: as of 28 August 2026 voyant-tools.org still returns HTTP 502, more than a month after the 17 July 2026 outage began, while the project moves to new hosting. Verified working alternatives on the same date are beta.voyant-tools.org (HTTP 200) and the LINCS instance at voyant.lincsproject.ca; the downloadable VoyantServer is unaffected. Given the length of the outage, plan on the local server or a mirror rather than waiting for the main host. Uploading to any hosted instance puts your text on someone else's server — use the local server for unpublished or restricted material.",
+      "reason": "The sweep flagged the outage but left its status open. Re-checking on 2026-08-28 confirms the main host is still down (502) and that the two named fallbacks respond, so the entry should state the verified current position and steer users to the local server."
+    },
+    {
+      "name": "TEI Guidelines (Text Encoding Initiative)",
+      "field": "access",
+      "new_value": "Read the Guidelines free on the web; generate a project-specific schema from an ODD customisation with the Roma web tool at roma.tei-c.org, or with the TEI Stylesheets command-line tools; validate with any RELAX NG/XML validator such as xmllint or Jing. Publish with TEI Publisher, CETEIcean or your own XSLT.",
+      "reason": "The sweep's access field contained a garbled instruction, \"`pip install roma`-free alternatives\": there is no `roma` pip package. Roma is a web application at roma.tei-c.org (verified reachable, HTTP 200, 2026-08-28), and the command-line route is the TEI Stylesheets."
+    },
+    {
+      "name": "HathiTrust Digital Library",
+      "field": "notes",
+      "new_value": "The gate is real and worth stating plainly: full-view reading and whole-book PDF download apply only to public-domain volumes, and even those sometimes require login from a member institution for the full PDF. In-copyright volumes give search-only results (page numbers and hit counts, no text). The HathiTrust Research Center offers derived non-consumptive datasets, but capsule compute and some datasets are tied to member institutions. The site also sits behind a Cloudflare challenge that returns HTTP 403 to scripted requests (verified 28 August 2026), so plan on a browser for discovery rather than crawling. Unaffiliated researchers should treat HathiTrust as a bibliographic and page-location discovery tool rather than a text source.",
+      "reason": "Adds a verified practical obstacle the sweep did not mention: hathitrust.org blocks scripted access with a Cloudflare challenge, which breaks any plan to script discovery against the site."
+    }
+  ],
+  "removals": [],
+  "checked": [
+    "Universal Dependencies",
+    "Glottolog",
+    "WALS Online (World Atlas of Language Structures)",
+    "Grambank",
+    "PHOIBLE",
+    "OPUS",
+    "Mozilla Common Voice",
+    "TalkBank / CHILDES",
+    "Internet Archive",
+    "HathiTrust Digital Library",
+    "Project Gutenberg",
+    "DPLA (Digital Public Library of America)",
+    "Chronicling America (Library of Congress)",
+    "Old Bailey Online",
+    "EEBO-TCP (Text Creation Partnership)",
+    "ELAN",
+    "AntConc",
+    "Voyant Tools",
+    "Zotero",
+    "Transkribus",
+    "TEI Guidelines (Text Encoding Initiative)",
+    "LingBuzz",
+    "ACL Anthology",
+    "JSTOR free personal account and Open Content",
+    "Language Science Press",
+    "Open Library of Humanities",
+    "ELDP (Endangered Languages Documentation Programme)",
+    "Wenner-Gren Foundation Post-PhD Research Grant",
+    "The Programming Historian",
+    "Speech and Language Processing (Jurafsky & Martin, 3rd edition draft)"
+  ]
+}

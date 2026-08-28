@@ -1,10 +1,10 @@
 # Social sciences
 
-Part of [research-vault](../README.md). 60 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 83 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (26) · [Software](#software) (11) · [Literature](#literature) (9) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (3) · [Learning](#learning) (5) · [Community](#community) (1)
+**Contents:** [Data](#data) (33) · [Software](#software) (16) · [Literature](#literature) (12) · [Compute](#compute) (3) · [Publishing](#publishing) (5) · [Funding](#funding) (4) · [Learning](#learning) (7) · [Community](#community) (3)
 
 ## Data
 
@@ -16,7 +16,7 @@ Near-real-time, geocoded event data on political violence, protests and riots wo
 
 **Access.** Register a free myACLED account, then use the Data Export Tool, the downloadable data files, or the REST API (see https://apidocs.acleddata.com/) authenticated with your account credentials.
 
-**Caveats.** Access terms have tightened. A free account covers academic and non-commercial research, but you are bound by an End User Licence Agreement, Content Usage Terms and an Attribution Policy that restrict redistribution and explicitly bar using ACLED content to train or improve machine-learning models, LLMs or AI systems 'regardless of whether such use is commercial, academic, or experimental'. ACLED reserves the right to restrict or revoke access, and several platforms (CAST, Conflict Exposure Calculator) are gated separately. Read the EULA before building a pipeline on it.
+**Caveats.** Access terms are strict, but narrower than a blanket ban. A free myACLED account covers academic and non-commercial research, bound by the End User License Agreement, Content Usage Terms and Attribution Policy, which restrict redistribution and require specific citation. On AI (checked 28 August 2026): EULA section 7.1 prohibits using ACLED content to train, test, develop or improve ML/LLM/AI systems 'in any manner that' creates or contributes to a substitute for ACLED content or services, allows third parties to access or extract ACLED content through such systems, or exceeds your licence scope; the Content Usage Terms add that this restriction 'applies regardless of whether such use is commercial, academic, or experimental in nature'. Section 7.2 further requires attribution and technical controls preventing extraction through any tool that incorporates the content. So a research classifier trained on ACLED labels is not categorically forbidden, but it is conditioned and audit-able - read sections 7 and 10 (competitive use) before building a pipeline. ACLED reserves audit rights and can restrict or revoke access, and platforms such as CAST and the Conflict Exposure Calculator are gated separately.
 
 ### [Afrobarometer](https://www.afrobarometer.org/data/)
 
@@ -37,6 +37,16 @@ Pre- and post-election surveys of US voters running since 1948, including the 20
 **Access.** Web interface: create a free account, agree to the terms, and download per-study files in Stata, SPSS, SAS or CSV with codebooks. Also analysable in the browser through SDA at Berkeley without downloading anything.
 
 **Caveats.** Free for research and teaching, with a terms-of-use agreement at download. The cumulative file carries three sets of weights (combined, face-to-face, web) and using the wrong one is the most common beginner error - read the codebook appendix on weights first.
+
+### [AmericasBarometer (LAPOP)](https://www.vanderbilt.edu/lapop/)
+
+`Free` · beginner 4/5 · Latin American and Caribbean public opinion survey
+
+Two decades of nationally representative surveys on democratic attitudes, corruption, crime victimisation, migration intentions and political participation across the Americas, covering dozens of countries and hundreds of thousands of interviews. Now published by Vanderbilt's Center for Global Democracy, which also hosts the CSES secretariat and the Seligson Archive.
+
+**Access.** Web interface: download raw country and merged data files free from the Data Access page with no subscription, or use the browser-based Data Playground to run crosstabs and comparisons without coding. An official 'lapop' R package for design-effect-aware analysis and publication-ready graphics exists but was archived from CRAN on 22 August 2026 (undeliverable maintainer email) - install from the CRAN archive or the project's GitHub, or just use survey/srvyr.
+
+**Caveats.** The Center states the AmericasBarometer data are 'free, unrestricted and publicly available'; it asks that you cite LAPOP and, for journal articles, link to the site and share your syntax rather than redistributing the files. A separate 'Subscriber Login' exists for partner-funded content, so a newly fielded round may reach subscribers first. Country coverage and item wording shift across rounds - check the questionnaire before pooling. Complex sample design: apply the strata, cluster and weight variables.
 
 ### [Arab Barometer](https://www.arabbarometer.org/survey-data/data-downloads/)
 
@@ -74,7 +84,7 @@ The standard historical datasets for quantitative IR: Militarized Interstate Dis
 
 Biennial academically driven survey of attitudes, beliefs and behaviour across Europe since 2002, now through Round 11, with 30+ countries having participated and an ERIC governance structure. Includes the CRONOS web panel and the human values scale used in thousands of papers.
 
-**Access.** Web interface at the ESS Data Portal (https://ess.sikt.no/): free registration, then download country files or cumulative/integrated files in SPSS, Stata or SAS. Online data builder lets you assemble multi-round, multi-country extracts. R users: the essurvey / ess-related packages wrap the portal.
+**Access.** Web interface at the ESS Data Portal (https://ess.sikt.no/): free registration, then download country files or cumulative/integrated files in SPSS, Stata or SAS. The online data builder lets you assemble multi-round, multi-country extracts. R users: the essurvey package on CRAN is version 1.0.8, last published 9 January 2022, and predates the move of the archive to Sikt, so its download functions can fail - prefer the portal directly and read the downloaded files with haven::read_sav().
 
 **Caveats.** Registration is free and open (no institutional affiliation required) but is required before download. Note the methodology break: ESS switched from face-to-face to self-completion in recent rounds, which affects comparability - see 'ESS's Switch to Self-Completion' before pooling rounds. Design weights and post-stratification weights must be applied; unweighted country comparisons are wrong.
 
@@ -110,15 +120,35 @@ NORC's benchmark survey of US attitudes and behaviour, running since 1972; the 2
 
 **Caveats.** Read the 'What's New' document before analysing 2021 onward: the mode change (face-to-face to web/mixed-mode) breaks naive time-series comparisons, and weights differ across releases. The cumulative file is large (thousands of variables) - it will strain a low-RAM laptop in SPSS but is fine in R with haven plus data.table.
 
+### [GESIS Data Archive (GESIS Search)](https://search.gesis.org/)
+
+`Free (registration), email` · beginner 3/5 · national social science data archive
+
+Germany's national social science archive, holding more than 7,400 archived studies and over 546,000 searchable variables (GESIS site, August 2026), including ALLBUS (cumulation 1980-2023), the ISSP, the Eurobarometer series and the German Longitudinal Election Study. GESIS also runs SSOAR, an open access full-text repository, and the da|ra DOI registration agency for social science data.
+
+**Access.** Web interface at search.gesis.org: search across studies, variables and publications, then download SPSS/Stata files after logging in with a free GESIS account and accepting the usage terms. SSOAR (https://www.ssoar.info/) is open with no account; da|ra mints DOIs for deposited data.
+
+**Caveats.** Most archived studies download free once you have an account, but each study carries its own access class: a minority (official microdata, sensitive or identifying data held by the Secure Data Center) require an application and sometimes on-site or remote-desktop use. The site sits behind a bot check, so scripted downloads and command-line fetches often fail - use a browser. Interface is bilingual, but some study documentation and questionnaires exist only in German.
+
 ### [Harvard Dataverse](https://dataverse.harvard.edu/)
 
 `Free` · beginner 5/5 · general research data repository
 
-Open repository holding 116,574 datasets (August 2026), including the replication archives for much of political science and sociology; many journals require deposit here. Each dataset gets a DOI and versioned files.
+Open repository holding about 116,600 datasets (116,589 on 28 August 2026 via https://dataverse.harvard.edu/api/info/metrics/datasets), including the replication archives for much of political science and sociology; many journals require deposit here. Each dataset gets a DOI and versioned files.
 
 **Access.** Web interface, no account needed for most downloads. Native REST API (https://dataverse.harvard.edu/api/) and the R package dataverse: get_dataframe_by_name(). Deposit is free for anyone via a free account.
 
 **Caveats.** Some depositors set files to 'restricted' requiring you to accept terms or request access from the author, so not every file in a public dataset is instantly downloadable. Individual files are capped (2.5 GB per file for direct upload); very large collections are usually zipped or split.
+
+### [Health and Retirement Study (HRS)](https://hrs.isr.umich.edu/)
+
+`Free (registration), email` · beginner 3/5 · ageing and retirement panel study
+
+US longitudinal panel of approximately 20,000 people over 50, funded by the National Institute on Aging (U01AG009740) and the Social Security Administration, with biennial waves since 1992 covering health, cognition, work, income, wealth, family and end-of-life, plus biomarker, genetic and life-history modules. It is the model for the ageing panels in Europe (SHARE), England (ELSA), China (CHARLS), Mexico (MHAS) and elsewhere.
+
+**Access.** Register free on the HRS site, accept the conditions of use, and download public survey data in SAS, SPSS or Stata - most users start from the cleaned RAND HRS Longitudinal File rather than raw wave files. Cross-country harmonised versions of HRS and its sister studies are distributed by the Gateway to Global Aging Data (https://g2aging.org/).
+
+**Caveats.** Public files are free after registration; sensitive health, genetic, restricted-geography and administrative-linkage files require a separate application with IRB approval and a data use agreement, and genetic data go through dbGaP. The same NIH review notice as PSID appears on the site. The raw wave structure across 15+ waves is unforgiving - the RAND files exist precisely so you do not have to reconcile it yourself.
 
 ### [ICPSR](https://www.icpsr.umich.edu/)
 
@@ -128,7 +158,7 @@ The largest curated archive of social and behavioural science microdata, run by 
 
 **Access.** Web interface: create a free ICPSR account, search studies, download SPSS/Stata/SAS/delimited bundles. Non-members can also use the openICPSR self-deposit repository (https://www.openicpsr.org). R users can automate downloads with the CRAN package icpsrdata: icpsr_download(file_id = 12345).
 
-**Caveats.** The honest split: ICPSR's own policy says only 'some' data are free to all - the federally funded topical archives. Everything else is members-only, and ICPSR quotes non-members an administration fee of approximately US$825 per dataset. Online analysis (SDA) is member-institution-only. Restricted-use versions require a separate application and a data protection plan regardless of membership. Check the 'Access' notice on each study page before planning a project around it.
+**Caveats.** The honest split: only some ICPSR data are free to everyone - chiefly the federally funded topical archives (NACJD, NACDA, SAMHDA, child care, health and medical care) plus anything deposited in openICPSR. The rest requires membership through your institution. ICPSR does sell one-off access to non-members, but no price list appears on its public pages (checked 28 August 2026; the membership FAQ pages render only via JavaScript and quote no figure), so treat any circulated dollar amount as unconfirmed and ask ICPSR support for a current quote before budgeting. Online analysis (SDA) is member-institution-only. Restricted-use versions require a separate application and a data protection plan regardless of membership. Check the 'Access' notice on each study page before planning a project around it.
 
 ### [IPUMS](https://www.ipums.org/)
 
@@ -170,6 +200,18 @@ Hand-coded quasi-sentence content analysis of party election manifestos. Version
 
 **Caveats.** Registration and an API key are required even for the plain dataset download. Updated at least annually. The category scheme changed between v4 and v5 and the coding of some older manifestos has been revised, so always record the dataset version - RILE scores are not identical across versions.
 
+### [OECD Data Explorer and SDMX API](https://data-explorer.oecd.org/)
+
+`Free` · beginner 3/5 · official cross-national statistics
+
+OECD's statistical database for 38 member countries plus partners: employment and labour force, education outcomes (including PISA indicators), income distribution and poverty, social protection expenditure, health, migration, gender and public governance, in harmonised country-year series delivered through an SDMX API.
+
+**Access.** Web interface at data-explorer.oecd.org (each table's developer button gives the exact query URL). Direct REST with no key, verified 28 August 2026: https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_ALFS@DF_ALFS_EMP,1.1/all?startPeriod=2023&format=csvfilewithlabels ; browse available dataflows at https://sdmx.oecd.org/public/rest/dataflow/OECD.SDD.TPS. R: the rsdmx package, or read the CSV URL directly.
+
+**Caveats.** No key and no rate limit worth worrying about, but the dataflow identifiers are long, agency-scoped and version-pinned, so a URL that worked last year can 404 after a dataflow is revised. The legacy OECD.Stat service has been superseded by the Data Explorer, and the CRAN 'OECD' package (last published December 2021) targets the old service - treat it as stale. Statistical tables are open; OECD iLibrary books and some databases remain subscription products.
+
+*Also listed under: econ-finance.*
+
 ### [Our World in Data](https://ourworldindata.org/data)
 
 `Free` · beginner 5/5 · curated global indicators and charts
@@ -179,6 +221,18 @@ A charity-run (Global Change Data Lab, UK Reg. Charity No. 1186433) catalogue of
 **Access.** Every chart has a 'Download' tab giving the underlying CSV plus source metadata. Programmatic access via the Chart API and the ETL catalog: Python pip install owid-catalog then owid.catalog.find()/load(); an R client (owidapi) covers the Chart API. Country names are standardised across all datasets, so joins across topics work.
 
 **Caveats.** Charts, articles and OWID's own data are CC BY, but third-party data passed through OWID keep their original licences - check the chart's source note before redistributing. This is a re-publisher, not a primary source: cite the underlying producer as well. The Grapher software is under a custom licence, not fully open source.
+
+### [Panel Study of Income Dynamics (PSID)](https://psidonline.isr.umich.edu/)
+
+`Free (registration), email` · beginner 3/5 · US household panel study
+
+The longest-running longitudinal household survey in the world: began in 1968 with over 18,000 individuals in 5,000 US families and has followed them and their descendants continuously, covering employment, income, wealth, expenditure, health, marriage, childbearing, child development, philanthropy and education. Over 7,600 peer-reviewed publications are based on it.
+
+**Access.** Web interface: create a free account, then use the online Data Center to build a custom cross-year extract (pick variables, get SAS/SPSS/Stata setup files) or download packaged main and supplemental files (Child Development Supplement, Transition into Adulthood, Immigrant samples). Public files are free after accepting the conditions of use.
+
+**Caveats.** Free, but the conditions of use require citation and prohibit re-identification, and restricted files (geocodes, administrative and Medicare/Medicaid linkages) need a separate contract with institutional review. The site carries an NIH-requested notice added 31 March 2025 stating the repository 'is under review for potential modification in compliance with Administration directives' - a real continuity risk worth mirroring anything you depend on. Variable names change every wave; use the Data Center's cross-year index rather than matching by hand.
+
+*Also listed under: econ-finance.*
 
 ### [Pew Research Center datasets](https://www.pewresearch.org/datasets/)
 
@@ -240,6 +294,16 @@ The UK's ESRC-funded archive of economic, population and social data: the major 
 
 **Caveats.** Registration is genuinely open worldwide - this is one of the few national archives that does not gate on institutional affiliation. But the tiers matter: End User Licence data are downloadable, Special Licence data require a signed agreement and often a named institution, and Secure Lab (detailed/identifiable) data effectively require UK-based accredited researcher status and a physical or approved safe setting. Commercial use triggers extra steps.
 
+### [US Census Bureau data and API](https://www.census.gov/data/developers/data-sets.html)
+
+`Free, api-key` · beginner 4/5 · official US statistics and microdata
+
+The primary source for US demographic, social and economic statistics: American Community Survey 1- and 5-year estimates down to block group, the Decennial Census, CPS supplements, population estimates and business series, published both as tables on data.census.gov and through a machine-readable API covering hundreds of datasets.
+
+**Access.** Web interface at https://data.census.gov for tables and maps. API example: https://api.census.gov/data/2023/acs/acs5?get=NAME,B01003_001E&for=state:*&key=YOUR_KEY - a free key from https://api.census.gov/data/key_signup.html is now required (checked 28 August 2026: keyless calls return a 'Missing Key' page). R: install.packages('tidycensus') (1.8.1) then get_acs(geography='county', variables='B19013_001', year=2023). Python: the census and censusdata packages.
+
+**Caveats.** The key is free and arrives by email, but older tutorials that call the API without one now fail. ACS estimates come with margins of error that must be carried into any comparison - small-area 5-year estimates are often too noisy for the differences people want to claim. Table and variable IDs (B19013_001E) are cryptic; use tidycensus's load_variables() or the API discovery tool. For person-level microdata, IPUMS USA is far easier than raw PUMS files.
+
 ### [V-Dem (Varieties of Democracy)](https://v-dem.net/data/the-v-dem-dataset/)
 
 `Free` · beginner 4/5 · democracy and governance indicators
@@ -248,7 +312,7 @@ The most detailed democracy measurement project available: version 16 (published
 
 **Access.** Direct download of ZIPs (Stata, CSV, R, SPSS) including codebook, 'What's New' and cautionary notes - no account needed. For R, install the vdemdata package from GitHub (remotes::install_github('vdeminstitute/vdemdata')), which bundles the current dataset and helper functions.
 
-**Caveats.** vdemdata is on GitHub, not CRAN. The coder-level files are large and only meaningful if you understand the measurement model; most users want the Country-Year Core file. Indicator codes change between major versions, so pin the version number in your replication code.
+**Caveats.** Published under CC BY-SA 4.0 (share-alike: derived datasets you redistribute inherit the licence, which matters if you are merging V-Dem into a package or an app). vdemdata is on GitHub, not CRAN. The coder-level files are large and only meaningful if you understand the measurement model; most users want the Country-Year Core file. Indicator codes change between major versions, so pin the version number in your replication code.
 
 ### [World Bank Open Data](https://data.worldbank.org/)
 
@@ -259,6 +323,18 @@ The World Development Indicators database alone exposes 1,498 indicators across 
 **Access.** Free REST API with no key (https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json), bulk CSV downloads per indicator, and mature clients: R package WDI (version 2.8.0) - WDI(indicator='NY.GDP.PCAP.KD', country='all') - or Python's wbgapi / world_bank_data. The Microdata Library (https://microdata.worldbank.org/) holds survey microdata under per-survey licences.
 
 **Caveats.** No key, no rate limit worth worrying about, and CC BY 4.0 on most indicators. Caveats are about the data, not access: many series are modelled or interpolated by the World Bank rather than reported by countries, and coverage for low-income countries is patchy in exactly the years people most want. Microdata Library surveys have their own access levels, some requiring an application.
+
+*Also listed under: econ-finance.*
+
+### [World Inequality Database (WID.world)](https://wid.world/data/)
+
+`Free` · beginner 3/5 · income and wealth distribution series
+
+The World Inequality Lab's database of income and wealth distribution built from combined survey, tax and national accounts sources (distributional national accounts), maintained by a network of over a hundred researchers covering more than seventy countries, with percentile-level shares and long historical series for the best-documented countries.
+
+**Access.** Web interface: select indicators, countries and years and download the series, or use the 'Download full dataset' bulk export in the Data section. R: install.packages('wid') (0.0.3, July 2026) then download_wid(indicators='sptinc', areas='US', perc='p99p100'). Stata: ssc install wid, then wid, indicators(shweal) areas(FR) clear. Variable naming is documented in the Codes Dictionary.
+
+**Caveats.** Free with no account. WID series are estimates that reconcile surveys with tax and national accounts data, so they are systematically higher at the top than survey-only measures and are not interchangeable with World Bank/PIP or SWIID Ginis - do not mix them in one series. Coverage and underlying source quality vary enormously by country and period; read the country method papers before drawing cross-country conclusions, and note that the six-letter WID codes are essential for using the packages.
 
 *Also listed under: econ-finance.*
 
@@ -283,6 +359,16 @@ Open-source (GPL-3.0) desktop platform for exploring and visualising networks: f
 **Access.** Free download for Windows, macOS and Linux; imports GEXF, GraphML, CSV edge lists and adjacency matrices. Exports publication-ready SVG/PDF. For scripted analysis pair it with igraph (R/Python) or NetworkX, and use Gephi for the visual layout stage.
 
 **Caveats.** Java-based and memory-limited by default: graphs beyond roughly a hundred thousand edges need you to raise the JVM heap in the config file, and it will still struggle where igraph would not. Treat it as the visualisation and exploration tool, not the place where your reported statistics are computed.
+
+### [igraph](https://igraph.org/)
+
+`Free` · beginner 3/5 · network analysis library
+
+The workhorse network analysis library, with the same algorithms exposed in R (2.3.3, June 2026), Python (1.0.0), Mathematica and C (1.0.1): degree, betweenness and eigenvector centralities, community detection (Louvain, Leiden, walktrap, infomap), k-cores, motifs, assortativity, shortest paths, random graph models and layouts, scaling to graphs with millions of edges.
+
+**Access.** R: install.packages('igraph') then g <- graph_from_data_frame(edges, directed=FALSE); cluster_leiden(g); betweenness(g). Python: pip install igraph then import igraph as ig; g = ig.Graph.TupleList(edges); g.community_leiden(). C library and Mathematica bindings from igraph.org.
+
+**Caveats.** GPL-licensed and free. The R and Python APIs are similar but not identical, so code does not port line for line, and the C core's 1.0 release (September 2025) renamed functions relative to the 0.10 series - pin versions in replication code. igraph computes; Gephi visualises. For inferential network models (ERGM, latent space, stochastic actor-oriented models) you still need statnet/ergm, latentnet or RSiena.
 
 ### [jamovi](https://www.jamovi.org/)
 
@@ -334,6 +420,16 @@ Open-source survey application supporting complex branching and conditional logi
 
 **Caveats.** Free only if you self-host - LimeSurvey's own cloud service is a paid product, and the ComfortUpdate auto-updater is a paid add-on even for CE. Self-hosting means you own the security and GDPR responsibilities, including patching; that is often exactly what an ethics committee wants, but it is real work.
 
+### [NetLogo](https://ccl.northwestern.edu/netlogo/)
+
+`Free` · beginner 4/5 · agent-based modelling
+
+Agent-based modelling environment from Northwestern's Center for Connected Learning (release 7.0.4, May 2026), shipping a large Models Library that includes Schelling segregation, opinion dynamics, cooperation, diffusion and epidemic models you can run and modify within minutes. BehaviorSpace runs parameter sweeps and exports results to CSV.
+
+**Access.** Free download for Windows, macOS and Linux, or run and edit models in the browser with NetLogo Web (no install, useful on locked-down machines). Models Library is bundled; the free NetLogo User Manual and interactive dictionary document the language. For large experiments, drive it from R (nlrx) or Python (pyNetLogo) and analyse the sweep output in your usual tools.
+
+**Caveats.** The fastest route from a verbal social mechanism (segregation, threshold models, norm cascades) to something runnable, and the standard teaching tool for agent-based modelling. The language is idiosyncratic and effectively single-threaded, so very large or computation-heavy models are better in Mesa (Python) or Agents.jl (Julia). Deposit finished models in the CoMSES/OpenABM library - JASSS and most reviewers now expect runnable code.
+
 ### [oTree](https://www.otree.org/)
 
 `Free` · beginner 2/5 · online experiments and behavioural games
@@ -360,7 +456,7 @@ Full-featured open-source desktop GIS: reads and writes shapefiles, GeoJSON, Geo
 
 Cross-platform open-source (LGPL-3.0) qualitative analysis application for text, images, audio and video: hierarchical codebooks, coded-segment retrieval, memos, attribute-based filtering, coder comparison with kappa, code co-occurrence matrices and REFI-QDA import/export. Actively developed (commits in August 2026).
 
-**Access.** Install with pip install qualcoder (Python 3.13+ and PyQt6) or use the packaged releases from the GitHub releases page; projects are local SQLite files. Exports coded segments and matrices to CSV/HTML for further analysis.
+**Access.** Install from the GitHub Releases page (Windows .exe or installer, plus packaged builds) or run from source: clone the repository, create a virtual environment, and pip install -r requirements.txt (Python 3.13 or newer and PyQt6 >= 6.5), then launch with python -m qualcoder. There is no 'qualcoder' project on PyPI - pip install qualcoder returns 404 (checked 28 August 2026). Projects are local SQLite-backed folders; coded segments, matrices and reports export to CSV/HTML, and REFI-QDA import/export moves projects to and from other CAQDAS tools.
 
 **Caveats.** The most capable genuinely free alternative to NVivo, ATLAS.ti and MAXQDA, and it supports REFI-QDA so you can move a project between tools. It is a small volunteer project: the interface is plainer than the commercial packages, there is no team-collaboration server, and PyQt6 installation can be fiddly on macOS. For lightweight tagging with a hosted option, Taguette (https://www.taguette.org/) is simpler but does far less.
 
@@ -384,6 +480,36 @@ Thomas Lumley's survey package (version 4.5) is the reference implementation for
 
 **Caveats.** Free and GPL-licensed, and it is the correct tool for essentially every dataset in this section (GSS, ESS, DHS, IPUMS all have complex designs). The learning cost is real: getting standard errors right means reading the survey's own weighting documentation, not just copying a svydesign call. Replicate-weight designs use svrepdesign(), not svydesign().
 
+### [Stan (with brms)](https://mc-stan.org/)
+
+`Free` · beginner 2/5 · Bayesian modelling
+
+Probabilistic programming language and inference engine (Hamiltonian Monte Carlo/NUTS, plus variational inference and optimisation) used for multilevel and hierarchical models, item response theory, measurement models, latent variable models and any custom Bayesian model. Interfaces for R, Python, Julia and the shell, with a large free documentation set and case study library.
+
+**Access.** R: install.packages('rstan') (2.32.7) or cmdstanr; the fastest route for survey researchers is brms (2.23.0) - brm(y ~ x + (1 | country), data = d, family = gaussian()) writes, compiles and runs the Stan program for you and returns posterior draws. Python: pip install cmdstanpy. Free User's Guide, Reference Manual and case studies at mc-stan.org.
+
+**Caveats.** BSD-licensed and free; the cost is compilation and time - you need a working C++ toolchain, and non-trivial models run for minutes to hours. brms hides the Stan code but not the modelling decisions: its default priors are choices you must report. If you only need Bayes factors for standard tests, JASP is far quicker; Stan is for models with no off-the-shelf equivalent. Pair with Statistical Rethinking (already in this catalogue) for the conceptual grounding.
+
+### [Whisper (openai-whisper / faster-whisper)](https://github.com/openai/whisper)
+
+`Free` · beginner 3/5 · offline interview transcription
+
+Open-weights automatic speech recognition models plus a reference Python implementation (MIT licence, release 20250625) that transcribe and translate roughly 100 languages entirely on your own machine. The faster-whisper reimplementation (1.2.1) runs the same weights several times faster on CPU or GPU.
+
+**Access.** pip install openai-whisper then whisper interview01.m4a --model large-v3 --language tr --output_format srt (also txt, vtt, json). Or pip install faster-whisper for the CTranslate2 backend with the same model names. Model weights download once (about 1.5 GB for large-v3) and then everything runs offline.
+
+**Caveats.** The reason this matters for qualitative social science: interview and focus-group audio never leaves your machine, which is usually what an ethics committee and a GDPR data protection plan require, and there is no per-minute fee - a 40-interview project costs nothing but electricity. Accuracy falls on overlapping speakers, strong accents and low-resource languages, and the model can hallucinate fluent sentences over silence, so verify transcripts against audio before coding them in NVivo or QualCoder. large-v3 wants a GPU or roughly 10 GB RAM; small/medium models run on a laptop with real quality loss.
+
+### [Zotero](https://www.zotero.org/)
+
+`Free` · beginner 5/5 · reference manager
+
+Free, open-source reference manager: one-click capture of citations and PDFs from browsers and library catalogues, PDF reading and annotation, automatic bibliographies in Word, LibreOffice and Google Docs, over 10,000 citation styles, and shared group libraries for co-authored projects.
+
+**Access.** Download the desktop app for Windows, macOS or Linux plus the browser connector; add references with the connector button, cite with the word-processor plugin. The software, local storage and metadata syncing are free; online file storage is 300 MB free, then US$20/year for 2 GB, US$60/year for 6 GB or US$120/year unlimited - or point Zotero at your own WebDAV server and pay nothing.
+
+**Caveats.** Works fully offline with no account; a free account (email) is needed only for syncing across devices and for group libraries, and group files draw on the group owner's quota. The 300 MB free tier only bites if you sync PDFs, which most people do - WebDAV or a self-hosted alternative avoids the subscription. Run by the non-profit Corporation for Digital Scholarship (Digital Scholar) and funded by storage subscriptions, which is why the free tier is small rather than absent.
+
 ## Literature
 
 ### [APSA Preprints](https://preprints.apsanet.org/)
@@ -396,11 +522,31 @@ The American Political Science Association's preprint server, hosted on Cambridg
 
 **Caveats.** Posting is free and open to non-members as well as APSA members. The site has carried a 'currently under development / beta' banner for a long time and volumes are far below SSRN's, so treat it as a discipline-signalling venue rather than your only distribution channel. Content is not peer reviewed prior to posting.
 
+### [CORE](https://core.ac.uk/)
+
+`Free` · beginner 4/5 · open access full-text aggregator
+
+Aggregator of open access research harvested from thousands of institutional and subject repositories worldwide: 452 million papers indexed (site figure, August 2026) with search over the full text of the documents rather than just abstracts. Non-profit community infrastructure hosted by The Open University.
+
+**Access.** Free web search at core.ac.uk with links to the harvested full text. Machine access through the CORE API v3 with a free registered API key (https://core.ac.uk/services/api), the FastSync service for incremental updates, and bulk dataset dumps for text and data mining.
+
+**Caveats.** Complements Unpaywall rather than duplicating it: Unpaywall answers 'is there a legal free copy of this DOI', CORE lets you search inside the copies and download them in bulk for corpus work. Metadata is noisy - the same paper appears from several repositories, versions (preprint, accepted manuscript, published) are mixed, and DOIs are sometimes missing, so deduplicate before counting anything. Web search needs no account; the API needs a free key, and the full dumps are hundreds of gigabytes.
+
+### [Directory of Open Access Books (DOAB)](https://www.doabooks.org/)
+
+`Free` · beginner 5/5 · open access book index
+
+Community-driven index of over 108,500 peer-reviewed open access scholarly books (August 2026) from vetted publishers, with substantial sociology, anthropology, political science, history and area studies coverage - the part of the literature where open access is thinnest. All DOAB services are free and its metadata is freely available.
+
+**Access.** Web interface: search or browse by subject, publisher, language or collection; each record links straight to the full text on the publisher's or OAPEN's platform, normally a downloadable PDF or EPUB with no account. Bulk metadata is available for library catalogues; the PRISM service records how participating publishers peer review.
+
+**Caveats.** For monograph-based fields this is the single most useful free index, because journal-focused tools (Unpaywall, OpenAlex, DOAJ) largely miss books. It only covers titles whose publishers have joined, so most commercial monographs - including the field-defining ones - are absent, and it is no substitute for library or interlibrary access. Licences vary by title (many are CC BY-NC-ND), so check before reusing figures or long excerpts.
+
 ### [Directory of Open Access Journals (DOAJ)](https://doaj.org/)
 
 `Free` · beginner 5/5 · open access journal index
 
-Community-curated index of 23,371 vetted open access journals (August 2026) with article-level metadata for a large share of them, and filters for journals that charge no author fees at all - the practical way to find diamond open access outlets in your subfield.
+Community-curated index of 23,370 vetted open access journals (DOAJ search API, 28 August 2026) with article-level metadata for a large share of them, and filters for journals that charge no author fees at all - the practical way to find diamond open access outlets in your subfield.
 
 **Access.** Web interface with an 'APC' filter to isolate no-fee journals; free search API (https://doaj.org/api/search/journals/{query}) and full metadata dumps under CC0 for journals, CC BY-SA for article metadata.
 
@@ -414,7 +560,7 @@ A free personal JSTOR account gives read-online access to articles from particip
 
 **Access.** Register a free account at jstor.org/register, then read qualifying articles in the browser. JSTOR's Open & Free collections (open access books, journals and Reveal Digital primary sources) are additionally readable and downloadable by anyone with no account at all.
 
-**Caveats.** Time-sensitive: JSTOR has announced that from 1 September 2026 the free reading programme drops from 100 articles per 30 days to 10 articles per 30 days (the 100 figure was a pandemic-era expansion of an original limit of six). Free reads are read-online only, not PDF downloads. The separate JPASS product is a paid personal subscription. Plan around 10 per month from September 2026.
+**Caveats.** Checked 28 August 2026 against JSTOR's own support pages ('How to Register & Get Free Access to Content' and 'How to Use Your Free Reads with a Personal Account'): both state 100 free article reads per rolling 30 days, and no reduction to 10 reads from 1 September 2026 is announced on support.jstor.org or about.jstor.org. Free reads are read-online only, not PDF downloads, and participating publishers decide which articles qualify; the counter and reset date are visible under 'Free Article Views' in your account. The separate JPASS product is a paid personal subscription. JSTOR has changed this allowance before, so re-check the support page before planning a reading schedule around it.
 
 ### [OpenAlex](https://openalex.org/)
 
@@ -425,6 +571,16 @@ Fully open index of scholarly works, authors, institutions, sources, topics and 
 **Access.** Free REST API with no key: https://api.openalex.org/works?filter=concepts.id:C144024400,publication_year:2025 (add &mailto=you@example.com to enter the faster polite pool). Python client pip install pyalex; R client openalexR - oa_fetch(entity='works', title.search='social capital'). Full monthly database snapshots are downloadable from AWS S3.
 
 **Caveats.** The only large citation database you can legally download in bulk and analyse - the practical replacement for Web of Science and Scopus for bibliometric work without a subscription. Coverage is broad but metadata quality is uneven: author disambiguation, institution matching and topic assignment all contain errors, so validate before publishing counts. A paid 'premium' tier exists for higher rate limits and faster snapshots; the free API is sufficient for most research.
+
+### [RePEc (IDEAS and EconPapers)](https://ideas.repec.org/)
+
+`Free` · beginner 4/5 · working paper index
+
+Crowd-sourced bibliographic infrastructure for economics and quantitative social science: 5,482,493 searchable items on 28 August 2026, including 1,316,142 working papers (1,110,757 with free full text) in 5,914 series, 3,752,228 journal articles, 69,347 books and 6,032 software components. Free services include author profiles, the CitEc citation index and the NEP new-paper email alerts.
+
+**Access.** Two free front ends over the same data: IDEAS (ideas.repec.org) and EconPapers (econpapers.repec.org). Search or browse by JEL code, subscribe to NEP subject reports for weekly new working papers, register a free author profile so your work is indexed and cited correctly, and deposit unpublished work in MPRA (Munich Personal RePEc Archive) if your publisher does not participate in RePEc.
+
+**Caveats.** The largest free index of working papers relevant to social science, and often the way to read a paper years before journal publication - but it is a metadata layer, not a repository: links point at publishers' and institutions' servers, and some resolve to paywalls or dead pages. Coverage is economics-centred, so political science, sociology and anthropology appear only where the series or journal self-registers. An email address is needed only for author registration and NEP subscriptions.
 
 ### [Research4Life](https://www.research4life.org/)
 
@@ -478,6 +634,26 @@ Harvests legal open access copies of paywalled articles from institutional repos
 
 ## Compute
 
+### [Google Colab](https://colab.research.google.com/)
+
+`Free tier, email` · beginner 5/5 · hosted notebooks with free GPU
+
+Hosted Jupyter notebooks with no setup and free access to CPU, GPU and TPU runtimes. Google's own FAQ states Colab is free of charge and that resources are 'not guaranteed and not unlimited', with usage limits that fluctuate and priority given to users actively working in a notebook.
+
+**Access.** Web interface with a Google account: open or upload a notebook, choose Runtime > Change runtime type for a GPU or TPU, and !pip install whatever you need. Notebooks save to Google Drive, open directly from GitHub URLs, and can mount Drive for data files. Paid Pro/Pay-As-You-Go tiers buy longer sessions and better accelerators.
+
+**Caveats.** For social scientists the honest use case is a bounded compute job - fine-tuning a text classifier, running Whisper over interview audio, a big simulation sweep - not a permanent workspace: runtimes are ephemeral and files vanish when they recycle, idle sessions are disconnected, and free GPU allocation is best-effort and can be refused at peak times. R support is second-class; Posit Cloud is the better free R environment. Do not upload confidential or identifiable interview data to a consumer Google account without checking your ethics approval and data protection plan.
+
+### [Kaggle Notebooks](https://www.kaggle.com/code)
+
+`Free tier, email` · beginner 4/5 · hosted notebooks with weekly GPU quota
+
+Free hosted Python and R notebooks with attached datasets, GPU and TPU accelerators, persistent notebook versions and a large public dataset library. Unlike Colab, accelerator time comes as an explicit weekly quota shown in the session panel, which makes budgeting a job possible.
+
+**Access.** Web interface at kaggle.com/code with a free account: create a notebook, attach a public dataset or upload your own (private by default), enable GPU/TPU in the settings pane, and commit the notebook for a clean reproducible run with saved outputs. Datasets can also be scripted with pip install kaggle plus an API token from your account page.
+
+**Caveats.** Accelerator use is capped per week (Kaggle's long-published figures have been 30 GPU-hours and 20 TPU-hours, but the authoritative number is the one in your session sidebar and Kaggle has changed it before - check there rather than trusting any tutorial). Phone verification is required before GPUs are enabled, which is a real barrier for some users. Sessions have a maximum runtime, so long jobs must checkpoint to /kaggle/working. Notebooks are public unless set private - check before committing work on unpublished data.
+
 ### [Posit Cloud](https://posit.cloud/)
 
 `Free tier, email` · beginner 5/5 · browser-based R and Python environment
@@ -489,6 +665,18 @@ RStudio and Jupyter notebooks running in the browser with nothing to install, wh
 **Caveats.** 25 project hours a month is genuinely tight - it is enough to learn on, to run a seminar, or to reproduce someone's analysis, but not enough to be your main working environment for a dissertation. Free instances are memory-limited, so large IPUMS or GSS cumulative files will exhaust RAM. For anything sustained, install R locally (free) and use Posit Cloud for sharing and teaching.
 
 ## Publishing
+
+### [AEA RCT Registry](https://www.socialscienceregistry.org/)
+
+`Free (registration), email` · beginner 4/5 · trial preregistration
+
+The American Economic Association's registry for randomised controlled trials in the social sciences, listing 12,677 studies with locations in 171 countries as of 28 August 2026. Each record documents the intervention, sample, randomisation, outcomes, timeline and (optionally) an uploaded pre-analysis plan, and receives a citable AEARCTR identifier.
+
+**Access.** Web interface: browsing, advanced search and reading full trial records need no account; a free account is required to register a trial, and the registration form takes roughly twenty minutes. The whole registry is downloadable as a bulk data file from the Data page for meta-research.
+
+**Caveats.** Now expected by most development economics, political economy and field experiment journals. The point is registering before enrolment starts - the record shows registration and start dates, so late registration is visible. Pre-analysis plans can be embargoed until the trial concludes. It is a registry, not a repository: data and code still need Dataverse, OSF or Zenodo. For non-experimental, lab or qualitative work, OSF Registries is the usual venue; EGAP stopped accepting registrations on 15 October 2023 and now points here and to OSF.
+
+*Also listed under: econ-finance.*
 
 ### [Demographic Research](https://www.demographic-research.org/)
 
@@ -552,6 +740,16 @@ Field-initiated grants of up to US$50,000 for education research projects lastin
 
 **Caveats.** Two hard eligibility gates: PIs and Co-PIs must hold an earned doctorate (graduate students may be on the team but cannot be PI), and Spencer does not award grants to individuals - the PI must be administered by a non-profit or public institution with 501(c)(3) status or equivalent. Proposals must be in English with US-dollar budgets. Check the site for the current deadline; cycles close and reopen.
 
+### [Wenner-Gren Foundation grants and fellowships](https://wennergren.org/grants-fellowships/)
+
+`Free, application` · beginner 3/5 · anthropology research grants
+
+The main international funder of anthropological research that funds individuals directly: Dissertation Fieldwork Grants and Post-PhD Research Grants of up to US$25,000 each, plus Wadsworth International Fellowships and the Wadsworth African Fellowship, the Fejos and Hunt postdoctoral fellowships, Engaged Research grants and conference/workshop grants.
+
+**Access.** Online application through the Foundation's portal; the Dissertation Fieldwork and Post-PhD deadlines are 1 May and 1 November each year, the portal opens two months before each deadline, and decisions take about six months. Each programme page carries the eligibility rules, allowable costs and the application guide, and the Foundation runs free proposal-writing webinars.
+
+**Caveats.** Unusually open eligibility, which is why it belongs in a catalogue aimed at under-resourced researchers: Post-PhD applicants may be 'qualified scholars of any nationality or institutional affiliation', and the page states that 'independent scholars and senior scholars are welcome to apply'. Grants are non-renewable, pay no institutional overhead and no grant administration fees. Anthropology only (socio-cultural, linguistic, biological and archaeology, or the local equivalents); Dissertation Fieldwork applicants must be enrolled in a doctoral programme.
+
 ### [Wikimedia Research Fund](https://meta.wikimedia.org/wiki/Grants:Programs/Wikimedia_Research_%26_Technology_Fund/Wikimedia_Research_Fund)
 
 `Free, application` · beginner 3/5 · research grants for individuals
@@ -573,6 +771,30 @@ Scott Cunningham's causal inference text, free online, covering DAGs, potential 
 **Access.** Read free at mixtape.scunning.com. Code and datasets for every chapter are downloadable; the Stata and R implementations run side by side so you can follow in whichever your department uses.
 
 **Caveats.** The online second edition is explicitly a work in progress as of the 2026 academic year - the authors flag typos and bugs and ask readers to report them - so cross-check anything surprising against the printed edition or the primary papers. The panel-data chapters are the current strength; they cover the post-2020 difference-in-differences literature that older texts predate.
+
+*Also listed under: econ-finance.*
+
+### [Causal Inference: What If](https://miguelhernan.org/whatifbook)
+
+`Free` · beginner 2/5 · causal inference textbook
+
+Hernan and Robins's causal inference textbook, downloadable in full at no cost: part 1 covers causal inference without models (counterfactuals, exchangeability, DAGs, selection and measurement bias), part 2 covers models (IP weighting, standardisation, g-estimation, propensity scores, instrumental variables), part 3 covers complex longitudinal data with time-varying treatments.
+
+**Access.** Free PDF of the current version from the author's page (updated in place, so re-download rather than relying on an old copy). Code and data reproducing every analysis are maintained by the authors' group in R, Stata, SAS and Python.
+
+**Caveats.** The reason to have this alongside The Effect and the Mixtape is part 3: time-varying treatments, marginal structural models and g-methods are barely covered by the economics-style texts, and they are exactly what longitudinal social science data demand. Written from an epidemiology tradition, so the notation and examples are clinical and the ramp is steeper than The Effect. The authors revise the PDF without documenting changes - record the version date you cite.
+
+*Also listed under: medicine.*
+
+### [DIME Wiki (World Bank DIME Analytics)](https://dimewiki.worldbank.org/)
+
+`Free` · beginner 4/5 · field research and impact evaluation handbook
+
+Public-good wiki from the World Bank's DIME Analytics team covering the whole workflow of applied field research: experimental and quasi-experimental design, power calculations, research ethics and IRB, questionnaire design, primary data collection and field management, data cleaning, reproducible analysis, publication and data publishing.
+
+**Access.** Read free on the web with no account; pages cross-link to templates, checklists and example code. The companion Development Research in Practice handbook is a free PDF, and the team's Stata packages (ietoolkit, iefieldkit) are on SSC and GitHub - ssc install ietoolkit.
+
+**Caveats.** Written for World Bank impact evaluations, so examples are field experiments in low- and middle-income countries and the code is Stata-first - but the data management, reproducibility and field-team sections transfer to any survey project, and there is very little else this practical that is free. It is a wiki: some pages are thorough, some are stubs, and revision dates vary. The site sits behind a bot check, so scripted fetches may fail even though a browser works.
 
 *Also listed under: econ-finance.*
 
@@ -622,8 +844,28 @@ Community-written open handbook on reproducible, ethical and collaborative data 
 
 `Free` · beginner 4/5 · statistics Q&A
 
-Stack Exchange site for statistics, machine learning, data analysis and data visualisation, with 219,623 questions, 219,903 answers and 437,850 registered users as of August 2026. The de facto place where applied questions about survey weights, multilevel models, SEM identification and causal identification get answered by practising methodologists.
+Stack Exchange site for statistics, machine learning, data analysis and data visualisation, with 219,623 questions, 219,902 answers and 437,864 registered users (Stack Exchange API, 28 August 2026). The de facto place where applied questions about survey weights, multilevel models, SEM identification and causal identification get answered by practising methodologists.
 
 **Access.** Web interface: search and read with no account; free registration to ask, answer or vote. All content is CC BY-SA licensed. Questions about R or Python code go to Stack Overflow instead; conceptual and methodological questions belong here.
 
 **Caveats.** About 68,000 questions are unanswered, so a badly framed question sinks without trace - include your design, your sample size, what you have tried, and a reproducible example. The site is strict about scope: 'which test should I use for my dissertation' with no detail gets closed. Answer quality is high but not peer reviewed; check the credentials and the citations in an answer before building on it.
+
+### [EGAP (Evidence in Governance and Politics)](https://egap.org/)
+
+`Free` · beginner 4/5 · research network and methods guides
+
+Research network on governance, accountability and political behaviour whose site publishes free Methods Guides - ten-point primers on randomisation, power analysis, clustering, pre-analysis plans, spillovers, survey experiments and related design problems - plus Learning Days teaching materials and coursebook, policy briefs, and the Metaketa coordinated multi-site replication programmes.
+
+**Access.** Web interface, everything free with no account: Methods Guides and policy briefs read in the browser, and the Learning Days coursebook and exercises (with R code) download directly. Metaketa project pages link to the pooled data and pre-analysis plans.
+
+**Caveats.** The Methods Guides are the most usable short reference on designing field and survey experiments in political science, and the Learning Days materials were built explicitly for researchers outside well-resourced departments. Network membership is by nomination, but nothing you need is behind it. Note that EGAP's own design registry stopped accepting registrations on 15 October 2023 - register new studies at OSF Registries or the AEA RCT Registry instead.
+
+### [The Carpentries](https://carpentries.org/)
+
+`Free` · beginner 5/5 · coding and data skills lessons
+
+Volunteer-run organisation teaching foundational coding and data skills to researchers: 5,500 instructors, 5,014 workshops delivered and 72 countries reached as of August 2026. Lessons cover the Unix shell, Git, R, Python, SQL, OpenRefine and data organisation in spreadsheets, including a Data Carpentry curriculum written for social scientists.
+
+**Access.** All lesson material is openly licensed and free to work through alone on the lesson websites, with the example datasets included - the social science track ('R for Social Scientists', 'Data Analysis and Visualization in R for Social Scientists') is the closest fit for survey workflows. Workshops are listed on the public calendar; instructor training is run regularly with places prioritised for member organisations.
+
+**Caveats.** Self-teaching from the lessons costs nothing and needs no account - that is the part that matters for an unaffiliated researcher. Attending an official two-day workshop usually costs money or requires a hosting institution, and certified instructor training favours members of Partner organisations. The material is deliberately foundational: it will get you from spreadsheet-only work to reproducible scripting, not to advanced modelling.

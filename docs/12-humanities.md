@@ -1,12 +1,22 @@
 # Linguistics & humanities
 
-Part of [research-vault](../README.md). 60 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 76 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (23) · [Software](#software) (15) · [Literature](#literature) (4) · [Publishing](#publishing) (6) · [Funding](#funding) (4) · [Learning](#learning) (5) · [Community](#community) (3)
+**Contents:** [Data](#data) (30) · [Software](#software) (22) · [Literature](#literature) (5) · [Publishing](#publishing) (7) · [Funding](#funding) (4) · [Learning](#learning) (5) · [Community](#community) (3)
 
 ## Data
+
+### [childes-db](https://langcog.github.io/childes-db-website/)
+
+`Free` · beginner 3/5 · child-language corpora in tabular form
+
+Tabular, versioned rebuild of the CHILDES transcripts: release 2026.1 holds 24.2 million utterances across 89 million tokens, with Universal Dependencies morphology, dependency parses, speech acts, Japanese romanization and phonological data added, hosted and versioned on Redivis.
+
+**Access.** R: `install.packages("childesr")` then `get_utterances(collection = "Eng-NA")`; Python: `pip install childespy`; or direct SQL against the database. Interactive Shiny browsers on the site. childes-db.stanford.edu redirects here.
+
+**Caveats.** Not a replacement for TalkBank: it is a periodic snapshot of CHILDES reshaped into tables, so it lags the live archive and carries no audio or video, and none of the non-CHILDES TalkBank banks. Utterance counts change between releases, so record the version (e.g. 2026.1) you queried. Cite both childes-db and the original corpus contributors.
 
 ### [Chronicling America (Library of Congress)](https://www.loc.gov/collections/chronicling-america/)
 
@@ -32,7 +42,7 @@ Federated infrastructure linking national language-technology centres across Eur
 
 `Free (registration), api-key` · beginner 4/5 · US cultural heritage aggregator
 
-Aggregates records from US libraries, archives and museums through a network of state and regional hubs; as of June 2026 the index was approaching 55 million items. The DPLA network has also contributed over 11.25 million files to Wikimedia Commons.
+Aggregates records from US libraries, archives and museums through a network of state and regional hubs; the front page reported 53,442,810 images, texts, videos and sounds on 28 August 2026. The DPLA network has also contributed over 11.25 million files to Wikimedia Commons.
 
 **Access.** Web search; free JSON-LD API at https://api.dp.la/v2 (items and collections resource types) after requesting an API key — append `&api_key=YOUR_KEY` to every request. Bulk metadata downloads are published for whole-index analysis.
 
@@ -58,6 +68,16 @@ Digital repository of multimedia language documentation deposits — everyday co
 
 **Caveats.** Catalogue metadata is CC BY-NC-SA 4.0, but the data files themselves are governed by ELAR Access Conditions set by each depositor — a substantial fraction is restricted and access can take weeks or be refused. This is by design: depositors negotiate terms with speaker communities. Plan around it rather than treating the archive as bulk-downloadable.
 
+### [English-Corpora.org](https://www.english-corpora.org/)
+
+`Free (registration), email` · beginner 4/5 · web query interface for large English corpora
+
+Mark Davies's family of large English corpora behind a single query interface: COCA (one billion words of American English), COHA (historical American English), NOW (web news, growing continuously), iWeb, GloWbE (global web English), the TV and Movies corpora, a Wikipedia corpus and the BNC. Supports KWIC concordances, collocates, frequency by genre and decade, and direct comparison between corpora.
+
+**Access.** Web interface only; a free account (email) is required beyond a small number of anonymous queries. Results export to CSV/Excel from the browser.
+
+**Caveats.** Two limits matter. First, free accounts carry per-day query caps that are lifted only by paid academic or institutional licences, and the quotas have been revised repeatedly — read the current limits on the site rather than any secondary source. Second, the server returns HTTP 403 to every scripted request (verified 28 August 2026), so it cannot sit inside a pipeline, and you cannot download the underlying full text: that is sold separately through corpusdata.org. It is a query service, not a corpus you can own.
+
 ### [Europeana](https://www.europeana.eu/)
 
 `Free (registration), api-key` · beginner 4/5 · European cultural heritage aggregator
@@ -78,6 +98,16 @@ The BnF's digital library: books, manuscripts, maps, images, press and periodica
 
 **Caveats.** No account needed for public-domain material, which is most of it. Some items are consultable only on BnF premises for rights reasons. OCR quality on early modern typography and on the nineteenth-century press is variable, and the OCR text is not always exposed through the API for every document type.
 
+### [Getty Vocabularies](https://www.getty.edu/research/tools/vocabularies/)
+
+`Free` · beginner 3/5 · art-historical controlled vocabularies
+
+Five thesauri for the visual arts: AAT (materials, techniques, styles, periods), TGN (current and historical place names), ULAN (artists, architects, firms, patrons), CONA (individual works) and the Iconography Authority, each with hierarchies, variant and non-English names, scope notes and stable identifiers.
+
+**Access.** Web search per vocabulary; SPARQL endpoint at vocab.getty.edu/sparql; full Linked Open Data dumps (N-Triples/RDF), XML and relational-table releases from the Getty download centre; a reconciliation service that plugs directly into OpenRefine for matching your own name and place columns.
+
+**Caveats.** Open Data Commons Attribution (ODC-By) 1.0 — reusable, including commercially, with attribution. Coverage is deepest for Western European and North American art and much thinner elsewhere, and ULAN and TGN carry historical biases in who counted as an artist and which places were named. Updated continuously, so cache a dated dump if results must be reproducible.
+
 ### [Glottolog](https://glottolog.org/)
 
 `Free` · beginner 4/5 · language catalogue and genealogical classification
@@ -92,7 +122,7 @@ Version 5.3 lists 7,674 spoken L1 languages classified into 246 families and 183
 
 `Free` · beginner 4/5 · typological database
 
-Global database of grammatical structure covering over 2,000 languages and 195 features, coded from grammars and grammar sketches. Actively maintained by the MPI for Evolutionary Anthropology as part of the Glottobank consortium.
+Global database of grammatical structure: 2,467 language varieties coded for 195 features, giving 441,663 datapoints (362,025 excluding 'not known'), coded from grammars and grammar sketches. Actively maintained by the MPI for Evolutionary Anthropology as part of the Glottobank consortium.
 
 **Access.** Web interface; CLDF release from github.com/grambank/grambank and Zenodo. Python: `pip install pygrambank`. Joins to Glottolog on Glottocode.
 
@@ -106,7 +136,7 @@ Roughly 18 million digitised volumes contributed by member libraries, with full-
 
 **Access.** Web full-text search is open to anyone with no account — you can find which page of which edition contains a phrase, across all 18 million volumes. Public-domain volumes are readable page by page and downloadable as PDF.
 
-**Caveats.** The gate is real and worth stating plainly: full-view reading and whole-book PDF download apply only to public-domain volumes, and even those sometimes require login from a member institution for the full PDF. In-copyright volumes give search-only results (page numbers and hit counts, no text). The HathiTrust Research Center offers derived non-consumptive datasets, but capsule compute and some datasets are tied to member institutions. Unaffiliated researchers should treat HathiTrust as a bibliographic and page-location discovery tool rather than a text source.
+**Caveats.** The gate is real and worth stating plainly: full-view reading and whole-book PDF download apply only to public-domain volumes, and even those sometimes require login from a member institution for the full PDF. In-copyright volumes give search-only results (page numbers and hit counts, no text). The HathiTrust Research Center offers derived non-consumptive datasets, but capsule compute and some datasets are tied to member institutions. The site also sits behind a Cloudflare challenge that returns HTTP 403 to scripted requests (verified 28 August 2026), so plan on a browser for discovery rather than crawling. Unaffiliated researchers should treat HathiTrust as a bibliographic and page-location discovery tool rather than a text source.
 
 ### [Internet Archive](https://archive.org/)
 
@@ -117,6 +147,26 @@ Digitised books, periodicals, audio, film, software and the Wayback Machine's we
 **Access.** Web interface; full-text search across scanned books; direct download of public-domain items. Programmatic: `pip install internetarchive` then `ia download <identifier>`, or the Wayback CDX API for capture listings.
 
 **Caveats.** Public-domain items download freely with no account. Controlled-digital-lending titles are different: they need a free account, loans are one hour (renewable if a copy is free) or fourteen days, and downloads of borrowed books are LCP-DRM-protected files readable only in Thorium or Cantook. Following the Hachette v. Internet Archive litigation, many in-copyright titles were withdrawn from lending, so a book you remember borrowing may no longer be available.
+
+### [Leipzig Corpora Collection (Wortschatz)](https://wortschatz.uni-leipzig.de/en/download)
+
+`Free` · beginner 3/5 · monolingual sentence corpora, many languages
+
+Uniformly built sentence corpora derived from news, web and Wikipedia text for several hundred languages, distributed in fixed sizes from 10,000 to 1 million sentences per package, each with precomputed word frequency and co-occurrence tables. For many smaller languages it is the only ready-made downloadable corpus.
+
+**Access.** Choose language, source and size on the download page and take the archive (plain-text sentences, word lists, co-occurrence tables). Programmatic access through the REST API at api.wortschatz-leipzig.de, which has a live Swagger UI documenting the word-frequency, collocation and sentence endpoints.
+
+**Caveats.** Downloads are licensed CC BY-NC — non-commercial only, which rules out some model training and redistribution; check the licence file inside each package. Sentences are shuffled and deduplicated, so there is no document or discourse context, and the news and web provenance makes the genre narrow. The download pages sit behind an anti-bot proof-of-work challenge (verified 28 August 2026), so fetch them in a real browser and use the REST API for scripted work.
+
+### [Lexibank](https://lexibank.clld.org/)
+
+`Free` · beginner 3/5 · cross-linguistic lexical wordlists
+
+Aggregates 134 standardised lexical datasets covering 5,477 languages, 3,205 Concepticon concept sets and 1,734,794 word forms, with segmented phonetic transcriptions in a uniform CLDF format so wordlists from unrelated sources can be compared directly.
+
+**Access.** Browse at lexibank.clld.org; every dataset is a CLDF release on Zenodo and a repository under github.com/lexibank. Python: `pip install pylexibank cldfbench pyconcepticon`; read any CLDF wordlist with `pip install pycldf` and run phylogenetic or colexification analyses with LingPy.
+
+**Caveats.** CC BY 4.0 for the aggregate, but component datasets carry their own licences — check before redistributing. Depends on Concepticon (v3.4.0) for concept mapping and Glottolog for language identification, so all three versions must be recorded together for a reproducible analysis. Transcriptions are normalised automatically and inherit errors from the source dictionaries.
 
 ### [Mozilla Common Voice](https://commonvoice.mozilla.org/en/datasets)
 
@@ -138,11 +188,21 @@ Fully searchable transcriptions of every surviving edition of the Old Bailey Pro
 
 **Caveats.** Free for non-commercial use — commercial reuse requires permission. The transcriptions are of the published Proceedings, which were themselves edited and abridged, so they are not a verbatim record of what was said in court; the site's 'Value as a Historical Source' pages document this carefully and should be read before quantitative work. The site sits behind a bot filter that blocks plain scripted requests.
 
+### [Open English WordNet](https://en-word.net/)
+
+`Free` · beginner 4/5 · lexical database (wordnet)
+
+Community-maintained open successor to Princeton WordNet, currently 120,068 synsets and 153,261 entries, linking English words into synonym sets with definitions and hypernym, meronym and antonym relations. Released annually and interlinked with wordnets for other languages.
+
+**Access.** Web search on the site; documented JSON API; bulk downloads in WN-LMF XML, RDF/Turtle and SQLite. Python: `pip install wn`, then `wn.download('oewn:2024')` (check `wn.projects()` for the current release id) and `wn.synsets('bank')`, which also fetches Open Multilingual WordNet data.
+
+**Caveats.** CC BY 4.0, which is cleaner for redistribution than Princeton WordNet's custom licence. Sense inventories have drifted from Princeton WordNet 3.0, so counts are not directly comparable with older NLP papers, and NLTK's bundled `wordnet` corpus is still Princeton 3.0. Coverage of technical and very recent vocabulary is uneven.
+
 ### [OPUS](https://opus.nlpl.eu/)
 
 `Free` · beginner 3/5 · parallel corpora
 
-Aggregates 1,214 parallel corpora covering 1,038 languages and roughly 102.9 billion sentence pairs; the largest collections are OpenSubtitles (27.2B), NLLB (22.7B) and CCMatrix (17.2B).
+Aggregates 1,214 parallel corpora covering 1,038 languages and roughly 102.9 billion sentence pairs; the largest collections are OpenSubtitles (27.2B, 26.5% of OPUS), NLLB (22.7B) and CCMatrix (17.1B).
 
 **Access.** Web query interface; REST API at opus.nlpl.eu/opusapi/; command line via `pip install opustools` then `opus_read -d OpenSubtitles -s en -t tr -wm moses`. Downloads are per language pair, so you can take a 10 MB slice rather than the whole corpus.
 
@@ -157,6 +217,16 @@ Open archive of audio and video documents in rare and little-described languages
 **Access.** Browse or search on the web; recordings and their XML/ELAN annotation files download directly with no account. OAI-PMH endpoint for metadata harvesting.
 
 **Caveats.** Genuinely open-access — one of the few endangered-language archives where you can download annotated recordings without a request workflow. Coverage is driven by which CNRS-affiliated fieldworkers deposited, so it is deep in a few families (Sino-Tibetan, Austronesian, Niger-Congo) and absent elsewhere.
+
+### [Papyri.info](https://papyri.info/)
+
+`Free` · beginner 3/5 · Greek and Latin documentary papyri
+
+Aggregates and cross-links the Duke Databank of Documentary Papyri (transcribed texts), the Heidelberger Gesamtverzeichnis (metadata), APIS (catalogue records and images) and Trismegistos identifiers into one searchable corpus of documentary papyri, with a peer-reviewed editing platform for submitting corrections.
+
+**Access.** Web search and browse; every text is EpiDoc TEI XML, and the entire corpus lives in the git repository github.com/papyri/idp.data (about 2.9 GB, updated daily — last push 28 August 2026), which is the practical route for bulk work.
+
+**Caveats.** Texts and metadata are openly licensed (Creative Commons Attribution); confirm the licence file in idp.data before redistributing, and note that the linked page images belong to holding institutions and are not redistributed. The website sits behind a Duke University bot check that returns a challenge to scripted requests, so use the GitHub repository for anything programmatic. Scope is documentary papyri — contracts, letters, receipts — not literary texts.
 
 ### [PARADISEC](https://www.paradisec.org.au/)
 
@@ -290,6 +360,48 @@ SIL's desktop suite for building a dictionary and a corpus of interlinearised te
 
 **Caveats.** Free and open source, but the learning curve is steep and the data model is opinionated — plan on working through SIL's training materials. macOS support is via a virtual machine rather than a native build, which is a real obstacle for Mac-only fieldworkers.
 
+### [Gephi](https://gephi.org/)
+
+`Free` · beginner 3/5 · network visualisation and analysis
+
+Desktop application for exploring networks from ten to ten million nodes: ForceAtlas2 and Fruchterman-Reingold layouts, modularity-based community detection, centrality measures, interactive filtering and high-resolution PNG/PDF/SVG export. Current release 0.11.2 (May 2026); Gephi Lite v1.0 (October 2025) runs a subset in the browser.
+
+**Access.** Direct download for macOS, Windows and Linux; imports CSV edge lists, GEXF and GraphML. Gephi Lite needs no installation. For scripted analysis of the same graphs use `pip install networkx` or R's igraph and export to GEXF for the visual pass.
+
+**Caveats.** GPL, source fully available. Java-based and memory-hungry: raise the JVM heap before loading a large graph and expect instability on very large networks on a modest laptop. Force-directed layout is exploratory, not deterministic — the same data laid out twice looks different, so record layout parameters if a figure must be reproducible.
+
+*Also listed under: social.*
+
+### [IIIF (International Image Interoperability Framework)](https://iiif.io/)
+
+`Free` · beginner 3/5 · image delivery and annotation standard
+
+Open specifications for serving and describing digitised images and AV: Image API 3.0 (crop, scale, rotate and reformat through URL parameters), Presentation API 3.0 (manifests describing an object's structure and metadata), plus Content Search 2.0, Authorization Flow 2.0, Change Discovery 1.0 and Content State 1.0. Backed by a consortium of 68 institutional members.
+
+**Access.** No installation: paste any IIIF manifest URL into Mirador (projectmirador.org) or the Universal Viewer. Pull a page region straight into a script with `{image-base}/{region}/{size}/{rotation}/{quality}.jpg`, or parse manifests with `pip install iiif-prezi3`. Gallica, the Bodleian, the Vatican Library and most large digitised collections publish manifests.
+
+**Caveats.** A standard, not a service: it gives uniform access to what institutions have chosen to publish and does nothing about undigitised or restricted material. Rights statements travel inside the manifest and vary per object — a IIIF endpoint is not permission to reuse the image. Version 2 manifests remain widespread and differ from 3.0, so parsers must handle both.
+
+### [MALLET](https://mimno.github.io/Mallet/)
+
+`Free` · beginner 3/5 · topic modelling and text classification
+
+Java toolkit for statistical NLP: LDA plus hierarchical and Pachinko allocation topic models with a fast Gibbs sampler, document classification (naive Bayes, MaxEnt, decision trees) and sequence tagging (HMM, MEMM, CRF). The topic-model implementation that most digital humanities tutorials, including Programming Historian lessons, assume.
+
+**Access.** Download the release, then `bin/mallet import-dir --input texts/ --output docs.mallet` followed by `bin/mallet train-topics --input docs.mallet --num-topics 20 --output-state state.gz`. Drivable from R via the `mallet` package or from Python via `little-mallet-wrapper`.
+
+**Caveats.** Apache 2.0, usable for research or commercial work. Requires a Java runtime, which is the usual stumbling block for humanists. The project moved from mallet.cs.umass.edu to GitHub Pages, so older tutorial links redirect. The number of topics is your choice rather than something the model learns, results shift between runs unless you fix the random seed, and topics mean nothing until a human interprets them.
+
+### [Montreal Forced Aligner](https://montreal-forced-aligner.readthedocs.io/en/latest/)
+
+`Free` · beginner 2/5 · forced alignment of speech to transcript
+
+Command-line forced aligner (v3.4.2, August 2026) that takes audio plus an orthographic transcript and returns word- and phone-level time-aligned TextGrids using Kaldi acoustic models. Ships pretrained acoustic models, pronunciation dictionaries and grapheme-to-phoneme models for dozens of languages, distributed through Hugging Face since version 3.4.
+
+**Access.** `conda install -c conda-forge montreal-forced-aligner`, then `mfa model download acoustic english_us_arpa` and `mfa align corpus/ dictionary acoustic_model output/`. Output TextGrids open directly in Praat and ELAN.
+
+**Caveats.** Free and open source. The Kaldi dependency chain means conda is the only reliable install route; plain pip installs frequently fail. Alignment needs a pronunciation dictionary for your language, so for an undescribed language you must build one or train G2P first. CPU-only works but is slow on hours of audio, and noisy field recordings degrade alignment badly.
+
 ### [Omeka (Classic and Omeka S)](https://omeka.org/)
 
 `Free` · beginner 3/5 · digital collections and exhibits
@@ -300,6 +412,26 @@ Open-source web publishing platform for cultural heritage collections: describe 
 
 **Caveats.** GPL and free to run, but self-hosting means you pay for and administer a server — realistically a few dollars a month plus sysadmin time. The hosted omeka.net has a limited free tier with a small storage cap; larger plans are paid. Omeka S and Omeka Classic have different module ecosystems and are not interchangeable.
 
+### [OpenRefine](https://openrefine.org/)
+
+`Free` · beginner 4/5 · data cleaning and reconciliation
+
+Desktop tool (v3.10.1, March 2026) that runs in your browser for cleaning messy tabular data: faceting, clustering of near-duplicate spellings, GREL and regex transformations, unlimited undo, and reconciliation of names, places and concepts against external authorities including Wikidata and the Getty vocabularies.
+
+**Access.** Direct download for macOS, Windows and Linux; runs locally on 127.0.0.1:3333, so data never leaves your machine. Imports CSV/TSV/XML/JSON/Excel; exports cleaned data plus the full operation history as JSON so a cleaning run is reproducible and reviewable.
+
+**Caveats.** Open source (BSD). Java-based with a small default heap — a file of a million rows needs the memory setting raised before it will load. Reconciliation against Wikidata is rate-limited and slow in large batches. It cleans, links and normalises; it does not analyse or visualise, so pair it with a stats or plotting tool.
+
+### [PCIbex](https://doc.pcibex.net/)
+
+`Free (registration), email` · beginner 3/5 · online psycholinguistic experiments
+
+Free open-source builder for web-based language experiments — self-paced reading, acceptability judgements, maze tasks, forced choice, audio and video presentation, audio recording, mouse and eye tracking — written in a JavaScript-based DSL that requires no JavaScript background. The PCIbex Farm hosts and runs experiments and collects results at no charge.
+
+**Access.** Create a free account at farm.pcibex.net, edit the experiment in the browser IDE, share the participant link, download results as CSV. Tutorial and full documentation at doc.pcibex.net; source on GitHub if you prefer to self-host.
+
+**Caveats.** Farm hosting is grant- and donation-funded (currently supported by MindCORE) with no published quota, so a large or long-running study should be self-hosted rather than assumed free indefinitely. It runs experiments but does not recruit — participants still cost money through Prolific, MTurk or your own pool. Results arrive as raw event rows needing reshaping before analysis.
+
 ### [Praat](https://www.fon.hum.uva.nl/praat/)
 
 `Free` · beginner 3/5 · phonetic analysis
@@ -309,6 +441,18 @@ The standard free program for acoustic phonetics: spectrograms, formant, pitch a
 **Access.** Direct download of a single binary from the University of Amsterdam site; no installer dependencies. Batch work through Praat scripts, or drive it from Python with `pip install parselmouth` (praat-parselmouth).
 
 **Caveats.** Open source (GPL) with source available. The interface is idiosyncratic and the scripting language is unlike anything else — budget time for the built-in Intro tutorial. Runs happily on a decade-old laptop.
+
+### [quanteda](https://quanteda.io/)
+
+`Free` · beginner 3/5 · R framework for quantitative text analysis
+
+R package (v4.5.0) for corpus management and quantitative text analysis: ICU-compliant tokenisation, document-feature matrices, keyword-in-context, collocations, keyness against a reference corpus, dictionary methods and text models, with companion packages quanteda.textstats, quanteda.textplots and quanteda.textmodels.
+
+**Access.** `install.packages("quanteda")`; `corpus(txt) |> tokens() |> dfm()` then `textstat_frequency()` or `textstat_keyness()`. Read files of any format with the companion `readtext` package.
+
+**Caveats.** GPL-3. Handles corpora of hundreds of thousands of documents on a laptop, which is exactly where AntConc runs out of memory — the natural next tool after a GUI concordancer. Version 4 changed several function signatures, so code and tutorials written for 2.x/3.x may not run unchanged. It counts features; for lemmatisation and parsing you still need udpipe, spacyr or Stanza.
+
+*Also listed under: social.*
 
 ### [Recogito Studio](https://recogitostudio.org/)
 
@@ -346,7 +490,7 @@ The reference R package for computational stylistics: Burrows's Delta and its va
 
 The community standard for encoding humanities texts in XML — manuscript description, critical apparatus, drama, dictionaries, correspondence, linguistic annotation — with a full schema, customisation mechanism (ODD) and worked examples. Nearly every scholarly digital edition uses it.
 
-**Access.** Read the Guidelines free on the web; generate a project-specific schema with the Roma web tool or `pip install roma`-free alternatives; validate with any XML tool. Publish with TEI Publisher, CETEIcean or an XSLT of your own.
+**Access.** Read the Guidelines free on the web; generate a project-specific schema from an ODD customisation with the Roma web tool at roma.tei-c.org, or with the TEI Stylesheets command-line tools; validate with any RELAX NG/XML validator such as xmllint or Jing. Publish with TEI Publisher, CETEIcean or your own XSLT.
 
 **Caveats.** CC BY. The Guidelines are enormous and written as a reference, not a tutorial — start from a subset such as TEI Lite or from an existing project's ODD rather than reading front to back. Encoding is labour, not software: the standard is free but the time is not.
 
@@ -404,6 +548,16 @@ Complete open archive of papers from ACL, EMNLP, NAACL, COLING, LREC and associa
 
 *Also listed under: cs-ml.*
 
+### [DOAB (Directory of Open Access Books)](https://www.doabooks.org/)
+
+`Free` · beginner 5/5 · open-access scholarly book index
+
+Index of peer-reviewed open-access books; its OAI-PMH feed exposed 127,804 records (books and chapters) on 28 August 2026, each linking to a free full-text download, most of them hosted in the associated OAPEN Library, which itself exposes 58,186 records.
+
+**Access.** Web search at doabooks.org; PDFs (often ePub too) download with no account, usually from library.oapen.org. Bulk metadata by OAI-PMH: `https://directory.doabooks.org/oai/request?verb=ListRecords&metadataPrefix=oai_dc`; OAPEN also has a REST API at library.oapen.org/rest/.
+
+**Caveats.** DOAB indexes rather than hosts most files, so a publisher's dead link occasionally leaves a record with no working download. Licences vary by title from CC BY to CC BY-NC-ND — check per book before reuse or text mining. Coverage is strongest for European, especially German- and Dutch-funded, monographs and thinner for Anglophone university presses.
+
 ### [JSTOR free personal account and Open Content](https://about.jstor.org/whats-in-jstor/)
 
 `Free (registration), email` · beginner 5/5 · journal archive access
@@ -435,6 +589,16 @@ French-led infrastructure comprising OpenEdition Journals (several thousand huma
 **Caveats.** The Freemium model is the thing to understand: HTML full text is generally free to read, while PDF and ePub versions of the same article or book are often reserved for subscribing institutions. For an unaffiliated reader that usually means reading in the browser rather than downloading. A substantial minority of titles are fully open in all formats.
 
 ## Publishing
+
+### [Digital Humanities Quarterly (DHQ)](https://dhq.digitalhumanities.org/)
+
+`Free` · beginner 5/5 · diamond open-access DH journal
+
+Peer-reviewed open-access journal of the Alliance of Digital Humanities Organizations, publishing digital humanities research, case studies, reviews and experimental digital work. The current issue is volume 20 number 2 (2026), a special issue on Latin American and Latinx public digital humanities. No fees for authors or readers.
+
+**Access.** Read every article free in HTML with no account; articles are TEI-encoded and the underlying XML is available. Submissions go through the editorial process documented on the site.
+
+**Caveats.** Licensed CC BY-ND 4.0 — free to redistribute, but derivatives are not permitted, which is more restrictive than the CC BY used by most diamond journals. Review and production times are long, often a year or more, which is the standing complaint against it. Scope is digital humanities method and theory, not humanities scholarship in general.
 
 ### [Glossa: a journal of general linguistics](https://www.glossa-journal.org/)
 
@@ -502,11 +666,11 @@ Fully open-access peer-reviewed journal of natural-language semantics and pragma
 
 `Free, application` · beginner 2/5 · language documentation grants
 
-The main international funder dedicated to endangered-language documentation, offering Rapid grants (small, fast-turnaround), Documentation grants (full projects) and Legacy material grants (digitising and cataloguing existing collections), plus grantee training and an online training series.
+The main international funder dedicated to endangered-language documentation, hosted since 2021 at the Berlin-Brandenburgische Akademie der Wissenschaften and having funded over 500 documentation projects. Offers Rapid grants (small, fast-turnaround), Documentation grants (full projects), Legacy material grants (digitising and cataloguing existing collections) and a new Archiving Fellowship for alumni to complete and deposit collections, plus grantee training.
 
 **Access.** Apply through the ELDP application system during an open call; the Apply pages give current eligibility, deadlines and budget ceilings for each grant type.
 
-**Caveats.** Grants are competitive and applications are substantial documents; the Rapid grant is the realistic entry point. Deposit of the resulting materials in an accessible archive is a condition. Check the current call for eligibility — requirements around institutional affiliation and career stage differ between the grant types and have changed between rounds.
+**Caveats.** The 2027 grant round is open as of August 2026 with an application deadline of 1 October 2026, and ELDP is running online office hours for applicants. Grants are competitive and applications are substantial documents; the Rapid grant is the realistic entry point. Deposit of the resulting materials in an accessible archive is a condition. Check the current call for eligibility — requirements around institutional affiliation and career stage differ between grant types and have changed between rounds.
 
 ### [Endangered Language Fund](https://www.endangeredlanguagefund.org/)
 
