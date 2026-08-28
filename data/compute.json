@@ -172,7 +172,9 @@
       "beginner": 4,
       "notes": "Funded by NSF, DoD, Kavli and NIH awards, so capacity depends on grants continuing. Queue times vary with donated-cycle availability. Best for standard, already-packaged pipelines; if you need a bespoke tool you must package it as an App first. Check data-governance terms before uploading identifiable human imaging.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "neuro-psych"
+      ]
     },
     {
       "name": "Chameleon Cloud",
@@ -422,6 +424,7 @@
       "canonical": true,
       "also_in": [
         "physics",
+        "chemistry",
         "medicine"
       ]
     },

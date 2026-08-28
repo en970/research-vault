@@ -645,7 +645,7 @@
       "registration": "application",
       "beginner": 2,
       "notes": "Releasing the funded software, hardware and content under libre/open licences and using open standards is a hard requirement across all funds. Calls are periodic — proposals cannot be submitted between calls. Use of generative AI in a proposal must be disclosed and documented. Fund scopes vary, so read the call-specific applicant guide; not every ML topic will fit.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -659,7 +659,7 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Eligibility is limited to people who face underrepresentation, systemic bias or discrimination in tech in their country — this is a targeted programme, not an open call. Selection weights the quality of contributions made during the unpaid contribution period, which is a real time commitment before any money arrives.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

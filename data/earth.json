@@ -659,7 +659,7 @@
       "registration": "application",
       "beginner": 2,
       "notes": "One of the few substantial routes that does not require an institutional affiliation, and local knowledge and community ties are explicitly valued. You may lead only one funded project at a time and must close out reports from previous grants first. Deadlines are per-RFP, so the portal needs checking regularly.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

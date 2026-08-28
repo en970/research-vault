@@ -110,6 +110,8 @@ US DOE database of DFT-computed properties for inorganic crystals and molecules 
 
 **Caveats.** Login is via GitHub/Google/Microsoft/Amazon or an email link; the key is free but per-account, and logging in a different way silently creates a second account. Data is under Materials Project terms, not a standard open licence. Since the 2026.04 release the storage layer moved to Delta tables on S3 and the docs warn the bucket organisation 'is still in flux and can change without notice' - pin workflows to the API client, not raw bucket paths.
 
+*Also listed under: physics.*
+
 ### [NIST Chemistry WebBook (SRD 69)](https://webbook.nist.gov/chemistry/)
 
 `Free` · beginner 5/5 · evaluated thermochemistry and spectra

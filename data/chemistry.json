@@ -144,7 +144,9 @@
       "beginner": 4,
       "notes": "Login is via GitHub/Google/Microsoft/Amazon or an email link; the key is free but per-account, and logging in a different way silently creates a second account. Data is under Materials Project terms, not a standard open licence. Since the 2026.04 release the storage layer moved to Delta tables on S3 and the docs warn the bucket organisation 'is still in flux and can change without notice' - pin workflows to the API client, not raw bucket paths.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "physics"
+      ]
     },
     {
       "name": "NIST Chemistry WebBook (SRD 69)",
@@ -185,7 +187,7 @@
       "registration": "email",
       "beginner": 3,
       "notes": "Browsing and download need no account; uploading and managing datasets do. Published data is CC BY 4.0. Value depends on the parser supporting your code - check the supported-format list before assuming your VASP/CP2K/FHI-aims output will normalise cleanly.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -603,7 +605,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Accelerator time is capped on a weekly quota and sessions have a maximum runtime; phone verification is required before GPUs unlock. Exact current quota figures could not be verified here because the docs page renders entirely client-side - the notebook settings panel shows your remaining quota live, so check there. Internet access inside notebooks must be explicitly enabled.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

@@ -11,6 +11,6 @@
 [literature-access] no critic file — sweep used as-is
 [compute] no critic file — sweep used as-is
 [publishing] no sweep file — unit skipped
-[funding] no sweep file — unit skipped
+[funding] no critic file — sweep used as-is
 [learning] no sweep file — unit skipped
 [workflow-tools] no sweep file — unit skipped

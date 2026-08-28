@@ -88,6 +88,8 @@ The EU's statistical office publishes thousands of harmonised tables on populati
 
 **Caveats.** Aggregate tables are fully open. Microdata are not: EU-SILC, LFS and similar research microdata require a formal application from a recognised research entity to Eurostat, which is a real institutional gate for unaffiliated researchers. Dataset codes are cryptic - use the 'Stats finder A-Z' or the eurostat package's search_eurostat() rather than browsing.
 
+*Also listed under: econ-finance.*
+
 ### [GDELT Project](https://www.gdeltproject.org/)
 
 `Free` · beginner 2/5 · global news event and tone data

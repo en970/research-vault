@@ -171,7 +171,7 @@
       "registration": "api-key",
       "beginner": 3,
       "notes": "All data is computed (GGA/GGA+U and r2SCAN DFT), not experimental — band gaps in particular carry systematic errors. Registration is free but required for the web app and API.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -228,7 +228,9 @@
       "beginner": 3,
       "notes": "Published data is searchable and downloadable without an account; uploading and private staging need one. Unlike Materials Project there is no single uniform workflow — entries are contributed raw outputs with varying functionals, cutoffs and convergence, so inspect the input files before trusting a number. An OASIS version can be self-hosted by a group.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "chemistry"
+      ]
     },
     {
       "name": "OQMD — Open Quantum Materials Database",
@@ -919,10 +921,8 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Stipend size varies by country of residence. Highly competitive, and accepted proposals almost always come from people who contributed a patch or two beforehand. The organisation list is re-chosen every year — never assume a given project will take part again.",
-      "canonical": true,
-      "also_in": [
-        "cs-ml"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "ICTP — Abdus Salam International Centre for Theoretical Physics",
@@ -935,7 +935,7 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Most support is restricted to scientists from developing countries; selection is competitive. Lecture recordings and diploma course materials are freely watchable by anyone.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -949,7 +949,7 @@
       "registration": "application",
       "beginner": 2,
       "notes": "Only NumFOCUS-affiliated/sponsored projects are eligible, so the practical path is to propose work with an existing project community rather than for a personal project.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -963,7 +963,7 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Highly selective, and theory-only (quantum fields and strings, gravity, quantum information, condensed matter, cosmology). Applications for the next cohort open in October 2026 per the programme page. Students are expected to apply for any external funding they qualify for (e.g. NSERC in Canada), and the programme page describes 'options for monetary support' with details on a separate financial-support page rather than guaranteeing a full scholarship to every admit. The lecture courses themselves are separately free to anyone via PIRSA.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

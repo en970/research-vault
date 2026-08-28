@@ -631,7 +631,7 @@
       "registration": "application",
       "beginner": 2,
       "notes": "Schools are geographically targeted - participation calls usually prioritise applicants from the region hosting the school. Proposing a school requires a committed local host institution.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -659,7 +659,7 @@
       "registration": "application",
       "beginner": 2,
       "notes": "Eligibility is tied to the IMU's own published list of developing countries and usually to holding a position (or a PhD place) at an institution there - fully unaffiliated researchers generally do not qualify. Award sizes are modest travel/subsistence grants, not salaries.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

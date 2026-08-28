@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**786 resources** across **14 fields** — 609 free outright, 489 usable with no account at all. Verified 2026-08-28.
+**818 resources** across **15 fields** — 639 free outright, 491 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -57,6 +57,7 @@ sixty seconds. Those distinctions are the content.
 | [Linguistics & humanities](docs/12-humanities.md) | 60 | data (23), software (15), publishing (6) |
 | [Literature access & discovery](docs/13-literature-access.md) | 59 | literature (32), software (8), learning (6) |
 | [Free compute & storage](docs/14-compute.md) | 51 | compute (31), data (6), publishing (6) |
+| [Funding, grants & recognition](docs/16-funding.md) | 56 | funding (52), community (2), publishing (1) |
 
 The first 12 are fields of study. The rest cut across all of them: the parts of research that are the same whatever you work on.
 <!-- FIELDS:END -->

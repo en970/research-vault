@@ -170,6 +170,8 @@ FAIR repository for materials-science calculations run by the FAIRmat consortium
 
 **Caveats.** Published data is searchable and downloadable without an account; uploading and private staging need one. Unlike Materials Project there is no single uniform workflow — entries are contributed raw outputs with varying functionals, cutoffs and convergence, so inspect the input files before trusting a number. An OASIS version can be self-hosted by a group.
 
+*Also listed under: chemistry.*
+
 ### [OQMD — Open Quantum Materials Database](https://oqmd.org)
 
 `Free` · beginner 3/5 · computed materials properties
@@ -673,8 +675,6 @@ Google-funded programme that pairs new open-source contributors with mentoring o
 **Access.** Browse the accepted-organisation list published each spring at summerofcode.withgoogle.com, engage with a project's issue tracker and mentors, then submit a proposal in the contributor application window.
 
 **Caveats.** Stipend size varies by country of residence. Highly competitive, and accepted proposals almost always come from people who contributed a patch or two beforehand. The organisation list is re-chosen every year — never assume a given project will take part again.
-
-*Also listed under: cs-ml.*
 
 ### [ICTP — Abdus Salam International Centre for Theoretical Physics](https://www.ictp.it)
 

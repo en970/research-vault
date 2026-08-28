@@ -1107,7 +1107,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "A free account is needed to save contribution history and to build projects; several projects list volunteer contributors on the resulting papers, which is a real route to co-authorship without an affiliation.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     }
   ]

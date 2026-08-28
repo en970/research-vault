@@ -99,7 +99,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Reuse is free with attribution under the Commission's reuse policy. Microdata (EU-SILC, LFS, HBS) is a separate track: it requires a formal research-entity application through Eurostat's microdata access unit, is not open, and typically takes months — the API covers aggregates only.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

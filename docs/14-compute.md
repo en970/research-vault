@@ -134,6 +134,8 @@ Free, open-source platform for reproducible MRI, EEG and MEG analysis that runs 
 
 **Caveats.** Funded by NSF, DoD, Kavli and NIH awards, so capacity depends on grants continuing. Queue times vary with donated-cycle availability. Best for standard, already-packaged pipelines; if you need a bespoke tool you must package it as an App first. Check data-governance terms before uploading identifiable human imaging.
 
+*Also listed under: neuro-psych.*
+
 ### [Chameleon Cloud](https://www.chameleoncloud.org/)
 
 `Free tier, application` · beginner 2/5 · bare-metal experimental testbed
@@ -310,7 +312,7 @@ Free hosted notebooks with a fixed weekly accelerator quota (NVIDIA GPU and TPU 
 
 **Caveats.** Phone verification is required before the GPU/TPU and internet toggles appear at all — a real barrier in some countries. The remaining weekly quota is displayed in the session sidebar; treat that number as authoritative, because Kaggle has changed the allowance before and its documentation sits behind a bot wall. Quota resets weekly, not monthly, and idle sessions burn it.
 
-*Also listed under: physics, medicine.*
+*Also listed under: physics, chemistry, medicine.*
 
 ### [Modal](https://modal.com/pricing)
 

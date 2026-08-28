@@ -55,6 +55,13 @@ def norm_key(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", name.lower())
 
 
+def registrable_domain(url: str) -> str:
+    """The last two labels of the host — enough to tell one service from another."""
+    host = re.sub(r"^https?://", "", url.strip()).split("/")[0].split(":")[0].lower()
+    labels = [p for p in host.split(".") if p]
+    return ".".join(labels[-2:]) if len(labels) >= 2 else host
+
+
 def norm_url(url: str) -> str:
     u = url.strip().rstrip("/")
     u = re.sub(r"^http://", "https://", u)
@@ -209,10 +216,43 @@ def mark_canonical(units: list[dict]) -> None:
     canonical: the cross-cutting unit's if there is one (Zenodo belongs to
     publishing, not to physics), otherwise the most detailed write-up.
     """
-    groups: dict[str, list[tuple[dict, dict]]] = {}
-    for u in units:
-        for r in u["resources"]:
-            groups.setdefault(norm_url(r["url"]), []).append((u, r))
+    # Two entries are the same resource if they share a URL, or if they share
+    # a name *and* a registrable domain — several fields link the same service
+    # through different paths (unpaywall.org vs unpaywall.org/products/api).
+    parent: dict[int, int] = {}
+
+    def find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a: int, b: int) -> None:
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[max(ra, rb)] = min(ra, rb)
+
+    items = [(u, r) for u in units for r in u["resources"]]
+    for i in range(len(items)):
+        parent[i] = i
+    first_url: dict[str, int] = {}
+    first_name: dict[tuple[str, str], int] = {}
+    for i, (_u, r) in enumerate(items):
+        uk = norm_url(r["url"])
+        if uk in first_url:
+            union(i, first_url[uk])
+        else:
+            first_url[uk] = i
+        nk = (norm_key(r["name"]), registrable_domain(r["url"]))
+        if nk[0] and nk[1]:
+            if nk in first_name:
+                union(i, first_name[nk])
+            else:
+                first_name[nk] = i
+
+    groups: dict[int, list[tuple[dict, dict]]] = {}
+    for i, pair in enumerate(items):
+        groups.setdefault(find(i), []).append(pair)
 
     for copies in groups.values():
         if len(copies) == 1:

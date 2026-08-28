@@ -114,7 +114,9 @@
       "beginner": 4,
       "notes": "Aggregate tables are fully open. Microdata are not: EU-SILC, LFS and similar research microdata require a formal application from a recognised research entity to Eurostat, which is a real institutional gate for unaffiliated researchers. Dataset codes are cryptic - use the 'Stats finder A-Z' or the eurostat package's search_eurostat() rather than browsing.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "econ-finance"
+      ]
     },
     {
       "name": "GDELT Project",
@@ -295,7 +297,7 @@
       "registration": "application",
       "beginner": 3,
       "notes": "The project description is a real (if light) review step, and access is granted per project - you must request additional countries separately. Data may not be redistributed or passed to colleagues; each person registers individually. GPS displacement means cluster coordinates are randomly offset (up to 2 km urban, 5-10 km rural), which matters for any spatial analysis.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -763,7 +765,7 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Unusually accessible: it funds individuals directly, and the review criteria explicitly prioritise applicants who have limited access to research funding and who are from regions under-represented in the Wikimedia research community. The constraint is topical - your project must genuinely be about Wikimedia projects or their communities - and applicants should be established Wikimedia researchers or team up with one.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

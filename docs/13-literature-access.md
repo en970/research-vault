@@ -218,6 +218,8 @@ Ask the author for a copy. Authors are legally entitled to share their own manus
 
 **Caveats.** Say this plainly because newcomers do not believe it: this works, often within a day, and researchers are generally pleased to be asked. It works best for papers less than about 15 years old where the author is still contactable. It does not scale to a systematic review of 400 papers, and do not ask for a PDF the publisher has already made open — check Unpaywall first. ORCID itself is free, registration is optional for lookups, and the public API needs no key for basic record retrieval.
 
+*Also listed under: funding.*
+
 ### [ERIC (Education Resources Information Center)](https://eric.ed.gov)
 
 `Free` · beginner 5/5 · education literature index
@@ -446,7 +448,7 @@ Given a DOI, returns whether a legal free-to-read copy exists and where, disting
 
 **Caveats.** The `email` parameter is mandatory — omit it and the API returns HTTP 422. Coverage is Crossref DOIs only: DataCite DOIs are deliberately excluded (nearly all are OA anyway), and a non-Crossref DOI returns 404. Since OurResearch's 'Walden' rewrite, Unpaywall is no longer a separate database — it is a legacy-compatible format served from the same OpenAlex pipeline, kept stable for the ecosystem built on it. For new code, query OpenAlex directly. The daily Data Feed is a paid subscription; the per-DOI API, extension and Simple Query Tool remain free.
 
-*Also listed under: physics, chemistry, social.*
+*Also listed under: physics, chemistry, medicine, social.*
 
 ### [WorldCat](https://www.worldcat.org)
 

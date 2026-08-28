@@ -293,7 +293,9 @@
       "beginner": 5,
       "notes": "Say this plainly because newcomers do not believe it: this works, often within a day, and researchers are generally pleased to be asked. It works best for papers less than about 15 years old where the author is still contactable. It does not scale to a systematic review of 400 papers, and do not ask for a PDF the publisher has already made open — check Unpaywall first. ORCID itself is free, registration is optional for lookups, and the public API needs no key for basic record retrieval.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "funding"
+      ]
     },
     {
       "name": "ERIC (Education Resources Information Center)",
@@ -617,6 +619,7 @@
       "also_in": [
         "physics",
         "chemistry",
+        "medicine",
         "social"
       ]
     },

@@ -647,7 +647,7 @@
       "registration": "application",
       "beginner": 4,
       "notes": "Awards are modest and in kind, not money, so they cannot cover salaries, travel or bench fees - this is a way to unblock a project missing one piece of hardware. The maximum award value is not published on the application page; ask before planning around a figure. Focus is biodiversity conservation, so molecular or biomedical work is generally out of scope.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -661,7 +661,7 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Windows are short and firmly enforced - check the current dates on the site, which lists them a year ahead. The fund is species-focused: habitat, education or broad ecosystem projects without a clear target species tend not to fit. Award sizes are not stated on the criteria page; browse the Grant Explorer for realistic figures in your taxon.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -675,7 +675,7 @@
       "registration": "application",
       "beginner": 3,
       "notes": "The move away from open Level I/II calls is significant: there is no longer a permanently open general application, so success depends on an RFP matching your topic and region. Institutional affiliation is not stated as a requirement - the Explorer community explicitly includes people outside academia - but strong local context and partnerships are weighted heavily.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -703,10 +703,8 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Eligibility is genuinely narrow: nature conservation focus, threatened species, project located in an eligible (developing or emerging economy) country, and the applicant must be a current or recent master's/doctoral student or equivalent early-career conservationist. Undergraduates are not supported. Unsuccessful applicants must wait 12 months to reapply. Not a route for lab-based or biomedical work.",
-      "canonical": true,
-      "also_in": [
-        "earth"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "EMBL-EBI Training",

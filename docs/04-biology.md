@@ -520,8 +520,6 @@ UK charity funding nature conservation and pilot projects led by early-career co
 
 **Caveats.** Eligibility is genuinely narrow: nature conservation focus, threatened species, project located in an eligible (developing or emerging economy) country, and the applicant must be a current or recent master's/doctoral student or equivalent early-career conservationist. Undergraduates are not supported. Unsuccessful applicants must wait 12 months to reapply. Not a route for lab-based or biomedical work.
 
-*Also listed under: earth.*
-
 ## Learning
 
 ### [EMBL-EBI Training](https://www.ebi.ac.uk/training/)

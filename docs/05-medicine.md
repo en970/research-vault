@@ -148,6 +148,8 @@ MIT-run archive of 428 clinical and physiological datasets as of August 2026, sp
 
 **Caveats.** Only the 232 open projects need no account. Restricted projects need a free login plus a signed DUA; credentialed projects (including MIMIC and eICU) need identity verification and human-research training — see the CITI Program entry in this file. Credentialing review is manual and can take days to weeks.
 
+*Also listed under: neuro-psych.*
+
 ### [RxNav and the RxNorm APIs](https://lhncbc.nlm.nih.gov/RxNav/APIs/index.html)
 
 `Free` · beginner 4/5 · drug terminology and normalisation
@@ -187,6 +189,8 @@ USAID-funded Demographic and Health Surveys: nationally representative household
 **Access.** Register a project, state your research question, and receive dataset download rights in Stata, SPSS, SAS and flat formats. Aggregate indicators need no login through STATcompiler and the keyless DHS API (`https://api.dhsprogram.com/rest/dhs/data?countryIds=KE&indicatorIds=...`). R: `install.packages('rdhs')`.
 
 **Caveats.** Microdata access is per-project and per-country: you must describe your study and request each country's files, and approval is manual, usually taking days. GPS files require a separate request. Redistribution of microdata is prohibited. Surveys use complex multi-stage designs, so weights and clustering are mandatory in analysis.
+
+*Also listed under: social.*
 
 ### [UMLS Metathesaurus](https://www.nlm.nih.gov/research/umls/index.html)
 

@@ -198,7 +198,9 @@
       "beginner": 4,
       "notes": "Only the 232 open projects need no account. Restricted projects need a free login plus a signed DUA; credentialed projects (including MIMIC and eICU) need identity verification and human-research training — see the CITI Program entry in this file. Credentialing review is manual and can take days to weeks.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "neuro-psych"
+      ]
     },
     {
       "name": "RxNav and the RxNorm APIs",
@@ -254,7 +256,9 @@
       "beginner": 3,
       "notes": "Microdata access is per-project and per-country: you must describe your study and request each country's files, and approval is manual, usually taking days. GPS files require a separate request. Redistribution of microdata is prohibited. Surveys use complex multi-stage designs, so weights and clustering are mandatory in analysis.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "social"
+      ]
     },
     {
       "name": "UMLS Metathesaurus",
@@ -519,7 +523,7 @@
       "registration": "email",
       "beginner": 5,
       "notes": "You must pass a real address in the `email` parameter or the API returns HTTP 422. Roughly 100,000 calls per day is the stated soft limit; heavy users should take the data dump. It finds only copies that authors or publishers actually posted, so a large share of clinical literature returns is_oa=false — that is an accurate answer, not a failure.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

@@ -197,7 +197,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Access is tiered: open, restricted (DUA), credentialed (training plus DUA, and credentialing asks for a reference — awkward for unaffiliated researchers). Most of the classic EEG and sleep sets are in the open tier. Records are in WFDB or EDF, not BIDS.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -579,7 +579,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Compute is donated, so queue times vary and there is no throughput guarantee; heavy users are expected to bring their own allocation eventually. Not suitable for identifiable or restricted clinical data — check your ethics approval before uploading. Apps are contributed, so read the App's provenance before trusting the output.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
