@@ -7,7 +7,7 @@
       "url": "https://opendata.cern.ch",
       "category": "data",
       "subcategory": "particle-physics data",
-      "summary": "Public archive of collision data, simulations, software environments, and documentation from CERN experiments including ALICE, ATLAS, CMS, DELPHI, LHCb, OPERA, and TOTEM. CMS alone has released roughly 5 PB of real and simulated data since 2014; every dataset gets a DOI and an open licence (mostly CC0).",
+      "summary": "Public archive of collision data, simulations, software environments, and documentation from CERN experiments including ALICE, ATLAS, CMS, DELPHI, LHCb, OPERA, and TOTEM — 82,385 records as of August 2026. CMS alone has released several petabytes of real and simulated data since 2014; every dataset gets a DOI and an open licence (mostly CC0).",
       "access": "Web interface with direct downloads; bulk retrieval via `pip install cernopendata-client`; analysis environments ship as Docker images and CVMFS repositories so old software still runs.",
       "free": "free",
       "registration": "none",
@@ -31,7 +31,7 @@
       "url": "https://www.hepdata.net",
       "category": "data",
       "subcategory": "published particle-physics results",
-      "summary": "Repository of the numerical data behind published particle-physics results — cross-section tables, exclusion limits, correlation matrices — built on the Durham database accumulated over four decades and actively fed by ATLAS, CMS, LHCb and others. Hosted at CERN infrastructure, run from Durham/IPPP.",
+      "summary": "Repository of the numerical data behind published particle-physics results — cross-section tables, exclusion limits, correlation matrices — built on the Durham database accumulated over four decades and actively fed by ATLAS, CMS, LHCb and others. Hosted on CERN infrastructure, run from Durham/IPPP.",
       "access": "Web interface; every table downloads as CSV, YAML, JSON, or ROOT; records are query-able via a REST/JSON API; submissions are prepared with `pip install hepdata-lib`.",
       "free": "free",
       "registration": "none",
@@ -43,7 +43,7 @@
       "url": "https://pdg.lbl.gov",
       "category": "data",
       "subcategory": "evaluated particle properties",
-      "summary": "The Review of Particle Physics: evaluated masses, widths, branching ratios and limits for all known particles, plus ~100 review articles on topics from the Standard Model to statistics. The 2026 edition is free online; pdgLive gives interactive access to every measurement with references.",
+      "summary": "The Review of Particle Physics: evaluated masses, widths, branching ratios and limits for all known particles, plus ~100 review articles on topics from the Standard Model to statistics. The current edition is free online; pdgLive gives interactive access to every measurement with references.",
       "access": "pdgLive web interface at pdg.lbl.gov; machine-readable access via `pip install pdg` (docs at pdgapi.lbl.gov); summary tables and data files as direct downloads.",
       "free": "free",
       "registration": "none",
@@ -55,7 +55,7 @@
       "url": "https://www.nndc.bnl.gov",
       "category": "data",
       "subcategory": "nuclear structure and reaction data",
-      "summary": "Brookhaven's nuclear data hub: ENSDF evaluated nuclear structure and decay data, the ENDF/B-VIII.1 evaluated reaction library (released August 2024), the NuDat 3 interactive chart of nuclides, XUNDL, and the NSR bibliography.",
+      "summary": "Brookhaven's nuclear data hub: ENSDF evaluated nuclear structure and decay data, the ENDF/B-VIII.1 evaluated reaction library (released 2024), the NuDat 3 interactive chart of nuclides, XUNDL, and the NSR bibliography.",
       "access": "Web interfaces (NuDat 3 for browsing, ENDF retrieval forms); ENDF/B-VIII.1 available as direct download in ENDF-6 and GNDS formats.",
       "free": "free",
       "registration": "none",
@@ -87,6 +87,18 @@
       "notes": "Cite the database version and retrieval date; there is no official bulk download of the entire database."
     },
     {
+      "name": "NIST Physical Reference Data",
+      "url": "https://www.nist.gov/pml/productsservices/physical-reference-data",
+      "category": "data",
+      "subcategory": "radiation interaction and atomic reference data",
+      "summary": "NIST's hub of free reference databases used daily by experimentalists: XCOM photon cross sections and X-ray mass attenuation coefficients, ESTAR/ASTAR/PSTAR stopping-power and range tables for electrons, protons and alpha particles, X-ray and gamma-ray interaction data, molecular spectroscopy, isotopic compositions and atomic weights.",
+      "access": "Free web query forms per database under physics.nist.gov (e.g. physics.nist.gov/xcom, physics.nist.gov/Star); results come back as HTML/ASCII tables you can paste into analysis code.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Web forms only — no bulk API or single download for the whole collection, so scripted use means scraping or caching your own tables. Record the database version and retrieval date when citing."
+    },
+    {
       "name": "CODATA Fundamental Physical Constants (NIST)",
       "url": "https://physics.nist.gov/cuu/Constants/",
       "category": "data",
@@ -97,18 +109,6 @@
       "registration": "none",
       "beginner": 5,
       "notes": "A new CODATA adjustment lands every four years — check which set your software version ships before high-precision work."
-    },
-    {
-      "name": "NIST Chemistry WebBook",
-      "url": "https://webbook.nist.gov",
-      "category": "data",
-      "subcategory": "thermophysical and spectroscopic data",
-      "summary": "Evaluated thermochemical, thermophysical and ion-energetics data plus IR, UV/Vis and mass spectra for thousands of chemical species, including high-accuracy fluid properties (REFPROP-grade equations of state) for common gases and liquids.",
-      "access": "Web interface with search by name, formula, CAS number; per-species data pages with downloadable spectra.",
-      "free": "free",
-      "registration": "none",
-      "beginner": 4,
-      "notes": "Sits on the physics-chemistry boundary; for experimental physicists it is the fastest free route to vapour pressures, heat capacities and reference spectra."
     },
     {
       "name": "Materials Project",
@@ -180,7 +180,7 @@
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "Steep learning curve; if you only need to read .root files in Python, uproot (Scikit-HEP) is far lighter. The ROOT Forum (root-forum.cern.ch) is an active help channel answered by developers."
+      "notes": "Steep learning curve; if you only need to read .root files in Python, uproot (Scikit-HEP) is far lighter. The ROOT Forum (root-forum.cern.ch) is an active help channel answered by the developers themselves — the best place to ask ROOT questions."
     },
     {
       "name": "Geant4",
@@ -204,7 +204,7 @@
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "Physics choices (tunes, PDF sets) matter for results; the online manual is the authoritative reference."
+      "notes": "Physics choices (tunes, PDF sets from LHAPDF) matter for results; the online manual is the authoritative reference."
     },
     {
       "name": "MadGraph5_aMC@NLO",
@@ -217,6 +217,18 @@
       "registration": "none",
       "beginner": 2,
       "notes": "LO studies of simple processes run comfortably on a laptop; NLO with matching/merging gets computationally heavy. Pair with Pythia for showering."
+    },
+    {
+      "name": "Delphes",
+      "url": "https://cp3.irmp.ucl.ac.be/projects/delphes",
+      "category": "software",
+      "subcategory": "fast detector simulation",
+      "summary": "C++ framework for fast, parametrised simulation of a generic collider detector — tracking in a magnetic field, calorimeters, muon system, pile-up — reading LHE or HepMC events and writing reconstructed objects (isolated leptons, jets, missing transverse energy) in a ROOT tree. Ships detector cards for ATLAS, CMS and future-collider concepts.",
+      "access": "`git clone https://github.com/delphes/delphes` and `make` against a ROOT installation; run `./DelphesPythia8 cards/delphes_card_CMS.tcl ...`, then analyse the output tree with ROOT or uproot.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Parametrised response, not full Geant4 — appropriate for phenomenology and sensitivity estimates, not for claims about detector-level effects. Together with MadGraph and Pythia it makes a complete collider-study chain that runs on a laptop."
     },
     {
       "name": "Scikit-HEP",
@@ -235,7 +247,7 @@
       "url": "https://qutip.org",
       "category": "software",
       "subcategory": "open quantum systems simulation",
-      "summary": "Open-source Python library for simulating the dynamics of open quantum systems (master equations, Monte Carlo trajectories, arbitrary time-dependent Hamiltonians), standard in quantum optics, superconducting circuits and trapped ions. Version 5.3.1 released August 2026; NumFOCUS-affiliated.",
+      "summary": "Open-source Python library for simulating the dynamics of open quantum systems (master equations, Monte Carlo trajectories, arbitrary time-dependent Hamiltonians), standard in quantum optics, superconducting circuits and trapped ions. Version 5.3.1 was released on 4 August 2026; NumFOCUS-affiliated, BSD-licensed.",
       "access": "`pip install qutip`; extensive tutorial notebooks at qutip.org.",
       "free": "free",
       "registration": "none",
@@ -252,19 +264,31 @@
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "The SDK and simulator are fully free with no account; only hardware execution requires IBM registration (see IBM Quantum Platform entry)."
+      "notes": "The SDK and simulator are fully free with no account; only hardware execution requires IBM registration (see IBM Quantum Platform entry). PennyLane (pennylane.ai, `pip install pennylane`) is the hardware-agnostic alternative if you want autodifferentiation and non-IBM backends."
     },
     {
-      "name": "PennyLane",
-      "url": "https://pennylane.ai",
+      "name": "Stim",
+      "url": "https://github.com/quantumlib/Stim",
       "category": "software",
-      "subcategory": "quantum machine learning / differentiable quantum programming",
-      "summary": "Xanadu's open-source (Apache-2.0) Python framework for differentiable quantum programming — variational circuits, quantum chemistry and quantum ML — with automatic differentiation and interfaces to PyTorch, JAX and multiple hardware backends.",
-      "access": "`pip install pennylane`; large collection of free demos and codebook exercises on pennylane.ai.",
+      "subcategory": "stabilizer / quantum error correction simulation",
+      "summary": "Google Quantum AI's Apache-2.0 fast stabilizer circuit simulator, the de facto standard for quantum error-correction research: simulates surface-code circuits with millions of gates in seconds and emits detector-error models for decoders such as PyMatching.",
+      "access": "`pip install stim pymatching sinter`; build a circuit with `stim.Circuit`, sample detection events, and decode — everything runs on a laptop CPU.",
       "free": "free",
       "registration": "none",
-      "beginner": 4,
-      "notes": "Simulators run locally; hardware backends require accounts with the respective providers."
+      "beginner": 3,
+      "notes": "Stabilizer (Clifford) circuits only — it cannot simulate universal quantum computation. Threshold estimates that would need a cluster with state-vector methods become a coffee-break job here."
+    },
+    {
+      "name": "TeNPy",
+      "url": "https://tenpy.readthedocs.io",
+      "category": "software",
+      "subcategory": "tensor networks / many-body quantum",
+      "summary": "Tensor Network Python: matrix-product-state library for one- and quasi-one-dimensional quantum many-body systems — DMRG ground states, TEBD/TDVP time evolution, finite and infinite chains, built-in Hubbard, Heisenberg and fermionic models. Apache-2.0, actively developed (github.com/tenpy/tenpy).",
+      "access": "`pip install physics-tenpy`; define a model class or use a built-in one and run DMRG from a Python script or YAML config.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Spin chains and ladders converge on a laptop; genuinely two-dimensional systems still need large bond dimensions and serious compute. You need to understand MPS/entanglement scaling to trust the output — the docs include an introduction, and QuSpin (exact diagonalisation) is the complementary tool for small systems."
     },
     {
       "name": "Kwant",
@@ -277,6 +301,30 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Development pace is slow but the package is stable and still the community standard for this class of problem; the topocondmat.org course teaches it in context."
+    },
+    {
+      "name": "Meep",
+      "url": "https://meep.readthedocs.io",
+      "category": "software",
+      "subcategory": "computational electromagnetics (FDTD)",
+      "summary": "MIT's free finite-difference time-domain solver for Maxwell's equations — waveguides, photonic crystals, metasurfaces, resonators, LDOS, scattering and adjoint-based optimisation — scripted from Python. GPL-2.0 and actively developed (github.com/NanoComp/meep).",
+      "access": "`conda install -c conda-forge pymeep`; the docs carry a graded tutorial series from a straight waveguide upwards. Companion package MPB computes photonic band structures.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "2D simulations run comfortably on a laptop; 3D structures grow quickly in memory and runtime (parallel builds exist via `pymeep=*=mpi_mpich_*`). Resolution convergence checks are essential — FDTD results are meaningless without them."
+    },
+    {
+      "name": "OpenMC",
+      "url": "https://openmc.org",
+      "category": "software",
+      "subcategory": "Monte Carlo neutron and photon transport",
+      "summary": "Community-developed, MIT-licensed Monte Carlo transport code with a full Python API: k-eigenvalue and fixed-source calculations, constructive solid geometry or CAD models, depletion, a flexible tally system, and hybrid MPI/OpenMP parallelism. Developed openly at github.com/openmc-dev/openmc.",
+      "access": "`conda install -c conda-forge openmc` or build from source; build geometry, materials and tallies in Python (`import openmc`), then `openmc.run()`. Free HDF5 cross-section libraries derived from ENDF/B are downloadable from openmc.org/data-libraries.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "The realistic free route to neutron transport: MCNP and SERPENT are licence-restricted or export-controlled, and Geant4 is aimed at a different regime. Simple criticality benchmarks run in minutes on a laptop; full-core depletion does not."
     },
     {
       "name": "Quantum ESPRESSO",
@@ -300,19 +348,31 @@
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "Force-field choice is the hard part; the mailing list and MatSci forum are active."
+      "notes": "Force-field choice is the hard part; the mailing list and the MatSci.org forum are active and answer beginner questions."
     },
     {
       "name": "openQCD",
       "url": "https://luscher.web.cern.ch/luscher/openQCD/",
       "category": "software",
       "subcategory": "lattice QCD",
-      "summary": "Martin Lüscher's GPL-licensed lattice QCD simulation package (HMC/SMD algorithms, up to 2+1+1 flavours), a reference code of the lattice community; version 2.4.2 released April 2026.",
-      "access": "Source tarball from the website; C code parallelised with MPI; full algorithmic documentation included.",
+      "summary": "Martin Lüscher and Stefan Schaefer's GPL-licensed lattice QCD simulation package (HMC/SMD algorithms, O(a)-improved Wilson quarks, open/SF/periodic boundary conditions, master-field simulations), a reference code of the lattice community; openQCD-2.4.2 is the current release.",
+      "access": "Source tarball from the website; C code parallelised with MPI; full algorithmic documentation included in the distribution.",
       "free": "free",
       "registration": "none",
       "beginner": 1,
       "notes": "Production lattices need HPC allocations, but small test lattices run on a workstation and the code doubles as a masterclass in simulation algorithms."
+    },
+    {
+      "name": "PyMeasure",
+      "url": "https://pymeasure.readthedocs.io",
+      "category": "software",
+      "subcategory": "lab instrument control and data acquisition",
+      "summary": "MIT-licensed Python package for running real experiments: community-contributed drivers for a large catalogue of lab instruments (source-measure units, lock-in amplifiers, oscilloscopes, function generators, power supplies) over GPIB/USB/serial/TCP, plus a Procedure/Worker framework with live plotting and CSV logging.",
+      "access": "`pip install pymeasure`; instantiate a driver (e.g. `Keithley2400('GPIB::24')`) over a PyVISA resource string and script your sweep; the GUI classes wrap a procedure into a live-plot application.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Needs a VISA backend — `pyvisa-py` works with no vendor drivers, which matters if you cannot buy NI licences. Driver coverage is uneven: check the supported-instruments list before committing, and expect to write or extend a driver. QCoDeS (github.com/microsoft/Qcodes) is the equivalent standard in quantum-transport labs."
     },
     {
       "name": "SciPy ecosystem",
@@ -336,19 +396,31 @@
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "First-time submitters need endorsement per category. An institutional email can auto-endorse; unaffiliated authors must ask an established arXiv author (endorsers are flagged on abstract pages) to endorse them — workable but a real hurdle, so line up an endorser before you need one."
+      "notes": "First-time submitters need endorsement per category. Authors with a recognised institutional email address can be auto-endorsed; unaffiliated authors must ask an established arXiv author to endorse them — abstract pages carry a 'Which authors of this paper are endorsers?' link, and arXiv asks that you approach someone who knows you and your subject rather than mass-emailing. A real hurdle, so line up an endorser before you need one."
     },
     {
       "name": "INSPIRE-HEP",
       "url": "https://inspirehep.net",
       "category": "literature",
       "subcategory": "bibliographic database (high-energy physics)",
-      "summary": "The high-energy physics community's bibliographic database: about 1.88 million literature records (August 2026) with citation graphs, author profiles, conference and jobs listings; run by a collaboration including CERN, DESY, Fermilab, IHEP, IN2P3 and SLAC.",
-      "access": "Web search (powerful query syntax); free REST API documented at github.com/inspirehep/rest-api-doc — no key required.",
+      "summary": "The high-energy physics community's bibliographic database: 1,880,967 literature records (checked August 2026) with citation graphs, author profiles, conference and jobs listings; run by a collaboration including CERN, DESY, Fermilab, IHEP, IN2P3 and SLAC.",
+      "access": "Web search (powerful query syntax); free REST API documented at github.com/inspirehep/rest-api-doc — no key required, e.g. `https://inspirehep.net/api/literature?q=t+higgs&size=25`.",
       "free": "free",
       "registration": "none",
       "beginner": 4,
       "notes": "Coverage is deep for HEP, nuclear and astro-particle physics but not for condensed matter or general physics — use it for what it is."
+    },
+    {
+      "name": "Unpaywall",
+      "url": "https://unpaywall.org",
+      "category": "literature",
+      "subcategory": "legal open-access lookup",
+      "summary": "Index of legally posted free versions of paywalled articles, harvested from publisher OA pages, institutional and subject repositories and preprint servers, run by the non-profit OurResearch. Delivered as a browser extension that flags a free copy when you land on a paywalled article, and as a free DOI-keyed REST API.",
+      "access": "Install the Chrome/Firefox extension; or query `https://api.unpaywall.org/v2/{DOI}?email=you@example.com` and read `best_oa_location.url_for_pdf`; full database snapshots are also released for free.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Only legal copies — it finds nothing when no author or publisher has posted one. In physics most of what it surfaces is the arXiv version, so checking arXiv first is often quicker; the real value is older or applied-physics literature outside arXiv's habits. The API asks for your email address in the query string rather than a key."
     },
     {
       "name": "Living Reviews in Relativity",
@@ -387,6 +459,18 @@
       "notes": "Selective venue with strong reputation in quantum information; the no-questions-asked waiver makes it genuinely open to unfunded authors."
     },
     {
+      "name": "Journal of Open Source Software (JOSS)",
+      "url": "https://joss.theoj.org",
+      "category": "publishing",
+      "subcategory": "diamond open-access software journal",
+      "summary": "Peer-reviewed, developer-friendly journal (ISSN 2475-9066) for research software: no fees for authors or readers, review conducted openly in GitHub issues against a published checklist covering the software, its tests and its documentation, and accepted papers get a Crossref DOI and are indexed.",
+      "access": "Submit at joss.theoj.org with a public repository URL and a short `paper.md` (roughly 250-1000 words); the whole review happens in a public GitHub issue.",
+      "free": "free",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "The paper is deliberately minimal — reviewers judge the software, so it must be substantial, open-source and documented, not a script. The practical way to turn a simulation or analysis package into a citable publication with no APC when you have no grant to pay one."
+    },
+    {
       "name": "SCOAP3",
       "url": "https://scoap3.org",
       "category": "publishing",
@@ -415,12 +499,12 @@
       "url": "https://quantum.cloud.ibm.com",
       "category": "compute",
       "subcategory": "free quantum hardware access",
-      "summary": "Free access to IBM's superconducting quantum processors (100+ qubit systems): the Open Plan grants 10 minutes of QPU runtime per 28-day rolling window, and a March 2026 promotion lets active Open Plan users opt in to an additional 180 minutes spread over 12 months.",
+      "summary": "Free access to IBM's superconducting quantum processors (100+ qubit systems): the Open Plan grants up to 10 minutes of QPU runtime per 28-day rolling window, and from 16 March 2026 active Open Plan users can opt in to an additional 180 minutes spread over 12 months.",
       "access": "Register a free IBM Cloud account at quantum.cloud.ibm.com, create an Open Plan instance, then `pip install qiskit qiskit-ibm-runtime` and submit jobs with your API token.",
       "free": "free-tier",
       "registration": "api-key",
       "beginner": 4,
-      "notes": "10 minutes is QPU execution time, not wall-clock — enough for real small-scale experiments if you simulate first and batch jobs. Queues on popular systems can be hours. Plan terms have changed before; check the plans-overview docs page for current limits."
+      "notes": "10 minutes is QPU execution time, not wall-clock — enough for real small-scale experiments if you simulate first and batch jobs. Open Plan instances are limited to the us-east region and queues on popular systems can be hours. Plan terms have changed before; check the plans-overview docs page for current limits."
     },
     {
       "name": "OSG Open Science Pool (OSPool)",
@@ -433,6 +517,30 @@
       "registration": "application",
       "beginner": 2,
       "notes": "Eligibility is restricted to researchers affiliated with a US-based academic, government, or non-profit institution — not available to unaffiliated or non-US researchers. Jobs are preemptible; checkpoint or keep them short."
+    },
+    {
+      "name": "EuroHPC JU supercomputer access calls",
+      "url": "https://eurohpc-ju.europa.eu/access-our-supercomputers/eurohpc-access-calls_en",
+      "category": "compute",
+      "subcategory": "European HPC allocations",
+      "summary": "Peer-reviewed allocations on Europe's petascale and pre-exascale systems (LUMI, Leonardo, MareNostrum 5, JUPITER and others). Five access modes were open in August 2026; Benchmark Access and Development Access are continuously open calls with a maximum of two weeks from submission to resource start date, while Regular, Extreme Scale and the AI for Science mode run to cut-off dates.",
+      "access": "Apply through the EuroHPC access portal linked from each call page — a technical proposal plus a named principal investigator; Development Access is the low-friction route for porting and scaling a code before a large request.",
+      "free": "free",
+      "registration": "application",
+      "beginner": 2,
+      "notes": "Eligibility is limited to users established or located in an EU Member State or a country associated with Horizon 2020 — no route for researchers elsewhere. Allocations are awarded on scientific and technical review rather than payment; read each call's text for its conditions, including expectations to publish results."
+    },
+    {
+      "name": "Kaggle Notebooks",
+      "url": "https://www.kaggle.com/code",
+      "category": "compute",
+      "subcategory": "free GPU notebooks",
+      "summary": "Free hosted Jupyter environment with NVIDIA GPU and TPU accelerators on a fixed weekly quota (30 GPU-hours per week at the time of writing), sessions capped at about 12 hours, and free hosting for datasets you attach — usable from anywhere, with no institutional affiliation needed.",
+      "access": "Free account at kaggle.com, create a notebook, select the accelerator in the sidebar; `pip install` works inside the session and you can attach public datasets or your own uploads.",
+      "free": "free-registration",
+      "beginner": 5,
+      "registration": "email",
+      "notes": "Accelerators require phone verification of the account. Quotas are shown in the notebook editor and do change — check there rather than trusting any published figure. Only /kaggle/working persists as notebook output; everything else is wiped when the session ends. Google Colab's free tier is the obvious alternative: no fixed quota, but GPU access is best-effort, sessions run at most 12 hours and idle notebooks are killed."
     },
     {
       "name": "mybinder.org",
@@ -471,6 +579,18 @@
       "notes": "Small awards by design — meant to bootstrap a project, not fund a salary. Their Discord is also one of the livelier open quantum-software communities."
     },
     {
+      "name": "Google Summer of Code",
+      "url": "https://summerofcode.withgoogle.com",
+      "category": "funding",
+      "subcategory": "paid open-source contribution programme",
+      "summary": "Google-funded programme that pairs new open-source contributors with mentoring organisations for 8-22 week projects and pays a stipend on completion. Eligibility is being 18 or over, resident in a non-embargoed country, and new to open source — no student status, degree, or institutional affiliation required. Physics and scientific-computing organisations (CERN-HSF among the long-running ones) mentor projects most years.",
+      "access": "Browse the accepted-organisation list published each spring at summerofcode.withgoogle.com, engage with a project's issue tracker and mentors, then submit a proposal in the contributor application window.",
+      "free": "free",
+      "registration": "application",
+      "beginner": 3,
+      "notes": "Stipend size varies by country of residence. Highly competitive, and accepted proposals almost always come from people who contributed a patch or two beforehand. The organisation list is re-chosen every year — never assume a given project will take part again."
+    },
+    {
       "name": "ICTP — Abdus Salam International Centre for Theoretical Physics",
       "url": "https://www.ictp.it",
       "category": "funding",
@@ -481,6 +601,18 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Most support is restricted to scientists from developing countries; selection is competitive. Lecture recordings and diploma course materials are freely watchable by anyone."
+    },
+    {
+      "name": "Perimeter Scholars International (PSI)",
+      "url": "https://perimeterinstitute.ca/psi-masters-program",
+      "category": "funding",
+      "subcategory": "fully funded master's in theoretical physics",
+      "summary": "One-year master's programme at Perimeter Institute (Waterloo, Canada) taught by working theorists, awarding an MSc in Physics from the University of Waterloo plus a PSI certificate. Scholarships are extended to up to all accepted students and cover full tuition, accommodation, meals, a living stipend, health insurance, IT equipment and learning materials, and a travel supplement.",
+      "access": "Apply online through the PSI admissions pages at perimeterinstitute.ca during the annual application window; consideration for the full scholarship is part of the admissions process.",
+      "free": "free",
+      "registration": "application",
+      "beginner": 3,
+      "notes": "Highly selective, and theory-only (quantum fields and strings, gravity, quantum information, condensed matter, cosmology). Students are expected to apply for any external funding they qualify for (e.g. NSERC in Canada). The lecture courses themselves are separately free to anyone via PIRSA."
     },
     {
       "name": "NumFOCUS Small Development Grants",
@@ -531,18 +663,6 @@
       "notes": "Notes assume the mathematical maturity of a physics degree; the QFT and Statistical Physics sets are the community's most-recommended free treatments of those subjects."
     },
     {
-      "name": "The Theoretical Minimum",
-      "url": "https://theoreticalminimum.com",
-      "category": "learning",
-      "subcategory": "video lecture series",
-      "summary": "Leonard Susskind's Stanford Continuing Studies lecture series for people who 'know a bit of algebra and calculus': full video courses on classical mechanics, quantum mechanics, relativity, cosmology, statistical mechanics and black holes.",
-      "access": "Watch free at theoreticalminimum.com or on the Stanford Institute for Theoretical Physics YouTube channel.",
-      "free": "free",
-      "registration": "none",
-      "beginner": 5,
-      "notes": "Companion books are commercial; the videos are complete on their own."
-    },
-    {
       "name": "PIRSA — Perimeter Institute Recorded Seminar Archive",
       "url": "https://pirsa.org",
       "category": "learning",
@@ -553,6 +673,18 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Research-level content; the PSI course collections are the most structured entry point."
+    },
+    {
+      "name": "HSF Training Center",
+      "url": "https://hsf-training.org/training-center/",
+      "category": "learning",
+      "subcategory": "research software training for physics",
+      "summary": "The HEP Software Foundation's free, self-paced lesson modules — the training the field itself points new students to. Basics (UNIX shell, git, Python, SSH), software development (advanced git, CI/CD on GitHub and GitLab, Docker, Singularity, unit testing, CMake, a full HEP C++ course), HEP tools (ROOT, Scikit-HEP, pyhf, REANA, UnROOT for Julia) and analysis (array-oriented programming, deep learning for particle physicists, ML on GPUs).",
+      "access": "Work through the lessons in the browser at hsf-training.org; every module is a Carpentries-style page with runnable exercises, sources on GitHub. Live workshops are announced on the same site.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Assumes you can already program a little. This is the fastest bridge from 'I know some Python' to actually opening LHC open data — start with the Scikit-HEP and ROOT modules if that is the goal."
     },
     {
       "name": "IBM Quantum Learning",
@@ -637,6 +769,18 @@
       "registration": "none",
       "beginner": 4,
       "notes": "For live help, the Unitary Foundation Discord covers similar ground with faster turnaround."
+    },
+    {
+      "name": "researchseminars.org",
+      "url": "https://researchseminars.org",
+      "category": "community",
+      "subcategory": "open seminar and conference listings",
+      "summary": "Community-maintained, free listing of online and hybrid research seminars, courses and conferences with time-zone-aware schedules and, for most series, public join links; 87 physics series were listed alongside mathematics, computer science and other fields in August 2026.",
+      "access": "Browse or search at researchseminars.org with no account; a free account lets you subscribe to series, export to your calendar, and list a seminar of your own.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Each series sets its own access rules — some need a registration form or a password from the organiser, so a listing is not always an open door. Coverage is strongest in mathematics and mathematical/theoretical physics; experimental series are thinly represented. Still, it is the most practical way for someone with no department to sit in on current research talks."
     }
   ]
 }

@@ -165,6 +165,37 @@ def merge_unit(key: str, title: str, problems: list) -> dict | None:
     return unit
 
 
+def mark_canonical(units: list[dict]) -> None:
+    """Flag one owner per URL, and record where else it is cross-listed.
+
+    A resource central to several fields is written up once per field, each
+    with its own framing — that is worth keeping inside a field. But the
+    unfiltered view should show it once, so exactly one copy is marked
+    canonical: the cross-cutting unit's if there is one (Zenodo belongs to
+    publishing, not to physics), otherwise the most detailed write-up.
+    """
+    groups: dict[str, list[tuple[dict, dict]]] = {}
+    for u in units:
+        for r in u["resources"]:
+            groups.setdefault(norm_url(r["url"]), []).append((u, r))
+
+    for copies in groups.values():
+        if len(copies) == 1:
+            u, r = copies[0]
+            r["canonical"] = True
+            r["also_in"] = []
+            continue
+        # Prefer a cross-cutting owner; break ties on the fuller write-up.
+        owner = min(copies, key=lambda ur: (
+            ur[0]["kind"] != "cross-cutting",
+            -len(ur[1]["summary"]) - len(ur[1]["notes"]),
+        ))
+        others = [u["unit"] for u, _ in copies if u is not owner[0]]
+        for u, r in copies:
+            r["canonical"] = u is owner[0]
+            r["also_in"] = others if r["canonical"] else []
+
+
 def main() -> int:
     problems: list[str] = []
     units = []
@@ -174,20 +205,15 @@ def main() -> int:
         if u:
             units.append(u)
 
-    # Cross-unit URL overlap: allowed, but reported for review.
-    seen: dict[str, str] = {}
-    overlaps = 0
-    for u in units:
-        for r in u["resources"]:
-            uk = norm_url(r["url"])
-            if uk in seen and seen[uk] != u["unit"]:
-                overlaps += 1
-            else:
-                seen.setdefault(uk, u["unit"])
+    mark_canonical(units)
+    for u in units:  # rewrite with the canonical flags resolved across units
+        (OUT / f"{u['unit']}.json").write_text(
+            json.dumps(u, indent=2, ensure_ascii=False) + "\n")
 
     total = sum(len(u["resources"]) for u in units)
+    unique = sum(1 for u in units for r in u["resources"] if r["canonical"])
     print(f"\nTotal: {total} entries across {len(units)} units; "
-          f"{overlaps} cross-unit URL overlaps (allowed, review if odd).")
+          f"{unique} unique resources, {total - unique} cross-listed copies.")
     if problems:
         report = ROOT / "data" / "merge-report.txt"
         report.write_text("\n".join(problems) + "\n")

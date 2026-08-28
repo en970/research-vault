@@ -399,6 +399,8 @@ const FREE_LABELS = { "free": "Free", "free-registration": "Free · sign-up", "f
 
 const ALL = [];
 UNITS.forEach(u => u.resources.forEach(r => ALL.push({ u, r })));
+const UNIQUE = ALL.filter(x => x.r.canonical !== false);
+const UNIT_TITLE = Object.fromEntries(UNITS.map(u => [u.unit, u.title]));
 
 /* ── helpers ───────────────────────────────────────────────── */
 const $ = id => document.getElementById(id);
@@ -426,6 +428,9 @@ function matches() {
   const tokens = state.q.toLowerCase().split(/\s+/).filter(Boolean);
   const out = [];
   for (const { u, r } of ALL) {
+    /* A resource written up in several fields is listed once, unless you ask
+       for a field — there its field-specific write-up is the point. */
+    if (!state.unit && r.canonical === false) continue;
     if (state.kind && u.kind !== state.kind) continue;
     if (state.unit && u.unit !== state.unit) continue;
     if (state.cats.size && !state.cats.has(r.category)) continue;
@@ -451,6 +456,7 @@ function card({ u, r }) {
       <span class="cat"><span class="dot" style="background:${catVar(r.category)}"></span>${esc(r.category)}</span>
       <span class="sep">·</span><span>${esc(u.title)}</span>
       <span class="sep">·</span><span class="dots" title="beginner-friendliness ${r.beginner}/5" aria-label="beginner-friendliness ${r.beginner} of 5">${dots}</span>
+      ${(r.also_in && r.also_in.length) ? `<span class="sep">·</span><span title="${esc(r.also_in.map(x => UNIT_TITLE[x] || x).join(", "))}">also in ${r.also_in.length}</span>` : ""}
     </div>
     <p class="summary">${esc(r.summary)}</p>
     <div class="access"><code>${esc(r.access)}</code><button class="copybtn" data-copy="${esc(r.access)}" aria-label="Copy access method"><svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1" stroke="currentColor" stroke-width="1.5"/></svg></button></div>
@@ -464,8 +470,8 @@ function render() {
   $("grid").innerHTML = visible.map(card).join("");
   $("empty").style.display = hits.length ? "none" : "";
   $("morewrap").style.display = hits.length > state.shown ? "" : "none";
-  $("rcount").textContent = hits.length === ALL.length
-    ? `${hits.length} entries` : `${hits.length} of ${ALL.length}`;
+  $("rcount").textContent = hits.length === UNIQUE.length
+    ? `${hits.length} entries` : `${hits.length} of ${UNIQUE.length}`;
   const unitObj = UNITS.find(u => u.unit === state.unit);
   $("rtitle").textContent = state.q ? `Results for “${state.q}”`
     : unitObj ? unitObj.title
@@ -487,14 +493,14 @@ function syncChips() {
 
 /* ── build static chrome ───────────────────────────────────── */
 function init() {
-  const total = ALL.length;
-  const noSignupCount = ALL.filter(x => !x.r.registration || x.r.registration === "none").length;
-  const fullyFree = ALL.filter(x => x.r.free === "free").length;
+  const total = UNIQUE.length;
+  const noSignupCount = UNIQUE.filter(x => !x.r.registration || x.r.registration === "none").length;
+  const fullyFree = UNIQUE.filter(x => x.r.free === "free").length;
   $("headcount").textContent = `· ${total}`;
   $("q").placeholder = `Search ${total} resources…`;
   $("stats").innerHTML = [
     [total, "resources"],
-    [UNITS.filter(u => u.kind === "discipline").length, "disciplines"],
+    [UNITS.length, "fields"],
     [fullyFree, "fully free"],
     [noSignupCount, "no sign-up"],
   ].map(([n, l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");

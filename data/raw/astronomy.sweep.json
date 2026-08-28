@@ -19,24 +19,24 @@
       "url": "https://gea.esac.esa.int/archive/",
       "category": "data",
       "subcategory": "astrometry catalogue",
-      "summary": "Gaia DR3 (2022) gives positions, parallaxes, proper motions and photometry for ~1.8 billion sources; DR4, covering 5.5 years of data at ~400 TB including epoch-level data, is scheduled for 2 December 2026.",
-      "access": "ADQL queries in the web archive, or `pip install astroquery` then `from astroquery.gaia import Gaia; Gaia.launch_job('SELECT ...')`; bulk files via direct download. Subsets also served by CDS, AIP and other partner centres.",
+      "summary": "Gaia DR3 (June 2022) gives positions, parallaxes, proper motions and photometry for ~1.8 billion sources; DR4, based on 66 months of data, is scheduled for 2 December 2026, and DR5 is not expected before the end of 2030.",
+      "access": "ADQL queries in the web archive, or `pip install astroquery` then `from astroquery.gaia import Gaia; Gaia.launch_job('SELECT ...')`; bulk files via direct download. Subsets are also served by CDS, AIP and other partner data centres.",
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Anonymous queries have row/job limits; a free account lifts them and keeps query history. ESA has announced breaking interface changes to the archive in preparation for DR4's much larger volume."
+      "notes": "Anonymous queries have row and job limits; a free account lifts them and keeps query history. The Focused Product Release (October 2023) sits between DR3 and DR4. Expect archive interface changes and much larger volumes at DR4."
     },
     {
       "name": "SDSS SkyServer",
       "url": "https://skyserver.sdss.org",
       "category": "data",
       "subcategory": "optical survey database",
-      "summary": "SQL interface to all Sloan Digital Sky Survey releases; DR20 (30 July 2026, third SDSS-V release) adds over 3 million optical spectra from the Black Hole Mapper and Milky Way Mapper programs.",
+      "summary": "SQL interface to all Sloan Digital Sky Survey releases; DR20 (announced 30 July 2026) is the third SDSS-V release and adds the first optical BOSS spectra taken from Las Campanas Observatory for the Milky Way Mapper and Black Hole Mapper programs, plus Local Volume Mapper tiles and value-added catalogues.",
       "access": "Free-form SQL in the browser at skyserver.sdss.org; longer jobs via CasJobs (free account); `astroquery.sdss` for scripted access; flat files from data.sdss.org.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "CasJobs and SciServer compute require a free email registration; SkyServer quick queries have row/time limits."
+      "notes": "CasJobs and SciServer compute require a free email registration; SkyServer quick queries have row and time limits."
     },
     {
       "name": "DESI Legacy Imaging Surveys",
@@ -68,7 +68,7 @@
       "category": "data",
       "subcategory": "time-domain survey",
       "summary": "Northern-sky time-domain survey; bimonthly public data releases of images and light curves are served at IRSA, and the real-time alert stream is redistributed publicly.",
-      "access": "IRSA web tools and light-curve API; `astroquery.ipac.irsa` for scripted queries; alerts via community brokers (ALeRCE, Fink, Lasair, ANTARES) or bulk alert archive at ztf.uw.edu.",
+      "access": "IRSA web tools and light-curve API; `astroquery.ipac.irsa` for scripted queries; alerts via community brokers (ALeRCE, Fink, Lasair, ANTARES) or the bulk alert archive at ztf.uw.edu.",
       "free": "free",
       "registration": "none",
       "beginner": 3,
@@ -84,19 +84,19 @@
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Alternatives with similar free access include Fink (fink-broker.org), Lasair and ANTARES; all serve the world-public Rubin alert stream, so no data rights are needed for alerts."
+      "notes": "Alternatives with similar free access include Fink (fink-broker.org), Lasair and ANTARES; all serve the world-public Rubin alert stream, so no data rights are needed for alerts. This is the single most important free route into Rubin-era time-domain science for unaffiliated researchers."
     },
     {
       "name": "ASAS-SN Sky Patrol",
       "url": "https://asas-sn.osu.edu",
       "category": "data",
       "subcategory": "all-sky photometry",
-      "summary": "All-Sky Automated Survey for Supernovae; Sky Patrol V2.0 serves continuously updated V- and g-band light curves for 111 million catalogued targets, with photometry typically available within about an hour of observation.",
-      "access": "Web query at asas-sn.osu.edu (arbitrary-position photometry) and the V2.0 interface at asas-sn.ifa.hawaii.edu/skypatrol/ with a Python client (pyasassn; docs at asas-sn.ifa.hawaii.edu/documentation).",
+      "summary": "All-Sky Automated Survey for Supernovae: 20 robotic telescopes at four sites (Hawaii, Chile, South Africa, Texas) image the entire visible sky every night to roughly 18th magnitude, and Sky Patrol returns V- and g-band light curves for any position with more than a decade of archival photometry.",
+      "access": "Web query at asas-sn.osu.edu for a handful of targets; Sky Patrol V2.0 at asas-sn.ifa.hawaii.edu/skypatrol/ with a Python client (pyasassn) for bulk work; separate variable-star, photometry and binary-star databases on the same site.",
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Shallow depth (small telephoto lenses) - roughly 17-18 mag limit; ideal for bright variables, supernovae and long baselines rather than faint sources."
+      "notes": "Shallow by design (small telephoto lenses, ~18 mag) - ideal for bright variables, supernovae and long baselines rather than faint sources. The web form is meant for fewer than about 100 targets; use the Sky Patrol client for larger jobs."
     },
     {
       "name": "AAVSO (American Association of Variable Star Observers)",
@@ -108,31 +108,31 @@
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Membership is paid but is NOT required to access data, submit observations, or propose new variables to VSX; registration (free) is required for submissions."
+      "notes": "Membership is paid but is NOT required to access data, submit observations, or propose new variables to VSX; free registration is required for submissions."
     },
     {
       "name": "GWOSC (Gravitational Wave Open Science Center)",
       "url": "https://gwosc.org",
       "category": "data",
       "subcategory": "gravitational-wave strain data",
-      "summary": "Public LIGO-Virgo-KAGRA strain data and event catalogues (through GWTC-4, released 2025, covering O4a), plus tutorials and the annual Open Data Workshop materials.",
+      "summary": "Public LIGO-Virgo-KAGRA strain data and event catalogues, all under CC BY 4.0; the cumulative GWTC event list stands at 391 events with the GWTC-5.0 release, and bulk strain data from the O4b segment of the fourth observing run are now public.",
       "access": "Event portal and bulk downloads at gwosc.org; `pip install gwpy` then `TimeSeries.fetch_open_data('H1', t0, t1)`; the `gwosc` and `pycbc` packages for catalog queries and analysis.",
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Strain data are released after a proprietary period, so the most recent observing-run segments lag public availability."
+      "notes": "Strain data are released after a proprietary period, so the most recent observing-run segments lag public availability, and the catalogue is only updated periodically. The annual Open Data Workshop (April 2026 was the most recent) is a free crash course with recorded lectures and challenge problems."
     },
     {
       "name": "CHIME/FRB Catalogs",
       "url": "https://www.chime-frb.ca/catalog",
       "category": "data",
       "subcategory": "fast radio bursts",
-      "summary": "CHIME/FRB Catalog 2 (2026) contains 4,539 fast radio bursts from 3,641 unique sources detected between July 2018 and September 2023, an 8.5-fold increase over Catalog 1 (536 FRBs, 2021).",
+      "summary": "CHIME/FRB Catalog 2 contains 4,539 fast radio bursts from 3,641 unique sources detected between July 2018 and September 2023, an 8.5-fold increase over Catalog 1 (536 FRBs, 2021).",
       "access": "Browse and download via the catalog site; machine-readable data and utilities via the open-data portal chime-frb-open-data.github.io and `pip install cfod`.",
       "free": "free",
       "registration": "none",
       "beginner": 3,
-      "notes": "Raw voltage/intensity data are not fully public; the catalogs contain burst properties and selected waterfall data."
+      "notes": "Raw voltage and intensity data are not fully public; the catalogs contain burst properties and selected waterfall data."
     },
     {
       "name": "Breakthrough Listen Open Data Archive",
@@ -140,7 +140,7 @@
       "category": "data",
       "subcategory": "radio SETI / technosignatures",
       "summary": "Multi-petabyte public archive of radio (and some optical) SETI observations from the Green Bank Telescope, Parkes and the Automated Planet Finder, the largest open SETI dataset in existence.",
-      "access": "Search and direct download at breakthroughinitiatives.org/opendatasearch (beta interface at seti.berkeley.edu/opendata); read files with `pip install blimpy`; Doppler-drift searches with `turbo_seti`.",
+      "access": "Search and direct download at breakthroughinitiatives.org/opendatasearch (also seti.berkeley.edu/opendata); read files with `pip install blimpy`; Doppler-drift searches with `turbo_seti`.",
       "free": "free",
       "registration": "none",
       "beginner": 2,
@@ -156,27 +156,27 @@
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "No registration for data, but LAT likelihood analysis has a steep learning curve and needs several GB of spacecraft/diffuse files."
+      "notes": "No registration for data, but LAT likelihood analysis has a steep learning curve and needs several GB of spacecraft and diffuse-emission files."
     },
     {
       "name": "IceCube public data releases",
       "url": "https://icecube.wisc.edu/science/data-releases/",
       "category": "data",
       "subcategory": "neutrino astronomy",
-      "summary": "Public neutrino datasets including IceTracks-DR2 (released May 2026): 14 years of track-like neutrino candidates from April 2008 to May 2022 for point-source searches, with documentation and example analyses.",
-      "access": "Direct download from the data-releases page (files hosted on Harvard Dataverse); CSV/HDF5 formats readable with pandas.",
+      "summary": "Public neutrino datasets including IceTracks-DR2 (21 May 2026): 14 years of track-like neutrino events from 2008 to 2022 with improved calibration and point-source analysis tools, extending the previous release by four years.",
+      "access": "Direct download from the data-releases page (files hosted on Harvard Dataverse); CSV/HDF5 formats readable with pandas, with documented instrument response functions.",
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "These are curated event lists and instrument response functions, not raw detector data; questions go to analysis@icecube.wisc.edu."
+      "notes": "These are curated event lists and responses, not raw detector data; questions go to analysis@icecube.wisc.edu."
     },
     {
       "name": "NASA Exoplanet Archive",
       "url": "https://exoplanetarchive.ipac.caltech.edu",
       "category": "data",
       "subcategory": "exoplanet catalogue",
-      "summary": "Vetted database of confirmed exoplanets and their measured parameters, with linked literature references; listed 6,128 confirmed planets as of February 2026 (the 6,000 milestone was passed in September 2025).",
-      "access": "Interactive tables in the browser; TAP/API queries; `pip install astroquery` then `from astroquery.ipac.nexsci.nasa_exoplanet_archive import NasaExoplanetArchive`.",
+      "summary": "Vetted database of confirmed exoplanets and their measured parameters with linked literature references; the front page listed 6,354 confirmed planets on 20 August 2026, alongside candidate tables, transit ephemerides and time-series products.",
+      "access": "Interactive tables in the browser; TAP/API queries at exoplanetarchive.ipac.caltech.edu/TAP; `pip install astroquery` then `from astroquery.ipac.nexsci.nasa_exoplanet_archive import NasaExoplanetArchive`.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
@@ -187,12 +187,12 @@
       "url": "https://www.minorplanetcenter.net",
       "category": "data",
       "subcategory": "asteroid and comet astrometry",
-      "summary": "The IAU's official clearinghouse for astrometric observations and orbits of over 1.4 million minor planets and comets; publishes orbit files (MPCORB), observation databases and NEO confirmation lists.",
+      "summary": "The IAU's official clearinghouse for astrometric observations and orbits of over 1.4 million minor planets and comets; publishes orbit files (MPCORB), observation databases and the NEO Confirmation Page.",
       "access": "Web services and database queries at minorplanetcenter.net; bulk MPCORB downloads; astrometry submissions accepted from anyone observing from a site with an MPC observatory code.",
       "free": "free",
       "registration": "none",
       "beginner": 3,
-      "notes": "Submitting observations requires obtaining an observatory code (free, demonstrated astrometric accuracy required) - a long-standing amateur-professional pathway, now also the public route for Rubin solar-system discoveries."
+      "notes": "Submitting observations requires an observatory code (free, but demonstrated astrometric accuracy is required) - a long-standing amateur-professional pathway, and now also the public route to Rubin solar-system discoveries."
     },
     {
       "name": "JPL Solar System Dynamics (Horizons & SBDB)",
@@ -212,11 +212,11 @@
       "category": "data",
       "subcategory": "catalogue library",
       "summary": "CDS library of more than 20,000 published astronomical catalogues and tables, from small journal tables to full surveys, all queryable through uniform Virtual Observatory interfaces.",
-      "access": "Web queries at vizier.cds.unistra.fr; `pip install astroquery` then `from astroquery.vizier import Vizier`; TAP endpoint for ADQL (tapvizier.cds.unistra.fr).",
+      "access": "Web queries at vizier.cds.unistra.fr; `pip install astroquery` then `from astroquery.vizier import Vizier`; TAP endpoint for ADQL at tapvizier.cds.unistra.fr.",
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Default query row limits are low (50); set Vizier.ROW_LIMIT = -1 in astroquery to retrieve full tables."
+      "notes": "Default query row limits are low (50); set `Vizier.ROW_LIMIT = -1` in astroquery to retrieve full tables."
     },
     {
       "name": "SIMBAD",
@@ -228,7 +228,7 @@
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "Part of the wider free CDS ecosystem: the Aladin interactive sky atlas (aladin.cds.unistra.fr, desktop and Lite web version) and the CDS X-Match service for crossmatching billion-row catalogues."
+      "notes": "Part of the wider free CDS ecosystem: the Aladin interactive sky atlas (aladin.cds.unistra.fr, desktop and Lite web versions) and the CDS X-Match service for crossmatching billion-row catalogues. ESA's ESASky (sky.esa.int, with astroquery.esasky and the pyESASky Jupyter widget) plays the same role for space-mission footprints across Hubble, JWST, XMM-Newton, Herschel and planetary missions."
     },
     {
       "name": "NED (NASA/IPAC Extragalactic Database)",
@@ -243,6 +243,18 @@
       "notes": "Complements SIMBAD: NED is deeper for galaxies and redshift bookkeeping; SIMBAD is stronger for Galactic objects."
     },
     {
+      "name": "IRSA (NASA/IPAC Infrared Science Archive)",
+      "url": "https://irsa.ipac.caltech.edu",
+      "category": "data",
+      "subcategory": "infrared and multi-mission archive",
+      "summary": "NASA's archive for infrared and submillimetre astronomy: WISE/NEOWISE, 2MASS, Spitzer, IRAS, AKARI, Herschel, Planck, COSMOS, DENIS and the public ZTF, PTF, SPHEREx and Euclid holdings, served as images, catalogues and spectra.",
+      "access": "Web tools (IRSAviewer, Finder Chart, catalogue search) at irsa.ipac.caltech.edu; VO services including a TAP endpoint at https://irsa.ipac.caltech.edu/TAP; `pip install astroquery` then `from astroquery.ipac.irsa import Irsa; Irsa.query_region(...)`; several collections are also mirrored on AWS S3 for in-cloud analysis.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "No login for public data. The biggest catalogues (AllWISE, ZTF light curves) should be queried through TAP with spatial or magnitude constraints rather than downloaded whole; IRSA is also the home of the SPHEREx and Euclid entries listed separately here."
+    },
+    {
       "name": "ESO Science Archive",
       "url": "https://archive.eso.org",
       "category": "data",
@@ -252,7 +264,7 @@
       "free": "free",
       "registration": "none",
       "beginner": 3,
-      "notes": "Some services (large raw-data requests, calSelector) work best with a free ESO User Portal account."
+      "notes": "Some services (large raw-data requests, calSelector) work best with a free ESO User Portal account. ESO observing-time proposals may be submitted by PIs of any nationality or affiliation, which makes archival plus proposal work a realistic pairing."
     },
     {
       "name": "ALMA Science Archive",
@@ -264,19 +276,19 @@
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "Reprocessing raw visibilities requires CASA plus substantial disk and CPU; look for archival imaged products (continuum/line cubes) first, or use the ARI-L/ALMINER value-added products."
+      "notes": "Reprocessing raw visibilities requires CASA (casadocs.readthedocs.io - free, developed by NRAO/ESO/NAOJ/JIV-ERIC, current release 6.7.6, installable as a pip wheel or as Linux/macOS tarballs) plus substantial disk and CPU. On a laptop, start from archival imaged products (continuum and line cubes) or the ARI-L and ALMINER value-added products."
     },
     {
       "name": "HEASARC",
       "url": "https://heasarc.gsfc.nasa.gov",
       "category": "data",
       "subcategory": "high-energy astrophysics archive",
-      "summary": "NASA's archive for X-ray and gamma-ray astronomy: Chandra, XMM-Newton, Swift, NuSTAR, NICER, IXPE, Fermi and dozens of historical missions, plus the LAMBDA CMB data holdings.",
-      "access": "Xamin/Browse query tools at heasarc.gsfc.nasa.gov; `astroquery.heasarc`; analysis with the free HEASoft suite (XSPEC etc.); Chandra-specific tools via the CXC (cxc.cfa.harvard.edu, CIAO software).",
+      "summary": "NASA's archive for X-ray and gamma-ray astronomy: Chandra, XMM-Newton, Swift, NuSTAR, NICER, IXPE, Fermi and dozens of historical missions, plus the LAMBDA cosmic microwave background holdings.",
+      "access": "Xamin/Browse query tools at heasarc.gsfc.nasa.gov; `astroquery.heasarc`; analysis with the free HEASoft suite (XSPEC and friends); Chandra-specific tools via the CXC (cxc.cfa.harvard.edu, CIAO software).",
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "Data are free with no gates, but high-energy analysis (response files, effective areas) has real overhead; Swift and NICER are the gentlest entry points."
+      "notes": "Data are free with no gates, but high-energy analysis (response files, effective areas) carries real overhead; Swift and NICER are the gentlest entry points. For CMB and cosmology, LAMBDA (lambda.gsfc.nasa.gov) serves WMAP, Planck, ACT DR6, SPT-3G and CLASS products with an online CAMB application and Python analysis examples."
     },
     {
       "name": "Helioviewer",
@@ -288,7 +300,7 @@
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "Serves browse-quality JPEG2000 images; for science-grade SDO FITS files use the JSOC export system (jsoc.stanford.edu) or SunPy's Fido search, both free."
+      "notes": "Serves browse-quality JPEG2000 images; for science-grade SDO FITS use the JSOC export system (jsoc.stanford.edu) or SunPy's Fido search, both free. For in-situ heliophysics and space-weather data (ACE, Wind, Parker Solar Probe, THEMIS, Cluster, MAVEN and dozens more) use NASA SPDF's CDAWeb (cdaweb.gsfc.nasa.gov), which offers web subsetting, direct file download and a REST API."
     },
     {
       "name": "SDOML (SDO Machine Learning Dataset)",
@@ -300,7 +312,7 @@
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "Downscaled from full 4096x4096 resolution by design; for full-resolution science data go to JSOC instead."
+      "notes": "Downscaled from the full 4096x4096 resolution by design; for full-resolution science data go to JSOC instead."
     },
     {
       "name": "e-CALLISTO",
@@ -312,19 +324,19 @@
       "free": "free",
       "registration": "none",
       "beginner": 3,
-      "notes": "Data quality varies by station (radio-frequency interference); the network also welcomes new hosts - the spectrometer hardware is intentionally low-cost, making this a practical instrument route for individuals and small institutions."
+      "notes": "Data quality varies by station (radio-frequency interference). The network also welcomes new hosts - the spectrometer hardware is intentionally low-cost, making this one of the few practical routes for an individual or small institution to operate a real research instrument."
     },
     {
       "name": "SPHEREx Archive at IRSA",
       "url": "https://irsa.ipac.caltech.edu/Missions/spherex.html",
       "category": "data",
       "subcategory": "infrared all-sky spectral survey",
-      "summary": "NASA's SPHEREx (launched March 2025) is performing the first all-sky 0.75-5 micron spectral survey in 102 bands; IRSA publishes new Quick Release spectral images weekly (QR2, with improved calibration, since October 2025), with data also mirrored to AWS.",
+      "summary": "NASA's SPHEREx (launched March 2025) is performing the first all-sky 0.75-5 micron spectral survey in 102 bands; IRSA published the first quick-release products in July 2025 and the reprocessed Quick Release 2 in October 2025 (with an April 2026 header/PSF correction), plus specialised sets such as the SPLICES ice-source target list and comet 3I/ATLAS observations.",
       "access": "IRSA search tools, TAP/ADQL queries and the SPHEREx Source Discovery and Mosaic tools; cloud access via the public AWS bucket (registry.opendata.aws/spherex-qr); documentation at caltech-ipac.github.io/spherex-archive-documentation.",
       "free": "free",
       "registration": "none",
       "beginner": 3,
-      "notes": "QR2 supersedes QR1; higher-level products (full-sky maps, catalogues) roll out over the mission's remaining years."
+      "notes": "QR2 supersedes QR1; higher-level products (full-sky spectral maps, catalogues) roll out over the remaining mission."
     },
     {
       "name": "Euclid Q1 Data Release",
@@ -332,23 +344,23 @@
       "category": "data",
       "subcategory": "cosmology survey imaging + spectroscopy",
       "summary": "Euclid Quick Release 1 (19 March 2025): ~30 TB of VIS/NISP imaging, slitless spectra and catalogues over ~63 deg2 of the Euclid Deep Fields North, Fornax and South plus LDN1641.",
-      "access": "ESA Euclid Science Archive (linked from the Q1 data page); full mirror at IRSA with TAP/ADQL catalog queries and AWS cloud copies; tutorial notebooks at caltech-ipac.github.io/irsa-tutorials.",
+      "access": "ESA Euclid Science Archive (linked from the Q1 data page); full mirror at IRSA with TAP/ADQL catalogue queries and AWS cloud copies; tutorial notebooks at caltech-ipac.github.io/irsa-tutorials.",
       "free": "free",
       "registration": "none",
       "beginner": 3,
-      "notes": "Q1 is single-visit depth over deep fields only; substantially larger cosmology-scale releases are planned as the survey progresses."
+      "notes": "Q1 is single-visit depth over deep fields only; substantially larger cosmology-scale releases follow as the survey progresses."
     },
     {
       "name": "Rubin Observatory / LSST data",
       "url": "https://rubinobservatory.org/for-scientists/data-products/data-access",
       "category": "data",
       "subcategory": "optical survey + alert stream",
-      "summary": "Data Preview 1 (2025) covers seven ~1 deg2 commissioning fields; Early Data Preview 2 (2026) adds LSSTCam observations from April 2025 to January 2026; the real-time alert stream (design rate ~10 million alerts/night) has been flowing to brokers since February 2026.",
-      "access": "Rubin Science Platform (data.lsst.cloud) notebooks and TAP for data-rights holders; alerts are world-public through brokers (ALeRCE, Fink, Lasair, ANTARES and others) with no data rights needed; solar-system detections flow to the Minor Planet Center.",
+      "summary": "Data Preview 1 (released 30 June 2025) covers seven ~1 deg2 fields observed with the LSST Commissioning Camera in late 2024, processed with Science Pipelines v29; in survey operations alerts are transmitted to brokers within 60 seconds of every image.",
+      "access": "Rubin Science Platform (data.lsst.cloud) notebooks, portal and TAP for data-rights holders - all US- and Chile-based scientists and students plus named international contributors; alerts are world-public through brokers (ALeRCE, Fink, Lasair, ANTARES and others) with no data rights needed; solar-system detections flow to the Minor Planet Center.",
       "free": "free",
       "registration": "application",
       "beginner": 2,
-      "notes": "RSP accounts and pixel/catalogue releases are restricted to data-rights holders (US- and Chile-affiliated researchers plus named international in-kind contributors) until releases become world-public after a delay; unaffiliated researchers can still do real science today via the public alert stream and MPC."
+      "notes": "Pixel and catalogue releases stay inside the data-rights community for a proprietary period before becoming world-public, so an unaffiliated researcher cannot get an RSP account today. Real time-domain science is still possible now through the public alert stream, broker portals and the MPC."
     },
     {
       "name": "NASA Planetary Data System (PDS)",
@@ -367,24 +379,24 @@
       "url": "https://www.wis-tns.org",
       "category": "data",
       "subcategory": "transient discovery registry",
-      "summary": "The IAU's official registry for reporting and naming astronomical transients; essentially all supernova discoveries and classifications flow through it, searchable by anyone.",
+      "summary": "The IAU's official registry for reporting and naming astronomical transients; essentially all supernova discoveries and classifications flow through it, and the database is searchable by anyone.",
       "access": "Public web search without login; reporting discoveries or classifications requires a free registered account (individual or group); rate-limited REST API with an API key for bots.",
       "free": "free",
       "registration": "email",
       "beginner": 3,
-      "notes": "A working route for amateurs who discover transients: register, report with required astrometry/photometry, and the object receives an official designation."
+      "notes": "A working route for amateurs who discover transients: register, report with the required astrometry and photometry, and the object receives an official designation. For multimessenger and high-energy transients the equivalent rapid channel is NASA's General Coordinates Network (gcn.nasa.gov), where notices and circulars are free to receive with a self-service account."
     },
     {
       "name": "Astropy",
       "url": "https://www.astropy.org",
       "category": "software",
       "subcategory": "core Python library",
-      "summary": "The core Python package for astronomy: coordinates, WCS, FITS and table I/O, units, time systems and cosmology; foundation of virtually the entire Python astronomy ecosystem of affiliated packages.",
+      "summary": "The core Python package for astronomy: coordinates, WCS, FITS and table I/O, units, time systems and cosmology; the foundation of essentially the whole Python astronomy ecosystem.",
       "access": "`pip install astropy` (or conda); documentation at docs.astropy.org.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "BSD-licensed, community-developed; affiliated packages (photutils, specutils, regions, ccdproc) cover most reduction tasks."
+      "notes": "BSD-licensed and community-developed. Affiliated and adjacent packages cover most tasks: photutils, specutils, regions and ccdproc for reduction and measurement; emcee (MIT-licensed affine-invariant MCMC, emcee.readthedocs.io) and dynesty for inference; yt (yt-project.org, BSD) for volumetric simulation analysis."
     },
     {
       "name": "astroquery",
@@ -396,19 +408,19 @@
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Individual services keep their own rate limits and occasional required credentials; module namespaces changed in recent versions (e.g. astroquery.ipac.ned), so match examples to your installed version."
+      "notes": "Individual services keep their own rate limits and occasional required credentials; module namespaces changed in recent versions (e.g. `astroquery.ipac.ned`), so match examples to your installed version."
     },
     {
       "name": "Lightkurve",
       "url": "https://docs.lightkurve.org",
       "category": "software",
       "subcategory": "time-series photometry",
-      "summary": "Python package for Kepler, K2 and TESS photometry: one-line search and download from MAST, detrending, periodograms and transit searches with well-documented tutorials.",
+      "summary": "Python package for Kepler, K2 and TESS photometry: one-line search and download from MAST, detrending, periodograms and transit searches, with well-documented tutorials.",
       "access": "`pip install lightkurve`; e.g. `import lightkurve as lk; lk.search_lightcurve('Pi Mensae', mission='TESS').download().plot()`.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "Runs comfortably on a laptop for single targets; for bulk work use the TIKE cloud platform where the same data live next to the compute."
+      "notes": "Runs comfortably on a laptop for single targets; for bulk work use the TIKE cloud platform, where the same data sit next to the compute."
     },
     {
       "name": "SunPy",
@@ -423,28 +435,64 @@
       "notes": "JSOC bulk exports ask for a (free) registered email address."
     },
     {
+      "name": "SAOImageDS9",
+      "url": "https://sites.google.com/cfa.harvard.edu/saoimageds9",
+      "category": "software",
+      "subcategory": "FITS image viewer",
+      "summary": "The field's standard astronomical image viewer: FITS images, cubes and mosaics with WCS, scaling, colour maps, region files, catalogue overlays and frame blinking; current stable release 8.7, funded by the Chandra X-ray Center.",
+      "access": "Download the prebuilt binary for Linux, macOS or Windows from the DS9 site and run it - no build step; it exchanges images and tables with TOPCAT, Aladin and Python sessions over a SAMP hub.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Licensed in part under GPL v3. It is the fastest way to check whether a FITS file you just downloaded actually contains what you think it does."
+    },
+    {
+      "name": "MESA (Modules for Experiments in Stellar Astrophysics)",
+      "url": "https://docs.mesastar.org",
+      "category": "software",
+      "subcategory": "stellar evolution code",
+      "summary": "Open-source 1D stellar structure and evolution code with peer-reviewed physics modules, covering a wide range of masses and evolutionary stages; output is bit-for-bit identical across supported compilers and operating systems.",
+      "access": "Download the release (about a 2 GB zip) plus the MESA SDK from docs.mesastar.org, set MESA_DIR/MESASDK_ROOT/OMP_NUM_THREADS and run `./install`; macOS or Linux, 64-bit CPU, 8 GB RAM and 20 GB free disk are the stated minimums.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "The strongest example in this catalogue of research that needs no institutional access at all - just a laptop. The cost is time: compilation is slow, and writing inlists for a new problem has a genuine learning curve. Windows requires WSL. Help comes from the mesa-users mailing list and the MESA GitHub."
+    },
+    {
+      "name": "Astrometry.net",
+      "url": "https://astrometry.net",
+      "category": "software",
+      "subcategory": "astrometric plate solving",
+      "summary": "Blind astrometric calibration: hand it an image with no reliable pointing information and it returns a WCS solution plus a list of known objects in the field. This is the standard bridge from a small-telescope or amateur image to science-usable astrometry.",
+      "access": "Upload at the free web service nova.astrometry.net, or drive it through the documented REST API with a free API key; or install locally from source, apt, Homebrew or Docker and run `solve-field image.fits` after fetching index files matched to your field size.",
+      "free": "free",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Web submissions are public by default and the service queues at busy times; a local install removes both the rate limit and the publicity, at the cost of downloading index files (hundreds of MB for wide fields, several GB for narrow ones). Images uploaded to the Flickr astrometry group are solved automatically."
+    },
+    {
       "name": "Stellarium",
       "url": "https://stellarium.org",
       "category": "software",
       "subcategory": "planetarium software",
-      "summary": "Open-source desktop planetarium rendering a realistic sky with large star catalogues, telescope control, and observation planning; also available as Stellarium Web in the browser.",
+      "summary": "Open-source desktop planetarium rendering a realistic sky with large star catalogues, telescope control and observation planning; also available as Stellarium Web in the browser.",
       "access": "Direct download (Windows/macOS/Linux, GPL) from stellarium.org; browser version at stellarium-web.org.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "Mobile apps are paid; desktop and web versions are fully free."
+      "notes": "The mobile apps are paid; the desktop and web versions are fully free."
     },
     {
       "name": "Skyfield",
       "url": "https://rhodesmill.org/skyfield/",
       "category": "software",
       "subcategory": "ephemeris computation",
-      "summary": "Pure-Python astronomy engine computing positions of planets, comets, asteroids and Earth satellites directly from JPL ephemerides and MPC/Celestrak data, with results consistent with Horizons.",
-      "access": "`pip install skyfield`; e.g. load('de421.bsp') then observe planets from any topocentric location.",
+      "summary": "Pure-Python astronomy engine computing positions of planets, comets, asteroids and Earth satellites directly from JPL ephemerides and MPC/Celestrak data, with results consistent with JPL Horizons.",
+      "access": "`pip install skyfield`; e.g. `load('de421.bsp')` then observe planets from any topocentric location.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "Downloads ephemeris files on first use (tens of MB); ideal for observation planning, satellite passes and occultation work without any web service dependency."
+      "notes": "Downloads ephemeris files on first use (tens of MB); ideal for observation planning, satellite passes and occultation work with no web-service dependency."
     },
     {
       "name": "REBOUND",
@@ -452,7 +500,7 @@
       "category": "software",
       "subcategory": "N-body dynamics",
       "summary": "Open-source N-body integrator (IAS15, WHFast and other symplectic schemes) used across planetary dynamics and planetesimal studies; runs real research problems on a laptop.",
-      "access": "`pip install rebound`; add `reboundx` for extra forces (GR, radiation pressure, migration).",
+      "access": "`pip install rebound`; add `reboundx` for extra forces (general relativity, radiation pressure, migration).",
       "free": "free",
       "registration": "none",
       "beginner": 4,
@@ -463,32 +511,32 @@
       "url": "https://www.star.bristol.ac.uk/mbt/topcat/",
       "category": "software",
       "subcategory": "table/catalogue tool",
-      "summary": "Desktop Java tool for interactive work on large tables: million-row crossmatching, sky and 3D plotting, and built-in Virtual Observatory access (TAP, cone search) to services like VizieR and Gaia; actively maintained (v4.10-6, May 2026).",
-      "access": "Download the topcat jar from the website and run `java -jar topcat-full.jar`; command-line sibling STILTS for scripted pipelines.",
+      "summary": "Desktop Java tool for interactive work on large tables: million-row crossmatching, sky and 3D plotting, algebraic column definitions and built-in Virtual Observatory access (TAP, cone search) to services like VizieR and Gaia; actively maintained (v4.10-8, 21 August 2026).",
+      "access": "Download topcat-full.jar and run `java -jar topcat-full.jar` (Java 8 or later); `brew install --cask topcat` on macOS; reads FITS, VOTable, CSV, Parquet and more; the command-line sibling STILTS scripts the same operations.",
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Handles tables of millions of rows on modest hardware; the standard answer to 'how do I crossmatch two catalogues without writing code'."
+      "notes": "Handles tables of millions of rows on modest hardware and works offline; the standard answer to 'how do I crossmatch two catalogues without writing code'."
     },
     {
       "name": "SciX / NASA ADS",
       "url": "https://scixplorer.org",
       "category": "literature",
       "subcategory": "bibliographic database",
-      "summary": "The field's free bibliographic database: complete refereed astrophysics literature plus preprints and gray literature, over 30 million records with citation graphs; ADS (ui.adsabs.harvard.edu) is transitioning to the SciX interface during 2026.",
-      "access": "Search free at scixplorer.org (no account needed); private libraries and saved searches with a free account; free API token for scripted queries (e.g. `pip install ads`).",
+      "summary": "The field's free bibliographic database: the complete refereed astrophysics literature plus preprints, conference material and links to data and software, with full citation and reference graphs. SciX is the NASA-run successor interface extending the same corpus to heliophysics, planetary and Earth science; the classic ADS interface at ui.adsabs.harvard.edu continues to run.",
+      "access": "Search free at scixplorer.org or ui.adsabs.harvard.edu with no account; a free account adds private libraries, saved searches and alerts; a free API token enables scripted queries (`pip install ads`, or `astroquery.nasa_ads`).",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "Indexes and links to full text but does not itself unlock paywalled journal PDFs; arXiv links cover most of the field in practice."
+      "notes": "Indexes and links full text but does not itself unlock paywalled journal PDFs - in astronomy the arXiv link usually does. Interface details are in flux while the SciX transition proceeds, so check which UI and API endpoint your token targets."
     },
     {
       "name": "arXiv astro-ph",
       "url": "https://arxiv.org/archive/astro-ph",
       "category": "literature",
       "subcategory": "preprint server",
-      "summary": "The astrophysics preprint server, running since 1992; near-universal practice in the field means the freely readable preprint version exists for the large majority of current astronomy papers.",
-      "access": "Read free at arxiv.org (six astro-ph subcategories); daily listings and RSS; submission is free with an arXiv account.",
+      "summary": "The astrophysics preprint server, running since 1992 across six astro-ph subcategories; near-universal practice in the field means a freely readable preprint exists for the large majority of current astronomy papers.",
+      "access": "Read free at arxiv.org; daily listings, RSS and full-text search; submission is free with an arXiv account.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
@@ -499,79 +547,91 @@
       "url": "https://astro.theoj.org",
       "category": "publishing",
       "subcategory": "diamond OA journal",
-      "summary": "Peer-reviewed arXiv-overlay journal covering astrophysics and cosmology: submission, refereeing and publication are all free of charge, funded by Maynooth Academic Publishing.",
-      "access": "Post your paper to arXiv, then submit the arXiv ID through astro.theoj.org for peer review.",
+      "summary": "Peer-reviewed arXiv-overlay journal covering astrophysics and cosmology: submission, refereeing and publication are all free of charge, with the accepted version staying on arXiv and the journal supplying peer review, a DOI and indexing.",
+      "access": "Post your paper to arXiv, then submit the arXiv identifier through astro.theoj.org for peer review.",
       "free": "free",
       "registration": "email",
       "beginner": 3,
-      "notes": "No APC and no reader paywall; indexed and citable. A realistic venue for researchers without APC funds."
+      "notes": "No APC and no reader paywall, so it is one of the few realistic venues for a researcher with no publication budget. It is younger and smaller than ApJ/MNRAS/A&A, which matters if you are judged on venue prestige."
     },
     {
       "name": "Research Notes of the AAS (RNAAS)",
       "url": "https://journals.aas.org/research-notes/",
       "category": "publishing",
       "subcategory": "brief-report venue",
-      "summary": "Venue for brief communications (max 1,500 words, one figure or table): free to read, currently no author charge, each note gets a DOI and ADS indexing and is typically published within ~72 hours of receipt.",
-      "access": "Submit via the AAS journals submission system (AAS membership not required); LaTeX/Word templates provided.",
+      "summary": "Venue for brief communications of at most 1,500 words with a single figure or table: fully open access with no article publication charge (confirmed on the AAS 2026 charges page), each note gets a DOI and ADS indexing, and notes appear within days of acceptance.",
+      "access": "Submit via the AAS journals submission system (AAS membership not required); LaTeX and Word templates provided.",
       "free": "free",
       "registration": "email",
       "beginner": 4,
-      "notes": "Not peer reviewed (editor-checked only) and not copy-edited - suitable for negative results, follow-up observations, code/data announcements; a practical first publication route for individuals and amateurs."
+      "notes": "Moderated but not peer reviewed and not copy-edited - suitable for negative results, follow-up observations, and code or data announcements. In practice one of the most accessible first publication routes for individuals and advanced amateurs. The full AAS journals (ApJ, AJ, ApJL) charge four-figure fees per paper."
     },
     {
       "name": "Astronomy & Astrophysics (A&A)",
       "url": "https://www.aanda.org",
       "category": "publishing",
       "subcategory": "open-access journal (Subscribe-to-Open)",
-      "summary": "Major astronomy journal, fully open access since 2022 under the Subscribe-to-Open model - 2026 is the fifth consecutive year with no article processing charges for authors and free reading for everyone.",
+      "summary": "Major astronomy journal, fully open access since 2022 under the Subscribe-to-Open model; EDP Sciences has confirmed A&A remains open access in 2026 with no article processing charges, articles published CC BY 4.0.",
       "access": "Standard manuscript submission at aanda.org; no APC invoice under S2O.",
       "free": "free",
       "registration": "email",
       "beginner": 2,
-      "notes": "S2O is renewed annually and depends on library subscriptions; A&A has said recent thresholds were met only narrowly, so the no-APC status should be re-checked each year. Page limits and language-editing policies apply."
+      "notes": "S2O is renewed annually and depends on library subscriptions, so the no-APC status should be re-checked for each volume year. Page limits and language-editing policies apply."
     },
     {
       "name": "JOSS (Journal of Open Source Software)",
       "url": "https://joss.theoj.org",
       "category": "publishing",
       "subcategory": "software papers",
-      "summary": "Free, developer-friendly peer-reviewed journal for research software; astronomy packages routinely publish here to make their code citable, with open review conducted on GitHub.",
-      "access": "Submit a repository with a short paper.md via joss.theoj.org; review happens in a public GitHub issue; no charges.",
+      "summary": "Free, developer-friendly peer-reviewed journal for research software; astronomy packages routinely publish here to make their code citable, with the review conducted openly on GitHub.",
+      "access": "Submit a repository plus a short paper.md via joss.theoj.org; review happens in a public GitHub issue; no charges at any stage.",
       "free": "free",
       "registration": "email",
       "beginner": 3,
-      "notes": "The software itself must be open-source with a substantial scholarly effort; small scripts are rejected as out of scope."
+      "notes": "The software must be open source and represent substantial scholarly effort; small scripts are rejected as out of scope. Two neighbouring routes: the Astrophysics Source Code Library (ascl.net) registers astronomy codes so they are citable and indexed in ADS without writing a paper, and Zenodo (zenodo.org, run by CERN with OpenAIRE) mints a DOI for any code release or dataset and hooks directly into GitHub."
+    },
+    {
+      "name": "The Astronomer's Telegram",
+      "url": "https://astronomerstelegram.org",
+      "category": "publishing",
+      "subcategory": "rapid-communication venue",
+      "summary": "Short, citable, ADS-indexed reports of time-critical astronomical observations, in continuous use for decades with over 18,000 telegrams posted and a circulation list of roughly 8,500 subscribers.",
+      "access": "Read and search everything free with no account; posting requires credentialing as an author through the site's Credential page, after which telegrams are published immediately.",
+      "free": "free",
+      "registration": "credentialing",
+      "beginner": 3,
+      "notes": "Credentialing is a light editorial check rather than peer review, but it is a barrier for a complete newcomer; a first telegram usually comes through a collaborator. Telegrams are citable but carry far less weight than a refereed paper."
     },
     {
       "name": "IAU Office of Astronomy for Development grants",
       "url": "https://astro4dev.org/cfp/",
       "category": "funding",
       "subcategory": "project grants",
-      "summary": "Annual open call funding astronomy-for-development projects worldwide; the 2026 call earmarked EUR 60,000 total, with past project grants of EUR 1,000-15,000 (average around EUR 5,000).",
-      "access": "Two-stage online application (concept then full proposal) via astro4dev.org/cfp; open to anyone from anywhere in the world.",
+      "summary": "Annual open call funding astronomy-for-development projects worldwide; the 2026 call has EUR 60,000 available, typically spread across 10-15 projects with individual grants of EUR 1,000-15,000 (average around EUR 5,000).",
+      "access": "Two-stage online application (short concept, then full proposal) via astro4dev.org/cfp, open to applicants anywhere in the world; proposal-writing and translation help is offered on request.",
       "free": "free",
       "registration": "application",
       "beginner": 3,
-      "notes": "Funds development/education/community impact projects that use astronomy, not pure research programs; the 2026 deadline (31 May) has passed - watch for the next annual call."
+      "notes": "Funds development, education and community-impact projects that use astronomy, not pure research programmes. In the 2026 round Stage 1 closed on 31 May 2026, Stage 2 proposals are due 15 September 2026 and results come in mid-November, with funded projects running from early 2027; watch for the next annual call."
     },
     {
       "name": "Planetary Society Shoemaker NEO Grants",
       "url": "https://www.planetary.org/sci-tech/neo-grants",
       "category": "funding",
       "subcategory": "observer grants",
-      "summary": "Grants (typically $5,000-12,000) for advanced amateur and under-funded professional astronomers anywhere in the world to find, track and characterize near-Earth objects; the 2025 round awarded $87,562 to ten observers in eight countries.",
-      "access": "Apply during announced rounds via the program page (proposal describing your observing program and equipment upgrade).",
+      "summary": "Grants for advanced amateur and under-funded professional astronomers anywhere in the world to find, track and characterise near-Earth objects; the programme has awarded $585,000 to 52 astronomers in 23 countries on six continents since 1997.",
+      "access": "Apply during announced rounds via the programme page, with a proposal describing your observing programme and the equipment upgrade you need; the current Request for Proposals is downloadable there.",
       "free": "free",
       "registration": "application",
       "beginner": 3,
-      "notes": "One of very few funding lines explicitly open to unaffiliated observers. The Planetary Society's separate STEP Grants fund larger open-call science/technology projects in planetary exploration, planetary defense and the search for life."
+      "notes": "One of very few funding lines explicitly open to unaffiliated observers, but it funds equipment for NEO astrometry submitted to the Minor Planet Center, not salary or general research. The Planetary Society's separate STEP Grants fund larger open-call projects in planetary exploration, planetary defence and the search for life."
     },
     {
-      "name": "AAS Chrétien International Research Grants",
+      "name": "AAS Chretien International Research Grants",
       "url": "https://aas.org/grants-and-prizes/chretien-international-research-grants",
       "category": "funding",
       "subcategory": "international collaboration grants",
-      "summary": "Up to $20,000 available each year from the American Astronomical Society to support international collaborative projects in observational astronomy, emphasizing long-term visits between countries.",
+      "summary": "Up to $20,000 available each year from the American Astronomical Society to support international collaborative projects in observational astronomy, emphasising long-term visits between countries.",
       "access": "Application through the AAS grants page during the annual cycle.",
       "free": "free",
       "registration": "application",
@@ -579,12 +639,24 @@
       "notes": "Open to astronomers worldwide but requires a PhD or equivalent; graduate students are not eligible."
     },
     {
+      "name": "Las Cumbres Observatory Global Sky Partners",
+      "url": "https://lco.global/education/partners/",
+      "category": "funding",
+      "subcategory": "free telescope time",
+      "summary": "LCO allocates over 1,000 hours per year on its global robotic telescope network to organisations running their own education and public-engagement astronomy projects; around 30 partners are currently active across Europe, Asia, Africa, the Americas and Oceania.",
+      "access": "Apply to become a partner via lco.global/education/partners/becoming-global-sky-partner/; approved partners receive an observing allocation on the LCO network and run their own project and participants.",
+      "free": "free",
+      "registration": "application",
+      "beginner": 2,
+      "notes": "This funds telescope access, not money, and is aimed at projects with participants rather than solo PI research; LCO's science time is allocated separately through competitive time-allocation committees. For instant, no-application access to a real robotic telescope, MicroObservatory / Observing With NASA (mo-www.cfa.harvard.edu/OWN/) lets anyone queue images free, though at education-grade depth."
+    },
+    {
       "name": "OpenStax Astronomy 2e",
       "url": "https://openstax.org/details/books/astronomy-2e",
       "category": "learning",
       "subcategory": "introductory textbook",
-      "summary": "Full peer-reviewed introductory astronomy textbook (Fraknoi, Morrison & Wolff), free to read online or download as PDF under a CC BY license; the standard free text for a first course.",
-      "access": "Read in browser or direct PDF download at openstax.org; no account needed.",
+      "summary": "Full peer-reviewed introductory astronomy textbook (Fraknoi, Morrison & Wolff), free to read online or download as PDF under a CC BY licence; the standard free text for a first course.",
+      "access": "Read in the browser or download the PDF at openstax.org; no account needed.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
@@ -596,7 +668,7 @@
       "category": "learning",
       "subcategory": "graduate textbook (radio)",
       "summary": "Condon & Ransom's graduate radio astronomy textbook (Princeton, 2016), whose full course version is freely readable online by agreement with the publisher; the canonical text NRAO itself teaches from.",
-      "access": "Read free at the NRAO course site (science.nrao.edu/opportunities/courses/era); print edition sold by Princeton University Press.",
+      "access": "Read free at the NRAO course site (science.nrao.edu/opportunities/courses/era); the print edition is sold by Princeton University Press.",
       "free": "free",
       "registration": "none",
       "beginner": 3,
@@ -607,8 +679,8 @@
       "url": "https://learn.astropy.org",
       "category": "learning",
       "subcategory": "tutorials",
-      "summary": "The Astropy Project's curated tutorials and guides - executable Jupyter notebooks covering FITS handling, coordinates, photometry, spectroscopy and archive queries, maintained by the package developers themselves.",
-      "access": "Browse and download notebooks at learn.astropy.org; run locally or on any free notebook service.",
+      "summary": "The Astropy Project's curated tutorials and guides - executable Jupyter notebooks covering FITS handling, coordinates, photometry, spectroscopy and archive queries - maintained by the package developers themselves.",
+      "access": "Browse and download notebooks at learn.astropy.org; run them locally or on any free notebook service.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
@@ -619,32 +691,32 @@
       "url": "https://galaxiesbook.org",
       "category": "learning",
       "subcategory": "graduate textbook (galaxies)",
-      "summary": "Jo Bovy's graduate textbook on galactic dynamics and astrophysics, published in print by Princeton (2026) with the complete interactive web version free, including runnable in-browser Python examples and animations.",
-      "access": "Read free at galaxiesbook.org; code examples run in the browser.",
+      "summary": "Jo Bovy's graduate textbook on galactic dynamics and astrophysics, published in print by Princeton with the complete interactive web version free, including runnable in-browser Python examples and animations.",
+      "access": "Read free at galaxiesbook.org; code examples execute in the browser.",
       "free": "free",
       "registration": "none",
       "beginner": 2,
-      "notes": "Exercises and index are reserved for the paid print/ebook edition; the full instructional text is free."
+      "notes": "Exercises and the index are reserved for the paid print/ebook edition; the full instructional text is free."
     },
     {
       "name": "Data Carpentry: Foundations of Astronomical Data Science",
       "url": "https://datacarpentry.github.io/astronomy-python/",
       "category": "learning",
       "subcategory": "data-science curriculum",
-      "summary": "Official Carpentries curriculum (2022) teaching ADQL/SQL database queries, Astropy/astroquery workflows and large-catalogue practices through a real science case (the GD-1 stellar stream in Gaia and Pan-STARRS data).",
+      "summary": "Official Carpentries curriculum teaching ADQL/SQL database queries, Astropy and astroquery workflows and large-catalogue practices through a real science case: recovering the GD-1 stellar stream from Gaia and Pan-STARRS data.",
       "access": "Self-paced lesson free on the web; all data and notebooks downloadable; also taught at free community workshops.",
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Assumes basic Python and shell skills (Software Carpentry level)."
+      "notes": "Assumes basic Python and shell skills at Software Carpentry level."
     },
     {
       "name": "Astrobites",
       "url": "https://astrobites.org",
       "category": "learning",
       "subcategory": "paper summaries",
-      "summary": "Daily plain-language summaries of new astro-ph papers written by graduate students since 2010, plus guides on applying to grad school, statistics and career paths; widely used to keep up with the literature.",
-      "access": "Web and RSS, no account; searchable archive by topic.",
+      "summary": "Daily plain-language summaries of new astro-ph papers written by graduate students since 2010, plus guides on applying to graduate school, statistics, careers and observing; widely used to keep up with the literature.",
+      "access": "Web and RSS with no account; searchable archive by topic.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
@@ -660,14 +732,14 @@
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "For software-specific questions, the astropy tag here and the OpenAstronomy forum overlap; research-level questions sometimes fare better on Physics Stack Exchange."
+      "notes": "Skews towards introductory and amateur questions; research-level physics sometimes fares better on Physics Stack Exchange, and software questions on the OpenAstronomy forum."
     },
     {
       "name": "OpenAstronomy Community Forum",
       "url": "https://community.openastronomy.org",
       "category": "community",
       "subcategory": "software help forum",
-      "summary": "Discourse forum where developers and users of Astropy, SunPy, lightkurve and related open-source astronomy packages answer usage and development questions; maintainers respond directly.",
+      "summary": "Discourse forum where developers and users of Astropy, SunPy, lightkurve and related open-source astronomy packages answer usage and development questions; maintainers reply directly.",
       "access": "Read without an account; free registration to post.",
       "free": "free",
       "registration": "none",
@@ -680,23 +752,23 @@
       "category": "community",
       "subcategory": "citizen-science platform",
       "summary": "The largest citizen-science platform, born from Galaxy Zoo; hosts active astronomy projects (galaxy morphology, planet hunting, variable-star vetting) whose classifications feed published research, with talk boards connecting volunteers and science teams.",
-      "access": "Classify in the browser at zooniverse.org; free Project Builder lets researchers launch their own crowdsourcing project.",
+      "access": "Classify in the browser at zooniverse.org; the free Project Builder lets researchers launch their own crowdsourcing project.",
       "free": "free",
       "registration": "none",
       "beginner": 5,
-      "notes": "An account (free) is needed to save contribution history and to build projects; several projects list volunteer contributors on resulting papers."
+      "notes": "A free account is needed to save contribution history and to build projects; several projects list volunteer contributors on the resulting papers, which is a real route to co-authorship without an affiliation."
     },
     {
       "name": "TIKE (Timeseries Integrated Knowledge Engine)",
       "url": "https://timeseries.science.stsci.edu",
       "category": "compute",
       "subcategory": "cloud science platform",
-      "summary": "STScI's free JupyterLab platform running in the same AWS region as the MAST cloud archive, so TESS, Kepler/K2, Hubble and GALEX data can be analyzed at scale with no downloads; comes preloaded with lightkurve, astroquery and ~20 other packages.",
+      "summary": "STScI's free JupyterHub running in the same AWS region as the MAST cloud archive, so TESS, Kepler/K2, JWST, Hubble, GALEX and Pan-STARRS data can be analysed with no downloads; preloaded with lightkurve, astroquery and a full astronomy stack.",
       "access": "Log in at timeseries.science.stsci.edu with a free MyST account; no AWS account or payment details needed; tutorials in the TIKEBook (spacetelescope/project-tikebook on GitHub).",
       "free": "free-registration",
       "registration": "email",
       "beginner": 4,
-      "notes": "Modest per-user CPU/memory; meant for interactive analysis, not large batch production."
+      "notes": "Compute is roughly equivalent to a modern laptop with four CPU cores, so it is for interactive analysis rather than large batch production. User storage is backed up by STScI about every two weeks, but keep your own copies of anything important."
     },
     {
       "name": "SciServer",
@@ -704,7 +776,7 @@
       "category": "compute",
       "subcategory": "cloud science platform",
       "summary": "Johns Hopkins platform offering free Jupyter notebooks and persistent storage co-located with multi-terabyte datasets including the full SDSS catalogue databases (CasJobs), so survey-scale SQL plus Python analysis needs no local hardware.",
-      "access": "Free account at sciserver.org, then Compute (notebooks) and CasJobs (SQL with personal MyDB database).",
+      "access": "Free account at sciserver.org, then Compute (notebooks) and CasJobs (SQL with a personal MyDB database).",
       "free": "free-registration",
       "registration": "email",
       "beginner": 4,
@@ -715,12 +787,12 @@
       "url": "https://datalab.noirlab.edu",
       "category": "compute",
       "subcategory": "cloud science platform",
-      "summary": "NSF NOIRLab's open science platform: tens of terabytes of survey catalogues (Legacy Surveys, NOIRLab Source Catalog, unWISE, Gaia and more) plus petabytes of images and spectra, with co-located Jupyter notebooks and TAP query services.",
-      "access": "Anonymous TAP/ADQL queries at datalab.noirlab.edu/tap (works from TOPCAT or `pip install astro-datalab`); free account unlocks the notebook server, personal database (MyDB) and virtual storage; example notebooks at github.com/astro-datalab/notebooks-latest.",
+      "summary": "NSF NOIRLab's open science platform: tens of terabytes of survey catalogues (DESI Legacy Surveys, NOIRLab Source Catalog, unWISE, Gaia and more) plus petabytes of images and spectra, with co-located Jupyter notebooks and TAP query services.",
+      "access": "Anonymous TAP/ADQL queries at datalab.noirlab.edu/tap (usable from TOPCAT or `pip install astro-datalab`); a free account unlocks the notebook server, a personal database (MyDB) and virtual storage; example notebooks at github.com/astro-datalab/notebooks-latest.",
       "free": "free",
       "registration": "none",
       "beginner": 4,
-      "notes": "Also hosts the SPARCL spectra service used for DESI and SDSS spectra."
+      "notes": "Also hosts the SPARCL spectra service used for DESI and SDSS spectra. Anonymous queries have shorter time limits than authenticated ones."
     }
   ]
 }

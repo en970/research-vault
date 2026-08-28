@@ -123,6 +123,10 @@ def score(r: dict, tokens: list[str], unit: dict | None = None) -> int:
 
 def apply_filters(pairs, args):
     for u, r in pairs:
+        # A resource written up in several fields is shown once unless you
+        # ask for a field, where its field-specific write-up is the point.
+        if not args.unit and not r.get("canonical", True):
+            continue
         if args.unit and u["unit"] != args.unit:
             continue
         if args.category and r["category"] != args.category:

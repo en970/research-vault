@@ -4,14 +4,14 @@
 [biology] no critic file — sweep used as-is
 [medicine] no critic file — sweep used as-is
 [earth] no critic file — sweep used as-is
-[mathematics] no sweep file — unit skipped
-[cs-ml] no sweep file — unit skipped
-[neuro-psych] no sweep file — unit skipped
-[social] no sweep file — unit skipped
-[econ-finance] no sweep file — unit skipped
-[humanities] no sweep file — unit skipped
-[literature-access] no sweep file — unit skipped
-[compute] no sweep file — unit skipped
+[mathematics] no critic file — sweep used as-is
+[cs-ml] no critic file — sweep used as-is
+[neuro-psych] no critic file — sweep used as-is
+[social] no critic file — sweep used as-is
+[econ-finance] no critic file — sweep used as-is
+[humanities] no critic file — sweep used as-is
+[literature-access] no critic file — sweep used as-is
+[compute] no critic file — sweep used as-is
 [publishing] no sweep file — unit skipped
 [funding] no sweep file — unit skipped
 [learning] no sweep file — unit skipped
