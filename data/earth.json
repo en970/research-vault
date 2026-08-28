@@ -463,7 +463,7 @@
       "registration": "email",
       "beginner": 5,
       "notes": "Moderation checks scope and basic suitability, not scientific correctness, so read preprints accordingly. Check your target journal's preprint policy before posting; most Earth-science journals accept preprints but a few still do not.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -757,7 +757,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Assumes basic programming comfort and offers no assessment or certificate. Cookbook quality varies by contributor, so Foundations is the reliable spine and Cookbooks are best treated as worked examples to adapt.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

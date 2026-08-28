@@ -352,8 +352,6 @@ The preprint server for biology, covering all biological subject areas and recei
 
 **Caveats.** Reading is entirely free; the S3 text-and-data-mining corpus is requester-pays, so bulk downloads incur AWS charges you pay. Author-chosen licences vary (CC BY, CC BY-NC-ND, or 'no reuse' by default), which constrains text mining. Preprints are screened, not reviewed. openRxiv Labs began running interactive-reading experiments in 2026, so the reading interface may change.
 
-*Also listed under: neuro-psych.*
-
 ### [Europe PMC](https://europepmc.org/)
 
 `Free` · beginner 4/5 · life-science literature search and text mining

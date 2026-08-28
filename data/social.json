@@ -397,7 +397,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "The best free path off SPSS for people who do not want to write code, and the syntax preview makes it a genuine bridge into R. Cloud has paid tiers for longer sessions and more memory; the desktop version has no such limits and is the one to use for real work. Some advanced modelling still needs R or specialised software.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -425,7 +425,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Read the eligibility line carefully. The Community plan is free only for nonprofits, government agencies, UN organisations and educational institutions; it gives 5,000 submissions per month and 1 GB file storage. Private companies and 'personal use not associated with an organisation' fall into the Other category, where Community costs about US$99/month and the cheapest paid plan (Starter, 1,000 submissions/month) is US$25/month. An unaffiliated independent researcher may not qualify for the free tier - or can self-host the open-source stack instead.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -453,7 +453,7 @@
       "registration": "none",
       "beginner": 2,
       "notes": "Free only if you self-host - LimeSurvey's own cloud service is a paid product, and the ComfortUpdate auto-updater is a paid add-on even for CE. Self-hosting means you own the security and GDPR responsibilities, including patching; that is often exactly what an ethics committee wants, but it is real work.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -497,7 +497,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "The most capable genuinely free alternative to NVivo, ATLAS.ti and MAXQDA, and it supports REFI-QDA so you can move a project between tools. It is a small volunteer project: the interface is plainer than the commercial packages, there is no team-collaboration server, and PyQt6 installation can be fiddly on macOS. For lightweight tagging with a hosted option, Taguette (https://www.taguette.org/) is simpler but does far less.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -623,10 +623,8 @@
       "registration": "email",
       "beginner": 5,
       "notes": "Owned by Elsevier since 2016, which is worth knowing when deciding where to deposit: SSRN is a commercial platform, not community-governed infrastructure, and its terms and metadata openness are Elsevier's to change. Some papers are abstract-only where the author has not posted full text. For a non-commercial alternative in the same fields, SocArXiv and APSA Preprints cover much of the same ground.",
-      "canonical": true,
-      "also_in": [
-        "econ-finance"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "The Wikipedia Library",
@@ -709,7 +707,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Preregistration is increasingly expected by reviewers in experimental and quantitative social science, and this is the free standard venue. Important 2026 context: the Center for Open Science is retiring the separate OSF Projects workspace - from 16 November 2026 no new projects can be created and after 19 February 2027 all projects become read-only - but OSF Registries and OSF Preprints continue unchanged, with COS pointing users to Zenodo for data, materials and code.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -795,7 +793,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Genuinely free and unusually valuable where you have no local course to sit in on, and the offline packages matter on a bad connection. It is course material, not a course: no instructor, no cohort, no credential, and older courses are not updated - check the term listed before relying on software instructions or reading lists.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -851,7 +849,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "About 68,000 questions are unanswered, so a badly framed question sinks without trace - include your design, your sample size, what you have tried, and a reproducible example. The site is strict about scope: 'which test should I use for my dissertation' with no detail gets closed. Answer quality is high but not peer reviewed; check the credentials and the citations in an answer before building on it.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     }
   ]

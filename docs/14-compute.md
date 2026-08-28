@@ -334,7 +334,7 @@ Turns any public Git repository with an environment specification into a running
 
 **Caveats.** Be honest with yourself about what this is for. mybinder.org 'relies on the generosity of donors and volunteers', runs entirely on donated cloud resources, and offers 'no persistent storage of any sort' — everything is destroyed at logout. It is a superb demo and teaching layer for a paper, and a bad place to compute. Capacity varies; first builds of a repo can take many minutes.
 
-*Also listed under: physics, mathematics.*
+*Also listed under: physics, mathematics, learning, workflow-tools.*
 
 ### [NAIRR Pilot](https://nairrpilot.org/)
 
@@ -475,8 +475,6 @@ Free project workspace from the Center for Open Science combining file storage, 
 **Access.** Web interface at osf.io; osfclient (pip install osfclient) for command-line push/pull; add-ons connect Google Drive, Dropbox, S3, GitHub and figshare so large files can live elsewhere while the project stays the index.
 
 **Caveats.** The caps are per component, not per account, so a large study can be split across components — this is the intended workaround, not a loophole. OSF encourages storage add-ons for anything bigger, which means the underlying cost moves to whatever service you connect. Making a project public is what unlocks the 50 GB tier.
-
-*Also listed under: neuro-psych.*
 
 ### [Software Heritage](https://archive.softwareheritage.org/)
 

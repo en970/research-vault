@@ -365,7 +365,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Open source (GPL). Java-based and memory-hungry on long video files — on a modest laptop, work with compressed proxy video. Interoperates with FLEx and with CLAN/CHAT, though round-tripping loses some tier structure.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -619,7 +619,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Genuinely diamond — no book processing charges and no reader paywall, funded by a library consortium. Authors do more production work than at a commercial press (typesetting in the LaTeX template, recruiting proofreaders), which is the trade-off. Turnaround depends on series editor availability. Their grammar series is a realistic venue for a documentation dissertation.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -647,7 +647,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "No APCs — the model is library consortium funding, which is why it works for unaffiliated authors. Journal scopes are specific (from Nineteenth-Century Matters to Digital Medievalist); check whether one fits before assuming OLH is an option. If you are an editorial board wanting to leave a commercial publisher, the migration service is the practical route.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -801,7 +801,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "The model open pedagogical resource in the field: openly peer reviewed, versioned, and maintained with a formal process for retiring lessons that no longer run. Some older lessons still depend on library versions that have moved on — check the lesson's revision date and reported dependencies before following it step by step.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -815,7 +815,7 @@
       "registration": "email",
       "beginner": 5,
       "notes": "One of the few humanities scholarly networks explicitly open to unaffiliated researchers — this is its main value for this audience. The repository was formerly called CORE and the network formerly Humanities Commons, so older references use different names. Group activity is uneven: some are lively, many are dormant.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

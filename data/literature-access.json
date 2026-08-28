@@ -30,7 +30,9 @@
       "beginner": 3,
       "notes": "Released under CC0 — a genuine change from the pre-2023 situation where the database was licensed. Run your reference list against it before submitting; citing retracted work is embarrassing and increasingly caught by reviewers. The download is slow (it took over two minutes on a home connection) and the file is a flat CSV, so load it with pandas rather than a spreadsheet. Coverage is good but not exhaustive, and reasons are curator-assigned.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "publishing"
+      ]
     },
     {
       "name": "bibliometrix",
@@ -100,7 +102,9 @@
       "beginner": 4,
       "notes": "The right choice if you write in LaTeX and want your bibliography under version control alongside your manuscript — the .bib file is the database, so git diffs are meaningful and no service can hold your data. Less polished than Zotero for PDF reading and annotation, and no hosted sync (use your own git repo or file sync). 100% free and open source with no paid tier at all.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "workflow-tools"
+      ]
     },
     {
       "name": "Publish or Perish",
@@ -144,7 +148,8 @@
       "canonical": true,
       "also_in": [
         "physics",
-        "humanities"
+        "humanities",
+        "workflow-tools"
       ]
     },
     {
@@ -158,11 +163,8 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Reading is unconditional and unregistered. Submitting requires an account and, for a first submission in a category, endorsement by an established author — a real barrier for unaffiliated researchers, though endorsement is usually granted on request with a reasonable draft. Nothing on arXiv is peer reviewed by arXiv. The daily category listing plus its RSS feed is the cheapest current-awareness tool in existence for these fields.",
-      "canonical": true,
-      "also_in": [
-        "physics",
-        "cs-ml"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "BASE (Bielefeld Academic Search Engine)",
@@ -204,7 +206,9 @@
       "beginner": 4,
       "notes": "The API is usable without registration but is capped at one batch request or five single requests per 10 seconds — fine for interactive work, painful for harvesting. Registered organisational keys get faster rates but those are 'typically not free'; free licences are assessed case by case at registration, and Supporting/Sustaining Members get the fast rate as a benefit. FastSync and bespoke contracts are commercial. Because CORE harvests repositories, records include preprints, theses and accepted manuscripts alongside published versions — check the version before citing.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "publishing"
+      ]
     },
     {
       "name": "Crossref REST API",
@@ -218,7 +222,9 @@
       "beginner": 4,
       "notes": "No registration, but the shared anonymous pool is aggressively throttled — I hit HTTP 429 repeatedly from a single laptop during this sweep. Put a real mailto in your User-Agent or the `mailto` parameter to enter the 'polite pool', which is markedly more reliable. Crossref only knows what publishers deposit: abstracts and references are missing for many records, and it holds no full text. Metadata Plus (guaranteed throughput, snapshots) is a paid membership service. Content Registration fees for members drop, and back-year record fees are removed, on 1 January 2027.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "publishing"
+      ]
     },
     {
       "name": "Dimensions (free version)",
@@ -246,7 +252,9 @@
       "beginner": 5,
       "notes": "The single most useful resource for humanities and social science researchers without library access, where the monograph is the unit of scholarship and journal-focused tools are useless. Coverage is only books their publishers chose to make OA — most academic monographs are still closed. Quality varies; check the PRISM peer-review record.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "publishing"
+      ]
     },
     {
       "name": "DOAJ (Directory of Open Access Journals)",
@@ -264,7 +272,8 @@
         "chemistry",
         "medicine",
         "neuro-psych",
-        "social"
+        "social",
+        "publishing"
       ]
     },
     {
@@ -294,6 +303,7 @@
       "notes": "Say this plainly because newcomers do not believe it: this works, often within a day, and researchers are generally pleased to be asked. It works best for papers less than about 15 years old where the author is still contactable. It does not scale to a systematic review of 400 papers, and do not ask for a PDF the publisher has already made open — check Unpaywall first. ORCID itself is free, registration is optional for lookups, and the public API needs no key for basic record retrieval.",
       "canonical": true,
       "also_in": [
+        "publishing",
         "funding"
       ]
     },
@@ -322,12 +332,8 @@
       "registration": "none",
       "beginner": 5,
       "notes": "The API needs no key and imposes no registration, which makes it the easiest large biomedical corpus to script against. Preprints from bioRxiv, medRxiv and others are included and flagged `SRC:PPR` — useful, but check peer-review status before citing. Full text is only downloadable for the open-access subset; the rest is abstract-only.",
-      "canonical": true,
-      "also_in": [
-        "biology",
-        "medicine",
-        "neuro-psych"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "Google Scholar",
@@ -475,7 +481,8 @@
         "physics",
         "chemistry",
         "neuro-psych",
-        "social"
+        "social",
+        "publishing"
       ]
     },
     {
@@ -489,7 +496,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Reading and the API need no account; depositing needs a free one. This is the main preprint route for psychology, education, sociology and other social sciences that have no arXiv. Preprints are not peer reviewed and quality is uneven — check whether a published version exists. Some partner servers have shut down or moved over the years, so older links can rot.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -539,7 +546,8 @@
       "canonical": true,
       "also_in": [
         "medicine",
-        "social"
+        "social",
+        "publishing"
       ]
     },
     {
@@ -620,7 +628,9 @@
         "physics",
         "chemistry",
         "medicine",
-        "social"
+        "social",
+        "publishing",
+        "workflow-tools"
       ]
     },
     {
@@ -650,7 +660,8 @@
       "notes": "The practical use is as a shortlist of venues where an unfunded author can publish at zero cost without the predatory-journal risk — every member is community-governed and vetted against published acceptance criteria. The list skews heavily towards mathematics and theoretical fields; some disciplines have almost no members. The organisation's blog has not posted since 2022, so it is more a curated directory than an active programme; the journal list itself remains current. DOAJ's no-fee filter covers far more journals if you need breadth.",
       "canonical": true,
       "also_in": [
-        "mathematics"
+        "mathematics",
+        "publishing"
       ]
     },
     {
@@ -665,7 +676,9 @@
       "beginner": 4,
       "notes": "This is the successor to Sherpa Romeo — old sherpa.ac.uk links and bookmarks point at a renamed service, which trips up a lot of older guidance. The API is mid-migration to a new platform; Jisc extended the migration window to July 2026, so verify which endpoint you are calling. Site content is licensed CC BY-NC-ND. Policies are as reported by publishers and can lag actual contract terms — for a specific paper, your signed agreement wins.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "publishing"
+      ]
     },
     {
       "name": "ShareYourPaper",
@@ -712,7 +725,9 @@
         "mathematics",
         "cs-ml",
         "social",
-        "compute"
+        "compute",
+        "publishing",
+        "workflow-tools"
       ]
     },
     {
@@ -740,10 +755,8 @@
       "registration": "application",
       "beginner": 3,
       "notes": "Fee-assistance applications are kept confidential from editors and reviewers, and PLOS states that publication decisions are made on editorial criteria alone — so applying does not prejudice your paper. Standard APCs are substantial if you do not qualify: PLOS ONE ranges $1,088–$2,477 depending on article type and other PLOS journals $2,596–$6,460. The same Research4Life country lists drive waiver schemes at Springer Nature, Wiley, Elsevier, BMJ and others, so check your country's group once and reuse it.",
-      "canonical": true,
-      "also_in": [
-        "biology"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "Aaron Tay, Musings about librarianship",
@@ -828,10 +841,8 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Use it as a reference rather than reading it cover to cover — it is very large. The open-access and licensing chapters are a practical complement to Suber's book, covering what to actually do rather than why. Being community-written, depth varies between chapters and some are stubs.",
-      "canonical": true,
-      "also_in": [
-        "social"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "Academia Stack Exchange",
@@ -845,7 +856,9 @@
       "beginner": 5,
       "notes": "Answers skew towards North American and Western European STEM norms and towards people who do have institutional affiliations, so weigh advice about 'just ask your librarian' accordingly. Requests for copyrighted PDFs are off-topic and get closed; questions about legal routes are welcome. Voting-based, so accepted answers can be dated — check the timestamps on anything about tools or services.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "publishing"
+      ]
     },
     {
       "name": "Crossref Community Forum",
@@ -887,7 +900,9 @@
       "beginner": 5,
       "notes": "Responses come from actual maintainers, often the same day, and the archive goes back well over a decade. Scope is Zotero-specific: general 'how do I find this paper' questions belong elsewhere. CSL citation-style problems are handled here and in the citation-style-language GitHub repositories.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "workflow-tools"
+      ]
     }
   ]
 }

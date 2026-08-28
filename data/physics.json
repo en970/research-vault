@@ -455,10 +455,8 @@
       "registration": "email",
       "beginner": 5,
       "notes": "Paid plans (Student $8.25/month upward) are needed for more than one collaborator per project, track changes, full version history, longer compile timeouts, and Git/GitHub/Dropbox/Zotero integration; AI features are capped at 5 uses/day on free. Many universities hold site licences worth checking before paying. A local TeX Live install plus git has no limits at all — Overleaf's real value is collaborating with people who will not install LaTeX.",
-      "canonical": true,
-      "also_in": [
-        "mathematics"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "pymatgen",
@@ -851,7 +849,7 @@
       "registration": "email",
       "beginner": 3,
       "notes": "Selective venue with strong reputation in quantum information; the no-questions-asked waiver makes it genuinely open to unfunded authors.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -865,7 +863,7 @@
       "registration": "email",
       "beginner": 3,
       "notes": "SciPost Physics has become a respected venue in theory and cond-mat/quantum; refereeing standards are high and acceptance is selective.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -1075,7 +1073,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Research-level content; the PSI course collections are the most structured entry point.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -1089,7 +1087,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Online reading only — there is no authorized free PDF/ebook download; print editions remain commercial.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

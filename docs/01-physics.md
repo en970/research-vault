@@ -336,8 +336,6 @@ Browser-based LaTeX editor with a hosted TeX Live installation, journal and prep
 
 **Caveats.** Paid plans (Student $8.25/month upward) are needed for more than one collaborator per project, track changes, full version history, longer compile timeouts, and Git/GitHub/Dropbox/Zotero integration; AI features are capped at 5 uses/day on free. Many universities hold site licences worth checking before paying. A local TeX Live install plus git has no limits at all — Overleaf's real value is collaborating with people who will not install LaTeX.
 
-*Also listed under: mathematics.*
-
 ### [pymatgen](https://pymatgen.org)
 
 `Free` · beginner 3/5 · materials analysis library

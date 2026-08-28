@@ -458,8 +458,6 @@ Over 1.5 million full-text papers from more than 1.9 million authors across 69 d
 
 **Caveats.** Owned by Elsevier since 2016, which is worth knowing when deciding where to deposit: SSRN is a commercial platform, not community-governed infrastructure, and its terms and metadata openness are Elsevier's to change. Some papers are abstract-only where the author has not posted full text. For a non-commercial alternative in the same fields, SocArXiv and APSA Preprints cover much of the same ground.
 
-*Also listed under: econ-finance.*
-
 ### [The Wikipedia Library](https://wikipedialibrary.wmflabs.org/)
 
 `Free (registration), credentialing` · beginner 3/5 · database access for unaffiliated researchers

@@ -773,7 +773,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Written by economists (Sargent, Stachurski and collaborators) for economists, so the examples are dynamic programming, search and matching, asset pricing and heterogeneous agents rather than generic data science. The JAX lectures assume a GPU — Colab's free tier is enough to follow them, with the usual free-tier GPU restrictions.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

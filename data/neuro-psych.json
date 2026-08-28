@@ -351,10 +351,8 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Analyses run in memory, so very large datasets are better handled in R. Modules beyond the core set are installed from the JASP library. jamovi (jamovi.org) is the closely comparable free alternative if you prefer its R-syntax mode; both are genuine substitutes for SPSS licences that unaffiliated researchers cannot buy.",
-      "canonical": true,
-      "also_in": [
-        "social"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "JATOS",
@@ -649,14 +647,8 @@
       "registration": "email",
       "beginner": 3,
       "notes": "No fees to publish or read. Scope is strict: the software must be feature-complete, have obvious research application, show at least six months of public development history and community adoption, and not be a minor utility or single-function wrapper. Review targets the software, so expect requests to add tests, docs and installation instructions.",
-      "canonical": true,
-      "also_in": [
-        "physics",
-        "astronomy",
-        "chemistry",
-        "earth",
-        "cs-ml"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "Meta-Psychology",
@@ -781,7 +773,7 @@
       "registration": "application",
       "beginner": 4,
       "notes": "Materials are CC BY 4.0 (software BSD-3), so self-study costs nothing and is a genuinely complete curriculum. The live programme is not free: tuition is adjusted by cost of living with additional hardship discounts and waivers, but a non-refundable processing fee applies to everyone. 2026 courses ran 6-24 July (NeuroAI and Climate 13-24 July); 2026 applications are closed and 2027 applications open in February 2027.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -809,7 +801,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "The lectures, slides, homework and code are free; the textbook itself is a paid Cambridge/CRC title with only sample chapters free, though the lectures stand alone. A third edition is in progress with no announced date. Budget real time — this is a semester course, not a weekend tutorial.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

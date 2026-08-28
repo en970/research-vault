@@ -28,6 +28,8 @@ The Retraction Watch database, acquired by Crossref in 2023 and released as publ
 
 **Caveats.** Released under CC0 — a genuine change from the pre-2023 situation where the database was licensed. Run your reference list against it before submitting; citing retracted work is embarrassing and increasingly caught by reviewers. The download is slow (it took over two minutes on a home connection) and the file is a flat CSV, so load it with pandas rather than a spreadsheet. Coverage is good but not exhaustive, and reasons are curator-assigned.
 
+*Also listed under: publishing.*
+
 ## Software
 
 ### [bibliometrix](https://cran.r-project.org/package=bibliometrix)
@@ -80,6 +82,8 @@ Free and open-source reference manager storing everything in plain BibTeX/BibLaT
 
 **Caveats.** The right choice if you write in LaTeX and want your bibliography under version control alongside your manuscript — the .bib file is the database, so git diffs are meaningful and no service can hold your data. Less polished than Zotero for PDF reading and annotation, and no hosted sync (use your own git repo or file sync). 100% free and open source with no paid tier at all.
 
+*Also listed under: workflow-tools.*
+
 ### [Publish or Perish](https://harzing.com/resources/publish-or-perish)
 
 `Free` · beginner 4/5 · citation retrieval and metrics
@@ -110,7 +114,7 @@ Free, open-source reference manager from the nonprofit Corporation for Digital S
 
 **Caveats.** The software is free and unlimited forever; only cloud file storage is metered — 300 MB free, then $20/year for 2 GB, $60/year for 6 GB, $120/year for unlimited. Two ways around this entirely: sync metadata only (unlimited and free) and keep PDFs local, or point file syncing at your own WebDAV server. Group library files draw on the group owner's quota. Beyond citation formatting, Zotero is the practical hub of a no-institution workflow: it stores the PDFs you legally obtain, and its saved searches and RSS reader make it a discovery tool as well.
 
-*Also listed under: physics, humanities.*
+*Also listed under: physics, humanities, workflow-tools.*
 
 ## Literature
 
@@ -123,8 +127,6 @@ Open-access archive of nearly 2.4 million scholarly articles in physics, mathema
 **Access.** Free reading and download, no account. Metadata API: `https://export.arxiv.org/api/query?search_query=all:...&max_results=100` (Atom, includes opensearch totals). Daily new-submission listings, RSS feeds and email subscriptions per category. Bulk full text via a requester-pays S3 bucket; OAI-PMH for metadata harvesting.
 
 **Caveats.** Reading is unconditional and unregistered. Submitting requires an account and, for a first submission in a category, endorsement by an established author — a real barrier for unaffiliated researchers, though endorsement is usually granted on request with a reasonable draft. Nothing on arXiv is peer reviewed by arXiv. The daily category listing plus its RSS feed is the cheapest current-awareness tool in existence for these fields.
-
-*Also listed under: physics, cs-ml.*
 
 ### [BASE (Bielefeld Academic Search Engine)](https://www.base-search.net)
 
@@ -156,6 +158,8 @@ Not-for-profit aggregator hosted by The Open University indexing 452 million sea
 
 **Caveats.** The API is usable without registration but is capped at one batch request or five single requests per 10 seconds — fine for interactive work, painful for harvesting. Registered organisational keys get faster rates but those are 'typically not free'; free licences are assessed case by case at registration, and Supporting/Sustaining Members get the fast rate as a benefit. FastSync and bespoke contracts are commercial. Because CORE harvests repositories, records include preprints, theses and accepted manuscripts alongside published versions — check the version before citing.
 
+*Also listed under: publishing.*
+
 ### [Crossref REST API](https://api.crossref.org)
 
 `Free` · beginner 4/5 · DOI metadata registry
@@ -165,6 +169,8 @@ Authoritative metadata for 185,908,779 registered DOIs from about 25,000 member 
 **Access.** Open REST API, no key: `https://api.crossref.org/works?query.bibliographic=...&rows=100`. Python `pip install habanero`, then `from habanero import Crossref; Crossref(mailto="you@example.org").works(query="...")`. Full metadata torrents/snapshots also published annually.
 
 **Caveats.** No registration, but the shared anonymous pool is aggressively throttled — I hit HTTP 429 repeatedly from a single laptop during this sweep. Put a real mailto in your User-Agent or the `mailto` parameter to enter the 'polite pool', which is markedly more reliable. Crossref only knows what publishers deposit: abstracts and references are missing for many records, and it holds no full text. Metadata Plus (guaranteed throughput, snapshots) is a paid membership service. Content Registration fees for members drop, and back-year record fees are removed, on 1 January 2027.
+
+*Also listed under: publishing.*
 
 ### [Dimensions (free version)](https://www.dimensions.ai/products/free/)
 
@@ -186,6 +192,8 @@ Discovery service indexing over 108,500 peer-reviewed open-access scholarly book
 
 **Caveats.** The single most useful resource for humanities and social science researchers without library access, where the monograph is the unit of scholarship and journal-focused tools are useless. Coverage is only books their publishers chose to make OA — most academic monographs are still closed. Quality varies; check the PRISM peer-review record.
 
+*Also listed under: publishing.*
+
 ### [DOAJ (Directory of Open Access Journals)](https://doaj.org)
 
 `Free` · beginner 5/5 · vetted OA journal and article index
@@ -196,7 +204,7 @@ Community-curated whitelist of 23,371 open-access journals from 141 countries in
 
 **Caveats.** DOAJ inclusion is the practical test for whether an OA journal is legitimate rather than predatory — its criteria cover peer review, editorial process, licensing and transparency. Article-level coverage is partial: only some member journals deposit article metadata, so the 13.5M article records are far from all articles in the 23,371 journals. 'Premium Mode' is a paid convenience layer; all the data and APIs remain free.
 
-*Also listed under: chemistry, medicine, neuro-psych, social.*
+*Also listed under: chemistry, medicine, neuro-psych, social, publishing.*
 
 ### [Elicit](https://elicit.com)
 
@@ -218,7 +226,7 @@ Ask the author for a copy. Authors are legally entitled to share their own manus
 
 **Caveats.** Say this plainly because newcomers do not believe it: this works, often within a day, and researchers are generally pleased to be asked. It works best for papers less than about 15 years old where the author is still contactable. It does not scale to a systematic review of 400 papers, and do not ask for a PDF the publisher has already made open — check Unpaywall first. ORCID itself is free, registration is optional for lookups, and the public API needs no key for basic record retrieval.
 
-*Also listed under: funding.*
+*Also listed under: publishing, funding.*
 
 ### [ERIC (Education Resources Information Center)](https://eric.ed.gov)
 
@@ -239,8 +247,6 @@ EMBL-EBI's life-sciences literature database: 48,779,933 abstracts, 12,103,215 f
 **Access.** Free REST API, no key: `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=...&format=json&pageSize=100`, with cursorMark paging for large result sets. Bulk OA full text via FTP and an annotations API. Web search with saved-query email alerts.
 
 **Caveats.** The API needs no key and imposes no registration, which makes it the easiest large biomedical corpus to script against. Preprints from bioRxiv, medRxiv and others are included and flagged `SRC:PPR` — useful, but check peer-review status before citing. Full text is only downloadable for the open-access subset; the rest is abstract-only.
-
-*Also listed under: biology, medicine, neuro-psych.*
 
 ### [Google Scholar](https://scholar.google.com)
 
@@ -346,7 +352,7 @@ Open catalogue of the scholarly record run by the OurResearch nonprofit: 322,147
 
 **Caveats.** IMPORTANT CHANGE: the API is now metered in dollars, not calls. A free account key gets $1 of usage per day (resets midnight UTC); with no key you get $0.10/day. Rates: single-entity lookups by ID or DOI are free and unlimited; list+filter $0.10 per 1,000 calls; keyword or semantic search $1 per 1,000 calls; cached PDF download $10 per 1,000. So $1/day buys roughly 10,000 filter calls (1M results) or ~1,000 searches or 100 PDFs. Browsing openalex.org draws on the same budget (~1.8x costlier per search than a direct API call). Overflow needs prepaid credit in $1 increments (expires after 3 months) or an annual plan (Member $5,000/yr, Member+ $10,000/yr, Partner from $20,000/yr). The data itself stays CC0 and the whole snapshot remains a free download — only serving and freshness are billed. The snapshot is quarterly, so it lags the live API by up to three months.
 
-*Also listed under: physics, chemistry, neuro-psych, social.*
+*Also listed under: physics, chemistry, neuro-psych, social, publishing.*
 
 ### [OSF Preprints](https://osf.io/preprints/)
 
@@ -392,7 +398,7 @@ Public-private partnership giving institutions in eligible low- and middle-incom
 
 **Caveats.** This is an institutional programme, not an individual one — an unaffiliated researcher cannot register alone, and a researcher at an eligible institution that has not registered gets nothing until a librarian applies. Eligibility is determined by country group, so a poorly resourced institution in a high-income country is excluded entirely. Group A countries get free access; Group B institutions pay an annual fee. The same Group A/B lists are reused by many publishers to set APC waivers, so knowing your country's group is worth doing. Their website is behind a bot filter that blocked automated verification of current title counts, so I have not quoted any.
 
-*Also listed under: medicine, social.*
+*Also listed under: medicine, social, publishing.*
 
 ### [ResearchGate](https://www.researchgate.net)
 
@@ -448,7 +454,7 @@ Given a DOI, returns whether a legal free-to-read copy exists and where, disting
 
 **Caveats.** The `email` parameter is mandatory — omit it and the API returns HTTP 422. Coverage is Crossref DOIs only: DataCite DOIs are deliberately excluded (nearly all are OA anyway), and a non-Crossref DOI returns 404. Since OurResearch's 'Walden' rewrite, Unpaywall is no longer a separate database — it is a legacy-compatible format served from the same OpenAlex pipeline, kept stable for the ecosystem built on it. For new code, query OpenAlex directly. The daily Data Feed is a paid subscription; the per-DOI API, extension and Simple Query Tool remain free.
 
-*Also listed under: physics, chemistry, medicine, social.*
+*Also listed under: physics, chemistry, medicine, social, publishing, workflow-tools.*
 
 ### [WorldCat](https://www.worldcat.org)
 
@@ -472,7 +478,7 @@ Non-profit membership network of scholar-controlled journals operating on the Fa
 
 **Caveats.** The practical use is as a shortlist of venues where an unfunded author can publish at zero cost without the predatory-journal risk — every member is community-governed and vetted against published acceptance criteria. The list skews heavily towards mathematics and theoretical fields; some disciplines have almost no members. The organisation's blog has not posted since 2022, so it is more a curated directory than an active programme; the journal list itself remains current. DOAJ's no-fee filter covers far more journals if you need breadth.
 
-*Also listed under: mathematics.*
+*Also listed under: mathematics, publishing.*
 
 ### [Open Policy Finder (formerly Sherpa Romeo)](https://openpolicyfinder.jisc.ac.uk)
 
@@ -483,6 +489,8 @@ Jisc's database of publisher and funder open-access policies: for a given journa
 **Access.** Web lookup by journal title or ISSN at openpolicyfinder.jisc.ac.uk; an API is available for programmatic checks.
 
 **Caveats.** This is the successor to Sherpa Romeo — old sherpa.ac.uk links and bookmarks point at a renamed service, which trips up a lot of older guidance. The API is mid-migration to a new platform; Jisc extended the migration window to July 2026, so verify which endpoint you are calling. Site content is licensed CC BY-NC-ND. Policies are as reported by publishers and can lag actual contract terms — for a specific paper, your signed agreement wins.
+
+*Also listed under: publishing.*
 
 ### [ShareYourPaper](https://shareyourpaper.org)
 
@@ -514,7 +522,7 @@ CERN-hosted open repository holding 7,191,588 records as of 2026-08-28. Accepts 
 
 **Caveats.** The default answer to 'where do I put this so it has a permanent identifier and someone can cite it' when you have no institutional repository. Anyone can deposit, so Zenodo carries no quality signal — that is a feature for self-archiving and a caveat for readers. Check your publisher's self-archiving policy (Open Policy Finder) before depositing an accepted manuscript; ShareYourPaper automates that check and deposits into Zenodo for you.
 
-*Also listed under: physics, mathematics, cs-ml, social, compute.*
+*Also listed under: physics, mathematics, cs-ml, social, compute, publishing, workflow-tools.*
 
 ## Funding
 
@@ -537,8 +545,6 @@ PLOS waives fees on a country basis and on demonstrated need. Authors without ex
 **Access.** Apply for PFA at submission through the PLOS submission system; decisions typically arrive within 10 business days. Country eligibility follows the Research4Life Group A/B lists.
 
 **Caveats.** Fee-assistance applications are kept confidential from editors and reviewers, and PLOS states that publication decisions are made on editorial criteria alone — so applying does not prejudice your paper. Standard APCs are substantial if you do not qualify: PLOS ONE ranges $1,088–$2,477 depending on article type and other PLOS journals $2,596–$6,460. The same Research4Life country lists drive waiver schemes at Springer Nature, Wiley, Elsevier, BMJ and others, so check your country's group once and reuse it.
-
-*Also listed under: biology.*
 
 ## Learning
 
@@ -604,8 +610,6 @@ Large, community-written, openly licensed handbook on reproducible, ethical and 
 
 **Caveats.** Use it as a reference rather than reading it cover to cover — it is very large. The open-access and licensing chapters are a practical complement to Suber's book, covering what to actually do rather than why. Being community-written, depth varies between chapters and some are stubs.
 
-*Also listed under: social.*
-
 ## Community
 
 ### [Academia Stack Exchange](https://academia.stackexchange.com)
@@ -617,6 +621,8 @@ Q&A site covering the practice of academic life, with a large accumulated archiv
 **Access.** Free reading with no account; free account to ask or answer. Search the existing archive first — most access questions are already answered in depth.
 
 **Caveats.** Answers skew towards North American and Western European STEM norms and towards people who do have institutional affiliations, so weigh advice about 'just ask your librarian' accordingly. Requests for copyrighted PDFs are off-topic and get closed; questions about legal routes are welcome. Voting-based, so accepted answers can be dated — check the timestamps on anything about tools or services.
+
+*Also listed under: publishing.*
 
 ### [Crossref Community Forum](https://community.crossref.org)
 
@@ -647,3 +653,5 @@ Official support forum for Zotero, staffed by the core developers alongside expe
 **Access.** Free reading; free account to post. Search before posting — most problems have been answered.
 
 **Caveats.** Responses come from actual maintainers, often the same day, and the archive goes back well over a decade. Scope is Zotero-specific: general 'how do I find this paper' questions belong elsewhere. CSL citation-style problems are handled here and in the citation-style-language GitHub repositories.
+
+*Also listed under: workflow-tools.*

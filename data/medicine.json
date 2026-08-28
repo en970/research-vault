@@ -467,7 +467,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "The most realistic way for an unaffiliated researcher to put health research on the public record with a DOI at zero cost. Screening rejects case reports of identifiable patients and anything readable as clinical advice; trial reports should carry a registration number. Some clinical journals still treat preprinting cautiously, so check the target journal's policy first. The website blocks scripted fetches — use the API.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -621,7 +621,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Most medical journals now require the relevant completed checklist at submission, so this is not optional advice. The site indexes guidelines rather than hosting all of them — a few link out to publisher pages that may be paywalled, though the checklists themselves are almost always free.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -649,7 +649,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Substantial content is in Portuguese and Spanish, which is an advantage for regional relevance and a barrier for English-only readers; many journals accept English submissions. PubMed indexing varies by journal, so check before submitting if PubMed visibility matters. APC policy is set per journal, not centrally.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

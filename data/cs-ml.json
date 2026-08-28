@@ -463,7 +463,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Review visibility is set per venue — some conferences publish reviews for accepted papers only, or after decisions. Two API generations coexist (API 2 by default; API 1 for most pre-2024 venues), so scraping historical venues means handling both. Reading needs no account; submission does.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -561,7 +561,7 @@
       "registration": "email",
       "beginner": 2,
       "notes": "Genuinely diamond OA: no charge to authors or readers, run by volunteers. Standards are high and review is slow (often 6–12 months), so it is a poor fit for time-sensitive results — but the MLOSS track is one of the few ways an unaffiliated maintainer can get a peer-reviewed, citable record for a library.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -687,7 +687,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Covers maths, code and exercises together, which makes it slower but far more self-sufficient than a video course. Coverage of the newest LLM training and alignment practice is lighter than its coverage of fundamentals. The four framework variants are maintained unevenly — the PyTorch track is the most complete.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -701,7 +701,7 @@
       "registration": "email",
       "beginner": 5,
       "notes": "Written against the Hugging Face libraries throughout, so you learn the ecosystem alongside the concepts — good for getting productive fast, less good for framework-independent understanding. Course quality varies: the LLM and Deep RL courses are well maintained; several community-authored ones are patchier and can lag library changes.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -715,7 +715,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Assumes solid Python and comfort with derivatives and Gaussians. Slow-going by design: the value is in coding along, not watching. The series is intermittently extended rather than complete, and stops short of modern large-scale training practice.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -729,7 +729,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Prerequisite is about a year of Python plus high-school maths; no ML background needed. The current recording is the 2022 edition, so library APIs and the LLM-era material have moved on — the pedagogy and the top-down method hold up, but expect to patch code. Part 2 (Stable Diffusion from scratch) is the deeper follow-on.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

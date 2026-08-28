@@ -342,7 +342,9 @@
       "canonical": true,
       "also_in": [
         "physics",
-        "cs-ml"
+        "cs-ml",
+        "learning",
+        "workflow-tools"
       ]
     },
     {
@@ -398,10 +400,8 @@
       "registration": "application",
       "beginner": 3,
       "notes": "The level of support differs sharply by activity — some schools cover travel and local costs for participants from developing countries, others only waive fees — so read the specific event page rather than assuming. Applications are competitive and typically require references from senior scientists.",
-      "canonical": true,
-      "also_in": [
-        "physics"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "ICTP Postgraduate Diploma Programme",
@@ -550,7 +550,9 @@
       "beginner": 4,
       "notes": "Explicitly no travel support — no flights, no per diem, no expense reimbursement — so airfare and visa costs remain yours, which is the binding constraint for most applicants outside North America and Europe. Eligible authorship is limited to the main, Datasets & Benchmarks and Position Paper tracks; workshop and Creative AI papers do not count. The 2026 page had not yet been updated as of 2026-08-28; the terms above are the 2025 ones.",
       "canonical": true,
-      "also_in": []
+      "also_in": [
+        "publishing"
+      ]
     },
     {
       "name": "NIH RePORTER",
@@ -609,7 +611,8 @@
       "notes": "Only NumFOCUS fiscally sponsored or affiliated projects may apply (NumPy, pandas, Jupyter, Astropy, and so on), and only one proposal per project per cycle — so as an individual you need a maintainer to sponsor the work. Work can be performed anywhere subject to US export law. Round dates shift year to year; check the page for the current calendar.",
       "canonical": true,
       "also_in": [
-        "physics"
+        "physics",
+        "workflow-tools"
       ]
     },
     {
@@ -637,10 +640,8 @@
       "registration": "application",
       "beginner": 4,
       "notes": "The contribution period is real work done before you know whether you are accepted — budget several weeks. Eligibility is assessed against under-representation in your own country's tech industry, and there are time-commitment restrictions if you are simultaneously in full-time study or employment.",
-      "canonical": true,
-      "also_in": [
-        "cs-ml"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "OWSD (Organization for Women in Science for the Developing World)",

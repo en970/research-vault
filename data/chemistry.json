@@ -475,7 +475,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Reading needs no account; posting does. Submissions are screened, not peer reviewed. The site sits behind Cloudflare, so scripted access from a plain HTTP client is frequently challenged - use a browser or a proper client. Check your target journal's preprint policy first; most chemistry journals accept ChemRxiv preprints, but not all.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

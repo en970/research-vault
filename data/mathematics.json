@@ -15,7 +15,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "A US government work, so effectively free to use, but NIST asks for citation and the site carries no blanket open licence for wholesale republication. It is a reference, not a computation engine - pair it with mpmath or Arb for actual evaluation.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -113,7 +113,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Reading and API use need no account; contributing a sequence or an edit requires a (free) registered account and passes through volunteer editors, which can take days to weeks. Be polite with the API - it is a small server run on donations.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -309,7 +309,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "A full install is several GB; on a constrained laptop install the 'basic' or 'small' scheme and add packages with tlmgr. Distribution-packaged TeX Live is often a year or two behind, which matters when a journal class file needs a recent package.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -547,7 +547,7 @@
       "registration": "email",
       "beginner": 3,
       "notes": "This is the realistic route if your community wants to start a journal without a publisher or a budget. It is publicly funded infrastructure, not a service you control; editorial policies must satisfy the platform's requirements, and the interface is French-first.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -687,7 +687,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Scope is undergraduate and early graduate teaching material - it will not cover a research seminar. Approval means suitability for a traditional course, not that the book is the best in its subject.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -771,7 +771,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Written by and for specialists: pages assume the ambient viewpoint and are not always self-contained or uniformly reliable, since anyone can edit. Excellent for orientation and references, not a citable source of proofs.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -785,7 +785,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "It is a reference, not a course: it starts from set theory and proves everything, which makes it exhaustive but unsuitable as a first pass through the subject. Tags are stable, but chapter and section numbers are not - always cite tags.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -841,7 +841,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Strictly for research-level questions - homework, textbook exercises and 'please explain this concept' get closed fast and pushed to Math StackExchange. Read a few closed questions before posting your first one. Content is CC BY-SA; the site is run by Stack Overflow's network.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     }
   ]

@@ -260,8 +260,6 @@ Free, open-source cross-platform statistics program from the University of Amste
 
 **Caveats.** Analyses run in memory, so very large datasets are better handled in R. Modules beyond the core set are installed from the JASP library. jamovi (jamovi.org) is the closely comparable free alternative if you prefer its R-syntax mode; both are genuine substitutes for SPSS licences that unaffiliated researchers cannot buy.
 
-*Also listed under: social.*
-
 ### [JATOS](https://www.jatos.org/)
 
 `Free` · beginner 3/5 · online study hosting
@@ -479,8 +477,6 @@ Diamond open-access journal (ISSN 2475-9066) that publishes short, citable paper
 **Access.** Put the software in a public repository with an OSI-approved licence, add a `paper.md` of roughly 250-1000 words plus a bib file, and submit at joss.theoj.org/papers/new; review happens in the open reviews repository with a checklist-driven editor and reviewers.
 
 **Caveats.** No fees to publish or read. Scope is strict: the software must be feature-complete, have obvious research application, show at least six months of public development history and community adoption, and not be a minor utility or single-function wrapper. Review targets the software, so expect requests to add tests, docs and installation instructions.
-
-*Also listed under: physics, astronomy, chemistry, earth, cs-ml.*
 
 ### [Meta-Psychology](https://open.lnu.se/index.php/metapsychology)
 

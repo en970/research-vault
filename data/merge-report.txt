@@ -10,7 +10,7 @@
 [humanities] no critic file — sweep used as-is
 [literature-access] no critic file — sweep used as-is
 [compute] no critic file — sweep used as-is
-[publishing] no sweep file — unit skipped
+[publishing] no critic file — sweep used as-is
 [funding] no critic file — sweep used as-is
-[learning] no sweep file — unit skipped
-[workflow-tools] no sweep file — unit skipped
+[learning] no critic file — sweep used as-is
+[workflow-tools] no critic file — sweep used as-is

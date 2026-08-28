@@ -449,7 +449,7 @@
       "registration": "none",
       "beginner": 3,
       "notes": "MIT licensed. The CLI changed substantially at v8 (executor plugins replaced `--cluster`, `--use-conda` became `--software-deployment-method conda`), so pre-v8 tutorials will not run as written - check the version before copying commands. Python familiarity helps; Nextflow suits people who prefer channels over file-pattern rules.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -477,10 +477,8 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Reading is entirely free; the S3 text-and-data-mining corpus is requester-pays, so bulk downloads incur AWS charges you pay. Author-chosen licences vary (CC BY, CC BY-NC-ND, or 'no reuse' by default), which constrains text mining. Preprints are screened, not reviewed. openRxiv Labs began running interactive-reading experiments in 2026, so the reading interface may change.",
-      "canonical": true,
-      "also_in": [
-        "neuro-psych"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "Europe PMC",
@@ -507,7 +505,7 @@
       "registration": "email",
       "beginner": 5,
       "notes": "Free forever for published (public) protocols, but the free tier allows only 2 private protocols; unlimited private protocols, 10 GB storage, SSO, HIPAA support and 21 CFR Part 11 features are Enterprise-only and priced on request. Owned by Springer Nature since 2023. Not the tool if you need private electronic-lab-notebook privacy at no cost.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -605,7 +603,7 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Genuinely free for authors and readers with no APC at any stage - the strongest publishing route in this catalogue for an unfunded or unaffiliated researcher. Trade-offs: lower name recognition than established journals, no impact factor for Peer Community Journal, and review can be slow because recommenders are volunteers. Not every biology subfield has an active community.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
@@ -731,7 +729,7 @@
       "registration": "none",
       "beginner": 5,
       "notes": "CC BY. The closest thing in biology to a complete, free, no-install practical curriculum, and it stays current - new tutorials were added on 28 August 2026. Tutorial datasets are deliberately small, so timings and resource estimates do not transfer to real data. Some tutorials assume tools installed only on a particular public server (usegalaxy.eu vs .org), so check the recommended server.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {

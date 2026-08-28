@@ -456,7 +456,9 @@
       "canonical": true,
       "also_in": [
         "physics",
-        "mathematics"
+        "mathematics",
+        "learning",
+        "workflow-tools"
       ]
     },
     {
@@ -646,10 +648,8 @@
       "registration": "email",
       "beginner": 5,
       "notes": "The caps are per component, not per account, so a large study can be split across components — this is the intended workaround, not a loophole. OSF encourages storage add-ons for anything bigger, which means the underlying cost moves to whatever service you connect. Making a project public is what unlocks the 50 GB tier.",
-      "canonical": true,
-      "also_in": [
-        "neuro-psych"
-      ]
+      "canonical": false,
+      "also_in": []
     },
     {
       "name": "Software Heritage",
@@ -662,7 +662,7 @@
       "registration": "none",
       "beginner": 4,
       "notes": "It archives code, not data, and it is a preservation archive rather than a DOI service — a SWHID is citable but is not a DOI, so for a formal software citation most people pair Software Heritage with a Zenodo release (or deposit through HAL). Archiving is free and needs no account; on-demand saves of unusual forge types can require moderation.",
-      "canonical": true,
+      "canonical": false,
       "also_in": []
     },
     {
