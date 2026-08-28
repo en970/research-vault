@@ -1,6 +1,7 @@
 {
   "unit": "medicine",
   "title": "Medicine & health sciences",
+  "order": 4,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

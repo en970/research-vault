@@ -1,6 +1,7 @@
 {
   "unit": "astronomy",
   "title": "Astronomy & space science",
+  "order": 1,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

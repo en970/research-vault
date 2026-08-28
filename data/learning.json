@@ -1,6 +1,7 @@
 {
   "unit": "learning",
   "title": "Learning materials",
+  "order": 16,
   "kind": "cross-cutting",
   "generated": "2026-08-28",
   "resources": [

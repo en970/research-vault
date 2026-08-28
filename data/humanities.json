@@ -1,6 +1,7 @@
 {
   "unit": "humanities",
   "title": "Linguistics & humanities",
+  "order": 11,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

@@ -1,6 +1,7 @@
 {
   "unit": "compute",
   "title": "Free compute & storage",
+  "order": 13,
   "kind": "cross-cutting",
   "generated": "2026-08-28",
   "resources": [

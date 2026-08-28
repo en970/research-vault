@@ -1,6 +1,7 @@
 {
   "unit": "social",
   "title": "Social sciences",
+  "order": 9,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

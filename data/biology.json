@@ -1,6 +1,7 @@
 {
   "unit": "biology",
   "title": "Biology & life sciences",
+  "order": 3,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

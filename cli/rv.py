@@ -87,6 +87,7 @@ def load_units(data_dir: Path) -> list[dict]:
             units.append(u)
     if not units:
         sys.exit(f"rv: no unit files in {data_dir}")
+    units.sort(key=lambda u: (u.get("order", 99), u["unit"]))
     return units
 
 

@@ -1,6 +1,7 @@
 {
   "unit": "neuro-psych",
   "title": "Neuroscience & psychology",
+  "order": 8,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

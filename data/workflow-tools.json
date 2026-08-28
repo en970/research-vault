@@ -1,6 +1,7 @@
 {
   "unit": "workflow-tools",
   "title": "Research workflow software",
+  "order": 17,
   "kind": "cross-cutting",
   "generated": "2026-08-28",
   "resources": [

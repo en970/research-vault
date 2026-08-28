@@ -1,6 +1,7 @@
 {
   "unit": "mathematics",
   "title": "Mathematics",
+  "order": 6,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

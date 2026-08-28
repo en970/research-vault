@@ -196,6 +196,7 @@ def merge_unit(key: str, title: str, problems: list, overrides: dict) -> dict | 
     unit = {
         "unit": key,
         "title": title,
+        "order": [k for k, _ in UNITS].index(key),
         "kind": "cross-cutting" if key in CROSS_CUTTING else "discipline",
         "generated": sweep.get("generated", ""),
         "resources": cleaned,

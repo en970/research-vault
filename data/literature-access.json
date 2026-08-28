@@ -1,6 +1,7 @@
 {
   "unit": "literature-access",
   "title": "Literature access & discovery",
+  "order": 12,
   "kind": "cross-cutting",
   "generated": "2026-08-28",
   "resources": [

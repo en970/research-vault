@@ -1,6 +1,7 @@
 {
   "unit": "funding",
   "title": "Funding, grants & recognition",
+  "order": 15,
   "kind": "cross-cutting",
   "generated": "2026-08-28",
   "resources": [

@@ -1,6 +1,7 @@
 {
   "unit": "physics",
   "title": "Physics",
+  "order": 0,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

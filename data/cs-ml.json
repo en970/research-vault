@@ -1,6 +1,7 @@
 {
   "unit": "cs-ml",
   "title": "Computer science & machine learning",
+  "order": 7,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

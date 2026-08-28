@@ -1,6 +1,7 @@
 {
   "unit": "chemistry",
   "title": "Chemistry & materials science",
+  "order": 2,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [

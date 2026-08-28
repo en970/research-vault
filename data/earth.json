@@ -1,6 +1,7 @@
 {
   "unit": "earth",
   "title": "Earth, climate & environmental science",
+  "order": 5,
   "kind": "discipline",
   "generated": "2026-08-28",
   "resources": [
