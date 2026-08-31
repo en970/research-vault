@@ -1,12 +1,22 @@
 # Linguistics & humanities
 
-Part of [research-vault](../README.md). 76 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 80 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (30) · [Software](#software) (22) · [Literature](#literature) (5) · [Publishing](#publishing) (7) · [Funding](#funding) (4) · [Learning](#learning) (5) · [Community](#community) (3)
+**Contents:** [Data](#data) (34) · [Software](#software) (22) · [Literature](#literature) (5) · [Publishing](#publishing) (7) · [Funding](#funding) (4) · [Learning](#learning) (5) · [Community](#community) (3)
 
 ## Data
+
+### [AILLA (Archive of the Indigenous Languages of Latin America)](https://ailla.utexas.org/)
+
+`Free (registration), email` · beginner 3/5 · Indigenous language documentation archive
+
+Digital repository of primary documentation of Indigenous languages of Latin America, held at the University of Texas at Austin's LLILAS Benson Latin American Collection and a member of the DELAMAN network alongside ELAR and PARADISEC. Deposits are organised as depositor collections of audio and video recordings with transcriptions, translations, field notes, lexicons, grammars, narratives, songs and ceremonial speech.
+
+**Access.** Create a free AILLA account and accept the Conditions of Use, then search or browse by language, country, collection or depositor and stream or download Level 1 (public) files. Level 2 files need a password obtained from the depositor, Level 3 files open automatically once their time limit expires, and Level 4 files require contacting the depositor for permission.
+
+**Caveats.** Access is free of charge, but an account and agreement to the conditions of use are required before any media file can be downloaded, including public ones. The four-level access scheme means part of the archive is restricted indefinitely at the depositor's discretion, and speech communities' wishes govern reuse. Cite the individual collection and depositor, not just AILLA, and respect any additional terms attached to a collection.
 
 ### [childes-db](https://langcog.github.io/childes-db-website/)
 
@@ -37,6 +47,26 @@ Federated infrastructure linking national language-technology centres across Eur
 **Access.** Web interfaces, no account for discovery and for the Switchboard. Depositing and some restricted corpora use federated academic login (eduGAIN/Shibboleth).
 
 **Caveats.** The honest caveat for this catalogue's audience: a meaningful share of CLARIN corpora — especially newspaper and commercial text — sits behind academic federated login, which an unaffiliated researcher cannot obtain. Discovery, the Switchboard and openly licensed deposits are fully usable without affiliation; the gated portion is not. CLARIN centres also host well-documented open datasets on their own repositories (LINDAT, CLARIN-D, etc.) that are downloadable without login.
+
+### [Deutsches Textarchiv (DTA)](https://www.deutschestextarchiv.de/)
+
+`Free` · beginner 3/5 · historical German reference corpus
+
+Reference corpus of New High German built at the Berlin-Brandenburg Academy of Sciences: 5,483 works were searchable on 31 August 2026, combining a balanced core corpus of around 1,500 titles with an extension corpus (DTAE) of roughly 4,000 further sources, spanning the early 17th to the early 20th century across disciplines and genres, with page images shown alongside the transcriptions.
+
+**Access.** Search the corpus on the site with the DDC query language (also reachable through the DWDS platform, with word-frequency curves and export to tools such as Voyant); download individual works or corpus bundles as TEI-P5 XML in the DTA base format (DTABf) or as plain text from the Download pages.
+
+**Caveats.** Interface, documentation and metadata are in German. All texts are offered under Creative Commons licences, but the variant differs by text and by source library, so check the individual work before redistributing. The core corpus and the DTAE extension were produced under different projects and partners, so transcription conventions, normalisation and annotation depth are not uniform across the whole 5,483 works.
+
+### [DoReCo (Language Documentation Reference Corpus)](https://doreco.huma-num.fr/)
+
+`Free` · beginner 3/5 · time-aligned spoken corpora of under-described languages
+
+Collection of fieldwork-based spoken corpora from 53 languages, comprising over 100 hours of audio-recorded narrative texts time-aligned at the phone level with transcriptions and translations; 39 of the languages also carry time-aligned morphological glossing. Built to make documentation of small and endangered languages usable for quantitative phonetics and typology.
+
+**Access.** Open a language's page from the map or table and download the audio (.wav) and a single annotation zip containing ELAN .eaf (the master format), Praat .TextGrid, TEI XML and two CSV versions (word-level and phone-level), plus README, transcription conventions and speaker metadata; bulk metadata and BibTeX citations for all languages are on the Languages page. Direct download, no account.
+
+**Caveats.** Licences are set per dataset and shown in the Licence column of the languages table - several are non-commercial or share-alike, so check before redistributing or training models. DoReCo asks you to cite each dataset's own creators in full; citing DoReCo alone is explicitly not sufficient. 'Extended' sets add morphological glossing but lack time-alignment and audio, and a few languages link to audio in an external repository rather than shipping it.
 
 ### [DPLA (Digital Public Library of America)](https://dp.la/)
 
@@ -257,6 +287,16 @@ PHOIBLE 2.0 (2019) aggregates 3,020 phoneme inventories for 2,186 distinct langu
 **Access.** Web interface; CLDF and long-format CSV from github.com/phoible/dev. R users can read the aggregated CSV directly from the repo URL; Python via pandas.
 
 **Caveats.** CC BY-SA 3.0. Inventories come from several source doculects and often disagree for the same language — PHOIBLE keeps them all rather than reconciling, so you must decide how to aggregate. No release since 2.0.
+
+### [Pleiades](https://pleiades.stoa.org/)
+
+`Free` · beginner 3/5 · gazetteer of ancient places
+
+Community-built gazetteer and graph of ancient places, centred on the Greco-Roman world and extending into the ancient Near East, Egypt and the early medieval Mediterranean. The daily bulk export held 42,423 place records when checked on 31 August 2026, each with attested and modern names, locations, feature types, time periods, location precision and connections to other places, and each addressable by a stable URI.
+
+**Access.** Search and browse on the site; take bulk dumps from https://pleiades.stoa.org/downloads - a comprehensive JSON dump (all place, name, location and connection attributes), a GIS-oriented CSV package, KML and weekly RDF/Turtle, all refreshed daily with a week of files retained - plus numbered quarterly releases for citation. Every place page also serves JSON, so individual records can be pulled directly by URI.
+
+**Caveats.** Licensed CC BY with rights held by the individual contributors, so cite the specific place resource and its authors rather than the site as a whole. Coverage is uneven - dense where it inherits the Barrington Atlas for the classical Mediterranean, thinner elsewhere - and many places have imprecise or unlocated coordinates, which the locationPrecision field records; filter on it before mapping. An account is only needed to contribute or edit, not to read or download.
 
 ### [Project Gutenberg](https://www.gutenberg.org/)
 

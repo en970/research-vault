@@ -1,10 +1,10 @@
 # Funding, grants & recognition
 
-Part of [research-vault](../README.md). 68 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 70 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Publishing](#publishing) (1) · [Funding](#funding) (63) · [Learning](#learning) (2) · [Community](#community) (2)
+**Contents:** [Publishing](#publishing) (1) · [Funding](#funding) (65) · [Learning](#learning) (2) · [Community](#community) (2)
 
 ## Publishing
 
@@ -594,6 +594,16 @@ Postdoctoral fellowship supporting a deliberate pivot into a new discipline, for
 
 **Caveats.** Listed here mainly so you can rule it out quickly: the nomination gate means that if your university is not a partner there is no route in, which excludes most researchers at poorly resourced institutions outright. Clinical MD-PhD, veterinary-PhD, and social science, political science or economics PhDs are generally ineligible. Stipend figures are not published on the eligibility page.
 
+### [Sigma Xi Grants in Aid of Research (GIAR)](https://www.sigmaxi.org/programs/grants-in-aid)
+
+`Free, application` · beginner 3/5 · student research micro-grants, any discipline
+
+Twice-yearly micro-grants for enrolled undergraduate and graduate students in any field, running since 1922. Active Sigma Xi members, or students whose advisor is an active member, can request $500-$5,000 (graduate) or $500-$2,000 (undergraduate); non-members are capped at $1,000. Designated funds allow up to $5,000 for astronomy and up to $2,500 for vision research.
+
+**Access.** Online application through Sigma Xi's grants portal, with a project description and itemised budget. Two cycles a year, closing 15 March and 1 October.
+
+**Caveats.** You must be currently enrolled in a degree-seeking programme: postdocs, faculty and unaffiliated researchers are not eligible. Nationality and country of study are unrestricted and international applications are accepted. Membership is not required to apply, but non-members are limited to $1,000, so the paid membership effectively buys a higher ceiling. Money is for research costs (equipment, travel, supplies), not stipend.
+
 ### [Sovereign Tech Agency](https://www.sovereign.tech/)
 
 `Free, application` · beginner 2/5 · public funding for critical open-source infrastructure
@@ -613,6 +623,16 @@ Awards of up to GBP 3,000 for graduate students and postdoctoral researchers to 
 **Access.** Direct online application to the scheme run by the relevant journal — no nationality restriction and no institutional grants office required.
 
 **Caveats.** Only one person per laboratory may apply in a given round; travel must begin within six months of the award and must not start before the decision date, so there is no retrospective funding. A recipient may win only once every two years across all three journals. Your project has to sit within the scope of the journal you apply through, which rules out most non-organismal and non-cell-biology work.
+
+### [The Explorers Club Grants](https://www.explorers.org/grants/)
+
+`Free, application` · beginner 3/5 · fieldwork and expedition grants
+
+A portfolio of field-research grants run by The Explorers Club. The Rising Explorer Grant averages $1,500 and is open to high-school students, undergraduates and independent researchers working at an equivalent level; the Rolex Explorers Club Grant is $10,000 for explorers under 35; the Fjallraven Field Grant is $5,000 for natural-sciences fieldwork; the Pathfinder Grant (formerly the Exploration Fund Grant) and the Kensington Conservation Grant support graduate students and early-career scientists; the Impact Grants Program is open to anyone 21+ and runs on rolling deadlines.
+
+**Access.** Each programme has its own page and application form under explorers.org/grants. Most 2026 deadlines fall between late August and early October (Rising Explorer and Pathfinder 31 August 2026, Fjallraven 6 September, Rolex 14 September, Kensington 28 September, Stephenson SEA 2 October).
+
+**Caveats.** Deadlines cluster in a short autumn window, so a missed call means waiting a year. Most programmes ask for two written recommendations, and several are age-capped (under 35) or restricted to graduate and early-career scientists; the Rising Explorer Grant is the one that explicitly names independent researchers. Awards cover fieldwork costs rather than salary, and Club membership is not required to apply.
 
 ### [The Rufford Foundation](https://www.rufford.org/)
 

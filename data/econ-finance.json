@@ -20,6 +20,20 @@
       "also_in": []
     },
     {
+      "name": "Atlas of Economic Complexity (Harvard Growth Lab)",
+      "url": "https://atlas.hks.harvard.edu/",
+      "category": "data",
+      "subcategory": "bilateral product-level trade and complexity metrics",
+      "summary": "Reconciled bilateral trade data covering over 6,000 products and 250 countries and territories, built from UN Comtrade by mirroring exporter and importer reports with reliability weights and harmonising product codes across classification vintages. Available as HS 6-digit series (HS 1992 from 1995, HS 2012 from 2012, HS 2022 from 2022) and a long-run SITC Rev. 2 series from 1962 to the present, plus services trade from 1980 and the economic complexity index, rankings and country profiles built on top.",
+      "access": "Bulk CSV downloads at https://atlas.hks.harvard.edu/data-downloads/ with column filters to find the dataset you need, or query the GraphQL API documented on the Growth Lab's GitHub; the visual Explore tool and country profiles work in the browser with no account.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "About 95% of the data is refreshed once a year, typically April-June, and revisions rewrite history (most 2024 trade data only appears in 2026), so archive the file you used for replication. Figures in the visualisations can differ slightly from the bulk downloads because the two are refreshed on different schedules. Country profiles and rankings exclude countries with fewer than 1 million people, under $1bn average annual trade, or unreliable reporting - absence from the rankings is not absence of trade. Each downloaded file carries its own citation requirement.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "BEA Data API (Bureau of Economic Analysis)",
       "url": "https://apps.bea.gov/API/",
       "category": "data",
@@ -184,6 +198,20 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Not a raw data source: series are pre-selected and the transformation codes prescribe differencing/logging, which is the point but also a constraint. The panel composition changes across vintages as underlying FRED series get discontinued, so a paper that says 'FRED-MD' without naming the vintage is not reproducible.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "Global Trade Alert",
+      "url": "https://www.globaltradealert.org/",
+      "category": "data",
+      "subcategory": "trade and industrial policy interventions",
+      "summary": "Independent monitoring of government measures that affect foreign commerce, with more than 52,500 recorded unilateral commercial policy interventions since November 2008. Each entry is coded with implementing and affected jurisdictions, announcement and implementation dates, instrument (tariff, subsidy, export curb, public procurement, FDI measure and so on), affected sectors and products, and an evaluation of whether it discriminates against or liberalises for foreign commercial interests.",
+      "access": "Use the Data Center at https://www.globaltradealert.org/data-center - create a free account, set filters (jurisdiction, intervention type, sector, product, period) and export individual entries, summary statistics or affected-trade estimates as CSV or Excel; curated pre-built datasets cover themes such as sanctions, subsidies, semiconductors and critical minerals.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 3,
+      "notes": "Content is published under CC BY-NC 4.0: free for non-commercial use only, and commercial use (including consultancy deliverables) requires a paid GTA licence. API, Power BI and MCP integrations are handled separately from the free web downloads - the API page offers only a demo key and directs you to contact GTA. The database records measures GTA's monitoring has found and verified, so counts are a lower bound and entries are added or revised retroactively; do not treat a snapshot as a closed universe.",
       "canonical": true,
       "also_in": []
     },

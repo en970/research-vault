@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**1,154 resources** across **18 fields** — 895 free outright, 738 usable with no account at all. Verified 2026-08-28.
+**1,164 resources** across **18 fields** — 903 free outright, 743 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -51,14 +51,14 @@ sixty seconds. Those distinctions are the content.
 | [Earth, climate & environmental science](docs/06-earth.md) | 88 | data (38), software (18), learning (8) |
 | [Mathematics](docs/07-mathematics.md) | 86 | software (20), publishing (15), data (13) |
 | [Computer science & machine learning](docs/08-cs-ml.md) | 86 | software (21), data (15), literature (14) |
-| [Neuroscience & psychology](docs/09-neuro-psych.md) | 94 | software (39), data (22), literature (10) |
+| [Neuroscience & psychology](docs/09-neuro-psych.md) | 96 | software (39), data (24), literature (10) |
 | [Social sciences](docs/10-social.md) | 87 | data (37), software (16), literature (12) |
-| [Economics & finance](docs/11-econ-finance.md) | 80 | data (38), software (14), literature (8) |
-| [Linguistics & humanities](docs/12-humanities.md) | 76 | data (30), software (22), publishing (7) |
+| [Economics & finance](docs/11-econ-finance.md) | 82 | data (40), software (14), literature (8) |
+| [Linguistics & humanities](docs/12-humanities.md) | 80 | data (34), software (22), publishing (7) |
 | [Literature access & discovery](docs/13-literature-access.md) | 74 | literature (43), software (11), publishing (6) |
 | [Free compute & storage](docs/14-compute.md) | 62 | compute (36), data (10), publishing (6) |
 | [Publishing, identity & preservation](docs/15-publishing.md) | 73 | publishing (43), literature (13), software (5) |
-| [Funding, grants & recognition](docs/16-funding.md) | 68 | funding (63), learning (2), community (2) |
+| [Funding, grants & recognition](docs/16-funding.md) | 70 | funding (65), learning (2), community (2) |
 | [Learning materials](docs/17-learning.md) | 73 | learning (62), funding (3), compute (2) |
 | [Research workflow software](docs/18-workflow-tools.md) | 76 | software (44), literature (7), publishing (6) |
 

@@ -1,10 +1,10 @@
 # Neuroscience & psychology
 
-Part of [research-vault](../README.md). 94 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 96 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (22) · [Software](#software) (39) · [Literature](#literature) (10) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (3) · [Learning](#learning) (7) · [Community](#community) (4)
+**Contents:** [Data](#data) (24) · [Software](#software) (39) · [Literature](#literature) (10) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (3) · [Learning](#learning) (7) · [Community](#community) (4)
 
 ## Data
 
@@ -97,6 +97,26 @@ A 22-lab collaboration releasing standardised mouse decision-making data: the Br
 **Access.** `pip install ONE-api ibllib`, connect to the public Alyx instance (`ONE(base_url='https://openalyx.internationalbrainlab.org', silent=True)` with the documented public credentials), then `one.search()` and `one.load_object()` to pull spikes, trials and video features; interactive browsing at viz.internationalbrainlab.org.
 
 **Caveats.** The ONE API is the only comfortable route — the underlying files are ALF/Parquet, not NWB, though NWB conversions are also published on DANDI. Expect to read the IBL docs for an afternoon before the first useful query. Data policy is release within 12 months of collection or on publication.
+
+### [International Personality Item Pool (IPIP)](https://ipip.ori.org/)
+
+`Free` · beginner 5/5 · public-domain personality measures
+
+Collaboratory of 3,320 public-domain personality items and more than 250 scales built from them, including IPIP proxies for commercial inventories (the NEO/Big Five facets, 16PF, HEXACO, TCI and others), with full item text, scoring keys and reported alphas per scale. Started by Lewis Goldberg in 1998 and maintained by the non-profit Oregon Research Institute.
+
+**Access.** Browse the item pool and scale pages directly at ipip.ori.org - each scale page lists the items, the keying direction and the alpha reported for the 10- and 20-item versions, and there is an alphabetical list of all items. The site states the items are in the public domain: copy, edit, translate or use them for any purpose without asking permission and without paying a fee. No account, no licence request.
+
+**Caveats.** Public domain covers the IPIP items only - the commercial inventories they approximate (NEO-PI-R, 16PF and similar) remain copyrighted, and an IPIP scale is a correlate of the original, not the original, so never report scores as if the proprietary instrument had been administered. Psychometric evidence differs sharply between scales: the widely used Big Five sets are well studied, many others rest on a single sample, so check the literature for the specific scale. Reported statistics come largely from self-selected internet samples, so treat them as descriptive rather than as norms. The site is plain, dated HTML with no API - expect to copy items by hand.
+
+### [MICrONS Explorer](https://www.microns-explorer.org/)
+
+`Free, email` · beginner 2/5 · mouse cortex connectomics with functional imaging
+
+Portal for the MICrONS cubic-millimetre dataset: an electron-microscopy volume of mouse visual cortex spanning roughly 1.4 x 0.87 x 0.84 mm with over 200,000 segmented cells (about 120,000 neurons) and more than 523 million automatically detected synapses, co-registered with two-photon calcium recordings covering 115,372 ROIs and about 75,900 estimated neurons. Released under CC-BY 4.0.
+
+**Access.** Browse imagery, segmentation and example cells in Neuroglancer straight from links on microns-explorer.org. Programmatic access via CAVE: `pip install caveclient`, then `CAVEclient('minnie65_public')` for synapse, cell-type, skeleton and proofreading-status tables; image and segmentation volumes through cloud-volume from the public AWS/GCS buckets or through BossDB's `intern` client. Functional two-photon data ship as DataJoint-schematised database containers. Worked notebooks at tutorial.microns-explorer.org.
+
+**Caveats.** Viewing in Neuroglancer needs nothing, but CAVE queries need a free API token obtained by signing in with a Google account and accepting the terms - a Google account is therefore a hard requirement for the programmatic route. Proofreading is partial and uneven: most automated segments still contain merge and split errors, so filter on the proofreading tables before drawing connectivity conclusions, and pin the materialisation version since tables change between releases. The full volume is petascale - work through cutouts and CAVE queries, not bulk downloads. This is one cortical volume from one mouse; anatomical conclusions do not automatically generalise.
 
 ### [ModelDB](https://modeldb.science/)
 

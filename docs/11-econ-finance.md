@@ -1,10 +1,10 @@
 # Economics & finance
 
-Part of [research-vault](../README.md). 80 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 82 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (38) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
+**Contents:** [Data](#data) (40) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
 
 ## Data
 
@@ -17,6 +17,16 @@ Public return files behind AQR's published papers: Betting Against Beta, Quality
 **Access.** Direct Excel download per dataset from the datasets page, no account. Each file's first sheet documents construction and sample; pair with the Kenneth French library for the standard factors these are meant to be measured against.
 
 **Caveats.** Use is governed by AQR's terms of use and expects citation of the underlying paper; these are outputs, not inputs, so you cannot re-sort or extend them without the commercial security-level data (CRSP/Compustat/XpressFeed) they were built from. Update cadence differs by file — some refresh monthly, others were frozen at the paper's sample end, so check the last date in the sheet before assuming currency. Factor definitions differ in detail from French's (that is the point of the 'Devil in HML's Details' file), so do not treat AQR HML and French HML as the same series.
+
+### [Atlas of Economic Complexity (Harvard Growth Lab)](https://atlas.hks.harvard.edu/)
+
+`Free` · beginner 4/5 · bilateral product-level trade and complexity metrics
+
+Reconciled bilateral trade data covering over 6,000 products and 250 countries and territories, built from UN Comtrade by mirroring exporter and importer reports with reliability weights and harmonising product codes across classification vintages. Available as HS 6-digit series (HS 1992 from 1995, HS 2012 from 2012, HS 2022 from 2022) and a long-run SITC Rev. 2 series from 1962 to the present, plus services trade from 1980 and the economic complexity index, rankings and country profiles built on top.
+
+**Access.** Bulk CSV downloads at https://atlas.hks.harvard.edu/data-downloads/ with column filters to find the dataset you need, or query the GraphQL API documented on the Growth Lab's GitHub; the visual Explore tool and country profiles work in the browser with no account.
+
+**Caveats.** About 95% of the data is refreshed once a year, typically April-June, and revisions rewrite history (most 2024 trade data only appears in 2026), so archive the file you used for replication. Figures in the visualisations can differ slightly from the bulk downloads because the two are refreshed on different schedules. Country profiles and rankings exclude countries with fewer than 1 million people, under $1bn average annual trade, or unreliable reporting - absence from the rankings is not absence of trade. Each downloaded file carries its own citation requirement.
 
 ### [BEA Data API (Bureau of Economic Analysis)](https://apps.bea.gov/API/)
 
@@ -137,6 +147,16 @@ McCracken and Ng's monthly and quarterly balanced panels of US macro series, rel
 **Access.** Direct CSV download from the St. Louis Fed page (current.csv plus a monthly vintage archive). Python: read the CSV directly — the first data row holds the transformation codes, so parse it separately — or `pip install fredmd`. R: the `fbi` package is GitHub-only, `remotes::install_github('cykbennie/fbi')`; there is no CRAN release.
 
 **Caveats.** Not a raw data source: series are pre-selected and the transformation codes prescribe differencing/logging, which is the point but also a constraint. The panel composition changes across vintages as underlying FRED series get discontinued, so a paper that says 'FRED-MD' without naming the vintage is not reproducible.
+
+### [Global Trade Alert](https://www.globaltradealert.org/)
+
+`Free (registration), email` · beginner 3/5 · trade and industrial policy interventions
+
+Independent monitoring of government measures that affect foreign commerce, with more than 52,500 recorded unilateral commercial policy interventions since November 2008. Each entry is coded with implementing and affected jurisdictions, announcement and implementation dates, instrument (tariff, subsidy, export curb, public procurement, FDI measure and so on), affected sectors and products, and an evaluation of whether it discriminates against or liberalises for foreign commercial interests.
+
+**Access.** Use the Data Center at https://www.globaltradealert.org/data-center - create a free account, set filters (jurisdiction, intervention type, sector, product, period) and export individual entries, summary statistics or affected-trade estimates as CSV or Excel; curated pre-built datasets cover themes such as sanctions, subsidies, semiconductors and critical minerals.
+
+**Caveats.** Content is published under CC BY-NC 4.0: free for non-commercial use only, and commercial use (including consultancy deliverables) requires a paid GTA licence. API, Power BI and MCP integrations are handled separately from the free web downloads - the API page offers only a demo key and directs you to contact GTA. The database records measures GTA's monitoring has found and verified, so counts are a lower bound and entries are added or revised retroactively; do not treat a snapshot as a closed universe.
 
 ### [IMF Data](https://data.imf.org/)
 
