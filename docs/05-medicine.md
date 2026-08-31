@@ -1,10 +1,10 @@
 # Medicine & health sciences
 
-Part of [research-vault](../README.md). 72 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 76 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (24) · [Software](#software) (15) · [Literature](#literature) (10) · [Compute](#compute) (3) · [Publishing](#publishing) (6) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (3)
+**Contents:** [Data](#data) (26) · [Software](#software) (16) · [Literature](#literature) (11) · [Compute](#compute) (3) · [Publishing](#publishing) (6) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (3)
 
 ## Data
 
@@ -50,6 +50,16 @@ US NLM registry holding 600,582 registered studies as of 28 August 2026, with pr
 
 **Caveats.** Registering your own trial (rather than reading) needs a free PRS organisation account, which normally requires an institutional sponsor. Unaffiliated investigators are usually better served by another WHO primary registry that registers free of charge — PACTR (pactr.samrc.ac.za) for Africa, CTRI for India, ANZCTR for Australia/New Zealand. WHO ICTRP (trialsearch.who.int) federates all of them for searching. Posted results cover only a minority of completed studies.
 
+### [Global Cancer Observatory (IARC)](https://gco.iarc.who.int/)
+
+`Free` · beginner 5/5 · cancer incidence, mortality and projections
+
+IARC/WHO platform for global cancer statistics. Cancer Today carries the GLOBOCAN 2024 estimates - 20,636,441 new cases and 9,762,507 cancer deaths worldwide, covering 34 cancer types across 186 countries - alongside Cancer Over Time (registry trend series), Cancer Tomorrow (projections to 2050) and Cancer Incidence in Five Continents (CI5).
+
+**Access.** Interactive maps, bar charts and tables at gco.iarc.who.int with no account; country, region and cancer-site fact sheets download as PDFs directly (for example https://gco.iarc.who.int/media/globocan/factsheets/populations/900-world-fact-sheet.pdf). Registry-level observed incidence data and the CI5 volumes are at ci5.iarc.fr.
+
+**Caveats.** GLOBOCAN numbers are modelled estimates, not counts. Where cancer registration is weak, national incidence is extrapolated from neighbouring countries or regional averages, so country rankings and small differences can be artefacts of the method - read the data-sources-and-methods notes before quoting a national figure, and cite the version (the fact sheets carry a release date and version number). Estimates are re-based every couple of years and successive releases are not a time series; use Cancer Over Time for trends.
+
 ### [Grand Challenge](https://grand-challenge.org/)
 
 `Free (registration), email` · beginner 3/5 · medical imaging challenges and benchmarks
@@ -59,6 +69,16 @@ Platform hosting medical image analysis challenges together with their datasets,
 **Access.** Web interface; register free to join a challenge, download its data and submit an algorithm as a Docker container. Archived challenge pages remain readable without an account. The Medical Segmentation Decathlon (medicaldecathlon.com) offers a similar ten-task segmentation benchmark by direct AWS download.
 
 **Caveats.** Data access is decided per challenge: some are open downloads, some require a signed usage agreement, and some datasets are withdrawn once a challenge closes. Submission compute is capped per challenge. It is a benchmark venue, not a general repository — you cannot deposit arbitrary data there.
+
+### [Human Mortality Database](https://www.mortality.org/)
+
+`Free (registration), email` · beginner 3/5 · life tables and mortality series
+
+Harmonised death counts, population estimates, exposure-to-risk, age-specific death rates and period/cohort life tables for 41 countries and populations, with several national series running back into the 19th century, plus the Short-Term Mortality Fluctuations weekly death series. Maintained by the Max Planck Institute for Demographic Research with UC Berkeley.
+
+**Access.** Create a free account, then download per-country zipped text files or the complete database from mortality.org/Data/ZippedDataFiles; summary indicator spreadsheets and the STMF weekly series are separate sections. The CRAN package `HMDHFDplus` pulls the same files programmatically using your login. Each release has its own DOI for citation.
+
+**Caveats.** Without logging in, data-file links redirect to the login page. The user agreement restricts redistribution of the files, so send collaborators to the site rather than passing zips around. Coverage is confined to countries with long, reliable civil registration: the list is Europe-heavy plus Australia, Canada, Chile, Hong Kong, Israel, Japan, Republic of Korea, New Zealand, Russia, Taiwan, Ukraine, U.K. and U.S.A. - no African country, and Chile is the only Latin American series. Series are revised between releases, so pin the version DOI you analysed.
 
 ### [IHME Global Burden of Disease Results Tool](https://vizhub.healthdata.org/gbd-results/)
 
@@ -354,6 +374,16 @@ Open community standard for representing observational health data (the OMOP CDM
 
 **Caveats.** The software and standards are free and Apache-licensed; what is not free is patient data — you supply your own CDM instance, or work with Eunomia, the small synthetic OMOP dataset (`remotes::install_github('OHDSI/Eunomia')`), which is the realistic entry point without a data partner. Athena downloads that include CPT4 require a UMLS licence key. Standing up ATLAS is a multi-day systems task.
 
+### [OpenMRS](https://openmrs.org/)
+
+`Free` · beginner 2/5 · open-source electronic medical record platform
+
+Open-source EMR platform designed for low-resource clinical settings, built around a configurable concept dictionary, form and data-entry modules, and reporting; the project reports use in over 8,000 facilities across more than 70 countries covering some 15 million patient records.
+
+**Access.** Try the current front end on the public demo at o3.openmrs.org; run it yourself with the containerised OpenMRS 3.x reference application, the OpenMRS SDK for module development, or the Platform WAR into your own Tomcat/MySQL - all at openmrs.org/download. Source at github.com/openmrs (openmrs-core is Mozilla Public License 2.0). Documentation on the project's Atlassian site; help through OpenMRS Talk and Slack.
+
+**Caveats.** Free software, not a free service: you host, secure, back up and upgrade it, and a real implementation means dictionary work, forms and training measured in months rather than days. Holding identifiable patient records brings ethics approval and data-protection duties the software does not discharge for you. Expect version drift between the 2.x platform, the 3.x front end and community modules - check module compatibility before committing to a stack.
+
 ### [Polyglot Search Translator (Systematic Review Accelerator)](https://polyglot.sr-accelerator.com/)
 
 `Free` · beginner 5/5 · systematic review search translation
@@ -435,6 +465,16 @@ The health sciences preprint server run by Cold Spring Harbor Laboratory, BMJ an
 **Access.** Post free of charge through the submission portal (ORCID plus author confirmation; no fee at any stage). Read and harvest with the keyless API: `https://api.biorxiv.org/details/medrxiv/2026-08-01/2026-08-27` for date ranges, `/details/medrxiv/<DOI>` for one paper, and `/pubs/medrxiv/...` for subsequent journal publication links.
 
 **Caveats.** The most realistic way for an unaffiliated researcher to put health research on the public record with a DOI at zero cost. Screening rejects case reports of identifiable patients and anything readable as clinical advice; trial reports should carry a registration number. Some clinical journals still treat preprinting cautiously, so check the target journal's policy first. The website blocks scripted fetches — use the API.
+
+### [MSF Medical Guidelines](https://medicalguidelines.msf.org/)
+
+`Free` · beginner 5/5 · clinical guidelines for low-resource settings
+
+Médecins Sans Frontières' field manuals in full text: Clinical guidelines (diagnosis and treatment), Essential drugs, Essential obstetric and newborn care, Tuberculosis, Public health engineering, and the cholera and measles epidemic-management guides, written for practice where laboratory and imaging support is thin.
+
+**Access.** Read online at medicalguidelines.msf.org, download any guide as a PDF, or install the free iOS/Android apps for offline use. Available in English, French, Spanish and Arabic, though not every guide exists in every language. No account for the public guidelines.
+
+**Caveats.** Guidelines marked internal are behind an MSF staff login. Recommendations are written around MSF field contexts, protocols and drug availability, so they complement rather than replace national guidance or WHO documents in a well-resourced hospital. Content is copyright MSF with no open licence stated, so reuse beyond reading and clinical reference needs permission. Revision dates differ per guide - check the edition before relying on a dose or regimen.
 
 ### [NCBI Bookshelf](https://www.ncbi.nlm.nih.gov/books/)
 

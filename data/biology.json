@@ -328,6 +328,20 @@
       "also_in": []
     },
     {
+      "name": "MetaboLights",
+      "url": "https://www.ebi.ac.uk/metabolights/",
+      "category": "data",
+      "subcategory": "metabolomics repository",
+      "summary": "EMBL-EBI's open repository for metabolomics experiments, holding raw MS and NMR instrument files alongside ISA-Tab study metadata, protocols and compound annotations. The public study listing returned 3,344 MTBLS accessions in August 2026.",
+      "access": "Search and browse at ebi.ac.uk/metabolights with no account; each study has a stable MTBLS accession. Bulk download over FTP from https://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/ (one directory per study), or via the REST API - `curl https://www.ebi.ac.uk/metabolights/ws/studies` lists every public accession and `https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS1` returns a single study. Depositing data needs a free submitter account.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Datasets submitted from April 2025 are released under CC0; older studies fall under the EBI terms of use, so check the licence per study before redistributing. Raw files are vendor-native formats and a single study can be tens of gigabytes, so plan storage and conversion (msconvert, nmrglue) before downloading. Submitters can hold a study private under embargo, so a dataset cited in a paper is not always downloadable yet, and metadata depth varies a lot between submissions.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "MGnify",
       "url": "https://www.ebi.ac.uk/metagenomics",
       "category": "data",
@@ -408,6 +422,20 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Individual runs are commonly 1-50 GB, so disk and bandwidth, not permission, is the real barrier; `fasterq-dump` needs roughly 10x the final FASTQ size in scratch space. Human-subject data under dbGaP controlled access is NOT free - it requires institutional sponsorship and a Data Access Request, which unaffiliated researchers generally cannot obtain.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "Open Tree of Life",
+      "url": "https://tree.opentreeoflife.org/",
+      "category": "data",
+      "subcategory": "synthetic phylogeny and reference taxonomy",
+      "summary": "A synthetic tree of life assembled from curated published phylogenies grafted onto a reference taxonomy (OTT). The API reports synthesis release opentree16.1, built 2025-12-20, with 2,385,875 tips drawn from 1,931 source studies and 2,064 source trees.",
+      "access": "Browse and search the tree at tree.opentreeoflife.org. Open REST API at api.opentreeoflife.org with no key - e.g. `curl -X POST https://api.opentreeoflife.org/v3/tree_of_life/about -H 'content-type: application/json' -d '{}'`, plus endpoints for TNRS name matching, induced subtrees, MRCA and the taxonomy. Synthesis and taxonomy releases are archived as downloadable, DOI-citable files linked from the site; R users have `install.packages(\"rotl\")` on CRAN. Curating or adding trees needs a GitHub login.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The synthesis is only as good as its inputs: large parts of the tree rest on taxonomy rather than a published phylogeny, the synthetic tree carries no branch lengths, and conflict between source trees has to be read from the node annotations rather than assumed away. Name matching through TNRS is the usual failure point - homonyms and unmatched names silently shrink an induced subtree, so check the returned OTT ids. Fine for a backbone or a taxon-sampling scaffold; not a substitute for estimating your own tree when the question is about one clade.",
       "canonical": true,
       "also_in": []
     },
@@ -510,6 +538,20 @@
       "also_in": []
     },
     {
+      "name": "antiSMASH",
+      "url": "https://antismash.secondarymetabolites.org/",
+      "category": "software",
+      "subcategory": "biosynthetic gene cluster detection",
+      "summary": "Web server and standalone pipeline that scans a genome for secondary-metabolite biosynthetic gene clusters and reports cluster type, core enzymes, domain architecture and predicted chemistry; version 8.0 was published in the 2025 Nucleic Acids Research web-server issue. Separate servers cover bacteria, fungi (fungiSMASH) and plants (plantiSMASH), and precomputed clusters for public genomes sit in the antiSMASH database.",
+      "access": "Upload a GenBank/EMBL/FASTA genome at antismash.secondarymetabolites.org - no account, results by job URL with optional e-mail notification. Local install through Bioconda: `conda create -n antismash antismash && conda activate antismash && download-antismash-databases`, or the Docker wrapper script from dl.secondarymetabolites.org. Precomputed results: https://antismash-db.secondarymetabolites.org/.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The site states antiSMASH is free for everyone, including commercial use, but the public server is a shared queue and the FAQ says result files are deleted within about a month - download the output archive. Full runs with the optional comparative analyses (ClusterBlast, KnownClusterBlast, MIBiG comparison) take hours per genome; batch work belongs on a local install, which needs the reference databases (tens of GB) plus HMMER, DIAMOND, BLAST+ and Prodigal. The code is AGPL-3.0, so a derived web service must publish its source. Cluster boundaries and predicted products are hypotheses that still need chemistry to confirm.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Bioconda",
       "url": "https://bioconda.github.io/",
       "category": "software",
@@ -604,6 +646,20 @@
       "registration": "none",
       "beginner": 3,
       "notes": "GPL-2. Ultrafast bootstrap values are not on the same scale as standard bootstrap - 95% is the usual threshold, and mixing the two in one figure legend is a common error. Alignment quality dominates the result; pair with MAFFT and a trimming step. Large partitioned analyses can still take days.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "MEGA (Molecular Evolutionary Genetics Analysis)",
+      "url": "https://www.megasoftware.net/",
+      "category": "software",
+      "subcategory": "phylogenetics desktop suite",
+      "summary": "Desktop suite for sequence alignment, distance estimation, phylogenetic tree building (maximum likelihood, neighbour-joining, minimum evolution, parsimony), timetree calibration and tests of selection, built around a point-and-click interface for people who do not work at a shell. MEGA 12 is current and the site reports over 4.3 million lifetime downloads.",
+      "access": "Installers for Windows, macOS, Ubuntu/Debian and RedHat/Fedora at megasoftware.net/download, in two builds: MEGA-GUI for interactive work and MEGA-CC for scripted, batch and pipeline use. The download page asks for name, institution and how MEGA will be used before giving the file; no account or password is created. Source for the computational core is on GitHub (KumarMEGALab/MEGA-source-code) under the GPL.",
+      "free": "free",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Free for research and education but not open source as a whole: the end-user agreement forbids redistributing the binaries, so every user must download their own copy (only the computational core is GPL). Analyses run on your own desktop, so large ML searches or heavy bootstrapping on hundreds of taxa are better done with IQ-TREE or RAxML on a server. MEGA 12 on Linux requires glibc 2.34 or newer, which rules out older distributions.",
       "canonical": true,
       "also_in": []
     },

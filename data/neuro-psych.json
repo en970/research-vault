@@ -146,6 +146,20 @@
       "also_in": []
     },
     {
+      "name": "NEMAR",
+      "url": "https://nemar.org/",
+      "category": "data",
+      "subcategory": "human electrophysiology archive with attached HPC",
+      "summary": "Open archive and browser for human EEG, MEG, iEEG and EMG datasets mirrored from OpenNeuro - the site reports 755 datasets, about 39,000 participants and 58.0 TB - with per-dataset quality assessments and interactive channel/spectrum visualisations, plus a route to process the data on the Neuroscience Gateway's no-cost HPC. Funded by NIH award R24MH120037 and run by SCCN and SDSC at UC San Diego.",
+      "access": "Search, preview and inspect data-quality plots at nemar.org with no account; any dataset can be downloaded as a BIDS-structured zip. Analyses (EEGLAB/MATLAB and Python pipelines) are dispatched to the Neuroscience Gateway running on SDSC hardware, which needs a separate free NSG account.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "NEMAR indexes, checks and computes on OpenNeuro's data rather than holding its own, so cite the original dataset DOI and authors. Compute goes through NSG's own free account, queue and allocation rules and runs as batch jobs, not interactive sessions. Dataset quality is uneven - BIDS compliance, electrode locations and event coding vary by contributor, and the QC figures are a screening aid, not a guarantee that a dataset is analysable.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "NeuroMorpho.Org",
       "url": "https://neuromorpho.org/",
       "category": "data",
@@ -788,6 +802,20 @@
       "registration": "none",
       "beginner": 2,
       "notes": "The important caveat this catalogue exists for: PTB itself is open source and free to use on Linux, but from 3.0.20 onward the prebuilt mex files for Windows and macOS are paid (single node €50/year, six nodes €250, thirty €1,200, hundred €3,800, node-locked, not usable in VMs or containers). Compiling the mex files yourself, or running Linux, is the free route. PsychoPy is the free-everywhere alternative; PTB still wins on timing-critical low-level display control.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "SLEAP",
+      "url": "https://sleap.ai/",
+      "category": "software",
+      "subcategory": "multi-animal pose tracking",
+      "summary": "Deep-learning framework with a labelling GUI for tracking body parts of multiple interacting animals in video, supporting top-down and bottom-up model configurations and identity tracking across frames. From the Talmo lab, with methods papers in Nature Methods (Pereira et al. 2019, 2022).",
+      "access": "`pip install \"sleap[nn]\"` or `uv tool install --python 3.13 \"sleap[nn]\"` on Python 3.11-3.13 - those commands give a CPU-only build, with GPU/CUDA setup covered in the install guide. GUI for labelling and proofreading, CLI (`sleap-train`, `sleap-track`) for training and batch inference. BSD 3-Clause Clear licence, source at github.com/talmolab/sleap.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Training realistically wants an NVIDIA GPU; CPU-only training is slow enough to be impractical, and a free Colab GPU session is the usual workaround for people without hardware. You still supply the labels - typically a few hundred frames - and multi-animal identity tracking through occlusions on similar-looking animals needs manual proofreading. Models do not transfer across camera setups or lighting, so a rig change usually means re-labelling and retraining.",
       "canonical": true,
       "also_in": []
     },

@@ -64,6 +64,20 @@
       "also_in": []
     },
     {
+      "name": "Global Cancer Observatory (IARC)",
+      "url": "https://gco.iarc.who.int/",
+      "category": "data",
+      "subcategory": "cancer incidence, mortality and projections",
+      "summary": "IARC/WHO platform for global cancer statistics. Cancer Today carries the GLOBOCAN 2024 estimates - 20,636,441 new cases and 9,762,507 cancer deaths worldwide, covering 34 cancer types across 186 countries - alongside Cancer Over Time (registry trend series), Cancer Tomorrow (projections to 2050) and Cancer Incidence in Five Continents (CI5).",
+      "access": "Interactive maps, bar charts and tables at gco.iarc.who.int with no account; country, region and cancer-site fact sheets download as PDFs directly (for example https://gco.iarc.who.int/media/globocan/factsheets/populations/900-world-fact-sheet.pdf). Registry-level observed incidence data and the CI5 volumes are at ci5.iarc.fr.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "GLOBOCAN numbers are modelled estimates, not counts. Where cancer registration is weak, national incidence is extrapolated from neighbouring countries or regional averages, so country rankings and small differences can be artefacts of the method - read the data-sources-and-methods notes before quoting a national figure, and cite the version (the fact sheets carry a release date and version number). Estimates are re-based every couple of years and successive releases are not a time series; use Cancer Over Time for trends.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Grand Challenge",
       "url": "https://grand-challenge.org/",
       "category": "data",
@@ -74,6 +88,20 @@
       "registration": "email",
       "beginner": 3,
       "notes": "Data access is decided per challenge: some are open downloads, some require a signed usage agreement, and some datasets are withdrawn once a challenge closes. Submission compute is capped per challenge. It is a benchmark venue, not a general repository — you cannot deposit arbitrary data there.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "Human Mortality Database",
+      "url": "https://www.mortality.org/",
+      "category": "data",
+      "subcategory": "life tables and mortality series",
+      "summary": "Harmonised death counts, population estimates, exposure-to-risk, age-specific death rates and period/cohort life tables for 41 countries and populations, with several national series running back into the 19th century, plus the Short-Term Mortality Fluctuations weekly death series. Maintained by the Max Planck Institute for Demographic Research with UC Berkeley.",
+      "access": "Create a free account, then download per-country zipped text files or the complete database from mortality.org/Data/ZippedDataFiles; summary indicator spreadsheets and the STMF weekly series are separate sections. The CRAN package `HMDHFDplus` pulls the same files programmatically using your login. Each release has its own DOI for citation.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 3,
+      "notes": "Without logging in, data-file links redirect to the login page. The user agreement restricts redistribution of the files, so send collaborators to the site rather than passing zips around. Coverage is confined to countries with long, reliable civil registration: the list is Europe-heavy plus Australia, Canada, Chile, Hong Kong, Israel, Japan, Republic of Korea, New Zealand, Russia, Taiwan, Ukraine, U.K. and U.S.A. - no African country, and Chile is the only Latin American series. Series are revised between releases, so pin the version DOI you analysed.",
       "canonical": true,
       "also_in": []
     },
@@ -486,6 +514,20 @@
       "also_in": []
     },
     {
+      "name": "OpenMRS",
+      "url": "https://openmrs.org/",
+      "category": "software",
+      "subcategory": "open-source electronic medical record platform",
+      "summary": "Open-source EMR platform designed for low-resource clinical settings, built around a configurable concept dictionary, form and data-entry modules, and reporting; the project reports use in over 8,000 facilities across more than 70 countries covering some 15 million patient records.",
+      "access": "Try the current front end on the public demo at o3.openmrs.org; run it yourself with the containerised OpenMRS 3.x reference application, the OpenMRS SDK for module development, or the Platform WAR into your own Tomcat/MySQL - all at openmrs.org/download. Source at github.com/openmrs (openmrs-core is Mozilla Public License 2.0). Documentation on the project's Atlassian site; help through OpenMRS Talk and Slack.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Free software, not a free service: you host, secure, back up and upgrade it, and a real implementation means dictionary work, forms and training measured in months rather than days. Holding identifiable patient records brings ethics approval and data-protection duties the software does not discharge for you. Expect version drift between the 2.x platform, the 3.x front end and community modules - check module compatibility before committing to a stack.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Polyglot Search Translator (Systematic Review Accelerator)",
       "url": "https://polyglot.sr-accelerator.com/",
       "category": "software",
@@ -595,6 +637,20 @@
       "beginner": 4,
       "notes": "The most realistic way for an unaffiliated researcher to put health research on the public record with a DOI at zero cost. Screening rejects case reports of identifiable patients and anything readable as clinical advice; trial reports should carry a registration number. Some clinical journals still treat preprinting cautiously, so check the target journal's policy first. The website blocks scripted fetches — use the API.",
       "canonical": false,
+      "also_in": []
+    },
+    {
+      "name": "MSF Medical Guidelines",
+      "url": "https://medicalguidelines.msf.org/",
+      "category": "literature",
+      "subcategory": "clinical guidelines for low-resource settings",
+      "summary": "Médecins Sans Frontières' field manuals in full text: Clinical guidelines (diagnosis and treatment), Essential drugs, Essential obstetric and newborn care, Tuberculosis, Public health engineering, and the cholera and measles epidemic-management guides, written for practice where laboratory and imaging support is thin.",
+      "access": "Read online at medicalguidelines.msf.org, download any guide as a PDF, or install the free iOS/Android apps for offline use. Available in English, French, Spanish and Arabic, though not every guide exists in every language. No account for the public guidelines.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Guidelines marked internal are behind an MSF staff login. Recommendations are written around MSF field contexts, protocols and drug availability, so they complement rather than replace national guidance or WHO documents in a well-resourced hospital. Content is copyright MSF with no open licence stated, so reuse beyond reading and clinical reference needs permission. Revision dates differ per guide - check the edition before relying on a dose or regimen.",
+      "canonical": true,
       "also_in": []
     },
     {

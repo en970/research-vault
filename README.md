@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**1,144 resources** across **18 fields** — 886 free outright, 730 usable with no account at all. Verified 2026-08-28.
+**1,154 resources** across **18 fields** — 895 free outright, 738 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -46,12 +46,12 @@ sixty seconds. Those distinctions are the content.
 | [Physics](docs/01-physics.md) | 87 | software (28), data (20), learning (11) |
 | [Astronomy & space science](docs/02-astronomy.md) | 83 | data (39), software (20), learning (6) |
 | [Chemistry & materials science](docs/03-chemistry.md) | 87 | software (29), data (25), literature (9) |
-| [Biology & life sciences](docs/04-biology.md) | 83 | data (36), software (18), learning (6) |
-| [Medicine & health sciences](docs/05-medicine.md) | 72 | data (24), software (15), literature (10) |
+| [Biology & life sciences](docs/04-biology.md) | 87 | data (38), software (20), learning (6) |
+| [Medicine & health sciences](docs/05-medicine.md) | 76 | data (26), software (16), literature (11) |
 | [Earth, climate & environmental science](docs/06-earth.md) | 88 | data (38), software (18), learning (8) |
 | [Mathematics](docs/07-mathematics.md) | 86 | software (20), publishing (15), data (13) |
 | [Computer science & machine learning](docs/08-cs-ml.md) | 86 | software (21), data (15), literature (14) |
-| [Neuroscience & psychology](docs/09-neuro-psych.md) | 92 | software (38), data (21), literature (10) |
+| [Neuroscience & psychology](docs/09-neuro-psych.md) | 94 | software (39), data (22), literature (10) |
 | [Social sciences](docs/10-social.md) | 87 | data (37), software (16), literature (12) |
 | [Economics & finance](docs/11-econ-finance.md) | 80 | data (38), software (14), literature (8) |
 | [Linguistics & humanities](docs/12-humanities.md) | 76 | data (30), software (22), publishing (7) |

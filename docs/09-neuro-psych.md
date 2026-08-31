@@ -1,10 +1,10 @@
 # Neuroscience & psychology
 
-Part of [research-vault](../README.md). 92 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 94 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (21) · [Software](#software) (38) · [Literature](#literature) (10) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (3) · [Learning](#learning) (7) · [Community](#community) (4)
+**Contents:** [Data](#data) (22) · [Software](#software) (39) · [Literature](#literature) (10) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (3) · [Learning](#learning) (7) · [Community](#community) (4)
 
 ## Data
 
@@ -107,6 +107,16 @@ SenseLab's curated repository of roughly 1,930 published computational neuroscie
 **Access.** Browse or search by simulator, region, cell type, receptor or currents at modeldb.science; download the model source as a zip and run it in NEURON, NEST, Brian, MATLAB or whatever the author used.
 
 **Caveats.** Model code is archival, not maintained — older NEURON hoc/mod files often need small fixes to compile against current versions, and some entries have no runnable code at all. Curation checks that the model ran once, not that it reproduces every figure.
+
+### [NEMAR](https://nemar.org/)
+
+`Free` · beginner 3/5 · human electrophysiology archive with attached HPC
+
+Open archive and browser for human EEG, MEG, iEEG and EMG datasets mirrored from OpenNeuro - the site reports 755 datasets, about 39,000 participants and 58.0 TB - with per-dataset quality assessments and interactive channel/spectrum visualisations, plus a route to process the data on the Neuroscience Gateway's no-cost HPC. Funded by NIH award R24MH120037 and run by SCCN and SDSC at UC San Diego.
+
+**Access.** Search, preview and inspect data-quality plots at nemar.org with no account; any dataset can be downloaded as a BIDS-structured zip. Analyses (EEGLAB/MATLAB and Python pipelines) are dispatched to the Neuroscience Gateway running on SDSC hardware, which needs a separate free NSG account.
+
+**Caveats.** NEMAR indexes, checks and computes on OpenNeuro's data rather than holding its own, so cite the original dataset DOI and authors. Compute goes through NSG's own free account, queue and allocation rules and runs as batch jobs, not interactive sessions. Dataset quality is uneven - BIDS compliance, electrode locations and event coding vary by contributor, and the QC figures are a screening aid, not a guarantee that a dataset is analysable.
 
 ### [NeuroMorpho.Org](https://neuromorpho.org/)
 
@@ -571,6 +581,16 @@ The long-standing MATLAB and GNU Octave toolbox for vision and psychophysics res
 **Access.** Install via the DownloadPsychtoolbox script, NeuroDebian packages on Linux, or the toolbox manager; then `Screen('OpenWindow', ...)` and `Screen('Flip')` for frame-accurate presentation, and `PerceptualVBLSyncTest`/`VBLSyncTest` to verify timing on your own hardware. Source is on GitHub under mostly MIT-style licences.
 
 **Caveats.** The important caveat this catalogue exists for: PTB itself is open source and free to use on Linux, but from 3.0.20 onward the prebuilt mex files for Windows and macOS are paid (single node €50/year, six nodes €250, thirty €1,200, hundred €3,800, node-locked, not usable in VMs or containers). Compiling the mex files yourself, or running Linux, is the free route. PsychoPy is the free-everywhere alternative; PTB still wins on timing-critical low-level display control.
+
+### [SLEAP](https://sleap.ai/)
+
+`Free` · beginner 3/5 · multi-animal pose tracking
+
+Deep-learning framework with a labelling GUI for tracking body parts of multiple interacting animals in video, supporting top-down and bottom-up model configurations and identity tracking across frames. From the Talmo lab, with methods papers in Nature Methods (Pereira et al. 2019, 2022).
+
+**Access.** `pip install "sleap[nn]"` or `uv tool install --python 3.13 "sleap[nn]"` on Python 3.11-3.13 - those commands give a CPU-only build, with GPU/CUDA setup covered in the install guide. GUI for labelling and proofreading, CLI (`sleap-train`, `sleap-track`) for training and batch inference. BSD 3-Clause Clear licence, source at github.com/talmolab/sleap.
+
+**Caveats.** Training realistically wants an NVIDIA GPU; CPU-only training is slow enough to be impractical, and a free Colab GPU session is the usual workaround for people without hardware. You still supply the labels - typically a few hundred frames - and multi-animal identity tracking through occlusions on similar-looking animals needs manual proofreading. Models do not transfer across camera setups or lighting, so a rig change usually means re-labelling and retraining.
 
 ### [SpikeInterface](https://spikeinterface.readthedocs.io/)
 
