@@ -1,6 +1,5 @@
 {
   "_comment": "Hand-verified fixes applied after the automated critic pass. The sweep and critic files are machine output and get regenerated; corrections recorded here survive a re-merge. Each entry names the unit and the resource it acts on, and says why.",
-
   "corrections": [
     {
       "unit": "astronomy",
@@ -38,7 +37,137 @@
       "reason": "Every deep path under ictp.it returned HTTP 500 on 2026-08-28 while the site root is fine — pointing at the root avoids linking a broken page."
     }
   ],
-
   "removals": [],
-  "additions": []
+  "additions": [
+    {
+      "unit": "physics",
+      "name": "PhET Interactive Simulations",
+      "url": "https://phet.colorado.edu",
+      "category": "learning",
+      "subcategory": "interactive simulations",
+      "summary": "Browser-based simulations for physics, chemistry, biology, earth science and maths from the University of Colorado Boulder. PhET's own catalogue API lists 246 simulations, 119 of them native HTML5, and the HTML5 titles carry translations in 130 locales.",
+      "access": "Run any simulation in the browser at phet.colorado.edu; sims can also be downloaded for offline use, and each one has its source repository under github.com/phetsims. The catalogue is queryable as JSON at phet.colorado.edu/services/metadata/1.3/simulations?format=json.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Simulation source is GPL-3.0 (checked on the phetsims GitHub repos); a free account is only needed to contribute teaching activities. PhET Studio, a separate authoring product, is licensed and paid. The sims are teaching and intuition tools, not research-grade numerics — 48 legacy titles are still Flash-era and 85 are Java, some run only through a compatibility layer."
+    },
+    {
+      "unit": "physics",
+      "name": "RefractiveIndex.INFO",
+      "url": "https://refractiveindex.info",
+      "category": "data",
+      "subcategory": "optical constants",
+      "summary": "Refractive index and extinction coefficient data for optical materials — glasses, metals, semiconductors, crystals, organics — compiled from the published measurement literature since 2008. The database repository held 4,180 YAML datasets when checked on 31 August 2026.",
+      "access": "Web interface with plots, Sellmeier/tabulated data and basic calculations; the whole database downloads as a dated ZIP (rii-database-2026-05-24.zip) or from the refractiveindex.info-database repo on GitHub, and the About page links Python and Julia readers for the YAML files.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Released under CC0, so reuse including commercial reuse is unrestricted. It is essentially a one-maintainer compilation (Mikhail Polyanskiy): every dataset cites its original paper, and you should check that reference and the stated wavelength range before trusting a curve — extrapolation outside the measured range is on you."
+    },
+    {
+      "unit": "physics",
+      "name": "VAMDC Portal",
+      "url": "https://portal.vamdc.eu",
+      "category": "data",
+      "subcategory": "atomic and molecular data federation",
+      "summary": "One query interface across the Virtual Atomic and Molecular Data Centre's federated nodes — energy levels, transition wavelengths and probabilities, cross sections, collisional and line-broadening data. The portal's front page states 39 databases are currently connected and serving data.",
+      "access": "Guided and advanced query forms in the browser, results exported as VAMDC-XSAMS XML; programmatic access via the VAMDC-TAP protocol and the pyVAMDC Python library (version 1.0 released June 2026), with a cross-node species lookup at species.vamdc.org.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "An account is optional and only buys saved queries. Individual nodes go down for maintenance, so the set of databases answering a given query varies between runs. Each node keeps its own citation policy — the portal's citation page tells you whom to credit, and you cite the underlying database, not the portal."
+    },
+    {
+      "unit": "physics",
+      "name": "PennyLane",
+      "url": "https://pennylane.ai",
+      "category": "software",
+      "subcategory": "differentiable quantum programming",
+      "summary": "Xanadu's Python library for quantum computing, quantum machine learning and quantum chemistry: build circuits, differentiate through them like a neural network, and dispatch to 40+ device backends via plugins (Lightning simulators, Qiskit, Cirq, Braket, IonQ). Version 0.45.1, Apache-2.0.",
+      "access": "`pip install pennylane` (Python 3.11+); free Codebook lessons at pennylane.ai/codebook and runnable tutorial demos at pennylane.ai/qml/demonstrations.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "The library, its local simulators and the learning material are free. Running on real QPUs goes through third-party providers (IBM, AWS Braket, IonQ) with their own accounts, quotas and charges. Statevector simulation is bounded by your own RAM/GPU — roughly 25-30 qubits on a laptop."
+    },
+    {
+      "unit": "astronomy",
+      "name": "ESASky",
+      "url": "https://sky.esa.int",
+      "category": "data",
+      "subcategory": "multi-mission sky explorer",
+      "summary": "ESA's browser-based discovery portal over the ESA science archives — Euclid, Hubble, JWST, Gaia, Herschel, ISO, Planck, XMM-Newton, EXOSAT and LISA Pathfinder, plus heliophysics (SOHO, Solar Orbiter, Cluster, Proba-2) and planetary archives — with VizieR catalogue overlays and ADS publication search on any target.",
+      "access": "Web app at sky.esa.int (version 7.9.0 in August 2026): search a target or upload a target list, blink between wavelengths, overlay catalogues, find solar system objects, and download science-ready images and spectra directly. Scriptable from Python through astroquery.esasky.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "No login for the core functionality; a COSMOS account only stores personal settings. It is a discovery and quick-look tool — for bulk retrieval, calibration products or proposal-grade metadata you still end up in the individual mission archives it points at."
+    },
+    {
+      "unit": "astronomy",
+      "name": "CASA (Common Astronomy Software Applications)",
+      "url": "https://casa.nrao.edu",
+      "category": "software",
+      "subcategory": "radio interferometry calibration and imaging",
+      "summary": "The primary data-processing package for ALMA and the VLA, developed by NRAO with ESO, NAOJ and JIV-ERIC, and also used for VLBI, VLASS and ngVLA work. Current release 6.7.6.",
+      "access": "Download the tar (Linux RHEL 8/9, Ubuntu 24) or dmg (macOS 14/15/26) bundle that ships its own Python, or `pip install casatools casatasks` into an existing Python 3.10-3.13 environment. ALMA and VLA pipeline reruns need the pipeline-validated build (CASA 6.6.6 on RHEL 8).",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Free and open source, but demanding: interferometric measurement sets run to tens or hundreds of GB and imaging is CPU- and RAM-hungry. Pipelines are validated only on RedHat Linux and are unsupported on macOS; CASA 6.7 dropped Intel Macs. The modular pip install carries no pipeline."
+    },
+    {
+      "unit": "astronomy",
+      "name": "Chandra Data Archive and CIAO",
+      "url": "https://cxc.harvard.edu/cda/",
+      "category": "data",
+      "subcategory": "X-ray observations plus analysis software",
+      "summary": "Every Chandra X-ray Observatory observation becomes public when its proprietary period expires (nominally one year, set per observation between 0 and 12 months), alongside all calibration observations. The Chandra X-ray Center also ships the analysis package CIAO 4.18 with CALDB 4.12.4.",
+      "access": "Search and retrieve through ChaSeR/WebChaSeR, the footprint service, Chandra Fast Image or direct HTTPS; from a shell, CIAO's `find_chandra_obsid` and `download_chandra_obsid` pull public ObsIDs by name or position. CIAO installs via the ciao-install script, a conda environment from the CXC channel, or a macOS dmg.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Only public observations are open; data still inside their proprietary window need the PI's credentials. CIAO plus the CALDB is a multi-GB install, and spectral fitting means learning CIAO's Sherpa or HEASARC's XSPEC on top of the archive itself."
+    },
+    {
+      "unit": "astronomy",
+      "name": "yt",
+      "url": "https://yt-project.org",
+      "category": "software",
+      "subcategory": "simulation data analysis and visualisation",
+      "summary": "Python package for analysing and visualising volumetric data — adaptive-mesh, unstructured-mesh and particle output — with frontends for most astrophysical simulation codes (Enzo, FLASH, Athena, RAMSES, GADGET, AREPO, GAMER, Nyx, Castro, Gizmo, AMRVAC, openPMD and others). Release 4.4.2 (November 2025), modified BSD licence, a NumFOCUS fiscally sponsored project.",
+      "access": "`python -m pip install yt` or `conda install -c conda-forge yt`; sample datasets for every supported code are downloadable from yt-project.org/data.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Support is only as good as the frontend for your code — in-house or exotic output formats may need you to write one. Memory-hungry on large datasets, and parallel analysis needs a working mpi4py. It reaches beyond astronomy (seismology, nuclear engineering, molecular dynamics, oceanography) but the documentation is astronomy-first."
+    },
+    {
+      "unit": "chemistry",
+      "name": "ChemSpider",
+      "url": "https://www.chemspider.com",
+      "category": "data",
+      "subcategory": "chemical structure database",
+      "summary": "The Royal Society of Chemistry's aggregated structure database; the site describes itself as offering free text and structure search over more than 130 million structures from hundreds of data sources, with experimental and predicted properties, spectra, identifiers and supplier links.",
+      "access": "Free web search by name, synonym, trade name, CAS registry number, SMILES, InChI or formula, plus structure and substructure drawing; structures download as MOL files. Programmatic access is the compounds API on the RSC developer portal (developer.rsc.org) with a registered key.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Web searching needs no account. The API is metered — the site's own service listing advertises free access at 1,000 requests per month with a registered key, above which it is a commercial arrangement — and there is no bulk dump of the database. Deposited records vary in quality and carry source-specific terms, and predicted properties (ACD/Labs) are clearly the weakest part."
+    },
+    {
+      "unit": "chemistry",
+      "name": "Organic Syntheses",
+      "url": "https://www.orgsyn.org",
+      "category": "literature",
+      "subcategory": "independently checked synthetic procedures",
+      "summary": "Free full text of every Organic Syntheses preparation since 1921: 103 annual volumes (through Volume 103, 2026) plus 12 collective volumes. Every procedure and its characterisation data are peer reviewed and reproduced in the laboratory of a member of the Board of Editors before publication, and from 2026 the checkers are credited as coauthors.",
+      "access": "Search by structure, reaction type, reagent, author or volume at orgsyn.org; each preparation reads as HTML and downloads as a PDF with no account or subscription.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Published by Organic Syntheses, Inc., a non-profit; text stays copyrighted, so it is free to read and work from but not to redistribute wholesale. Coverage is deliberately narrow — only submitted, checked procedures — so treat it as a reliability filter for known preparations, not a comprehensive reaction database."
+    }
+  ]
 }

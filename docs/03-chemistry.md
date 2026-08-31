@@ -1,10 +1,10 @@
 # Chemistry & materials science
 
-Part of [research-vault](../README.md). 83 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 85 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (24) · [Software](#software) (27) · [Literature](#literature) (8) · [Compute](#compute) (5) · [Publishing](#publishing) (8) · [Funding](#funding) (3) · [Learning](#learning) (5) · [Community](#community) (3)
+**Contents:** [Data](#data) (25) · [Software](#software) (27) · [Literature](#literature) (9) · [Compute](#compute) (5) · [Publishing](#publishing) (8) · [Funding](#funding) (3) · [Learning](#learning) (5) · [Community](#community) (3)
 
 ## Data
 
@@ -77,6 +77,16 @@ EMBL-EBI's manually curated bioactivity database. Release ChEMBL_37 (2026-05-01)
 **Access.** `pip install chembl-webresource-client`, then `from chembl_webresource_client.new_client import new_client; new_client.molecule.filter(pref_name='ASPIRIN')`. Full PostgreSQL/MySQL/SQLite dumps and RDF are on the EBI FTP site; a SQLite dump runs fine on a laptop.
 
 **Caveats.** CC BY-SA 3.0 - the ShareAlike clause propagates to derived databases, which matters if you plan to redistribute. Activity values are extracted from the literature and inherit the assay conditions of the source paper; check the assay description before pooling values across documents. Pin the release number in published analyses.
+
+### [ChemSpider](https://www.chemspider.com)
+
+`Free` · beginner 5/5 · chemical structure database
+
+The Royal Society of Chemistry's aggregated structure database; the site describes itself as offering free text and structure search over more than 130 million structures from hundreds of data sources, with experimental and predicted properties, spectra, identifiers and supplier links.
+
+**Access.** Free web search by name, synonym, trade name, CAS registry number, SMILES, InChI or formula, plus structure and substructure drawing; structures download as MOL files. Programmatic access is the compounds API on the RSC developer portal (developer.rsc.org) with a registered key.
+
+**Caveats.** Web searching needs no account. The API is metered — the site's own service listing advertises free access at 1,000 requests per month with a registered key, above which it is a commercial arrangement — and there is no bulk dump of the database. Deposited records vary in quality and carry source-specific terms, and predicted properties (ACD/Labs) are clearly the weakest part.
 
 ### [Crystallography Open Database (COD)](https://www.crystallography.net/cod/)
 
@@ -583,6 +593,16 @@ Free and open index of scholarly works, authors, institutions, sources and topic
 **Access.** REST API with no key; add your email for the polite pool: https://api.openalex.org/works?filter=primary_topic.field.id:fields/25,is_oa:true&mailto=you@example.org . Full monthly snapshots download from S3; `pip install pyalex` wraps the API.
 
 **Caveats.** The free tier is generous (100,000 calls/day in the polite pool) but a paid Premium tier exists for higher throughput and faster snapshots. Topic classification is automated and imperfect at sub-field level, and author disambiguation still merges and splits some names. Abstracts are stored as inverted indexes, not plain text.
+
+### [Organic Syntheses](https://www.orgsyn.org)
+
+`Free` · beginner 5/5 · independently checked synthetic procedures
+
+Free full text of every Organic Syntheses preparation since 1921: 103 annual volumes (through Volume 103, 2026) plus 12 collective volumes. Every procedure and its characterisation data are peer reviewed and reproduced in the laboratory of a member of the Board of Editors before publication, and from 2026 the checkers are credited as coauthors.
+
+**Access.** Search by structure, reaction type, reagent, author or volume at orgsyn.org; each preparation reads as HTML and downloads as a PDF with no account or subscription.
+
+**Caveats.** Published by Organic Syntheses, Inc., a non-profit; text stays copyrighted, so it is free to read and work from but not to redistribute wholesale. Coverage is deliberately narrow — only submitted, checked procedures — so treat it as a reliability filter for known preparations, not a comprehensive reaction database.
 
 ### [Research4Life](https://www.research4life.org/)
 

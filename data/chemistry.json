@@ -104,6 +104,20 @@
       "also_in": []
     },
     {
+      "name": "ChemSpider",
+      "url": "https://www.chemspider.com",
+      "category": "data",
+      "subcategory": "chemical structure database",
+      "summary": "The Royal Society of Chemistry's aggregated structure database; the site describes itself as offering free text and structure search over more than 130 million structures from hundreds of data sources, with experimental and predicted properties, spectra, identifiers and supplier links.",
+      "access": "Free web search by name, synonym, trade name, CAS registry number, SMILES, InChI or formula, plus structure and substructure drawing; structures download as MOL files. Programmatic access is the compounds API on the RSC developer portal (developer.rsc.org) with a registered key.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Web searching needs no account. The API is metered — the site's own service listing advertises free access at 1,000 requests per month with a registered key, above which it is a commercial arrangement — and there is no bulk dump of the database. Deposited records vary in quality and carry source-specific terms, and predicted properties (ACD/Labs) are clearly the weakest part.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Crystallography Open Database (COD)",
       "url": "https://www.crystallography.net/cod/",
       "category": "data",
@@ -799,6 +813,20 @@
       "beginner": 4,
       "notes": "The free tier is generous (100,000 calls/day in the polite pool) but a paid Premium tier exists for higher throughput and faster snapshots. Topic classification is automated and imperfect at sub-field level, and author disambiguation still merges and splits some names. Abstracts are stored as inverted indexes, not plain text.",
       "canonical": false,
+      "also_in": []
+    },
+    {
+      "name": "Organic Syntheses",
+      "url": "https://www.orgsyn.org",
+      "category": "literature",
+      "subcategory": "independently checked synthetic procedures",
+      "summary": "Free full text of every Organic Syntheses preparation since 1921: 103 annual volumes (through Volume 103, 2026) plus 12 collective volumes. Every procedure and its characterisation data are peer reviewed and reproduced in the laboratory of a member of the Board of Editors before publication, and from 2026 the checkers are credited as coauthors.",
+      "access": "Search by structure, reaction type, reagent, author or volume at orgsyn.org; each preparation reads as HTML and downloads as a PDF with no account or subscription.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Published by Organic Syntheses, Inc., a non-profit; text stays copyrighted, so it is free to read and work from but not to redistribute wholesale. Coverage is deliberately narrow — only submitted, checked procedures — so treat it as a reliability filter for known preparations, not a comprehensive reaction database.",
+      "canonical": true,
       "also_in": []
     },
     {

@@ -1,10 +1,10 @@
 # Physics
 
-Part of [research-vault](../README.md). 83 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 87 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (18) · [Software](#software) (27) · [Literature](#literature) (6) · [Compute](#compute) (7) · [Publishing](#publishing) (5) · [Funding](#funding) (6) · [Learning](#learning) (10) · [Community](#community) (4)
+**Contents:** [Data](#data) (20) · [Software](#software) (28) · [Literature](#literature) (6) · [Compute](#compute) (7) · [Publishing](#publishing) (5) · [Funding](#funding) (6) · [Learning](#learning) (11) · [Community](#community) (4)
 
 ## Data
 
@@ -192,6 +192,26 @@ The Review of Particle Physics: evaluated masses, widths, branching ratios and l
 
 **Caveats.** The Python API is labelled beta by PDG — cross-check values against pdgLive before using them in a publication. The printed book/booklet costs money; all content is free online.
 
+### [RefractiveIndex.INFO](https://refractiveindex.info)
+
+`Free` · beginner 5/5 · optical constants
+
+Refractive index and extinction coefficient data for optical materials — glasses, metals, semiconductors, crystals, organics — compiled from the published measurement literature since 2008. The database repository held 4,180 YAML datasets when checked on 31 August 2026.
+
+**Access.** Web interface with plots, Sellmeier/tabulated data and basic calculations; the whole database downloads as a dated ZIP (rii-database-2026-05-24.zip) or from the refractiveindex.info-database repo on GitHub, and the About page links Python and Julia readers for the YAML files.
+
+**Caveats.** Released under CC0, so reuse including commercial reuse is unrestricted. It is essentially a one-maintainer compilation (Mikhail Polyanskiy): every dataset cites its original paper, and you should check that reference and the stated wavelength range before trusting a curve — extrapolation outside the measured range is on you.
+
+### [VAMDC Portal](https://portal.vamdc.eu)
+
+`Free` · beginner 3/5 · atomic and molecular data federation
+
+One query interface across the Virtual Atomic and Molecular Data Centre's federated nodes — energy levels, transition wavelengths and probabilities, cross sections, collisional and line-broadening data. The portal's front page states 39 databases are currently connected and serving data.
+
+**Access.** Guided and advanced query forms in the browser, results exported as VAMDC-XSAMS XML; programmatic access via the VAMDC-TAP protocol and the pyVAMDC Python library (version 1.0 released June 2026), with a cross-node species lookup at species.vamdc.org.
+
+**Caveats.** An account is optional and only buys saved queries. Individual nodes go down for maintenance, so the set of databases answering a given query varies between runs. Each node keeps its own citation policy — the portal's citation page tells you whom to credit, and you cite the underlying database, not the portal.
+
 ## Software
 
 ### [ASE — Atomic Simulation Environment](https://ase-lib.org)
@@ -335,6 +355,16 @@ Browser-based LaTeX editor with a hosted TeX Live installation, journal and prep
 **Access.** Free account at overleaf.com; start from a template or upload a .zip of an existing project; source and compiled PDF are downloadable at any time.
 
 **Caveats.** Paid plans (Student $8.25/month upward) are needed for more than one collaborator per project, track changes, full version history, longer compile timeouts, and Git/GitHub/Dropbox/Zotero integration; AI features are capped at 5 uses/day on free. Many universities hold site licences worth checking before paying. A local TeX Live install plus git has no limits at all — Overleaf's real value is collaborating with people who will not install LaTeX.
+
+### [PennyLane](https://pennylane.ai)
+
+`Free` · beginner 4/5 · differentiable quantum programming
+
+Xanadu's Python library for quantum computing, quantum machine learning and quantum chemistry: build circuits, differentiate through them like a neural network, and dispatch to 40+ device backends via plugins (Lightning simulators, Qiskit, Cirq, Braket, IonQ). Version 0.45.1, Apache-2.0.
+
+**Access.** `pip install pennylane` (Python 3.11+); free Codebook lessons at pennylane.ai/codebook and runnable tutorial demos at pennylane.ai/qml/demonstrations.
+
+**Caveats.** The library, its local simulators and the learning material are free. Running on real QPUs goes through third-party providers (IBM, AWS Braket, IonQ) with their own accounts, quotas and charges. Statevector simulation is bounded by your own RAM/GPU — roughly 25-30 qubits on a laptop.
 
 ### [pymatgen](https://pymatgen.org)
 
@@ -773,6 +803,16 @@ Rice University's peer-reviewed, openly licensed (CC-BY) textbooks, including th
 **Access.** Read online or download PDF at openstax.org, no registration.
 
 **Caveats.** Introductory level only — the free route for teaching or refreshing fundamentals, not for graduate study.
+
+### [PhET Interactive Simulations](https://phet.colorado.edu)
+
+`Free` · beginner 5/5 · interactive simulations
+
+Browser-based simulations for physics, chemistry, biology, earth science and maths from the University of Colorado Boulder. PhET's own catalogue API lists 246 simulations, 119 of them native HTML5, and the HTML5 titles carry translations in 130 locales.
+
+**Access.** Run any simulation in the browser at phet.colorado.edu; sims can also be downloaded for offline use, and each one has its source repository under github.com/phetsims. The catalogue is queryable as JSON at phet.colorado.edu/services/metadata/1.3/simulations?format=json.
+
+**Caveats.** Simulation source is GPL-3.0 (checked on the phetsims GitHub repos); a free account is only needed to contribute teaching activities. PhET Studio, a separate authoring product, is licensed and paid. The sims are teaching and intuition tools, not research-grade numerics — 48 legacy titles are still Flash-era and 85 are Java, some run only through a compatibility layer.
 
 ### [PIRSA — Perimeter Institute Recorded Seminar Archive](https://pirsa.org)
 

@@ -1,10 +1,10 @@
 # Astronomy & space science
 
-Part of [research-vault](../README.md). 79 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 83 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (37) · [Software](#software) (18) · [Literature](#literature) (2) · [Compute](#compute) (3) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (3)
+**Contents:** [Data](#data) (39) · [Software](#software) (20) · [Literature](#literature) (2) · [Compute](#compute) (3) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (3)
 
 ## Data
 
@@ -68,6 +68,16 @@ Multi-petabyte public archive of radio (and some optical) SETI observations from
 
 **Caveats.** Individual filterbank/HDF5 files are often several GB and formats require specialized tools; start with the tutorial datasets rather than raw voltages.
 
+### [Chandra Data Archive and CIAO](https://cxc.harvard.edu/cda/)
+
+`Free` · beginner 3/5 · X-ray observations plus analysis software
+
+Every Chandra X-ray Observatory observation becomes public when its proprietary period expires (nominally one year, set per observation between 0 and 12 months), alongside all calibration observations. The Chandra X-ray Center also ships the analysis package CIAO 4.18 with CALDB 4.12.4.
+
+**Access.** Search and retrieve through ChaSeR/WebChaSeR, the footprint service, Chandra Fast Image or direct HTTPS; from a shell, CIAO's `find_chandra_obsid` and `download_chandra_obsid` pull public ObsIDs by name or position. CIAO installs via the ciao-install script, a conda environment from the CXC channel, or a macOS dmg.
+
+**Caveats.** Only public observations are open; data still inside their proprietary window need the PI's credentials. CIAO plus the CALDB is a multi-GB install, and spectral fitting means learning CIAO's Sherpa or HEASARC's XSPEC on top of the archive itself.
+
 ### [CHIME/FRB Catalogs](https://www.chime-frb.ca/catalog)
 
 `Free` · beginner 3/5 · fast radio bursts
@@ -127,6 +137,16 @@ ESA's permanent archive for its planetary missions - Rosetta, Mars Express, Venu
 **Access.** Search and download through the PSA web interface at psa.esa.int; FTP/HTTPS directory browsers for bulk retrieval of whole instrument datasets; TAP and EPN-TAP endpoints for scripted queries; observation geometry from the matching SPICE kernels (`pip install spiceypy`).
 
 **Caveats.** No account of any kind. The learning cost is the PDS label format and the per-instrument directory conventions; start from an instrument's user guide rather than the raw file tree. Some instrument teams deliver on a delayed schedule, so the newest BepiColombo and ExoMars data appear later than the observations.
+
+### [ESASky](https://sky.esa.int)
+
+`Free` · beginner 5/5 · multi-mission sky explorer
+
+ESA's browser-based discovery portal over the ESA science archives — Euclid, Hubble, JWST, Gaia, Herschel, ISO, Planck, XMM-Newton, EXOSAT and LISA Pathfinder, plus heliophysics (SOHO, Solar Orbiter, Cluster, Proba-2) and planetary archives — with VizieR catalogue overlays and ADS publication search on any target.
+
+**Access.** Web app at sky.esa.int (version 7.9.0 in August 2026): search a target or upload a target list, blink between wavelengths, overlay catalogues, find solar system objects, and download science-ready images and spectra directly. Scriptable from Python through astroquery.esasky.
+
+**Caveats.** No login for the core functionality; a COSMOS account only stores personal settings. It is a discovery and quick-look tool — for bulk retrieval, calibration products or proposal-grade metadata you still end up in the individual mission archives it points at.
 
 ### [ESO Science Archive](https://archive.eso.org)
 
@@ -448,6 +468,16 @@ Code for Anisotropies in the Microwave Background: computes CMB temperature, pol
 
 **Caveats.** A theory calculator, not a fitter - pair it with Cobaya or CosmoMC for parameter inference, and with the likelihoods and chains served free by NASA LAMBDA. CLASS is the equally free alternative implementation. Building from source needs a modern Fortran compiler; the pip wheels avoid that on common platforms.
 
+### [CASA (Common Astronomy Software Applications)](https://casa.nrao.edu)
+
+`Free` · beginner 2/5 · radio interferometry calibration and imaging
+
+The primary data-processing package for ALMA and the VLA, developed by NRAO with ESO, NAOJ and JIV-ERIC, and also used for VLBI, VLASS and ngVLA work. Current release 6.7.6.
+
+**Access.** Download the tar (Linux RHEL 8/9, Ubuntu 24) or dmg (macOS 14/15/26) bundle that ships its own Python, or `pip install casatools casatasks` into an existing Python 3.10-3.13 environment. ALMA and VLA pipeline reruns need the pipeline-validated build (CASA 6.6.6 on RHEL 8).
+
+**Caveats.** Free and open source, but demanding: interferometric measurement sets run to tens or hundreds of GB and imaging is CPU- and RAM-hungry. Pipelines are validated only on RedHat Linux and are unsupported on macOS; CASA 6.7 dropped Intel Macs. The modular pip install carries no pipeline.
+
 ### [galpy](https://docs.galpy.org)
 
 `Free` · beginner 3/5 · galactic dynamics
@@ -555,6 +585,16 @@ Desktop Java tool for interactive work on large tables: million-row crossmatchin
 **Access.** Download topcat-full.jar and run `java -jar topcat-full.jar` (Java 8 or later); `brew install --cask topcat` on macOS; reads FITS, VOTable, CSV, Parquet and more; the command-line sibling STILTS scripts the same operations.
 
 **Caveats.** Handles tables of millions of rows on modest hardware and works offline; the standard answer to 'how do I crossmatch two catalogues without writing code'.
+
+### [yt](https://yt-project.org)
+
+`Free` · beginner 3/5 · simulation data analysis and visualisation
+
+Python package for analysing and visualising volumetric data — adaptive-mesh, unstructured-mesh and particle output — with frontends for most astrophysical simulation codes (Enzo, FLASH, Athena, RAMSES, GADGET, AREPO, GAMER, Nyx, Castro, Gizmo, AMRVAC, openPMD and others). Release 4.4.2 (November 2025), modified BSD licence, a NumFOCUS fiscally sponsored project.
+
+**Access.** `python -m pip install yt` or `conda install -c conda-forge yt`; sample datasets for every supported code are downloadable from yt-project.org/data.
+
+**Caveats.** Support is only as good as the frontend for your code — in-house or exotic output formats may need you to write one. Memory-hungry on large datasets, and parallel analysis needs a working mpi4py. It reaches beyond astronomy (seismology, nuclear engineering, molecular dynamics, oceanography) but the documentation is astronomy-first.
 
 ## Literature
 
