@@ -1,10 +1,10 @@
 # Free compute & storage
 
-Part of [research-vault](../README.md). 64 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 66 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (10) · [Software](#software) (5) · [Compute](#compute) (38) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
+**Contents:** [Data](#data) (10) · [Software](#software) (5) · [Compute](#compute) (40) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
 
 ## Data
 
@@ -428,6 +428,16 @@ Free hosted notebooks with a fixed weekly accelerator quota (NVIDIA GPU and TPU 
 
 **Caveats.** Phone verification is required before the GPU/TPU and internet toggles appear at all — a real barrier in some countries. The remaining weekly quota is displayed in the session sidebar; treat that number as authoritative, because Kaggle has changed the allowance before and its documentation sits behind a bot wall. Quota resets weekly, not monthly, and idle sessions burn it.
 
+### [Lightning AI Studios (free plan)](https://lightning.ai/pricing)
+
+`Free tier, email` · beginner 4/5 · hosted CPU/GPU studios with persistent storage
+
+Browser-hosted 'Studios' — persistent workspaces with a VS Code/Jupyter interface. The Free plan is $0 and lists one free active Studio that can run 24/7 but requires a restart every 4 hours, 50 GB persistent storage, up to 2 concurrent GPUs, single GPUs including L40S, A100, H100 and H200, and up to 30 starting credits, advertised as 'up to 80 free GPU hours to start'. No credit card required.
+
+**Access.** Sign up at lightning.ai, open a Studio in the browser or attach a local IDE over SSH, and switch the machine from CPU to a GPU only while you need it; files, installed packages and environment persist between sessions. Free accounts also get 15 requests/min and 120,000 tokens/min against Lightning's model APIs.
+
+**Caveats.** Read the free plan as a permanent free CPU workspace with 50 GB of storage plus a one-off GPU allowance: the pricing page words the GPU hours as 'to start', not as a monthly refill, and further GPU time is pay-as-you-go. The mandatory 4-hour restart will interrupt long jobs unless you checkpoint. Storage beyond 50 GB, multi-GPU and multi-node training need paid plans ($20/month billed annually and up). Free-tier terms here change often — check the pricing page before planning work around it, and keep code and data reproducible elsewhere.
+
 ### [Modal](https://modal.com/pricing)
 
 `Free tier, email` · beginner 3/5 · serverless GPU compute
@@ -491,6 +501,16 @@ The front door to US national supercomputing. Four tiers: Explore (400,000 credi
 **Access.** Register at access-ci.org, submit an allocation request at allocations.access-ci.org, then exchange ACCESS credits for time on specific resources (Anvil, Bridges-2, Delta, Expanse, Jetstream2, OSN and others).
 
 **Caveats.** Read the eligibility rule before you invest time: the PI must be 'a U.S-based researcher or educator, at the graduate-student level or higher', affiliated with an eligible US organisation and using a matching organisational email. Unaffiliated researchers are explicitly not eligible ('not eligible for support if the individual is not employed by or affiliated with an eligible organization'), and non-US researchers must work under a US PI. Graduate students can be PIs on Explore and Discover with an advisor as co-PI, which is the realistic route for a student.
+
+### [OpenRouter free model endpoints](https://openrouter.ai/docs/api-reference/limits)
+
+`Free tier, api-key` · beginner 4/5 · free LLM inference API
+
+One OpenAI-compatible API in front of many model providers, including variants whose model id ends in ':free'. The documented limits for free models are 20 requests per minute and 50 free-model requests per day; accounts that have purchased at least 10 credits (US$10) at any point get 1,000 free-model requests per day.
+
+**Access.** Create an account, generate an API key, then POST to https://openrouter.ai/api/v1/chat/completions with a model id ending in ':free' — the OpenAI Python or JS SDK works by pointing base_url at https://openrouter.ai/api/v1. The catalogue at openrouter.ai/models can be filtered to free endpoints. Extra accounts or keys do not raise the limits: capacity is governed globally.
+
+**Caveats.** Which models are offered free changes without notice and free endpoints are the first to be throttled or withdrawn, so never hard-code one in an analysis you need to rerun a year from now — record the model id and date in your methods. Free routing can go to providers that train on prompts; account privacy settings have separate switches for free and paid models, and opting out of training stops OpenRouter routing to providers that train, which can leave nothing free available. Do not send unpublished manuscripts, participant data or anything confidential through free endpoints. The 1,000/day allowance requires a one-off $10 purchase, so that part is not free.
 
 ### [Oracle Cloud Always Free](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm)
 

@@ -1,10 +1,10 @@
 # Learning materials
 
-Part of [research-vault](../README.md). 73 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 77 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (1) · [Literature](#literature) (1) · [Compute](#compute) (2) · [Publishing](#publishing) (2) · [Funding](#funding) (3) · [Learning](#learning) (62) · [Community](#community) (2)
+**Contents:** [Data](#data) (1) · [Literature](#literature) (1) · [Compute](#compute) (2) · [Publishing](#publishing) (2) · [Funding](#funding) (3) · [Learning](#learning) (66) · [Community](#community) (2)
 
 ## Data
 
@@ -178,6 +178,16 @@ James, Witten, Hastie and Tibshirani's standard first course in statistical lear
 
 **Caveats.** The publisher (Springer) permits the free PDF; that arrangement is the authors', not a general Springer policy. Deliberately light on theory — its heavier sibling, The Elements of Statistical Learning, is also free from Hastie's Stanford page. Laptop-scale throughout.
 
+### [Bayesian Data Analysis (third edition)](https://sites.stat.columbia.edu/gelman/book/)
+
+`Free` · beginner 2/5 · Bayesian statistics textbook and course materials
+
+Gelman, Carlin, Stern, Dunson, Vehtari and Rubin's standard Bayesian reference, with the complete third-edition PDF downloadable free for non-commercial purposes. The same page carries solutions to exercises from all three editions, the datasets used in the examples, errata for each printing, course slides, video lectures and notes, and code demonstrations in R, Python and Matlab/Octave.
+
+**Access.** Direct download of the PDF and supplementary files from the book's page on Andrew Gelman's Columbia University site; no account required.
+
+**Caveats.** The free PDF is offered for non-commercial use only, not under an open licence, so it cannot be redistributed or remixed freely; the print edition is sold by the publisher. This is a graduate-level text that assumes calculus, probability and regression, and it is a reference more than a first course.
+
 ### [CESSDA Data Management Expert Guide](https://dmeg.cessda.eu/Data-Management-Expert-Guide)
 
 `Free` · beginner 5/5 · research data management (social sciences)
@@ -197,6 +207,16 @@ Cochrane's free training collection: Evidence Essentials (a beginner's guide to 
 **Access.** Free Cochrane account, then work through the modules in the browser; the Cochrane Handbook for Systematic Reviews of Interventions is linked as the accompanying reference.
 
 **Caveats.** These free modules are separate from Cochrane's paid interactive-learning product and from RevMan/Cochrane Library access, which in many countries depends on a national licence or institutional subscription. Health-research framing throughout, though the review methodology transfers to other fields. The best free grounding available in evidence synthesis if you have no methods supervisor.
+
+### [CodeRefinery](https://coderefinery.org/)
+
+`Free` · beginner 4/5 · research software and reproducibility workshops
+
+Publicly funded training initiative teaching researchers version control, testing, documentation, modular code and reproducible workflows. Workshops are free and online: a tools workshop ran 17-19 and 24-26 March 2026, and a standard workshop is scheduled for 22-24 September and 29 September-1 October 2026. Lesson material is published on the web under CC BY 4.0.
+
+**Access.** All lessons are readable at coderefinery.org/lessons with no account. Live workshops are announced on coderefinery.org/workshops/upcoming and require registration via the linked event page; past materials and recordings stay online.
+
+**Caveats.** The project's remit is Nordic research groups and it states an aim to expand beyond the Nordics, so seats in live sessions may be prioritised accordingly; the written lessons themselves are open to anyone. Exercises are hands-on and assume you can install Git, a shell and Python on your own machine. There are no certificates or credits.
 
 ### [Complexity Zoo](https://complexityzoo.net/Complexity_Zoo)
 
@@ -434,6 +454,16 @@ Publishes materials from more than 2,500 MIT undergraduate and graduate courses:
 
 *Also listed under: social.*
 
+### [Modern Statistics for Modern Biology](https://www.huber.embl.de/msmb/)
+
+`Free` · beginner 3/5 · statistics textbook with R/Bioconductor code
+
+Susan Holmes and Wolfgang Huber's 17-chapter textbook, free to read in full online under a CC BY-NC-SA licence, covering generative models, hypothesis testing, mixture models, clustering, multivariate and image data, networks, supervised learning and experimental design. The authors keep the R code updated beyond the 2019 Cambridge University Press print edition, so the web version is ahead of the book.
+
+**Access.** Read chapter by chapter in the browser; code chunks are R and Bioconductor and can be run locally.
+
+**Caveats.** CC BY-NC-SA means you can share and adapt it, but not for commercial purposes and only under the same licence. The printed Cambridge University Press edition (ISBN 9781108705295) is the paid product; the online version is the free one. It assumes working R and some prior statistics; the biology examples are genomics-heavy.
+
 ### [Neural Networks: Zero to Hero (Andrej Karpathy)](https://karpathy.ai/zero-to-hero.html)
 
 `Free` · beginner 3/5 · build-from-scratch deep learning
@@ -631,6 +661,16 @@ Wickham, Çetinkaya-Rundel and Grolemund's tidyverse-based introduction: data vi
 **Access.** Read online at r4ds.hadley.nz; `install.packages("tidyverse")` in R and work the in-chapter exercises.
 
 **Caveats.** Licensed CC BY-NC-ND 3.0 — you may read and share but not remix or use commercially. Teaches the tidyverse dialect specifically; base-R idioms are largely out of scope. A paid O'Reilly print edition exists but adds nothing over the website.
+
+### [RDMkit (ELIXIR Research Data Management Kit)](https://rdmkit.elixir-europe.org/)
+
+`Free` · beginner 4/5 · research data management guidance
+
+Community-written best-practice guide to research data management for the life sciences, maintained by ELIXIR with 254 contributors: 139 pages organised by data life-cycle stage, research domain, job role and country, pointing to 633 tools and resources. Content is CC BY 4.0 and RDMkit is named in the Horizon Europe Programme Guide.
+
+**Access.** Read on the web with no account; pages are versioned in a public GitHub repository, so corrections and additions go through pull requests.
+
+**Caveats.** Life-sciences focused, and the national-resources pages are strongest for European countries, so a researcher outside Europe will get the generic guidance but fewer local pointers. It is signposting and best practice rather than a course: no exercises, assessment or certificate, and it will often hand you off to a tool you still have to learn separately.
 
 ### [Reinforcement Learning: An Introduction (Sutton & Barto)](http://incompleteideas.net/book/the-book-2nd.html)
 

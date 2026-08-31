@@ -239,6 +239,20 @@
       "also_in": []
     },
     {
+      "name": "Bayesian Data Analysis (third edition)",
+      "url": "https://sites.stat.columbia.edu/gelman/book/",
+      "category": "learning",
+      "subcategory": "Bayesian statistics textbook and course materials",
+      "summary": "Gelman, Carlin, Stern, Dunson, Vehtari and Rubin's standard Bayesian reference, with the complete third-edition PDF downloadable free for non-commercial purposes. The same page carries solutions to exercises from all three editions, the datasets used in the examples, errata for each printing, course slides, video lectures and notes, and code demonstrations in R, Python and Matlab/Octave.",
+      "access": "Direct download of the PDF and supplementary files from the book's page on Andrew Gelman's Columbia University site; no account required.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "The free PDF is offered for non-commercial use only, not under an open licence, so it cannot be redistributed or remixed freely; the print edition is sold by the publisher. This is a graduate-level text that assumes calculus, probability and regression, and it is a reference more than a first course.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "CESSDA Data Management Expert Guide",
       "url": "https://dmeg.cessda.eu/Data-Management-Expert-Guide",
       "category": "learning",
@@ -263,6 +277,20 @@
       "registration": "email",
       "beginner": 4,
       "notes": "These free modules are separate from Cochrane's paid interactive-learning product and from RevMan/Cochrane Library access, which in many countries depends on a national licence or institutional subscription. Health-research framing throughout, though the review methodology transfers to other fields. The best free grounding available in evidence synthesis if you have no methods supervisor.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "CodeRefinery",
+      "url": "https://coderefinery.org/",
+      "category": "learning",
+      "subcategory": "research software and reproducibility workshops",
+      "summary": "Publicly funded training initiative teaching researchers version control, testing, documentation, modular code and reproducible workflows. Workshops are free and online: a tools workshop ran 17-19 and 24-26 March 2026, and a standard workshop is scheduled for 22-24 September and 29 September-1 October 2026. Lesson material is published on the web under CC BY 4.0.",
+      "access": "All lessons are readable at coderefinery.org/lessons with no account. Live workshops are announced on coderefinery.org/workshops/upcoming and require registration via the linked event page; past materials and recordings stay online.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "The project's remit is Nordic research groups and it states an aim to expand beyond the Nordics, so seats in live sessions may be prioritised accordingly; the written lessons themselves are open to anyone. Exercises are hands-on and assume you can install Git, a shell and Python on your own machine. There are no certificates or credits.",
       "canonical": true,
       "also_in": []
     },
@@ -591,6 +619,20 @@
       ]
     },
     {
+      "name": "Modern Statistics for Modern Biology",
+      "url": "https://www.huber.embl.de/msmb/",
+      "category": "learning",
+      "subcategory": "statistics textbook with R/Bioconductor code",
+      "summary": "Susan Holmes and Wolfgang Huber's 17-chapter textbook, free to read in full online under a CC BY-NC-SA licence, covering generative models, hypothesis testing, mixture models, clustering, multivariate and image data, networks, supervised learning and experimental design. The authors keep the R code updated beyond the 2019 Cambridge University Press print edition, so the web version is ahead of the book.",
+      "access": "Read chapter by chapter in the browser; code chunks are R and Bioconductor and can be run locally.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "CC BY-NC-SA means you can share and adapt it, but not for commercial purposes and only under the same licence. The printed Cambridge University Press edition (ISBN 9781108705295) is the paid product; the online version is the free one. It assumes working R and some prior statistics; the biology examples are genomics-heavy.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Neural Networks: Zero to Hero (Andrej Karpathy)",
       "url": "https://karpathy.ai/zero-to-hero.html",
       "category": "learning",
@@ -857,6 +899,20 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Licensed CC BY-NC-ND 3.0 — you may read and share but not remix or use commercially. Teaches the tidyverse dialect specifically; base-R idioms are largely out of scope. A paid O'Reilly print edition exists but adds nothing over the website.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "RDMkit (ELIXIR Research Data Management Kit)",
+      "url": "https://rdmkit.elixir-europe.org/",
+      "category": "learning",
+      "subcategory": "research data management guidance",
+      "summary": "Community-written best-practice guide to research data management for the life sciences, maintained by ELIXIR with 254 contributors: 139 pages organised by data life-cycle stage, research domain, job role and country, pointing to 633 tools and resources. Content is CC BY 4.0 and RDMkit is named in the Horizon Europe Programme Guide.",
+      "access": "Read on the web with no account; pages are versioned in a public GitHub repository, so corrections and additions go through pull requests.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Life-sciences focused, and the national-resources pages are strongest for European countries, so a researcher outside Europe will get the generic guidance but fewer local pointers. It is signposting and best practice rather than a course: no exercises, assessment or certificate, and it will often hand you off to a tool you still have to learn separately.",
       "canonical": true,
       "also_in": []
     },

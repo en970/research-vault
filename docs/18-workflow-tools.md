@@ -1,10 +1,10 @@
 # Research workflow software
 
-Part of [research-vault](../README.md). 76 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 78 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (1) · [Software](#software) (44) · [Literature](#literature) (7) · [Compute](#compute) (4) · [Publishing](#publishing) (6) · [Funding](#funding) (4) · [Learning](#learning) (6) · [Community](#community) (4)
+**Contents:** [Data](#data) (1) · [Software](#software) (46) · [Literature](#literature) (7) · [Compute](#compute) (4) · [Publishing](#publishing) (6) · [Funding](#funding) (4) · [Learning](#learning) (6) · [Community](#community) (4)
 
 ## Data
 
@@ -256,6 +256,16 @@ Free, self-hostable open-source survey platform (stable 7.0.11 as of August 2026
 
 *Also listed under: social.*
 
+### [marimo](https://marimo.io/)
+
+`Free` · beginner 4/5 · reactive Python notebook
+
+Apache-2.0 Python notebook that stores each notebook as a plain .py file and re-runs dependent cells automatically when an upstream cell changes, so there is no stale hidden state; deleting a cell also removes its variables. The same file can be run as a script, imported as a module, served as an interactive web app, or exported to WebAssembly-powered HTML, and it has built-in SQL and UI widgets.
+
+**Access.** pip install marimo, then marimo edit to open the browser editor or marimo run to serve a notebook as an app. Source at github.com/marimo-team/marimo.
+
+**Caveats.** Notebooks are pure Python rather than .ipynb, which is what makes them diff-able in Git, but it also means collaborators need marimo to open them as notebooks and that existing Jupyter notebooks have to be converted. Reactive execution re-runs downstream cells on every change, so long-running or expensive cells need caching or explicit gating. It is a much younger project than Jupyter, so the extension ecosystem and institutional documentation are thinner.
+
 ### [Nextflow](https://www.nextflow.io/)
 
 `Free` · beginner 2/5 · workflow manager
@@ -329,6 +339,16 @@ GPL document converter between Markdown, LaTeX, HTML, DOCX, ODT, EPUB, JATS, reS
 **Access.** 'brew install pandoc' / 'apt install pandoc' / winget; then e.g. 'pandoc paper.md --citeproc --bibliography=refs.bib --csl=apa.csl -o paper.docx'.
 
 **Caveats.** Journal DOCX templates and complex LaTeX macros rarely survive conversion untouched; budget time for cleanup. PDF output needs a separate engine installed (TeX Live, Typst or a HTML-to-PDF tool).
+
+### [Podman](https://podman.io/)
+
+`Free` · beginner 3/5 · containers for reproducible environments
+
+Apache-2.0 daemonless engine for OCI containers and images, with a command set that mirrors Docker's (podman run, build, pull, push) and support for running containers rootless as an ordinary user. Podman Desktop adds a GUI on Linux, macOS and Windows.
+
+**Access.** Install from your Linux distribution's package manager, Homebrew on macOS, or the installers on podman.io; existing docker command lines generally work unchanged, and many users alias docker to podman.
+
+**Caveats.** The practical reason to prefer it over Docker Desktop is licensing: Podman and Podman Desktop are open source with no commercial subscription tier, whereas Docker Desktop's licence has paid conditions that an unaffiliated researcher or small company has to check. On macOS and Windows it runs containers inside a managed Linux VM, so start-up time and volume-mount behaviour differ from native Linux. Docker Compose files need extra setup (podman-compose, or Podman's Docker-compatible socket) rather than working out of the box.
 
 ### [PsychoPy](https://www.psychopy.org/)
 

@@ -552,6 +552,20 @@
       ]
     },
     {
+      "name": "JSPS Postdoctoral Fellowships for Research in Japan (Standard)",
+      "url": "https://www.jsps.go.jp/english/e-fellow/e-ippan/index.html",
+      "category": "funding",
+      "subcategory": "international postdoctoral fellowship",
+      "summary": "Japan Society for the Promotion of Science fellowships of 12 to 24 months for overseas researchers to work with a host at a Japanese university or research institute, across the humanities, social sciences and natural sciences. Terms are a maintenance allowance of JPY 362,000 per month, a round-trip air ticket, a JPY 200,000 settling-in allowance and overseas travel insurance; the host can additionally apply for a linked KAKENHI Grant-in-Aid for research costs. Running in FY2026.",
+      "access": "Two routes: an Open Call in which the Japanese host researcher submits the application through their institution, and nomination through an overseas nominating authority. Guidelines, schedule and eligible-host-institution list are on the JSPS English site.",
+      "free": "free",
+      "registration": "application",
+      "beginner": 2,
+      "notes": "A Japanese host is mandatory and, in the open call, is the person who actually submits the application, so the real first step is finding and convincing a host researcher at a KAKENHI-eligible institution. Candidates must hold a doctorate awarded within six years of the fellowship start (parental leave is discounted) or be due to receive one before it starts. Japanese citizens and permanent residents of Japan are not eligible, nor is anyone who has already started this fellowship. Employment status elsewhere is not considered.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Kaggle Competitions",
       "url": "https://www.kaggle.com/competitions",
       "category": "funding",
@@ -744,6 +758,20 @@
       "registration": "email",
       "beginner": 4,
       "notes": "Hosts charge a percentage host fee that varies by host; check the specific host's page before committing. Full public transparency is a feature, not an option — line-item expenses including who was paid are visible. This is plumbing for receiving money, not a source of money.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "OTF Information Controls Research Program (ICRP)",
+      "url": "https://www.opentech.fund/research-2/icrp/",
+      "category": "funding",
+      "subcategory": "applied research fellowship, internet censorship and surveillance",
+      "summary": "Open Technology Fund's annual research programme, formerly the Information Controls Fellowship Program, on how repressive states censor and surveil the internet and how that can be countered. Pays a monthly stipend of $7,000 USD for a 3, 6, 9 or 12-month term, plus a travel stipend of up to $5,000 and an equipment stipend of up to $5,000 depending on the project. The 2026 call was open 27 July to 7 September 2026.",
+      "access": "Two stages via OTF's online application system at apply.opentech.fund: a concept note plus CV by the September deadline, then a full proposal with the host organisation from November for shortlisted applicants. One call per year.",
+      "free": "free",
+      "registration": "application",
+      "beginner": 2,
+      "notes": "Unusually for a fellowship, OTF explicitly invites 'junior to mid-career practitioners who are unassociated with an academic institution', alongside doctoral and postdoctoral researchers, so no university affiliation is needed to apply. Selected researchers must embed full-time with a host organisation for the term; you may propose one (ideally not one you are already affiliated with) or apply without one and OTF will help identify a host. Full-time PhD students normally need documented supervisor support. Projects must have a technical component or output; pure advocacy and policy research are out of scope. OTF is US-government funded through its congressional remit, which is worth weighing for some topics and nationalities.",
       "canonical": true,
       "also_in": []
     },

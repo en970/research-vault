@@ -1,10 +1,10 @@
 # Funding, grants & recognition
 
-Part of [research-vault](../README.md). 70 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 72 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Publishing](#publishing) (1) · [Funding](#funding) (65) · [Learning](#learning) (2) · [Community](#community) (2)
+**Contents:** [Publishing](#publishing) (1) · [Funding](#funding) (67) · [Learning](#learning) (2) · [Community](#community) (2)
 
 ## Publishing
 
@@ -400,6 +400,16 @@ The International Mathematical Union's grant arm for developing countries: the A
 
 *Also listed under: mathematics.*
 
+### [JSPS Postdoctoral Fellowships for Research in Japan (Standard)](https://www.jsps.go.jp/english/e-fellow/e-ippan/index.html)
+
+`Free, application` · beginner 2/5 · international postdoctoral fellowship
+
+Japan Society for the Promotion of Science fellowships of 12 to 24 months for overseas researchers to work with a host at a Japanese university or research institute, across the humanities, social sciences and natural sciences. Terms are a maintenance allowance of JPY 362,000 per month, a round-trip air ticket, a JPY 200,000 settling-in allowance and overseas travel insurance; the host can additionally apply for a linked KAKENHI Grant-in-Aid for research costs. Running in FY2026.
+
+**Access.** Two routes: an Open Call in which the Japanese host researcher submits the application through their institution, and nomination through an overseas nominating authority. Guidelines, schedule and eligible-host-institution list are on the JSPS English site.
+
+**Caveats.** A Japanese host is mandatory and, in the open call, is the person who actually submits the application, so the real first step is finding and convincing a host researcher at a KAKENHI-eligible institution. Candidates must hold a doctorate awarded within six years of the fellowship start (parental leave is discounted) or be due to receive one before it starts. Japanese citizens and permanent residents of Japan are not eligible, nor is anyone who has already started this fellowship. Employment status elsewhere is not considered.
+
 ### [Kaggle Competitions](https://www.kaggle.com/competitions)
 
 `Free (registration), email` · beginner 4/5 · prize competitions as income
@@ -541,6 +551,16 @@ Transparent financial platform with fiscal hosts (Open Source Collective, Open C
 **Access.** Web interface — apply to a fiscal host, then receive grants, donations and sponsorships and file expenses against the balance. Every transaction is public by default.
 
 **Caveats.** Hosts charge a percentage host fee that varies by host; check the specific host's page before committing. Full public transparency is a feature, not an option — line-item expenses including who was paid are visible. This is plumbing for receiving money, not a source of money.
+
+### [OTF Information Controls Research Program (ICRP)](https://www.opentech.fund/research-2/icrp/)
+
+`Free, application` · beginner 2/5 · applied research fellowship, internet censorship and surveillance
+
+Open Technology Fund's annual research programme, formerly the Information Controls Fellowship Program, on how repressive states censor and surveil the internet and how that can be countered. Pays a monthly stipend of $7,000 USD for a 3, 6, 9 or 12-month term, plus a travel stipend of up to $5,000 and an equipment stipend of up to $5,000 depending on the project. The 2026 call was open 27 July to 7 September 2026.
+
+**Access.** Two stages via OTF's online application system at apply.opentech.fund: a concept note plus CV by the September deadline, then a full proposal with the host organisation from November for shortlisted applicants. One call per year.
+
+**Caveats.** Unusually for a fellowship, OTF explicitly invites 'junior to mid-career practitioners who are unassociated with an academic institution', alongside doctoral and postdoctoral researchers, so no university affiliation is needed to apply. Selected researchers must embed full-time with a host organisation for the term; you may propose one (ideally not one you are already affiliated with) or apply without one and OTF will help identify a host. Full-time PhD students normally need documented supervisor support. Projects must have a technical component or output; pure advocacy and policy research are out of scope. OTF is US-government funded through its congressional remit, which is worth weighing for some topics and nationalities.
 
 ### [Outreachy](https://www.outreachy.org/)
 
