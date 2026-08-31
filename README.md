@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**1,164 resources** across **18 fields** — 903 free outright, 743 usable with no account at all. Verified 2026-08-28.
+**1,174 resources** across **18 fields** — 911 free outright, 751 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -55,9 +55,9 @@ sixty seconds. Those distinctions are the content.
 | [Social sciences](docs/10-social.md) | 87 | data (37), software (16), literature (12) |
 | [Economics & finance](docs/11-econ-finance.md) | 82 | data (40), software (14), literature (8) |
 | [Linguistics & humanities](docs/12-humanities.md) | 80 | data (34), software (22), publishing (7) |
-| [Literature access & discovery](docs/13-literature-access.md) | 74 | literature (43), software (11), publishing (6) |
-| [Free compute & storage](docs/14-compute.md) | 62 | compute (36), data (10), publishing (6) |
-| [Publishing, identity & preservation](docs/15-publishing.md) | 73 | publishing (43), literature (13), software (5) |
+| [Literature access & discovery](docs/13-literature-access.md) | 78 | literature (47), software (11), publishing (6) |
+| [Free compute & storage](docs/14-compute.md) | 64 | compute (38), data (10), publishing (6) |
+| [Publishing, identity & preservation](docs/15-publishing.md) | 77 | publishing (46), literature (13), software (5) |
 | [Funding, grants & recognition](docs/16-funding.md) | 70 | funding (65), learning (2), community (2) |
 | [Learning materials](docs/17-learning.md) | 73 | learning (62), funding (3), compute (2) |
 | [Research workflow software](docs/18-workflow-tools.md) | 76 | software (44), literature (7), publishing (6) |

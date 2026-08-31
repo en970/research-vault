@@ -530,6 +530,20 @@
       "also_in": []
     },
     {
+      "name": "J-STAGE",
+      "url": "https://www.jstage.jst.go.jp/browse/-char/en",
+      "category": "literature",
+      "subcategory": "Japanese society journals, mostly free to read",
+      "summary": "Platform of the Japan Science and Technology Agency hosting Japanese scholarly journals across 25 subject areas. As of 2026-08-31 the site counted 4,479 titles and 6,058,866 articles, of which 3,935 titles and 5,845,326 articles carry the FREE ACCESS/OPEN ACCESS marker.",
+      "access": "Web interface in English or Japanese: browse by title or subject at jstage.jst.go.jp/browse/-char/en, or search articles and filter to free/open access; PDFs download without an account. A J-STAGE webAPI is published for programmatic metadata retrieval, and articles carry JaLC-registered DOIs. A free account only adds alerts and saved items.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "A large share of older content is Japanese-only, sometimes with just an English title and abstract — machine translation of the PDF is often the practical route. Free to read is not the same as openly licensed: many articles are readable with no reuse licence attached, and a minority of titles are subscription-only. JST also runs the Jxiv preprint server from the same platform. The single best place to find Japanese society-journal work that Google Scholar surfaces poorly.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "JSTOR free read-online access",
       "url": "https://about.jstor.org/whats-in-jstor/",
       "category": "literature",
@@ -606,6 +620,20 @@
         "physics",
         "earth"
       ]
+    },
+    {
+      "name": "OATD (Open Access Theses and Dissertations)",
+      "url": "https://oatd.org/",
+      "category": "literature",
+      "subcategory": "graduate theses and dissertations search",
+      "summary": "Search index of open access graduate theses and dissertations: the site reported 7,464,811 records on 2026-08-31, with metadata harvested from over 1,100 colleges, universities and research institutions. Full text stays in the awarding institution's repository, which each record links to.",
+      "access": "Web interface at oatd.org, no account: keyword search plus an advanced form with fielded queries (title, author, abstract, degree, department, year) and facets for university, country and language. Each hit links out to the institutional repository copy of the PDF.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Metadata only — OATD hosts no files, so a link into a repository that has been reorganised can dead-end, and embargoed theses show a record with no downloadable file. Coverage is thinnest outside North America and Europe. There is no documented API and the site sits behind Cloudflare, so bulk scripted harvesting is blocked. Worth checking before you pay for an article: a thesis chapter is often the fuller version of the same work, with the methods and negative results the paper cut.",
+      "canonical": true,
+      "also_in": []
     },
     {
       "name": "Open Knowledge Maps",
@@ -705,6 +733,20 @@
       "also_in": []
     },
     {
+      "name": "PhilPapers",
+      "url": "https://philpapers.org/",
+      "category": "literature",
+      "subcategory": "philosophy index and open access archive",
+      "summary": "Community-maintained index and bibliography of philosophy covering journals, books and open access archives: 3,117,404 entries in 6,155 categories and over 440,000 registered users as of 2026-08-31. It also hosts PhilArchive, described on the site as the largest open access archive in philosophy.",
+      "access": "Web interface: browse the category tree or search, no account needed; records link to the publisher and to any free copy, including PhilArchive PDFs. A free account adds saved searches, email alerts by category and a personal profile page. Authors deposit their own papers at philarchive.org.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Philosophy-specific, including philosophy of science, mind, logic and ethics — no use for other fields. The index is bibliographic: for a paywalled article you get the record plus whatever free copy PhilPapers can locate, not the text. Categorisation is crowdsourced by volunteer category editors, so depth varies between subfields. Institutional subscriptions fund the service, but individual use and PhilArchive deposit are free and open to unaffiliated people.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "PubMed and PubMed Central (E-utilities)",
       "url": "https://pubmed.ncbi.nlm.nih.gov",
       "category": "literature",
@@ -720,6 +762,20 @@
         "biology",
         "medicine"
       ]
+    },
+    {
+      "name": "Redalyc",
+      "url": "https://www.redalyc.org/",
+      "category": "literature",
+      "subcategory": "Ibero-American open access journals",
+      "summary": "Non-commercial full-text platform for Latin American and Iberian scholarship, run by the Universidad Autónoma del Estado de México. Its counters showed 771,550 articles from 1,825 peer-reviewed journals, 839 institutions and 36 countries on 2026-08-31, mostly in Spanish, English and Portuguese.",
+      "access": "Web interface, no login: search or browse by article, journal, author, institution or country; each article offers PDF, XML and an in-browser reader. Metadata is also exposed through an OAI-PMH data provider and an API for harvesting.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "The interface is primarily Spanish and the English toggle covers navigation, not article text. Redalyc is diamond open access — the journals it hosts charge neither readers nor authors — but inclusion is its own editorial decision, so a Latin American journal you expect may be in SciELO instead, or in neither. Treat it as complementary to SciELO, not a superset. Article-level licences vary by journal; check before reuse.",
+      "canonical": true,
+      "also_in": []
     },
     {
       "name": "RePEc / IDEAS",

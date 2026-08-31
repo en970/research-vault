@@ -1,10 +1,10 @@
 # Free compute & storage
 
-Part of [research-vault](../README.md). 62 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 64 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (10) · [Software](#software) (5) · [Compute](#compute) (36) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
+**Contents:** [Data](#data) (10) · [Software](#software) (5) · [Compute](#compute) (38) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
 
 ## Data
 
@@ -523,6 +523,26 @@ Johns Hopkins/NSF platform built to 'bring the analysis to the data': free Jupyt
 **Caveats.** Per-user storage and container sizes are not advertised on the public pages and are modest; idle containers are reclaimed. No GPU. The payoff is entirely about co-location — if the dataset you need is already there, you avoid downloading terabytes; if it is not, this offers you little.
 
 *Also listed under: astronomy.*
+
+### [shinyapps.io free plan](https://www.shinyapps.io/)
+
+`Free tier, email` · beginner 4/5 · free hosting for Shiny apps (R and Python)
+
+Posit's managed hosting for Shiny applications. The Free plan is listed at $0/month with 5 applications and 25 active hours per month (active hours count the time an application is actually running for users); the next tier, Starter, is $13/month for 25 applications and 100 active hours.
+
+**Access.** From R: install.packages('rsconnect'), paste the token and secret from the shinyapps.io dashboard into rsconnect::setAccountInfo(), then rsconnect::deployApp('path/to/app'). Shiny for Python deploys the same way with the rsconnect-python CLI. Apps get a *.shinyapps.io URL.
+
+**Caveats.** 25 active hours a month is small — a single app left open through a working day can consume several hours, and once the allowance is used the apps stop serving until the month resets, so it suits a reviewer demo or a teaching aid rather than a public service. Free-plan apps are public: password protection and user authentication start on the paid Basic plan, as do custom domains and larger instances. Posit is steering new deployments towards its Connect Cloud platform, so compare both before committing.
+
+### [Streamlit Community Cloud](https://streamlit.io/cloud)
+
+`Free (registration), email` · beginner 5/5 · free hosting for Python data apps
+
+Free hosting for Streamlit apps deployed straight from a GitHub repository — the documentation states you can 'create, deploy, and manage your Streamlit apps — all for free'. Documented per-app resources are 0.078 to 2 CPU cores, 690 MB to 2.7 GB of memory and up to 50 GB of storage; apps with no traffic for 12 hours go to sleep and any visitor can wake them.
+
+**Access.** Sign in at share.streamlit.io with a GitHub account, pick repository, branch and entry-point script (dependencies from requirements.txt), and deploy; the app gets a public *.streamlit.app URL and rebuilds on every push. Repositories may be public or private; secrets go in the app's Secrets settings.
+
+**Caveats.** Apps are hosted in the United States only, which matters for data-protection commitments. The 12-hour sleep means the first visitor to a link in your paper sees a wake screen — acceptable for a demo, poor as infrastructure. The 2.7 GB memory ceiling and absence of GPUs rule out anything model-heavy; large data should be read from an external store rather than committed to the repo. Snowflake owns Streamlit, so keep the source in your own repository and archive a release in Zenodo to make the app redeployable elsewhere.
 
 ### [TIKE (Timeseries Integrated Knowledge Engine, MAST)](https://outerspace.stsci.edu/display/MASTDOCS/TIKE)
 

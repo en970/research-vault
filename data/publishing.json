@@ -22,6 +22,20 @@
       ]
     },
     {
+      "name": "re3data",
+      "url": "https://www.re3data.org/",
+      "category": "data",
+      "subcategory": "registry of research data repositories",
+      "summary": "Global registry describing 3,521 research data repositories as of 2026-08-31, managed and operated by Karlsruhe Institute of Technology and Purdue University Libraries. Each entry records subject coverage, accepted content types, access and upload conditions, licences, persistent identifier schemes, certificates such as CoreTrustSeal, and policies.",
+      "access": "Browse or filter at re3data.org by subject, country, content type, PID scheme, certificate and access type; every repository has a stable re3data ID. An open API returns the same records (documentation at re3data.org/api/doc), and all registry metadata is released under CC0.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "It describes repositories, not datasets — use it to choose where to deposit, then search inside the repository you pick. Entries are curated by an editorial board and can lag reality, so confirm current size limits, fees and licence options on the repository's own page before uploading. Listing implies no quality judgement: the certificate, policy and PID fields are the signal. Answers the concrete question funders now ask — 'a discipline-specific repository, or a general one like Zenodo?' — with a filterable list instead of guesswork.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Zenodo",
       "url": "https://zenodo.org/",
       "category": "data",
@@ -408,6 +422,20 @@
       "also_in": []
     },
     {
+      "name": "COPE (Committee on Publication Ethics)",
+      "url": "https://publicationethics.org/",
+      "category": "publishing",
+      "subcategory": "publication ethics guidance, flowcharts and cases",
+      "summary": "Publisher-neutral guidance on publication ethics. The guidance search listed 37 flowcharts (paper mills, authorship disputes, plagiarism, concerns raised on social media, data concerns), 835 anonymised member cases with discussion and outcomes, 36 COPE positions and 16 guidelines on 2026-08-31.",
+      "access": "Web interface at publicationethics.org/guidance, no login: filter by type (Flowchart, Case, Guideline, COPE position, Endorsed guidance) and by topic (authorship, peer review, data, conflicts of interest); flowcharts download as PDFs.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Written for editors, which is exactly why it is useful to an author: the flowcharts show what a journal is supposed to do when you report a co-authorship problem, request a correction or raise a concern about a published paper. Membership is a paid subscription for journals, publishers, institutions and individuals, and the guidance carries no enforcement — 'follows COPE guidelines' on a journal's website is a claim, not a certification, so check the member directory. The case database is anonymised, so it shows precedent rather than named outcomes.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Creative Commons licence chooser",
       "url": "https://creativecommons.org/chooser/",
       "category": "publishing",
@@ -418,6 +446,20 @@
       "registration": "none",
       "beginner": 5,
       "notes": "A licence chooser cannot tell you whether you hold the rights to license — if you signed copyright over to a publisher, or your funder/employer claims ownership, decide that first. NC and ND variants are not considered open access under most funder policies and block reuse in many contexts; think hard before picking them. For software, use choosealicense.com instead, since CC licences are not designed for code.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "CRediT (Contributor Roles Taxonomy)",
+      "url": "https://credit.niso.org/",
+      "category": "publishing",
+      "subcategory": "contributor role taxonomy",
+      "summary": "Community-owned taxonomy of 14 contributor roles — Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing – original draft, Writing – review & editing — approved in 2022 as an ANSI/NISO standard and licensed CC-BY 4.0. Translations into several languages are published on the site.",
+      "access": "Read the role definitions and the summary table of roles with examples at credit.niso.org, then write the contributions statement with them. Many submission systems now collect CRediT roles per author at submission, and publishers record them in article XML so they travel with the metadata.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "A vocabulary, not a settlement mechanism: it says nothing about author order, corresponding authorship or who qualifies as an author, so it complements ICMJE-style authorship criteria rather than replacing them. Its value is procedural — agreeing roles in writing at the start of a project is what prevents the dispute. If your target journal does not collect CRediT, put the same statement in the manuscript's contributions section; the CC-BY licence permits it.",
       "canonical": true,
       "also_in": []
     },
@@ -563,6 +605,20 @@
         "neuro-psych",
         "workflow-tools"
       ]
+    },
+    {
+      "name": "Keepers Registry",
+      "url": "https://keepers.issn.org/",
+      "category": "publishing",
+      "subcategory": "digital preservation status of journals",
+      "summary": "Run by the ISSN International Centre, it reports which archiving agencies hold a preserved copy of a serial with a given ISSN. The agency tables behind the site (updated 2026-08-28/29) cover 20 Keepers — CLOCKSS, LOCKSS, Portico, PKP PLN, Internet Archive, HathiTrust, Library of Congress, Gallica, the National Digital Preservation Program of China, several national libraries and subject archives — and list 119,977 ISSNs archived by at least one agency, of which 21,113 are held by three or more.",
+      "access": "Web interface, no login: search by ISSN or title at keepers.issn.org to see which Keepers hold which years and volumes, or browse by agency. The homepage counters are computed from agency tables the site publishes as TSV/CSV under /sites/default/files/keepers/.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Scope is continuing resources with an ISSN — no books, datasets or preprint servers. Absence is not proof of neglect: an agency has to report its holdings for them to appear. And being 'kept' by a dark archive such as CLOCKSS or Portico means the content is released only if the publisher fails, not that you can read it there today. The practical use is a pre-submission check on a small or new journal: if nobody is preserving it, your article disappears with the website.",
+      "canonical": true,
+      "also_in": []
     },
     {
       "name": "Language Science Press",

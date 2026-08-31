@@ -1,10 +1,10 @@
 # Publishing, identity & preservation
 
-Part of [research-vault](../README.md). 73 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 77 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (2) · [Software](#software) (5) · [Literature](#literature) (13) · [Publishing](#publishing) (43) · [Funding](#funding) (3) · [Learning](#learning) (2) · [Community](#community) (5)
+**Contents:** [Data](#data) (3) · [Software](#software) (5) · [Literature](#literature) (13) · [Publishing](#publishing) (46) · [Funding](#funding) (3) · [Learning](#learning) (2) · [Community](#community) (5)
 
 ## Data
 
@@ -19,6 +19,16 @@ General-purpose repository that mints DataCite DOIs for datasets, figures, poste
 **Caveats.** Anything larger than the 20 GB quota or a 20 GB file needs paid Figshare+ or an institutional repository (Amazon S3 caps any single file at 5 TB regardless). Published items are permanent — a public DOI cannot simply be deleted. figshare is a Digital Science (Holtzbrinck) product, so this is corporate rather than community-governed infrastructure; Zenodo is the non-profit equivalent with a larger 50 GB per-record allowance.
 
 *Also listed under: compute.*
+
+### [re3data](https://www.re3data.org/)
+
+`Free` · beginner 4/5 · registry of research data repositories
+
+Global registry describing 3,521 research data repositories as of 2026-08-31, managed and operated by Karlsruhe Institute of Technology and Purdue University Libraries. Each entry records subject coverage, accepted content types, access and upload conditions, licences, persistent identifier schemes, certificates such as CoreTrustSeal, and policies.
+
+**Access.** Browse or filter at re3data.org by subject, country, content type, PID scheme, certificate and access type; every repository has a stable re3data ID. An open API returns the same records (documentation at re3data.org/api/doc), and all registry metadata is released under CC0.
+
+**Caveats.** It describes repositories, not datasets — use it to choose where to deposit, then search inside the repository you pick. Entries are curated by an editorial board and can lag reality, so confirm current size limits, fees and licence options on the repository's own page before uploading. Listing implies no quality judgement: the certificate, policy and PID fields are the signal. Answers the concrete question funders now ask — 'a discipline-specific repository, or a general one like Zenodo?' — with a filterable list instead of guesswork.
 
 ### [Zenodo](https://zenodo.org/)
 
@@ -300,6 +310,16 @@ Free tool that tells you, for a given journal + funder + institution combination
 
 **Caveats.** Built around cOAlition S funders, so it is far less useful if your funder is not in the coalition, and it assumes you have a funder at all. Rights retention is legally contested by some publishers; a few respond by desk-rejecting manuscripts carrying the statement. It is a legitimate route, but know that it can cost you a venue.
 
+### [COPE (Committee on Publication Ethics)](https://publicationethics.org/)
+
+`Free` · beginner 4/5 · publication ethics guidance, flowcharts and cases
+
+Publisher-neutral guidance on publication ethics. The guidance search listed 37 flowcharts (paper mills, authorship disputes, plagiarism, concerns raised on social media, data concerns), 835 anonymised member cases with discussion and outcomes, 36 COPE positions and 16 guidelines on 2026-08-31.
+
+**Access.** Web interface at publicationethics.org/guidance, no login: filter by type (Flowchart, Case, Guideline, COPE position, Endorsed guidance) and by topic (authorship, peer review, data, conflicts of interest); flowcharts download as PDFs.
+
+**Caveats.** Written for editors, which is exactly why it is useful to an author: the flowcharts show what a journal is supposed to do when you report a co-authorship problem, request a correction or raise a concern about a published paper. Membership is a paid subscription for journals, publishers, institutions and individuals, and the guidance carries no enforcement — 'follows COPE guidelines' on a journal's website is a claim, not a certification, so check the member directory. The case database is anonymised, so it shows precedent rather than named outcomes.
+
 ### [Creative Commons licence chooser](https://creativecommons.org/chooser/)
 
 `Free` · beginner 5/5 · licensing
@@ -309,6 +329,16 @@ Step-by-step tool that walks you to the right Creative Commons licence and emits
 **Access.** Web interface at chooser-beta.creativecommons.org; answer the questions and copy the generated licence notice into your paper, repository README or dataset metadata. Full legal texts at creativecommons.org/licenses/.
 
 **Caveats.** A licence chooser cannot tell you whether you hold the rights to license — if you signed copyright over to a publisher, or your funder/employer claims ownership, decide that first. NC and ND variants are not considered open access under most funder policies and block reuse in many contexts; think hard before picking them. For software, use choosealicense.com instead, since CC licences are not designed for code.
+
+### [CRediT (Contributor Roles Taxonomy)](https://credit.niso.org/)
+
+`Free` · beginner 5/5 · contributor role taxonomy
+
+Community-owned taxonomy of 14 contributor roles — Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing – original draft, Writing – review & editing — approved in 2022 as an ANSI/NISO standard and licensed CC-BY 4.0. Translations into several languages are published on the site.
+
+**Access.** Read the role definitions and the summary table of roles with examples at credit.niso.org, then write the contributions statement with them. Many submission systems now collect CRediT roles per author at submission, and publishers record them in article XML so they travel with the metadata.
+
+**Caveats.** A vocabulary, not a settlement mechanism: it says nothing about author order, corresponding authorship or who qualifies as an author, so it complements ICMJE-style authorship criteria rather than replacing them. Its value is procedural — agreeing roles in writing at the start of a project is what prevents the dispute. If your target journal does not collect CRediT, put the same statement in the manuscript's contributions section; the CC-BY licence permits it.
 
 ### [DMPTool](https://dmptool.org/)
 
@@ -409,6 +439,16 @@ Diamond open access journal (ISSN 2475-9066) that publishes short papers about r
 **Caveats.** Requires an OSI-approved licence, a feature-complete package with meaningful research impact, and at least six months of public development history — thin wrappers and single-function utilities are rejected at pre-review. Authors must disclose generative-AI use. Everything, including rejection, is public, which some authors dislike. A GitHub account is effectively required.
 
 *Also listed under: physics, astronomy, chemistry, earth, cs-ml, neuro-psych, workflow-tools.*
+
+### [Keepers Registry](https://keepers.issn.org/)
+
+`Free` · beginner 3/5 · digital preservation status of journals
+
+Run by the ISSN International Centre, it reports which archiving agencies hold a preserved copy of a serial with a given ISSN. The agency tables behind the site (updated 2026-08-28/29) cover 20 Keepers — CLOCKSS, LOCKSS, Portico, PKP PLN, Internet Archive, HathiTrust, Library of Congress, Gallica, the National Digital Preservation Program of China, several national libraries and subject archives — and list 119,977 ISSNs archived by at least one agency, of which 21,113 are held by three or more.
+
+**Access.** Web interface, no login: search by ISSN or title at keepers.issn.org to see which Keepers hold which years and volumes, or browse by agency. The homepage counters are computed from agency tables the site publishes as TSV/CSV under /sites/default/files/keepers/.
+
+**Caveats.** Scope is continuing resources with an ISSN — no books, datasets or preprint servers. Absence is not proof of neglect: an agency has to report its holdings for them to appear. And being 'kept' by a dark archive such as CLOCKSS or Portico means the content is released only if the publisher fails, not that you can read it there today. The practical use is a pre-submission check on a small or new journal: if nobody is preserving it, your article disappears with the website.
 
 ### [Language Science Press](https://langsci-press.org/)
 

@@ -1,10 +1,10 @@
 # Literature access & discovery
 
-Part of [research-vault](../README.md). 74 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 78 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (2) · [Software](#software) (11) · [Literature](#literature) (43) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (6) · [Community](#community) (4)
+**Contents:** [Data](#data) (2) · [Software](#software) (11) · [Literature](#literature) (47) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (6) · [Community](#community) (4)
 
 ## Data
 
@@ -382,6 +382,16 @@ Full-text search across 85,899,891 academic papers preserved by the Internet Arc
 
 **Caveats.** Search this when a DOI resolves to a dead link — it is the best chance of recovering a paper from a defunct journal. Contrary to earlier reports, scholar.archive.org served full content to an automated fetch on 2026-08-28 and the stated corpus (85,899,891 papers) was confirmed on the page; there is still no documented public search API, so use the Fatcat catalogue API at fatcat.wiki or the bulk metadata dumps for anything systematic. Development has been quiet for some time and metadata quality is uneven compared with Crossref or OpenAlex, but the archive itself is live and searchable.
 
+### [J-STAGE](https://www.jstage.jst.go.jp/browse/-char/en)
+
+`Free` · beginner 4/5 · Japanese society journals, mostly free to read
+
+Platform of the Japan Science and Technology Agency hosting Japanese scholarly journals across 25 subject areas. As of 2026-08-31 the site counted 4,479 titles and 6,058,866 articles, of which 3,935 titles and 5,845,326 articles carry the FREE ACCESS/OPEN ACCESS marker.
+
+**Access.** Web interface in English or Japanese: browse by title or subject at jstage.jst.go.jp/browse/-char/en, or search articles and filter to free/open access; PDFs download without an account. A J-STAGE webAPI is published for programmatic metadata retrieval, and articles carry JaLC-registered DOIs. A free account only adds alerts and saved items.
+
+**Caveats.** A large share of older content is Japanese-only, sometimes with just an English title and abstract — machine translation of the PDF is often the practical route. Free to read is not the same as openly licensed: many articles are readable with no reuse licence attached, and a minority of titles are subscription-only. JST also runs the Jxiv preprint server from the same platform. The single best place to find Japanese society-journal work that Google Scholar surfaces poorly.
+
 ### [JSTOR free read-online access](https://about.jstor.org/whats-in-jstor/)
 
 `Free (registration), email` · beginner 5/5 · humanities and social science archive
@@ -437,6 +447,16 @@ NASA-funded literature index for astronomy, astrophysics, planetary science and 
 **Caveats.** Rate limits are per endpoint per day and reported in the `X-RateLimit-Limit` response header — the documented example is 5,000 queries/day — resetting at UTC midnight; email adshelp@cfa.harvard.edu for details or a raise. Browsing and exporting citations in the web interface need no token at all. Use is governed by the ADS terms of use, which restrict redistribution of the holdings. Coverage falls away sharply outside astronomy and physics.
 
 *Also listed under: physics, earth.*
+
+### [OATD (Open Access Theses and Dissertations)](https://oatd.org/)
+
+`Free` · beginner 5/5 · graduate theses and dissertations search
+
+Search index of open access graduate theses and dissertations: the site reported 7,464,811 records on 2026-08-31, with metadata harvested from over 1,100 colleges, universities and research institutions. Full text stays in the awarding institution's repository, which each record links to.
+
+**Access.** Web interface at oatd.org, no account: keyword search plus an advanced form with fielded queries (title, author, abstract, degree, department, year) and facets for university, country and language. Each hit links out to the institutional repository copy of the PDF.
+
+**Caveats.** Metadata only — OATD hosts no files, so a link into a repository that has been reorganised can dead-end, and embargoed theses show a record with no downloadable file. Coverage is thinnest outside North America and Europe. There is no documented API and the site sits behind Cloudflare, so bulk scripted harvesting is blocked. Worth checking before you pay for an article: a thesis chapter is often the fuller version of the same work, with the methods and negative results the paper cut.
 
 ### [Open Knowledge Maps](https://openknowledgemaps.org)
 
@@ -502,6 +522,16 @@ Center for Open Science aggregator searching across dozens of community-run prep
 
 **Caveats.** Reading and the API need no account; depositing needs a free one. This is the main preprint route for psychology, education, sociology and other social sciences that have no arXiv. Preprints are not peer reviewed and quality is uneven — check whether a published version exists. Some partner servers have shut down or moved over the years, so older links can rot.
 
+### [PhilPapers](https://philpapers.org/)
+
+`Free` · beginner 4/5 · philosophy index and open access archive
+
+Community-maintained index and bibliography of philosophy covering journals, books and open access archives: 3,117,404 entries in 6,155 categories and over 440,000 registered users as of 2026-08-31. It also hosts PhilArchive, described on the site as the largest open access archive in philosophy.
+
+**Access.** Web interface: browse the category tree or search, no account needed; records link to the publisher and to any free copy, including PhilArchive PDFs. A free account adds saved searches, email alerts by category and a personal profile page. Authors deposit their own papers at philarchive.org.
+
+**Caveats.** Philosophy-specific, including philosophy of science, mind, logic and ethics — no use for other fields. The index is bibliographic: for a paywalled article you get the record plus whatever free copy PhilPapers can locate, not the text. Categorisation is crowdsourced by volunteer category editors, so depth varies between subfields. Institutional subscriptions fund the service, but individual use and PhilArchive deposit are free and open to unaffiliated people.
+
 ### [PubMed and PubMed Central (E-utilities)](https://pubmed.ncbi.nlm.nih.gov)
 
 `Free` · beginner 5/5 · biomedical index and full-text archive
@@ -513,6 +543,16 @@ PubMed holds 41,074,375 citation records (verified 2026-08-28 with `esearch.fcgi
 **Caveats.** E-utilities work with no key at 3 requests/second; a free NCBI API key raises this to 10/second. PMC's 'open access subset' is the only part you may bulk-download and text-mine — the wider PMC archive is free to read but not to redistribute, and the commercial-use subset is narrower still. Coverage is biomedicine and adjacent fields only.
 
 *Also listed under: biology, medicine.*
+
+### [Redalyc](https://www.redalyc.org/)
+
+`Free` · beginner 4/5 · Ibero-American open access journals
+
+Non-commercial full-text platform for Latin American and Iberian scholarship, run by the Universidad Autónoma del Estado de México. Its counters showed 771,550 articles from 1,825 peer-reviewed journals, 839 institutions and 36 countries on 2026-08-31, mostly in Spanish, English and Portuguese.
+
+**Access.** Web interface, no login: search or browse by article, journal, author, institution or country; each article offers PDF, XML and an in-browser reader. Metadata is also exposed through an OAI-PMH data provider and an API for harvesting.
+
+**Caveats.** The interface is primarily Spanish and the English toggle covers navigation, not article text. Redalyc is diamond open access — the journals it hosts charge neither readers nor authors — but inclusion is its own editorial decision, so a Latin American journal you expect may be in SciELO instead, or in neither. Treat it as complementary to SciELO, not a superset. Article-level licences vary by journal; check before reuse.
 
 ### [RePEc / IDEAS](https://ideas.repec.org)
 
