@@ -1,10 +1,10 @@
 # Earth, climate & environmental science
 
-Part of [research-vault](../README.md). 84 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 88 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (36) · [Software](#software) (17) · [Literature](#literature) (3) · [Compute](#compute) (6) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (5)
+**Contents:** [Data](#data) (38) · [Software](#software) (18) · [Literature](#literature) (3) · [Compute](#compute) (6) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (8) · [Community](#community) (5)
 
 ## Data
 
@@ -188,6 +188,16 @@ Global hydrographic layers derived from SRTM, and for version 2 in the Americas 
 
 **Caveats.** Attribution is required and the licence restricts some redistribution, so read the licence before republishing derived layers. Version 1 inherits SRTM's weaknesses in flat terrain and does not cover above 60 degrees North; version 2 currently covers only the Americas.
 
+### [ICOS Carbon Portal](https://www.icos-cp.eu/)
+
+`Free` · beginner 3/5 · European greenhouse gas observations
+
+Data portal of the Integrated Carbon Observation System: standardised greenhouse gas and flux measurements from 180 stations in 16 European countries across three domains (atmosphere towers, ecosystem eddy covariance sites, and ocean lines), plus elaborated products, all released under CC BY 4.0 with a PID or DOI per dataset.
+
+**Access.** Browse, preview and download at https://data.icos-cp.eu/ without a login. For scripting, `pip install icoscp_core` (the older `icoscp` package still works) to list and pull data objects, and query the metadata graph directly through the SPARQL endpoint at https://meta.icos-cp.eu/sparqlclient/; a Pydap service exposes netCDF products.
+
+**Caveats.** Europe only, and only its 16 member countries, so it complements rather than extends AmeriFlux for global coverage. You must accept the ICOS data licence (an optional free account saves re-accepting it each time), cite the exact PID/DOI you used, and, when redistributing derived products, tell your users where the original data came from and point them back to ICOS for updates. Ecosystem data need the usual eddy covariance care: u* filtering, gap filling and storage terms are still your problem.
+
 ### [NASA Earthdata (CMR + earthaccess)](https://www.earthdata.nasa.gov/)
 
 `Free (registration), email` · beginner 4/5 · multi-mission satellite and model archive
@@ -207,6 +217,16 @@ NASA GISS Surface Temperature Analysis: global, hemispheric and zonal monthly la
 **Access.** Direct download from the Data page (tables as .txt/.csv, gridded fields as .nc); open the gridded file with `xr.open_dataset('gistemp1200_GHCNv4_ERSSTv5.nc')`. No account.
 
 **Caveats.** These are anomalies, not absolute temperatures, and land values are smeared with a 1200 km interpolation radius, which matters in sparsely observed regions and the Arctic. The latest month can shift when upstream GHCN and ERSST inputs are revised. Cross-check with HadCRUT5, NOAAGlobalTemp and Berkeley Earth before making claims about a single year's ranking.
+
+### [NASA POWER](https://power.larc.nasa.gov/)
+
+`Free` · beginner 5/5 · solar and meteorological time series
+
+NASA Langley service delivering 300+ solar and meteorological parameters for any land or ocean point on Earth. Meteorology comes from MERRA-2 on a 0.5 deg x 0.625 deg grid from 1 January 1981 to within a few months of the present; solar fluxes come on a 1 deg grid from SRB (1984-2000), CERES SYN1deg Ed4.2 (2001 onward) and FLASHFlux for the most recent weeks, at hourly, daily, monthly and climatology resolution.
+
+**Access.** No key and no account: call the REST API, e.g. https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,PRECTOTCORR&community=AG&latitude=39.93&longitude=32.85&start=20240101&end=20241231&format=CSV, with /hourly, /monthly and /climatology and /regional variants; JSON, CSV, ASCII, GeoJSON and netCDF outputs. There is also a point-and-click Data Access Viewer, ArcGIS geospatial services and a direct datastore on AWS.
+
+**Caveats.** Values are model and satellite grid-cell averages, not station observations, so they will not match a nearby weather station and are unsuitable where terrain matters at sub-grid scale. The solar record is stitched from three sources, so it is not homogeneous across 1984, 2001 and the near-real-time tail. The API is rate limited (it returns HTTP 429) and caps request size, so long multi-point pulls must be chunked and throttled rather than hammered in a loop.
 
 ### [NASA Worldview and GIBS](https://worldview.earthdata.nasa.gov/)
 
@@ -522,6 +542,16 @@ Rust-based geospatial analysis engine from the University of Guelph with a large
 
 **Caveats.** The core engine is MIT-licensed and complete on its own, but Whitebox Workflows for Python Professional and the general/agriculture/lidar toolset extensions are commercial add-ons, and a handful of advanced tools live only there. Tools that measure distance or area assume a projected CRS: running them on degrees gives wrong numbers without warning. Its hydrological conditioning (breaching rather than filling) is the reason most geomorphologists reach for it over GRASS or SAGA.
 
+### [WRF (Weather Research and Forecasting model)](https://www.mmm.ucar.edu/models/wrf)
+
+`Free` · beginner 1/5 · mesoscale atmospheric model
+
+Mesoscale numerical weather prediction system maintained by NCAR's MMM laboratory with NOAA, the US Air Force, NRL and university partners, used for both research and operational forecasting. Version 4.8.0 was released on 8 June 2026; UCAR states that it makes no proprietary claim and considers WRF to be in the public domain, free of any fee.
+
+**Access.** `git clone https://github.com/wrf-model/WRF` (tagged releases at github.com/wrf-model/WRF/releases) plus the preprocessor from github.com/wrf-model/WPS; build with a Fortran/C compiler, netCDF and MPI. Free online tutorial, annual NCAR tutorials, and the WRF & MPAS-A support forum for questions.
+
+**Caveats.** This is a compile-it-yourself HPC code, not an application: expect to fight the build, and expect real runs to need GRIB initial and boundary conditions (GFS, ERA5 and similar), many cores and a lot of disk. UCAR's own download page asks you to fill in a registration form that also subscribes you to the news list, but the GitHub releases are open; the support forum needs a free account. WRF is a registered UCAR trademark, so do not rebrand a fork with the name.
+
 ### [xarray (with rioxarray and Dask)](https://docs.xarray.dev/)
 
 `Free` · beginner 4/5 · labelled N-dimensional arrays
@@ -791,6 +821,16 @@ Free online second edition (CRC Press, 2024) of the standard open textbook for s
 **Access.** Read at r.geocompx.org; source, all code and exercise solutions are on GitHub, and a Python companion volume is at py.geocompx.org.
 
 **Caveats.** The prose is CC BY-NC-ND 4.0 (non-commercial, no derivatives) while the code is CC0, so you can reuse the code freely but cannot remix the text into your own course notes. Assumes working R knowledge; it is not an introduction to programming. The first edition is archived separately on bookdown.org and now uses superseded packages.
+
+### [MetEd (UCAR COMET Program)](https://www.meted.ucar.edu/)
+
+`Free (registration), email` · beginner 5/5 · meteorology and hydrology training
+
+UCAR COMET Program's training site: a free collection of hundreds of self-paced lessons for the geoscience community, covering satellite meteorology, numerical weather prediction, hydrology, aviation weather, convective and winter weather, climate and emergency management, produced since 1989 with NOAA, EUMETSAT and WMO support; many lessons are translated into other languages.
+
+**Access.** Create a free account at meted.ucar.edu (the current platform is learn.meted.ucar.edu), then run lessons in the browser and enrol in multi-lesson courses; passing a lesson or course final test produces an online certificate of completion.
+
+**Caveats.** Free for non-commercial, educational use rather than under an open licence, so check the terms before copying lessons into your own course or site. Content is pitched at operational forecasters and practitioners rather than at research frontiers, and is training material, not a citable reference. The site is heavily JavaScript driven, so lesson content does not scrape or archive well.
 
 ### [NASA ARSET](https://www.earthdata.nasa.gov/data/projects/arset)
 

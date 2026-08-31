@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**1,124 resources** across **18 fields** — 871 free outright, 716 usable with no account at all. Verified 2026-08-28.
+**1,134 resources** across **18 fields** — 879 free outright, 723 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -45,11 +45,11 @@ sixty seconds. Those distinctions are the content.
 |---|---|---|
 | [Physics](docs/01-physics.md) | 87 | software (28), data (20), learning (11) |
 | [Astronomy & space science](docs/02-astronomy.md) | 83 | data (39), software (20), learning (6) |
-| [Chemistry & materials science](docs/03-chemistry.md) | 85 | software (27), data (25), literature (9) |
+| [Chemistry & materials science](docs/03-chemistry.md) | 87 | software (29), data (25), literature (9) |
 | [Biology & life sciences](docs/04-biology.md) | 83 | data (36), software (18), learning (6) |
 | [Medicine & health sciences](docs/05-medicine.md) | 72 | data (24), software (15), literature (10) |
-| [Earth, climate & environmental science](docs/06-earth.md) | 84 | data (36), software (17), learning (7) |
-| [Mathematics](docs/07-mathematics.md) | 82 | software (19), publishing (15), data (12) |
+| [Earth, climate & environmental science](docs/06-earth.md) | 88 | data (38), software (18), learning (8) |
+| [Mathematics](docs/07-mathematics.md) | 86 | software (20), publishing (15), data (13) |
 | [Computer science & machine learning](docs/08-cs-ml.md) | 82 | software (20), data (14), literature (13) |
 | [Neuroscience & psychology](docs/09-neuro-psych.md) | 92 | software (38), data (21), literature (10) |
 | [Social sciences](docs/10-social.md) | 83 | data (33), software (16), literature (12) |

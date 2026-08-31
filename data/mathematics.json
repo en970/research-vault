@@ -160,6 +160,20 @@
       "also_in": []
     },
     {
+      "name": "MIPLIB 2017",
+      "url": "https://miplib.zib.de/",
+      "category": "data",
+      "subcategory": "mixed-integer programming instances",
+      "summary": "Sixth edition of the mixed-integer programming library curated at Zuse Institute Berlin with academic and industrial partners (the library dates to 1992). The collection set holds 1,065 real-world MIP instances and the benchmark set 240 of them, each tagged easy, hard or open with best known solutions and structural metadata.",
+      "access": "Direct download, no account: per-instance `.mps.gz` files and `.sol.gz` solutions from the instance pages, or whole-set ZIP archives from the download page (benchmark set 317.3 MB, collection set 3.5 GB, solutions 209.2 MB), plus model data, precomputed instance features, decomposition files and test scripts for solver runs.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The site states no explicit licence for the instances; the maintainers ask that you cite the MIPLIB 2017 paper in Mathematical Programming Computation. Instance classifications and incumbent solutions are revised periodically, so record which version you benchmarked against. The instances are input data only - you still need a solver, and many collection instances are unsolved by design, so they will exhaust any time limit you set.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "The On-Line Encyclopedia of Integer Sequences (OEIS)",
       "url": "https://oeis.org/",
       "category": "data",
@@ -198,6 +212,20 @@
       "registration": "none",
       "beginner": 3,
       "notes": "The GAP language is idiosyncratic and error messages are terse; expect a real learning curve. Some contributed packages need extra compilation or external programs.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "GNU Octave",
+      "url": "https://octave.org/",
+      "category": "software",
+      "subcategory": "numerical computing environment",
+      "summary": "GPL-licensed numerical computing language and environment whose syntax is largely MATLAB compatible, with dense and sparse linear algebra, ODE/DAE solvers, optimization, statistics and plotting, usable from a GUI or the command line. Version 11.3.0 was released on 1 June 2026.",
+      "access": "`brew install octave`, `apt install octave`, `conda install -c conda-forge octave`, or the Windows installer from octave.org/download; add-on packages with `pkg install -forge <name>`; run scripts headlessly with `octave file.m`.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Compatibility with MATLAB is good for the core language and many library functions but is not complete: there is no Simulink equivalent, MathWorks toolboxes have only partial Octave Forge counterparts, and nontrivial MATLAB code usually needs edits. Performance on large problems generally trails MATLAB. Its main value is as the exit route when you lose an institutional MATLAB licence and still have .m files to run.",
       "canonical": true,
       "also_in": []
     },
@@ -440,6 +468,20 @@
       "also_in": []
     },
     {
+      "name": "AMS Open Math Notes",
+      "url": "https://www.ams.org/open-math-notes",
+      "category": "literature",
+      "subcategory": "lecture notes and draft textbooks",
+      "summary": "Repository of freely downloadable mathematical works hosted by the American Mathematical Society: draft course notes, textbooks and research expositions that have not been published elsewhere, plus short notes and JIBLM refereed inquiry-based course notes, spanning undergraduate to research level.",
+      "access": "Browse or search at ams.org/open-math-notes by subject, level and note type, sort by most downloaded, and take the PDF directly; no AMS membership needed. An optional free 'My Notes' account only saves items for later.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Everything except the JIBLM course notes is explicitly draft material, unrefereed and subject to revision, so cite it as you would a preprint and expect items to change or disappear when an author publishes. Authors keep copyright and terms differ per item, so check before reusing notes in your own teaching. There is no API or bulk export, and the search is basic - browsing by subject is usually faster.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "arXiv (mathematics archive)",
       "url": "https://arxiv.org/archive/math",
       "category": "literature",
@@ -618,6 +660,20 @@
       "registration": "none",
       "beginner": 3,
       "notes": "Magma itself is commercial and expensive; only this capped calculator is free. There is no state between submissions and no file persistence, so it suits re-running a short computation from a paper or checking a construction, not research runs. Anything longer than a minute has to move to a licensed Magma or to a free system (PARI/GP, SageMath, OSCAR).",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "NEOS Server",
+      "url": "https://neos-server.org/neos/",
+      "category": "compute",
+      "subcategory": "hosted optimization solvers",
+      "summary": "Free internet service hosted by the Wisconsin Institute for Discovery that runs your optimization model on someone else's machines: more than 60 solvers in more than a dozen categories (LP, MILP, nonlinear, mixed-integer nonlinear, semidefinite, complementarity, stochastic), including commercial codes such as CPLEX, Gurobi, Xpress, MOSEK, Knitro and BARON alongside open ones like SCIP, Cbc and Ipopt. Jobs are distributed with HTCondor at Wisconsin plus remote solvers at Arizona State, Klagenfurt and Minho.",
+      "access": "Upload a model through the web form in AMPL, GAMS, MPS, LP or the solver's own format and get results in the browser or by email; or submit programmatically over the XML-RPC API (Python client provided), or straight from AMPL/GAMS with the Kestrel client.",
+      "free": "free",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Hard limits: 8 hours CPU for standard jobs (5 minutes on the short queues), 3 GB RAM, at most 4 threads per job, input files no larger than 16 MB, and solver output truncated at 100 MB. An email address must accompany each submission and users are asked not to queue more than about 10-15 jobs at once. The commercial solvers are usable through the service only - you get results, not a local licence - and everything runs on shared academic machines, so do not send models you need to keep confidential.",
       "canonical": true,
       "also_in": []
     },

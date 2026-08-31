@@ -258,6 +258,20 @@
       "also_in": []
     },
     {
+      "name": "ICOS Carbon Portal",
+      "url": "https://www.icos-cp.eu/",
+      "category": "data",
+      "subcategory": "European greenhouse gas observations",
+      "summary": "Data portal of the Integrated Carbon Observation System: standardised greenhouse gas and flux measurements from 180 stations in 16 European countries across three domains (atmosphere towers, ecosystem eddy covariance sites, and ocean lines), plus elaborated products, all released under CC BY 4.0 with a PID or DOI per dataset.",
+      "access": "Browse, preview and download at https://data.icos-cp.eu/ without a login. For scripting, `pip install icoscp_core` (the older `icoscp` package still works) to list and pull data objects, and query the metadata graph directly through the SPARQL endpoint at https://meta.icos-cp.eu/sparqlclient/; a Pydap service exposes netCDF products.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Europe only, and only its 16 member countries, so it complements rather than extends AmeriFlux for global coverage. You must accept the ICOS data licence (an optional free account saves re-accepting it each time), cite the exact PID/DOI you used, and, when redistributing derived products, tell your users where the original data came from and point them back to ICOS for updates. Ecosystem data need the usual eddy covariance care: u* filtering, gap filling and storage terms are still your problem.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "NASA Earthdata (CMR + earthaccess)",
       "url": "https://www.earthdata.nasa.gov/",
       "category": "data",
@@ -282,6 +296,20 @@
       "registration": "none",
       "beginner": 5,
       "notes": "These are anomalies, not absolute temperatures, and land values are smeared with a 1200 km interpolation radius, which matters in sparsely observed regions and the Arctic. The latest month can shift when upstream GHCN and ERSST inputs are revised. Cross-check with HadCRUT5, NOAAGlobalTemp and Berkeley Earth before making claims about a single year's ranking.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "NASA POWER",
+      "url": "https://power.larc.nasa.gov/",
+      "category": "data",
+      "subcategory": "solar and meteorological time series",
+      "summary": "NASA Langley service delivering 300+ solar and meteorological parameters for any land or ocean point on Earth. Meteorology comes from MERRA-2 on a 0.5 deg x 0.625 deg grid from 1 January 1981 to within a few months of the present; solar fluxes come on a 1 deg grid from SRB (1984-2000), CERES SYN1deg Ed4.2 (2001 onward) and FLASHFlux for the most recent weeks, at hourly, daily, monthly and climatology resolution.",
+      "access": "No key and no account: call the REST API, e.g. https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,PRECTOTCORR&community=AG&latitude=39.93&longitude=32.85&start=20240101&end=20241231&format=CSV, with /hourly, /monthly and /climatology and /regional variants; JSON, CSV, ASCII, GeoJSON and netCDF outputs. There is also a point-and-click Data Access Viewer, ArcGIS geospatial services and a direct datastore on AWS.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 5,
+      "notes": "Values are model and satellite grid-cell averages, not station observations, so they will not match a nearby weather station and are unsuitable where terrain matters at sub-grid scale. The solar record is stitched from three sources, so it is not homogeneous across 1984, 2001 and the near-real-time tail. The API is rate limited (it returns HTTP 429) and caps request size, so long multi-point pulls must be chunked and throttled rather than hammered in a loop.",
       "canonical": true,
       "also_in": []
     },
@@ -722,6 +750,20 @@
       "also_in": []
     },
     {
+      "name": "WRF (Weather Research and Forecasting model)",
+      "url": "https://www.mmm.ucar.edu/models/wrf",
+      "category": "software",
+      "subcategory": "mesoscale atmospheric model",
+      "summary": "Mesoscale numerical weather prediction system maintained by NCAR's MMM laboratory with NOAA, the US Air Force, NRL and university partners, used for both research and operational forecasting. Version 4.8.0 was released on 8 June 2026; UCAR states that it makes no proprietary claim and considers WRF to be in the public domain, free of any fee.",
+      "access": "`git clone https://github.com/wrf-model/WRF` (tagged releases at github.com/wrf-model/WRF/releases) plus the preprocessor from github.com/wrf-model/WPS; build with a Fortran/C compiler, netCDF and MPI. Free online tutorial, annual NCAR tutorials, and the WRF & MPAS-A support forum for questions.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 1,
+      "notes": "This is a compile-it-yourself HPC code, not an application: expect to fight the build, and expect real runs to need GRIB initial and boundary conditions (GFS, ERA5 and similar), many cores and a lot of disk. UCAR's own download page asks you to fill in a registration form that also subscribes you to the news list, but the GitHub releases are open; the support forum needs a free account. WRF is a registered UCAR trademark, so do not rebrand a fork with the name.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "xarray (with rioxarray and Dask)",
       "url": "https://docs.xarray.dev/",
       "category": "software",
@@ -1082,6 +1124,20 @@
       "registration": "none",
       "beginner": 4,
       "notes": "The prose is CC BY-NC-ND 4.0 (non-commercial, no derivatives) while the code is CC0, so you can reuse the code freely but cannot remix the text into your own course notes. Assumes working R knowledge; it is not an introduction to programming. The first edition is archived separately on bookdown.org and now uses superseded packages.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "MetEd (UCAR COMET Program)",
+      "url": "https://www.meted.ucar.edu/",
+      "category": "learning",
+      "subcategory": "meteorology and hydrology training",
+      "summary": "UCAR COMET Program's training site: a free collection of hundreds of self-paced lessons for the geoscience community, covering satellite meteorology, numerical weather prediction, hydrology, aviation weather, convective and winter weather, climate and emergency management, produced since 1989 with NOAA, EUMETSAT and WMO support; many lessons are translated into other languages.",
+      "access": "Create a free account at meted.ucar.edu (the current platform is learn.meted.ucar.edu), then run lessons in the browser and enrol in multi-lesson courses; passing a lesson or course final test produces an online certificate of completion.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 5,
+      "notes": "Free for non-commercial, educational use rather than under an open licence, so check the terms before copying lessons into your own course or site. Content is pitched at operational forecasters and practitioners rather than at research frontiers, and is training material, not a citable reference. The site is heavily JavaScript driven, so lesson content does not scrape or archive well.",
       "canonical": true,
       "also_in": []
     },

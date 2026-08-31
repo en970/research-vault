@@ -1,10 +1,10 @@
 # Mathematics
 
-Part of [research-vault](../README.md). 82 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 86 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (12) · [Software](#software) (19) · [Literature](#literature) (8) · [Compute](#compute) (7) · [Publishing](#publishing) (15) · [Funding](#funding) (5) · [Learning](#learning) (11) · [Community](#community) (5)
+**Contents:** [Data](#data) (13) · [Software](#software) (20) · [Literature](#literature) (9) · [Compute](#compute) (8) · [Publishing](#publishing) (15) · [Funding](#funding) (5) · [Learning](#learning) (11) · [Community](#community) (5)
 
 ## Data
 
@@ -118,6 +118,16 @@ A repository of research data attached to papers - scripts, certificates, comput
 
 **Caveats.** Hosted by the Max Planck Institute for Mathematics in the Sciences (Leipzig), so coverage skews to nonlinear algebra, algebraic statistics and applied algebraic geometry rather than mathematics at large. Some entries depend on Magma or Maple, which are not free.
 
+### [MIPLIB 2017](https://miplib.zib.de/)
+
+`Free` · beginner 3/5 · mixed-integer programming instances
+
+Sixth edition of the mixed-integer programming library curated at Zuse Institute Berlin with academic and industrial partners (the library dates to 1992). The collection set holds 1,065 real-world MIP instances and the benchmark set 240 of them, each tagged easy, hard or open with best known solutions and structural metadata.
+
+**Access.** Direct download, no account: per-instance `.mps.gz` files and `.sol.gz` solutions from the instance pages, or whole-set ZIP archives from the download page (benchmark set 317.3 MB, collection set 3.5 GB, solutions 209.2 MB), plus model data, precomputed instance features, decomposition files and test scripts for solver runs.
+
+**Caveats.** The site states no explicit licence for the instances; the maintainers ask that you cite the MIPLIB 2017 paper in Mathematical Programming Computation. Instance classifications and incumbent solutions are revised periodically, so record which version you benchmarked against. The instances are input data only - you still need a solver, and many collection instances are unsolved by design, so they will exhaust any time limit you set.
+
 ### [The On-Line Encyclopedia of Integer Sequences (OEIS)](https://oeis.org/)
 
 `Free` · beginner 5/5 · integer sequence database
@@ -149,6 +159,16 @@ System for computational discrete algebra with emphasis on group theory: permuta
 **Access.** apt/dnf/Homebrew or conda-forge 'gap'; run 'gap' for the REPL, LoadPackage("ctbllib"); also reachable from SageMath (libgap) and from OSCAR.
 
 **Caveats.** The GAP language is idiosyncratic and error messages are terse; expect a real learning curve. Some contributed packages need extra compilation or external programs.
+
+### [GNU Octave](https://octave.org/)
+
+`Free` · beginner 5/5 · numerical computing environment
+
+GPL-licensed numerical computing language and environment whose syntax is largely MATLAB compatible, with dense and sparse linear algebra, ODE/DAE solvers, optimization, statistics and plotting, usable from a GUI or the command line. Version 11.3.0 was released on 1 June 2026.
+
+**Access.** `brew install octave`, `apt install octave`, `conda install -c conda-forge octave`, or the Windows installer from octave.org/download; add-on packages with `pkg install -forge <name>`; run scripts headlessly with `octave file.m`.
+
+**Caveats.** Compatibility with MATLAB is good for the core language and many library functions but is not complete: there is no Simulink equivalent, MathWorks toolboxes have only partial Octave Forge counterparts, and nontrivial MATLAB code usually needs edits. Performance on large problems generally trails MATLAB. Its main value is as the exit route when you lose an institutional MATLAB licence and still have .m files to run.
 
 ### [Isabelle and the Archive of Formal Proofs](https://www.isa-afp.org/)
 
@@ -322,6 +342,16 @@ Interactive theorem prover and dependently-typed programming language with over 
 
 ## Literature
 
+### [AMS Open Math Notes](https://www.ams.org/open-math-notes)
+
+`Free` · beginner 5/5 · lecture notes and draft textbooks
+
+Repository of freely downloadable mathematical works hosted by the American Mathematical Society: draft course notes, textbooks and research expositions that have not been published elsewhere, plus short notes and JIBLM refereed inquiry-based course notes, spanning undergraduate to research level.
+
+**Access.** Browse or search at ams.org/open-math-notes by subject, level and note type, sort by most downloaded, and take the PDF directly; no AMS membership needed. An optional free 'My Notes' account only saves items for later.
+
+**Caveats.** Everything except the JIBLM course notes is explicitly draft material, unrefereed and subject to revision, so cite it as you would a preprint and expect items to change or disappear when an author publishes. Authors keep copyright and terms differ per item, so check before reusing notes in your own teaching. There is no API or bulk export, and the search is basic - browsing by subject is usually faster.
+
 ### [arXiv (mathematics archive)](https://arxiv.org/archive/math)
 
 `Free, email` · beginner 5/5 · preprint server
@@ -453,6 +483,16 @@ Free browser interface to Magma, the system behind a large share of the number t
 **Access.** Open the page, paste Magma code into the box, press Submit; output comes back in the browser. No account and no install.
 
 **Caveats.** Magma itself is commercial and expensive; only this capped calculator is free. There is no state between submissions and no file persistence, so it suits re-running a short computation from a paper or checking a construction, not research runs. Anything longer than a minute has to move to a licensed Magma or to a free system (PARI/GP, SageMath, OSCAR).
+
+### [NEOS Server](https://neos-server.org/neos/)
+
+`Free, email` · beginner 4/5 · hosted optimization solvers
+
+Free internet service hosted by the Wisconsin Institute for Discovery that runs your optimization model on someone else's machines: more than 60 solvers in more than a dozen categories (LP, MILP, nonlinear, mixed-integer nonlinear, semidefinite, complementarity, stochastic), including commercial codes such as CPLEX, Gurobi, Xpress, MOSEK, Knitro and BARON alongside open ones like SCIP, Cbc and Ipopt. Jobs are distributed with HTCondor at Wisconsin plus remote solvers at Arizona State, Klagenfurt and Minho.
+
+**Access.** Upload a model through the web form in AMPL, GAMS, MPS, LP or the solver's own format and get results in the browser or by email; or submit programmatically over the XML-RPC API (Python client provided), or straight from AMPL/GAMS with the Kestrel client.
+
+**Caveats.** Hard limits: 8 hours CPU for standard jobs (5 minutes on the short queues), 3 GB RAM, at most 4 threads per job, input files no larger than 16 MB, and solver output truncated at 100 MB. An email address must accompany each submission and users are asked not to queue more than about 10-15 jobs at once. The commercial solvers are usable through the service only - you get results, not a local licence - and everything runs on shared academic machines, so do not send models you need to keep confidential.
 
 ### [Overleaf](https://www.overleaf.com/)
 

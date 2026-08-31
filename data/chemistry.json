@@ -446,6 +446,20 @@
       "also_in": []
     },
     {
+      "name": "CHARMM-GUI",
+      "url": "https://www.charmm-gui.org",
+      "category": "software",
+      "subcategory": "molecular dynamics system setup service",
+      "summary": "Web service running since 2006 that builds ready-to-run molecular dynamics systems — solvated proteins, lipid bilayers and complex membranes, glycans, polymers, ligand parameterisation — and writes matching inputs for CHARMM, NAMD, GROMACS, AMBER, OpenMM, GENESIS, Desmond, LAMMPS and Tinker. Its front page reports more than 70,000 users at over 9,000 institutions in more than 140 countries.",
+      "access": "Browser workflow at charmm-gui.org after creating a free account: step through a builder, then download a tarball with coordinates, topology, force-field files and engine-specific run scripts.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Registration asks for your affiliation, and the terms of use state that any for-profit organisation must present a commercial CHARMM licence from Accelrys/BIOVIA before its account is approved — so it is free in practice for academic and non-profit users only. Jobs run on shared servers with queueing and system-size limits, and you still need your own compute to run the simulation it prepares.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "checkCIF (IUCr)",
       "url": "https://checkcif.iucr.org/",
       "category": "software",
@@ -570,6 +584,20 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Frame-by-frame iteration is pure Python and slow on multi-microsecond trajectories - use the parallel backends or MDTraj/`gmx` tools for heavy reductions. Topology readers vary in what metadata they recover, so charges or bonds present in one format may be absent in another. Pin the version: selection and analysis APIs have changed across 1.x to 2.x.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "NWChem",
+      "url": "https://nwchemgit.github.io",
+      "category": "software",
+      "subcategory": "quantum chemistry and plane-wave DFT",
+      "summary": "Open-source computational chemistry package from EMSL at Pacific Northwest National Laboratory: Gaussian-basis DFT and post-Hartree-Fock (MP2, MCSCF, coupled cluster), TDDFT/CIS excited states, plane-wave DFT and ab initio molecular dynamics, built to run from one core to thousands. Release 7.3.1 (6 November 2025) under the Educational Community License 2.0.",
+      "access": "Source and release tarballs at github.com/nwchemgit/nwchem/releases, Docker images for a no-build start, and full documentation and tutorials at nwchemgit.github.io.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Building from source against MPI and vendor math libraries is the real barrier — use the containers if you can. The historical nwchem-sw.org domain no longer serves the project (it now hosts unrelated content), so treat the GitHub Pages site and repository as canonical. Production-sized calculations need cluster time you must source elsewhere.",
       "canonical": true,
       "also_in": []
     },

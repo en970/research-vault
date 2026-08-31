@@ -1,10 +1,10 @@
 # Chemistry & materials science
 
-Part of [research-vault](../README.md). 85 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 87 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (25) · [Software](#software) (27) · [Literature](#literature) (9) · [Compute](#compute) (5) · [Publishing](#publishing) (8) · [Funding](#funding) (3) · [Learning](#learning) (5) · [Community](#community) (3)
+**Contents:** [Data](#data) (25) · [Software](#software) (29) · [Literature](#literature) (9) · [Compute](#compute) (5) · [Publishing](#publishing) (8) · [Funding](#funding) (3) · [Learning](#learning) (5) · [Community](#community) (3)
 
 ## Data
 
@@ -326,6 +326,16 @@ CCDC's free crystal structure visualiser and analyser: opens CIF, RES and mol2 f
 
 **Caveats.** Free Mercury is the viewer plus analysis tools; CSD searching, the Materials Module, full-interaction maps and the CSD Python API sit behind a paid CSD-Core licence - the same split as the Access Structures entry. The CCDC website renders client-side and its product pages did not resolve to a plain HTTP fetch on 2026-08-28, so confirm the current free-feature list in a browser before relying on a specific tool. Cite Macrae et al., J. Appl. Cryst. 53, 226 (2020).
 
+### [CHARMM-GUI](https://www.charmm-gui.org)
+
+`Free (registration), email` · beginner 4/5 · molecular dynamics system setup service
+
+Web service running since 2006 that builds ready-to-run molecular dynamics systems — solvated proteins, lipid bilayers and complex membranes, glycans, polymers, ligand parameterisation — and writes matching inputs for CHARMM, NAMD, GROMACS, AMBER, OpenMM, GENESIS, Desmond, LAMMPS and Tinker. Its front page reports more than 70,000 users at over 9,000 institutions in more than 140 countries.
+
+**Access.** Browser workflow at charmm-gui.org after creating a free account: step through a builder, then download a tarball with coordinates, topology, force-field files and engine-specific run scripts.
+
+**Caveats.** Registration asks for your affiliation, and the terms of use state that any for-profit organisation must present a commercial CHARMM licence from Accelrys/BIOVIA before its account is approved — so it is free in practice for academic and non-profit users only. Jobs run on shared servers with queueing and system-size limits, and you still need your own compute to run the simulation it prepares.
+
 ### [checkCIF (IUCr)](https://checkcif.iucr.org/)
 
 `Free` · beginner 4/5 · crystallographic data validation
@@ -417,6 +427,16 @@ Python library that reads, writes and analyses MD trajectories in a common objec
 **Access.** `pip install MDAnalysis`, then `import MDAnalysis as mda; u = mda.Universe('topol.tpr','traj.xtc'); u.select_atoms('protein and name CA').positions`. Analysis modules cover RDF, RMSD/RMSF, hydrogen bonds, contacts and density.
 
 **Caveats.** Frame-by-frame iteration is pure Python and slow on multi-microsecond trajectories - use the parallel backends or MDTraj/`gmx` tools for heavy reductions. Topology readers vary in what metadata they recover, so charges or bonds present in one format may be absent in another. Pin the version: selection and analysis APIs have changed across 1.x to 2.x.
+
+### [NWChem](https://nwchemgit.github.io)
+
+`Free` · beginner 2/5 · quantum chemistry and plane-wave DFT
+
+Open-source computational chemistry package from EMSL at Pacific Northwest National Laboratory: Gaussian-basis DFT and post-Hartree-Fock (MP2, MCSCF, coupled cluster), TDDFT/CIS excited states, plane-wave DFT and ab initio molecular dynamics, built to run from one core to thousands. Release 7.3.1 (6 November 2025) under the Educational Community License 2.0.
+
+**Access.** Source and release tarballs at github.com/nwchemgit/nwchem/releases, Docker images for a no-build start, and full documentation and tutorials at nwchemgit.github.io.
+
+**Caveats.** Building from source against MPI and vendor math libraries is the real barrier — use the containers if you can. The historical nwchem-sw.org domain no longer serves the project (it now hosts unrelated content), so treat the GitHub Pages site and repository as canonical. Production-sized calculations need cluster time you must source elsewhere.
 
 ### [Olex2](https://www.olexsys.org/olex2/)
 
