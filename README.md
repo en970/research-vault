@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**1,134 resources** across **18 fields** — 879 free outright, 723 usable with no account at all. Verified 2026-08-28.
+**1,144 resources** across **18 fields** — 886 free outright, 730 usable with no account at all. Verified 2026-08-28.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -50,10 +50,10 @@ sixty seconds. Those distinctions are the content.
 | [Medicine & health sciences](docs/05-medicine.md) | 72 | data (24), software (15), literature (10) |
 | [Earth, climate & environmental science](docs/06-earth.md) | 88 | data (38), software (18), learning (8) |
 | [Mathematics](docs/07-mathematics.md) | 86 | software (20), publishing (15), data (13) |
-| [Computer science & machine learning](docs/08-cs-ml.md) | 82 | software (20), data (14), literature (13) |
+| [Computer science & machine learning](docs/08-cs-ml.md) | 86 | software (21), data (15), literature (14) |
 | [Neuroscience & psychology](docs/09-neuro-psych.md) | 92 | software (38), data (21), literature (10) |
-| [Social sciences](docs/10-social.md) | 83 | data (33), software (16), literature (12) |
-| [Economics & finance](docs/11-econ-finance.md) | 78 | data (36), software (14), literature (8) |
+| [Social sciences](docs/10-social.md) | 87 | data (37), software (16), literature (12) |
+| [Economics & finance](docs/11-econ-finance.md) | 80 | data (38), software (14), literature (8) |
 | [Linguistics & humanities](docs/12-humanities.md) | 76 | data (30), software (22), publishing (7) |
 | [Literature access & discovery](docs/13-literature-access.md) | 74 | literature (43), software (11), publishing (6) |
 | [Free compute & storage](docs/14-compute.md) | 62 | compute (36), data (10), publishing (6) |

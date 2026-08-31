@@ -20,6 +20,20 @@
       "also_in": []
     },
     {
+      "name": "BEA Data API (Bureau of Economic Analysis)",
+      "url": "https://apps.bea.gov/API/",
+      "category": "data",
+      "subcategory": "US national, regional and international accounts",
+      "summary": "Programmatic access to the US Bureau of Economic Analysis statistics: NIPA and underlying NIPA tables (GDP and its components), GDP by industry and underlying GDP by industry, fixed assets, regional income, employment and GDP for states, counties and metro areas, international transactions and trade in services, and direct investment/multinational enterprise data.",
+      "access": "Register at https://apps.bea.gov/API/signup/ with name, organisation and a non-disposable email address, click the activation link, and use the returned UserID as the key: https://apps.bea.gov/api/data?UserID=KEY&method=GetData&datasetname=NIPA&TableName=T10101&Frequency=Q&Year=2024&ResultFormat=JSON. Metadata methods (GetDataSetList, GetParameterList, GetParameterValues) let you discover table names before pulling data.",
+      "free": "free-registration",
+      "registration": "api-key",
+      "beginner": 3,
+      "notes": "Throttled per key at 100 requests per minute, 100 MB of data per minute and 30 errors per minute; exceeding any of these returns HTTP 429 with a RETRY-AFTER header and a temporary block, so write single-threaded clients that back off. Disposable email addresses are rejected at signup. The API serves currently published estimates, not vintages of past releases - for real-time/vintage work use the Philadelphia Fed's Real-Time Data Set instead.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "BIS Statistics",
       "url": "https://data.bis.org/",
       "category": "data",
@@ -340,6 +354,20 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Free with citation of the Feenstra-Inklaar-Timmer paper. Levels across PWT versions are not comparable — a growth rate computed by splicing PWT 10.x onto 11.0 is an artefact. Real GDP comes in expenditure-side (rgdpe), output-side (rgdpo) and chained (rgdpna) flavours that answer different questions; picking the wrong one is the classic beginner error.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "Philadelphia Fed Real-Time Data Research Center",
+      "url": "https://www.philadelphiafed.org/surveys-and-data/real-time-data-research",
+      "category": "data",
+      "subcategory": "macro data vintages and forecast surveys",
+      "summary": "Home of the Real-Time Data Set for Macroeconomists - vintages (monthly snapshots) of the major US macroeconomic time series as they were actually published, updated at the end of each month and now including 24 gross domestic income variables - together with the Survey of Professional Forecasters (begun in 1968, the oldest quarterly survey of US macroeconomic forecasts, run by the Philadelphia Fed since 1990), the Livingston Survey (started 1946 by columnist Joseph Livingston, the oldest continuous survey of economists' expectations), Greenbook/Tealbook projections, the Aruoba-Diebold-Scotti business conditions index, the Aruoba term structure of inflation expectations, and state coincident indexes.",
+      "access": "Direct download from each product page - 'Complete vintage history' Excel/CSV files for the real-time data set, and mean/median plus individual-forecaster microdata files, documentation and error statistics for the SPF and Livingston surveys. No account, no key.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Vintages reproduce what was published at the time, so definitions, base years and seasonal factors change across vintages and columns are not a consistent time series - read the general notes and the Croushore-Stark documentation before splicing vintages. SPF microdata identify forecasters only by number, and the panel composition changes over time, which matters for panel estimation.",
       "canonical": true,
       "also_in": []
     },

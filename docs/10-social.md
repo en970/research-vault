@@ -1,10 +1,10 @@
 # Social sciences
 
-Part of [research-vault](../README.md). 83 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 87 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (33) · [Software](#software) (16) · [Literature](#literature) (12) · [Compute](#compute) (3) · [Publishing](#publishing) (5) · [Funding](#funding) (4) · [Learning](#learning) (7) · [Community](#community) (3)
+**Contents:** [Data](#data) (37) · [Software](#software) (16) · [Literature](#literature) (12) · [Compute](#compute) (3) · [Publishing](#publishing) (5) · [Funding](#funding) (4) · [Learning](#learning) (7) · [Community](#community) (3)
 
 ## Data
 
@@ -57,6 +57,16 @@ Nationally representative surveys of public opinion across the Middle East and N
 **Access.** Web interface: fill a short form with your name, email and intended use, then download SPSS/Stata datasets, questionnaires and technical reports per wave. An online analysis tool gives crosstabs in the browser.
 
 **Caveats.** Publicly available at no charge; the form exists only so Arab Barometer can report usage. Country composition changes substantially between waves (Gulf states appear only intermittently), and some country-waves are released later than others.
+
+### [Asian Barometer Survey (ABS)](https://www.asianbarometer.org/datar?page=d10)
+
+`Free (registration), application` · beginner 3/5 · East and Southeast Asian public opinion survey
+
+Cross-national survey of political values, democratic legitimacy, governance and citizen participation across East, Southeast and (in a separate series) South Asia, run in waves since 2001. All 15 country datasets from Wave 5 (fieldwork 2018-2021) became public in 2023, and Wave 6 files for Taiwan, South Korea, Mongolia, the Philippines, Indonesia, Cambodia, Vietnam, Thailand, Australia, Japan and Malaysia were released in March 2026; Waves 1-4 and the South Asian Barometer Waves 1-2 (India, Pakistan, Bangladesh, Sri Lanka, Nepal, released May 2017) are also available.
+
+**Access.** Submit the online data application form on the ABS data page (name, affiliation, purpose, and the waves and country files you want) to the project office at National Taiwan University (asianbarometer@ntu.edu.tw); approved applicants download the merged and country files free of charge, with Waves 4-6 supplied in both SPSS and Stata formats alongside the English core questionnaire and sampling documentation.
+
+**Caveats.** Only the merged dataset and the core-questionnaire variables are released; country-specific items collected by national teams are not covered by the data-sharing agreement and must be requested from that country team directly (except Taiwan, administered by ABS headquarters). The rules bind the named applicant: no copying, printing, selling or supplying the data to anyone else, no re-archiving at your institution, academic/education/policy use only, at most 30 non-background variables for classroom use, prescribed acknowledgement text per wave, and bibliographies of resulting publications sent to ABS within a month. Violations mean permanent loss of access and public notification.
 
 ### [Comparative Study of Electoral Systems (CSES)](https://cses.org/data-download/)
 
@@ -129,6 +139,16 @@ Germany's national social science archive, holding more than 7,400 archived stud
 **Access.** Web interface at search.gesis.org: search across studies, variables and publications, then download SPSS/Stata files after logging in with a free GESIS account and accepting the usage terms. SSOAR (https://www.ssoar.info/) is open with no account; da|ra mints DOIs for deposited data.
 
 **Caveats.** Most archived studies download free once you have an account, but each study carries its own access class: a minority (official microdata, sensitive or identifying data held by the Secure Data Center) require an application and sometimes on-site or remote-desktop use. The site sits behind a bot check, so scripted downloads and command-line fetches often fail - use a browser. Interface is bilingual, but some study documentation and questionnaires exist only in German.
+
+### [Global Terrorism Database (GTD)](https://www.start.umd.edu/data-tools/GTD)
+
+`Free (registration), email` · beginner 4/5 · terrorist attack event data
+
+Incident-level record of terrorist attacks worldwide from 1970 through 2020, compiled by START at the University of Maryland: more than 200,000 cases, including over 88,000 bombings, 19,000 assassinations and 11,000 kidnappings, with at least 45 coded variables per case and more than 120 for recent incidents. Covers domestic as well as transnational attacks; 1993 is missing because the original data were lost.
+
+**Access.** Browse and filter incidents in the online GTD interface, or fill in the download form at https://www.start.umd.edu/gtd-download (name, contact details, user category such as academic/individual research, journalism, NGO or commercial) and accept the end user licence to get the full dataset — roughly an 80 MB Excel file plus a geodatabase and the codebook.
+
+**Caveats.** The EULA grants a revocable, non-transferable licence for non-commercial research and analysis only; it forbids publicly posting or redistributing the data, codebook or auxiliary materials without written permission from the University of Maryland (publishing your own analyses and visualisations is allowed), forbids selling or sublicensing, and forbids scraping the site outside its robots.txt. Commercial use requires a separate agreement. The series stops at 2020, so it is a historical resource rather than a current-events feed, and START states it is under no obligation to update it. Cite as 'START (2022). Global Terrorism Database, 1970-2020'.
 
 ### [Harvard Dataverse](https://dataverse.harvard.edu/)
 
@@ -293,6 +313,26 @@ The UK's ESRC-funded archive of economic, population and social data: the major 
 **Access.** Web interface at the data catalogue. Non-UK and non-academic users apply for a username via an online form, then select 'UK Data Archive' as their organisation at login; after that you can download or request most End User Licence datasets.
 
 **Caveats.** Registration is genuinely open worldwide - this is one of the few national archives that does not gate on institutional affiliation. But the tiers matter: End User Licence data are downloadable, Special Licence data require a signed agreement and often a named institution, and Secure Lab (detailed/identifiable) data effectively require UK-based accredited researcher status and a physical or approved safe setting. Commercial use triggers extra steps.
+
+### [UNESCO Institute for Statistics (UIS) Data Browser and API](https://databrowser.uis.unesco.org/)
+
+`Free` · beginner 4/5 · global education, culture and R&D statistics
+
+The UN's official cross-national statistics on education (including the SDG 4 indicator set), science, technology and innovation, culture, and related demographic and socio-economic context. The public API listed 5,063 indicator definitions when checked on 31 August 2026 - 4,986 education, 35 demographic/socio-economic, 30 culture and 12 science-technology-innovation - with the February 2026 release as the current data vintage.
+
+**Access.** Filter by indicator, country and year in the browser and export CSV or Excel, or call the free JSON API with no key: https://api.uis.unesco.org/api/public/data/indicators?indicator=CR.1&geoUnit=BRA&start=2015&end=2016 returns the completion rate for Brazil; /api/public/definitions/indicators lists every indicator with its time range and record count, and /api/public/versions/default reports the current data version.
+
+**Caveats.** Coverage is very uneven: most indicators are national-level only, and country-years are simply absent where governments did not report or UIS could not validate the return. UIS revises and re-releases whole themes at once, so a figure can change between releases - record the version string from /api/public/versions/default for reproducibility. Some UIS series are modelled or imputed; check the indicator metadata before treating a value as an administrative count.
+
+### [UNHCR Refugee Data Finder](https://www.unhcr.org/refugee-statistics/)
+
+`Free` · beginner 4/5 · forced displacement and statelessness statistics
+
+UNHCR's official population statistics on refugees, asylum-seekers, internally displaced people, stateless people and others in need of international protection, from UNHCR's annual statistical activities starting in 1951, supplemented with UNRWA registered Palestine refugees and IDMC conflict-displacement figures. Tables cover year-end population stocks by origin and asylum country, asylum applications and decisions, demographics, durable solutions, and annual flows back to 1962.
+
+**Access.** Filter and export CSV in the web app; query the JSON API with no key, e.g. https://api.unhcr.org/population/v1/population/?yearFrom=2023&yearTo=2023&coo=SYR; or use the CRAN package refugees (install.packages("refugees")), which ships eight ready-made tables (population, flows, asylum_applications, asylum_decisions, demographics, solutions, idmc, unrwa) as tidy data frames.
+
+**Caveats.** The refugees package is released under CC BY 4.0 and UNHCR asks for attribution to the Refugee Data Finder. Figures are reported by governments and UNHCR operations, are revised in later releases, and cells appear as "-" where a country did not report or the breakdown is unavailable, so pin the release year you used. IDMC and UNRWA series come from those agencies and follow their own definitions - do not add them to UNHCR counts without checking for overlap.
 
 ### [US Census Bureau data and API](https://www.census.gov/data/developers/data-sets.html)
 

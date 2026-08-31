@@ -1,10 +1,10 @@
 # Computer science & machine learning
 
-Part of [research-vault](../README.md). 82 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 86 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (14) · [Software](#software) (20) · [Literature](#literature) (13) · [Compute](#compute) (6) · [Publishing](#publishing) (7) · [Funding](#funding) (4) · [Learning](#learning) (12) · [Community](#community) (6)
+**Contents:** [Data](#data) (15) · [Software](#software) (21) · [Literature](#literature) (14) · [Compute](#compute) (6) · [Publishing](#publishing) (8) · [Funding](#funding) (4) · [Learning](#learning) (12) · [Community](#community) (6)
 
 ## Data
 
@@ -89,6 +89,16 @@ Crowd-sourced read-speech corpus; release v26.0 (June 2026) covers 294 languages
 **Caveats.** The Data Collective migration broke the old route — the mozilla-foundation/common_voice_* Hub repos are now empty, so any pipeline pinned to load_dataset('mozilla-foundation/common_voice_17_0') fails and must be rewritten. Hours are extremely unbalanced: a handful of major languages dominate while most of the 294 have only a few validated hours. This is prompted read speech from volunteer microphones, so it is not a substitute for conversational or telephone-channel ASR data.
 
 *Also listed under: humanities.*
+
+### [Open Images Dataset V7](https://storage.googleapis.com/openimages/web/index.html)
+
+`Free` · beginner 3/5 · annotated image dataset
+
+Google's large annotated image collection: 9,011,219 training images plus 41,620 validation and 125,436 test images, carrying 61.4M image-level labels over 20,638 classes, roughly 16M bounding boxes over 600 classes, 2.8M instance segmentation masks over 350 classes, 3.3M visual relationship annotations, 675k localized narratives and 66.4M point-level labels over 5,827 classes.
+
+**Access.** Annotation and metadata CSVs download directly over HTTPS from storage.googleapis.com/openimages/; the images sit in the public CVDF bucket `s3://open-images-dataset/`, readable with `aws s3 --no-sign-request`. For a subset, use the supplied `downloader.py` with a list of $SPLIT/$IMAGE_ID lines and `--num_processes`, or `pip install fiftyone` and pull only the classes and annotation types you need.
+
+**Caveats.** Two licences apply: the annotations are CC BY 4.0 from Google, but the images are Flickr photos listed as CC BY 2.0 and owned by their individual photographers, so attribution is per image and Google cannot grant you rights to them. Pulling all nine million originals is a bulk transfer job - the CSVs carry a Thumbnail300KURL column if 300px versions will do. Annotation is verified per class rather than exhaustive, so an object's absence from the labels is not evidence it is absent from the image.
 
 ### [OpenML](https://www.openml.org/)
 
@@ -292,6 +302,16 @@ Alibaba's Qwen family spans dense and mixture-of-experts LLMs from sub-1B to hun
 
 **Caveats.** Licence is per-model — most dense releases are Apache-2.0, but check each model card, since some larger or specialised releases historically shipped under a bespoke Qwen licence. The family iterates fast, so pin an exact model revision in any paper or your results will not be reproducible.
 
+### [Ray](https://www.ray.io/)
+
+`Free` · beginner 3/5 · distributed computing framework
+
+Apache-2.0 framework for scaling Python and ML workloads from a laptop to a cluster (version 2.58.0 on PyPI): Ray Core for task and actor parallelism, with Ray Data for batch inference and preprocessing, Ray Train for distributed training, Ray Tune for hyperparameter search, Ray Serve for model serving and RLlib for reinforcement learning.
+
+**Access.** `pip install -U "ray[default]"`, with extras such as `ray[data,train,tune,serve,rllib]`. Runs locally with `ray.init()`, or across machines you already have via `ray start --head` and the cluster launcher, on Kubernetes through KubeRay, or on cloud VMs.
+
+**Caveats.** The open-source project is the whole thing; Anyscale's managed platform is the paid product and is not needed to use Ray. Ray schedules compute, it does not supply it - you still need machines, so on a single free Colab or Kaggle session it buys you little. Most of the pain is version alignment between Ray, PyTorch and CUDA, and debugging distributed failures across actors is meaningfully harder than debugging a single process.
+
 ### [scikit-learn](https://scikit-learn.org/stable/)
 
 `Free` · beginner 5/5 · classical machine learning
@@ -413,6 +433,16 @@ Peer-reviewed journal of interactive, visually explanatory ML articles (feature 
 **Access.** Read directly on the site; article sources and figures are on GitHub under the distillpub org, so the interactive diagram code is reusable.
 
 **Caveats.** Not accepting submissions — do not plan a publication around it. The content is dated in places (pre-LLM-era framing) but the explanations of convnet interpretability, momentum and GNNs remain among the clearest available. Articles are CC-BY, so figures can be reused with attribution.
+
+### [ECCC (Electronic Colloquium on Computational Complexity)](https://eccc.weizmann.ac.il/)
+
+`Free` · beginner 4/5 · complexity theory preprints
+
+Preprint repository for computational complexity, established in 1994 and run under the auspices of the Computational Complexity Foundation, hosted at the Weizmann Institute. Reports are numbered TRyy-nnn (the 2026 volume had reached TR26-162 by late August 2026) and cover complexity classes and bounds, computational models, and complexity-theoretic work in coding theory, cryptography, learning and quantum computation.
+
+**Access.** Read and download any report as PDF from the web archive with no account; browse by year or search by author, title and keyword. Authors submit through the site, and each report can carry numbered revisions and public comments.
+
+**Caveats.** Postings have the status of technical reports: they are screened for scope and mathematical form, not peer reviewed, so nothing here is certified correct. Coverage overlaps but does not coincide with arXiv cs.CC - many authors post to only one - so search both. Because revisions are separately numbered, cite the specific revision you read rather than the bare TR number.
 
 ### [Hugging Face Papers](https://huggingface.co/papers/trending)
 
@@ -589,6 +619,16 @@ Developer-friendly open-access journal for research software with zero APCs and 
 **Access.** Write a ~1000-word paper.md in your repo, submit the repo URL on the JOSS site, then respond to reviewers in the public GitHub review issue. Accepted papers get a DOI and an ISSN-registered record (ISSN 2475-9066).
 
 **Caveats.** Scope is the software, not the science it enables — you need substantial scholarly effort, documentation, tests and an OSI-approved licence, and thin wrapper packages are desk-rejected. Part of Open Journals, a NumFOCUS-sponsored project. Review is fast by journal standards (weeks to a few months) and is a realistic first publication for an unaffiliated maintainer.
+
+### [Logical Methods in Computer Science (LMCS)](https://lmcs.episciences.org/)
+
+`Free` · beginner 4/5 · diamond open access journal
+
+Fully refereed diamond open access journal for theoretical and practical computer science involving logical methods, published by the non-profit Logical Methods in Computer Science e.V. as an overlay on arXiv's CoRR and hosted on the Episciences platform. It is in volume 22 in 2026; eISSN 1860-5974.
+
+**Access.** Read every paper at lmcs.episciences.org with no account or subscription. Authors post the paper to arXiv first and then submit its arXiv identifier through Episciences; submissions get at least two referees, authors retain copyright, and papers carry a Creative Commons licence.
+
+**Caveats.** There are no charges to readers or authors at all - no APC - which is the point of it. The trade-off is time: the journal itself targets roughly nine months from submission to acceptance, and long theory papers routinely take longer. Scope is logic-oriented theoretical computer science (semantics, types, verification, automata, categorical methods), so empirical machine learning work belongs elsewhere.
 
 ### [ReScience C](https://rescience.github.io/)
 

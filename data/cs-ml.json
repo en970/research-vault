@@ -120,6 +120,20 @@
       ]
     },
     {
+      "name": "Open Images Dataset V7",
+      "url": "https://storage.googleapis.com/openimages/web/index.html",
+      "category": "data",
+      "subcategory": "annotated image dataset",
+      "summary": "Google's large annotated image collection: 9,011,219 training images plus 41,620 validation and 125,436 test images, carrying 61.4M image-level labels over 20,638 classes, roughly 16M bounding boxes over 600 classes, 2.8M instance segmentation masks over 350 classes, 3.3M visual relationship annotations, 675k localized narratives and 66.4M point-level labels over 5,827 classes.",
+      "access": "Annotation and metadata CSVs download directly over HTTPS from storage.googleapis.com/openimages/; the images sit in the public CVDF bucket `s3://open-images-dataset/`, readable with `aws s3 --no-sign-request`. For a subset, use the supplied `downloader.py` with a list of $SPLIT/$IMAGE_ID lines and `--num_processes`, or `pip install fiftyone` and pull only the classes and annotation types you need.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Two licences apply: the annotations are CC BY 4.0 from Google, but the images are Flickr photos listed as CC BY 2.0 and owned by their individual photographers, so attribution is per image and Google cannot grant you rights to them. Pulling all nine million originals is a bulk transfer job - the CSVs carry a Thumbnail300KURL column if 300px versions will do. Annotation is verified per class rather than exhaustive, so an object's absence from the labels is not evidence it is absent from the image.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "OpenML",
       "url": "https://www.openml.org/",
       "category": "data",
@@ -400,6 +414,20 @@
       "also_in": []
     },
     {
+      "name": "Ray",
+      "url": "https://www.ray.io/",
+      "category": "software",
+      "subcategory": "distributed computing framework",
+      "summary": "Apache-2.0 framework for scaling Python and ML workloads from a laptop to a cluster (version 2.58.0 on PyPI): Ray Core for task and actor parallelism, with Ray Data for batch inference and preprocessing, Ray Train for distributed training, Ray Tune for hyperparameter search, Ray Serve for model serving and RLlib for reinforcement learning.",
+      "access": "`pip install -U \"ray[default]\"`, with extras such as `ray[data,train,tune,serve,rllib]`. Runs locally with `ray.init()`, or across machines you already have via `ray start --head` and the cluster launcher, on Kubernetes through KubeRay, or on cloud VMs.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The open-source project is the whole thing; Anyscale's managed platform is the paid product and is not needed to use Ray. Ray schedules compute, it does not supply it - you still need machines, so on a single free Colab or Kaggle session it buys you little. Most of the pain is version alignment between Ray, PyTorch and CUDA, and debugging distributed failures across actors is meaningfully harder than debugging a single process.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "scikit-learn",
       "url": "https://scikit-learn.org/stable/",
       "category": "software",
@@ -564,6 +592,20 @@
       "registration": "none",
       "beginner": 5,
       "notes": "Not accepting submissions — do not plan a publication around it. The content is dated in places (pre-LLM-era framing) but the explanations of convnet interpretability, momentum and GNNs remain among the clearest available. Articles are CC-BY, so figures can be reused with attribution.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "ECCC (Electronic Colloquium on Computational Complexity)",
+      "url": "https://eccc.weizmann.ac.il/",
+      "category": "literature",
+      "subcategory": "complexity theory preprints",
+      "summary": "Preprint repository for computational complexity, established in 1994 and run under the auspices of the Computational Complexity Foundation, hosted at the Weizmann Institute. Reports are numbered TRyy-nnn (the 2026 volume had reached TR26-162 by late August 2026) and cover complexity classes and bounds, computational models, and complexity-theoretic work in coding theory, cryptography, learning and quantum computation.",
+      "access": "Read and download any report as PDF from the web archive with no account; browse by year or search by author, title and keyword. Authors submit through the site, and each report can carry numbered revisions and public comments.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Postings have the status of technical reports: they are screened for scope and mathematical form, not peer reviewed, so nothing here is certified correct. Coverage overlaps but does not coincide with arXiv cs.CC - many authors post to only one - so search both. Because revisions are separately numbered, cite the specific revision you read rather than the bare TR number.",
       "canonical": true,
       "also_in": []
     },
@@ -805,6 +847,20 @@
       "beginner": 3,
       "notes": "Scope is the software, not the science it enables — you need substantial scholarly effort, documentation, tests and an OSI-approved licence, and thin wrapper packages are desk-rejected. Part of Open Journals, a NumFOCUS-sponsored project. Review is fast by journal standards (weeks to a few months) and is a realistic first publication for an unaffiliated maintainer.",
       "canonical": false,
+      "also_in": []
+    },
+    {
+      "name": "Logical Methods in Computer Science (LMCS)",
+      "url": "https://lmcs.episciences.org/",
+      "category": "publishing",
+      "subcategory": "diamond open access journal",
+      "summary": "Fully refereed diamond open access journal for theoretical and practical computer science involving logical methods, published by the non-profit Logical Methods in Computer Science e.V. as an overlay on arXiv's CoRR and hosted on the Episciences platform. It is in volume 22 in 2026; eISSN 1860-5974.",
+      "access": "Read every paper at lmcs.episciences.org with no account or subscription. Authors post the paper to arXiv first and then submit its arXiv identifier through Episciences; submissions get at least two referees, authors retain copyright, and papers carry a Creative Commons licence.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "There are no charges to readers or authors at all - no APC - which is the point of it. The trade-off is time: the journal itself targets roughly nine months from submission to acceptance, and long theory papers routinely take longer. Scope is logic-oriented theoretical computer science (semantics, types, verification, automata, categorical methods), so empirical machine learning work belongs elsewhere.",
+      "canonical": true,
       "also_in": []
     },
     {

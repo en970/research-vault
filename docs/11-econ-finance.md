@@ -1,10 +1,10 @@
 # Economics & finance
 
-Part of [research-vault](../README.md). 78 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 80 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (36) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
+**Contents:** [Data](#data) (38) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
 
 ## Data
 
@@ -17,6 +17,16 @@ Public return files behind AQR's published papers: Betting Against Beta, Quality
 **Access.** Direct Excel download per dataset from the datasets page, no account. Each file's first sheet documents construction and sample; pair with the Kenneth French library for the standard factors these are meant to be measured against.
 
 **Caveats.** Use is governed by AQR's terms of use and expects citation of the underlying paper; these are outputs, not inputs, so you cannot re-sort or extend them without the commercial security-level data (CRSP/Compustat/XpressFeed) they were built from. Update cadence differs by file — some refresh monthly, others were frozen at the paper's sample end, so check the last date in the sheet before assuming currency. Factor definitions differ in detail from French's (that is the point of the 'Devil in HML's Details' file), so do not treat AQR HML and French HML as the same series.
+
+### [BEA Data API (Bureau of Economic Analysis)](https://apps.bea.gov/API/)
+
+`Free (registration), api-key` · beginner 3/5 · US national, regional and international accounts
+
+Programmatic access to the US Bureau of Economic Analysis statistics: NIPA and underlying NIPA tables (GDP and its components), GDP by industry and underlying GDP by industry, fixed assets, regional income, employment and GDP for states, counties and metro areas, international transactions and trade in services, and direct investment/multinational enterprise data.
+
+**Access.** Register at https://apps.bea.gov/API/signup/ with name, organisation and a non-disposable email address, click the activation link, and use the returned UserID as the key: https://apps.bea.gov/api/data?UserID=KEY&method=GetData&datasetname=NIPA&TableName=T10101&Frequency=Q&Year=2024&ResultFormat=JSON. Metadata methods (GetDataSetList, GetParameterList, GetParameterValues) let you discover table names before pulling data.
+
+**Caveats.** Throttled per key at 100 requests per minute, 100 MB of data per minute and 30 errors per minute; exceeding any of these returns HTTP 429 with a RETRY-AFTER header and a temporary block, so write single-threaded clients that back off. Disposable email addresses are rejected at signup. The API serves currently published estimates, not vintages of past releases - for real-time/vintage work use the Philadelphia Fed's Real-Time Data Set instead.
 
 ### [BIS Statistics](https://data.bis.org/)
 
@@ -249,6 +259,16 @@ PPP-adjusted output, input, capital stock, employment, hours and productivity fo
 **Access.** Direct download of the full table as Excel or Stata from the PWT page; also an online data-browsing tool. R: `install.packages('pwt10')` covers earlier releases — for 11.0 read the .dta/.xlsx directly with `haven::read_dta()` or `pandas.read_stata()`.
 
 **Caveats.** Free with citation of the Feenstra-Inklaar-Timmer paper. Levels across PWT versions are not comparable — a growth rate computed by splicing PWT 10.x onto 11.0 is an artefact. Real GDP comes in expenditure-side (rgdpe), output-side (rgdpo) and chained (rgdpna) flavours that answer different questions; picking the wrong one is the classic beginner error.
+
+### [Philadelphia Fed Real-Time Data Research Center](https://www.philadelphiafed.org/surveys-and-data/real-time-data-research)
+
+`Free` · beginner 3/5 · macro data vintages and forecast surveys
+
+Home of the Real-Time Data Set for Macroeconomists - vintages (monthly snapshots) of the major US macroeconomic time series as they were actually published, updated at the end of each month and now including 24 gross domestic income variables - together with the Survey of Professional Forecasters (begun in 1968, the oldest quarterly survey of US macroeconomic forecasts, run by the Philadelphia Fed since 1990), the Livingston Survey (started 1946 by columnist Joseph Livingston, the oldest continuous survey of economists' expectations), Greenbook/Tealbook projections, the Aruoba-Diebold-Scotti business conditions index, the Aruoba term structure of inflation expectations, and state coincident indexes.
+
+**Access.** Direct download from each product page - 'Complete vintage history' Excel/CSV files for the real-time data set, and mean/median plus individual-forecaster microdata files, documentation and error statistics for the SPF and Livingston surveys. No account, no key.
+
+**Caveats.** Vintages reproduce what was published at the time, so definitions, base years and seasonal factors change across vintages and columns are not a consistent time series - read the general notes and the Croushore-Stark documentation before splicing vintages. SPF microdata identify forecasters only by number, and the panel composition changes over time, which matters for panel estimation.
 
 ### [Robert Shiller online data](https://shillerdata.com/)
 
