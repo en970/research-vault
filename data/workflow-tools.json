@@ -600,6 +600,20 @@
       ]
     },
     {
+      "name": "Tabula",
+      "url": "https://tabula.technology/",
+      "category": "software",
+      "subcategory": "extracting tables out of PDFs",
+      "summary": "MIT-licensed tool, originally built by and for journalists, that pulls tables out of text-based PDFs into CSV or Excel. It runs entirely on your own machine as a local server driven from your browser, so the PDFs are never uploaded anywhere.",
+      "access": "Download the macOS, Windows or Linux build from tabula.technology (Java is required on Windows and Linux), run it, then open http://127.0.0.1:8080 and drag a selection over each table to export it.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Only works on PDFs that contain a real text layer: scanned pages must be OCRed first (OCRmyPDF is the usual route) and even then extraction is unreliable. Selection is manual, so it suits tens of tables rather than thousands; for batch work the underlying tabula-java and tabula-py libraries are the scripting route. Development is slow, with the last repository activity in March 2025, but the released builds still work.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "Taguette",
       "url": "https://www.taguette.org/",
       "category": "software",
@@ -668,6 +682,20 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Young compared with pip and conda, and it does not solve non-Python system dependencies (GDAL, CUDA, BLAS variants) — for those, conda-forge or a container is still the practical route. Made by a venture-funded company (Astral), though the tool itself is permissively licensed.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "Vale",
+      "url": "https://vale.sh/",
+      "category": "software",
+      "subcategory": "prose linter for writing style",
+      "summary": "MIT-licensed command-line linter that checks prose against configurable editorial rules entirely offline. It parses twelve markup formats, including Markdown, reStructuredText, MyST, Quarto, Typst, AsciiDoc, HTML, XML and Org, and can lint comments inside nineteen programming languages; ready-made style packages include Microsoft, Google and Red Hat house styles.",
+      "access": "A single Go binary, installable from GitHub Releases, Homebrew, conda-forge, npm, PyPI, Chocolatey, WinGet, Snap or Docker Hub. Add a .vale.ini, run vale sync to fetch style packages, then vale <file>.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "It does almost nothing until you configure it: the useful part is choosing or writing a style, and house styles built for software documentation will flag things that are normal in an academic manuscript. It is a rule-based linter rather than a grammar checker, so it complements something like LanguageTool instead of replacing it. There is a separate hosted commercial product; the CLI described here is the MIT-licensed open-source one.",
       "canonical": true,
       "also_in": []
     },

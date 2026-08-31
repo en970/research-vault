@@ -1,10 +1,10 @@
 # Research workflow software
 
-Part of [research-vault](../README.md). 78 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 80 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (1) · [Software](#software) (46) · [Literature](#literature) (7) · [Compute](#compute) (4) · [Publishing](#publishing) (6) · [Funding](#funding) (4) · [Learning](#learning) (6) · [Community](#community) (4)
+**Contents:** [Data](#data) (1) · [Software](#software) (48) · [Literature](#literature) (7) · [Compute](#compute) (4) · [Publishing](#publishing) (6) · [Funding](#funding) (4) · [Learning](#learning) (6) · [Community](#community) (4)
 
 ## Data
 
@@ -436,6 +436,16 @@ Python-based, Make-like workflow engine (version 9.26.1 in August 2026) that rer
 
 *Also listed under: biology.*
 
+### [Tabula](https://tabula.technology/)
+
+`Free` · beginner 4/5 · extracting tables out of PDFs
+
+MIT-licensed tool, originally built by and for journalists, that pulls tables out of text-based PDFs into CSV or Excel. It runs entirely on your own machine as a local server driven from your browser, so the PDFs are never uploaded anywhere.
+
+**Access.** Download the macOS, Windows or Linux build from tabula.technology (Java is required on Windows and Linux), run it, then open http://127.0.0.1:8080 and drag a selection over each table to export it.
+
+**Caveats.** Only works on PDFs that contain a real text layer: scanned pages must be OCRed first (OCRmyPDF is the usual route) and even then extraction is unreliable. Selection is manual, so it suits tens of tables rather than thousands; for batch work the underlying tabula-java and tabula-py libraries are the scripting route. Development is slow, with the last repository activity in March 2025, but the released builds still work.
+
 ### [Taguette](https://www.taguette.org/)
 
 `Free` · beginner 4/5 · qualitative coding
@@ -487,6 +497,16 @@ Rust-written Python package and project manager that replaces pip, pip-tools, pi
 **Access.** 'curl -LsSf https://astral.sh/uv/install.sh | sh' (or PowerShell on Windows); then 'uv init', 'uv add pandas', 'uv run analysis.py'; 'uv pip install' works as a drop-in for pip.
 
 **Caveats.** Young compared with pip and conda, and it does not solve non-Python system dependencies (GDAL, CUDA, BLAS variants) — for those, conda-forge or a container is still the practical route. Made by a venture-funded company (Astral), though the tool itself is permissively licensed.
+
+### [Vale](https://vale.sh/)
+
+`Free` · beginner 3/5 · prose linter for writing style
+
+MIT-licensed command-line linter that checks prose against configurable editorial rules entirely offline. It parses twelve markup formats, including Markdown, reStructuredText, MyST, Quarto, Typst, AsciiDoc, HTML, XML and Org, and can lint comments inside nineteen programming languages; ready-made style packages include Microsoft, Google and Red Hat house styles.
+
+**Access.** A single Go binary, installable from GitHub Releases, Homebrew, conda-forge, npm, PyPI, Chocolatey, WinGet, Snap or Docker Hub. Add a .vale.ini, run vale sync to fetch style packages, then vale <file>.
+
+**Caveats.** It does almost nothing until you configure it: the useful part is choosing or writing a style, and house styles built for software documentation will flag things that are normal in an academic manuscript. It is a rule-based linter rather than a grammar checker, so it complements something like LanguageTool instead of replacing it. There is a separate hosted commercial product; the CLI described here is the MIT-licensed open-source one.
 
 ### [VOSviewer](https://www.vosviewer.com/)
 
