@@ -1,6 +1,6 @@
 # Physics
 
-Part of [research-vault](../README.md). 87 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 89 entries, verified 2026-09-06. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
@@ -895,3 +895,25 @@ Community-maintained, free listing of online and hybrid research seminars, cours
 **Access.** Browse or search at researchseminars.org with no account; a free account lets you subscribe to series, export to your calendar, and list a seminar of your own.
 
 **Caveats.** Each series sets its own access rules — some need a registration form or a password from the organiser, so a listing is not always an open door. Coverage is strongest in mathematics and mathematical/theoretical physics; experimental series are thinly represented. Still, it is the most practical way for someone with no department to sit in on current research talks.
+
+## physics
+
+### [PlasmaPy](https://docs.plasmapy.org)
+
+`Free` · beginner 3/5 · plasma physics software
+
+Community-developed open-source Python package for plasma physics research and education, providing analysis/diagnostic toolkits, dispersion relation solvers, formulary functions, and a plasma calculator.
+
+**Access.** `pip install plasmapy`; source on GitHub (PlasmaPy/PlasmaPy)
+
+**Caveats.** Governed similarly to Astropy, with an active community and SPEC-style development process; still pre-1.0 and evolving.
+
+### [PyCBC](https://github.com/gwastro/pycbc)
+
+`Free` · beginner 2/5 · gravitational-wave data analysis software
+
+Open-source Python toolkit for analyzing gravitational-wave data and searching for signals from coalescing compact binaries, used in LIGO/Virgo detection pipelines including the first direct GW detection.
+
+**Access.** `pip install pycbc`; source and documentation at github.com/gwastro/pycbc
+
+**Caveats.** GPL-3.0 licensed; pairs well with GWOSC public strain data and GWpy for a full open gravitational-wave analysis workflow.

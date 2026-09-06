@@ -3,7 +3,7 @@
   "title": "Physics",
   "order": 0,
   "kind": "discipline",
-  "generated": "2026-08-28",
+  "generated": "2026-09-06",
   "resources": [
     {
       "name": "ATLAS Open Data",
@@ -1228,6 +1228,30 @@
       "notes": "Each series sets its own access rules — some need a registration form or a password from the organiser, so a listing is not always an open door. Coverage is strongest in mathematics and mathematical/theoretical physics; experimental series are thinly represented. Still, it is the most practical way for someone with no department to sit in on current research talks.",
       "canonical": false,
       "also_in": []
+    },
+    {
+      "name": "PlasmaPy",
+      "url": "https://docs.plasmapy.org",
+      "category": "physics",
+      "subcategory": "plasma physics software",
+      "summary": "Community-developed open-source Python package for plasma physics research and education, providing analysis/diagnostic toolkits, dispersion relation solvers, formulary functions, and a plasma calculator.",
+      "access": "`pip install plasmapy`; source on GitHub (PlasmaPy/PlasmaPy)",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Governed similarly to Astropy, with an active community and SPEC-style development process; still pre-1.0 and evolving."
+    },
+    {
+      "name": "PyCBC",
+      "url": "https://github.com/gwastro/pycbc",
+      "category": "physics",
+      "subcategory": "gravitational-wave data analysis software",
+      "summary": "Open-source Python toolkit for analyzing gravitational-wave data and searching for signals from coalescing compact binaries, used in LIGO/Virgo detection pipelines including the first direct GW detection.",
+      "access": "`pip install pycbc`; source and documentation at github.com/gwastro/pycbc",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "GPL-3.0 licensed; pairs well with GWOSC public strain data and GWpy for a full open gravitational-wave analysis workflow."
     }
   ]
 }
