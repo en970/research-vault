@@ -3,7 +3,7 @@
   "title": "Biology & life sciences",
   "order": 3,
   "kind": "discipline",
-  "generated": "2026-08-28",
+  "generated": "2026-09-07",
   "resources": [
     {
       "name": "Addgene",
@@ -1224,6 +1224,18 @@
       "notes": "Slack's free tier hides older messages, so answers are not durably searchable the way a forum is - check the pipeline docs and GitHub issues first. The community assumes you can read a Nextflow error trace; complete beginners should work through the free training at training.nextflow.io before asking. Activity skews to European time zones.",
       "canonical": true,
       "also_in": []
+    },
+    {
+      "name": "1000 Genomes Project (IGSR)",
+      "url": "https://www.internationalgenome.org/data",
+      "category": "data",
+      "subcategory": "population genomics data",
+      "summary": "Whole-genome and exome sequencing data for 2,504 individuals from 26 populations, produced by the 1000 Genomes Project (2008–2015) and now maintained as open data by EMBL-EBI's International Genome Sample Resource (IGSR), alongside supplementary datasets like the 2019 high-coverage resequencing.",
+      "access": "Bulk download via FTP, Aspera, or Globus; VCF and PED files browsable by sample, population, technology, or data type through the IGSR web portal; variants also viewable in the Ensembl genome browser by rsID or region.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "The plain FTP site is rate-limited, so Globus or Aspera are recommended for large bulk transfers. Multiple overlapping releases exist (phase 1, phase 3, the 2019 high-coverage resequencing); check which one a given analysis expects, as variant calls and sample sets differ between them."
     }
   ]
 }

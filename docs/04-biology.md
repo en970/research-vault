@@ -1,10 +1,10 @@
 # Biology & life sciences
 
-Part of [research-vault](../README.md). 87 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 88 entries, verified 2026-09-07. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (38) · [Software](#software) (20) · [Literature](#literature) (5) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (4)
+**Contents:** [Data](#data) (39) · [Software](#software) (20) · [Literature](#literature) (5) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (4)
 
 ## Data
 
@@ -387,6 +387,16 @@ Umbrella resource for eukaryotic pathogens and their vectors, made up of PlasmoD
 **Access.** Work directly in any component site (plasmodb.org, vectorbase.org, tritrypdb.org and so on). The search-strategy builder lets you intersect queries - for example genes upregulated in a life stage AND carrying a predicted signal peptide - without writing code, and export the resulting gene list. Bulk FASTA, GFF and annotation files come from each site's Download section; JBrowse and OrthoMCL cover browsing and orthology.
 
 **Caveats.** Browsing, searching and file downloads need no account, but the documented web-service endpoints now reject anonymous calls with 'Valid API Key required for this endpoint' - an API key comes from a free VEuPathDB account profile page. Saving or sharing strategies also needs the account. Some datasets are pre-publication and carry data-use restrictions stated on the dataset page. The sites are JavaScript-heavy and slow over poor connections.
+
+### [1000 Genomes Project (IGSR)](https://www.internationalgenome.org/data)
+
+`Free` · beginner 3/5 · population genomics data
+
+Whole-genome and exome sequencing data for 2,504 individuals from 26 populations, produced by the 1000 Genomes Project (2008–2015) and now maintained as open data by EMBL-EBI's International Genome Sample Resource (IGSR), alongside supplementary datasets like the 2019 high-coverage resequencing.
+
+**Access.** Bulk download via FTP, Aspera, or Globus; VCF and PED files browsable by sample, population, technology, or data type through the IGSR web portal; variants also viewable in the Ensembl genome browser by rsID or region.
+
+**Caveats.** The plain FTP site is rate-limited, so Globus or Aspera are recommended for large bulk transfers. Multiple overlapping releases exist (phase 1, phase 3, the 2019 high-coverage resequencing); check which one a given analysis expects, as variant calls and sample sets differ between them.
 
 ## Software
 
