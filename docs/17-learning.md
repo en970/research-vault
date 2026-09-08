@@ -1,10 +1,10 @@
 # Learning materials
 
-Part of [research-vault](../README.md). 77 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 78 entries, verified 2026-09-08. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (1) · [Literature](#literature) (1) · [Compute](#compute) (2) · [Publishing](#publishing) (2) · [Funding](#funding) (3) · [Learning](#learning) (66) · [Community](#community) (2)
+**Contents:** [Data](#data) (1) · [Literature](#literature) (1) · [Compute](#compute) (2) · [Publishing](#publishing) (2) · [Funding](#funding) (3) · [Learning](#learning) (67) · [Community](#community) (2)
 
 ## Data
 
@@ -821,6 +821,16 @@ Community-written handbook in six guides — Reproducible Research, Project Desi
 **Access.** Read the online book at book.the-turing-way.org; source and contribution workflow on GitHub, where you can open an issue or PR against any chapter.
 
 **Caveats.** Prose CC BY 4.0, code MIT. The single best answer to 'how should I actually organise a computational project' for someone with no local mentor. Written by contributors from many countries and disciplines, so depth varies chapter to chapter.
+
+### [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+
+`Free` · beginner 5/5 · practice datasets
+
+Weekly real-world dataset, run by the Data Science Learning Community since April 2018, with each week's data and a README posted on Monday for practicing data wrangling and visualization in R, Python, or Julia.
+
+**Access.** CSV files browsable and downloadable directly from the GitHub repo (organized by year/week); the R package `tidytuesdayR` loads a given week with `tidytuesdayR::tt_load("2026-09-08")` or `tidytuesdayR::tt_load(2026, week = 36)`; equivalent one-liners with `pandas.read_csv()` work in Python.
+
+**Caveats.** Framed around R and sharing results on social media with #TidyTuesday, but that's optional — the CSVs can be downloaded and used in any language with no submission or account needed. Data quality and documentation vary week to week since sources are volunteer-curated.
 
 ## Community
 
