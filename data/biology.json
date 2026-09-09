@@ -3,7 +3,7 @@
   "title": "Biology & life sciences",
   "order": 3,
   "kind": "discipline",
-  "generated": "2026-09-07",
+  "generated": "2026-09-09",
   "resources": [
     {
       "name": "Addgene",
@@ -1236,6 +1236,18 @@
       "registration": "none",
       "beginner": 3,
       "notes": "The plain FTP site is rate-limited, so Globus or Aspera are recommended for large bulk transfers. Multiple overlapping releases exist (phase 1, phase 3, the 2019 high-coverage resequencing); check which one a given analysis expects, as variant calls and sample sets differ between them."
+    },
+    {
+      "name": "Galaxy",
+      "url": "https://usegalaxy.org",
+      "category": "software",
+      "subcategory": "bioinformatics workflow platform",
+      "summary": "Open-source, web-based platform for running genomics and other computational-biology analyses through a graphical interface backed by 10,000+ integrated tools, with no local install or programming required.",
+      "access": "Web interface at usegalaxy.org (or one of the other public Galaxy servers); create an account with email, password, and username, then build/run analysis workflows through the browser.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 3,
+      "notes": "Public usegalaxy.org gives registered users 250GB of storage and 6 concurrent jobs (5GB storage, no account needed, for anonymous use); most jobs run on 1 core / 8GB RAM. Users with protected data, larger storage needs, or heavy compute are directed to run their own Galaxy instance instead. Structured tutorials are available through the separate Galaxy Training Network."
     }
   ]
 }

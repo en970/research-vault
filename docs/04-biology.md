@@ -1,10 +1,10 @@
 # Biology & life sciences
 
-Part of [research-vault](../README.md). 88 entries, verified 2026-09-07. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 89 entries, verified 2026-09-09. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (39) · [Software](#software) (20) · [Literature](#literature) (5) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (4)
+**Contents:** [Data](#data) (39) · [Software](#software) (21) · [Literature](#literature) (5) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (4)
 
 ## Data
 
@@ -601,6 +601,16 @@ Successor to Chimera for visualising and analysing molecular structures, cryo-EM
 **Access.** Download builds for Windows/macOS/Linux after accepting the non-commercial licence agreement. Fetch structures by accession without leaving the app: `open 1cbs` for the PDB, `open P00520 from alphafold` for AlphaFold DB. Script with ChimeraX commands in a .cxc file or Python via `runscript`.
 
 **Caveats.** Free of charge for non-commercial use only - you must agree to the UCSF ChimeraX Non-Commercial Licence before downloading, and commercial use requires a separate paid licence priced by user count. Rendering large cryo-EM maps benefits from a discrete GPU. Open-source PyMOL is the main alternative where a non-commercial restriction is a problem.
+
+### [Galaxy](https://usegalaxy.org)
+
+`Free (registration), email` · beginner 3/5 · bioinformatics workflow platform
+
+Open-source, web-based platform for running genomics and other computational-biology analyses through a graphical interface backed by 10,000+ integrated tools, with no local install or programming required.
+
+**Access.** Web interface at usegalaxy.org (or one of the other public Galaxy servers); create an account with email, password, and username, then build/run analysis workflows through the browser.
+
+**Caveats.** Public usegalaxy.org gives registered users 250GB of storage and 6 concurrent jobs (5GB storage, no account needed, for anonymous use); most jobs run on 1 core / 8GB RAM. Users with protected data, larger storage needs, or heavy compute are directed to run their own Galaxy instance instead. Structured tutorials are available through the separate Galaxy Training Network.
 
 ## Literature
 
