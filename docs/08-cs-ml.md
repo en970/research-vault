@@ -1,10 +1,10 @@
 # Computer science & machine learning
 
-Part of [research-vault](../README.md). 86 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 87 entries, verified 2026-09-11. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (15) · [Software](#software) (21) · [Literature](#literature) (14) · [Compute](#compute) (6) · [Publishing](#publishing) (8) · [Funding](#funding) (4) · [Learning](#learning) (12) · [Community](#community) (6)
+**Contents:** [Data](#data) (15) · [Software](#software) (22) · [Literature](#literature) (14) · [Compute](#compute) (6) · [Publishing](#publishing) (8) · [Funding](#funding) (4) · [Learning](#learning) (12) · [Community](#community) (6)
 
 ## Data
 
@@ -371,6 +371,16 @@ Distributed gradient-boosting library, version 3.4.1 (released 2026-08-14), with
 **Access.** pip install xgboost; from xgboost import XGBClassifier; XGBClassifier(tree_method='hist', device='cuda').fit(X, y) — drop-in for sklearn pipelines and cross_val_score. R: install.packages('xgboost').
 
 **Caveats.** Apache-2.0. On tabular problems this and its siblings LightGBM and CatBoost routinely beat neural networks, so a paper claiming a deep model wins on tabular data needs a tuned boosting baseline to be credible — pair it with Optuna. Defaults overfit small datasets: tune max_depth, learning rate and early stopping. The API around categorical features (enable_categorical) and device placement changed across the 2.x/3.x line, so pin the version. Scales to billions of rows, but a laptop CPU covers most academic tabular datasets.
+
+### [CatBoost](https://github.com/catboost/catboost)
+
+`Free` · beginner 3/5 · machine learning
+
+Open-source gradient-boosting-on-decision-trees library from Yandex for classification, regression, and ranking, with native support for categorical features and built-in GPU/multi-GPU training.
+
+**Access.** `pip install catboost`; also available as an R package, CLI tool, and Apache Spark package
+
+**Caveats.** Apache 2.0 licensed; over 50,000 commits and ongoing active development. Distinguishing feature versus XGBoost/LightGBM is handling categorical variables without manual encoding.
 
 ## Literature
 

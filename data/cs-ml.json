@@ -3,7 +3,7 @@
   "title": "Computer science & machine learning",
   "order": 7,
   "kind": "discipline",
-  "generated": "2026-08-28",
+  "generated": "2026-09-11",
   "resources": [
     {
       "name": "COCO (Common Objects in Context)",
@@ -1212,6 +1212,18 @@
       "notes": "Small and volunteer-run — compute and mentorship are finite and go to people who show up consistently with a project, not on request. This is the closest thing the field has to a home for genuinely unaffiliated researchers, and DLCT alone is worth attending for the paper-reading practice.",
       "canonical": true,
       "also_in": []
+    },
+    {
+      "name": "CatBoost",
+      "url": "https://github.com/catboost/catboost",
+      "category": "software",
+      "subcategory": "machine learning",
+      "summary": "Open-source gradient-boosting-on-decision-trees library from Yandex for classification, regression, and ranking, with native support for categorical features and built-in GPU/multi-GPU training.",
+      "access": "`pip install catboost`; also available as an R package, CLI tool, and Apache Spark package",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Apache 2.0 licensed; over 50,000 commits and ongoing active development. Distinguishing feature versus XGBoost/LightGBM is handling categorical variables without manual encoding."
     }
   ]
 }
