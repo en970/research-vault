@@ -1,10 +1,10 @@
 # Linguistics & humanities
 
-Part of [research-vault](../README.md). 80 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 82 entries, verified 2026-09-11. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (34) · [Software](#software) (22) · [Literature](#literature) (5) · [Publishing](#publishing) (7) · [Funding](#funding) (4) · [Learning](#learning) (5) · [Community](#community) (3)
+**Contents:** [Data](#data) (34) · [Software](#software) (24) · [Literature](#literature) (5) · [Publishing](#publishing) (7) · [Funding](#funding) (4) · [Learning](#learning) (5) · [Community](#community) (3)
 
 ## Data
 
@@ -573,6 +573,26 @@ Open-source reference manager with browser connectors that capture citations and
 **Access.** Download the desktop app plus the browser connector; free account for syncing. Local libraries are unlimited in size regardless of the storage plan; `pip install pyzotero` drives the web API.
 
 **Caveats.** The app and all features are free; only cloud file storage is metered — 300 MB free, then $20/year for 2 GB up to $120/year unlimited. You can keep attachments local and sync only metadata, or point file storage at your own WebDAV server, and stay free indefinitely. Group libraries draw on the group owner's storage quota.
+
+### [Recogito](https://recogito.pelagios.org/)
+
+`Free (registration), email` · beginner 4/5 · text/map/image annotation
+
+Web platform for semantic annotation of texts, maps, and images that lets researchers tag named entities (places, people, events) without writing markup, with collaborative editing, discussion, and version history on shared collections.
+
+**Access.** Web interface at recogito.pelagios.org; requires a free account (email registration) to create or upload collections. Source code is open on GitHub (pelagios/recogito2) for self-hosting.
+
+**Caveats.** Built by a Mellon-funded consortium (Austrian Institute of Technology, Exeter, Humboldt Institute for Internet and Society, Open University, University of London); won Best Open Source Software at the 2019 Open Publishing Awards and Best DH Tool at the 2018 Digital Humanities Awards. Geared toward historical, classical, and place-based texts rather than general-purpose NLP.
+
+### [Lexos](http://lexos.wheatoncollege.edu)
+
+`Free` · beginner 4/5 · text analysis
+
+Web-based suite for computational analysis of literary and historical texts, covering pre-processing ('scrubbing'), tokenizing, cluster analysis, cosine similarity, z-score analysis, word clouds, and dendrogram visualization.
+
+**Access.** Hosted web app at lexos.wheatoncollege.edu, no install needed; MIT-licensed source and pip-installable package at github.com/WheatonCS/Lexos for self-hosting.
+
+**Caveats.** Developed by the Lexomics Research Group at Wheaton College; oriented toward literary/humanities text analysis rather than general corpus-linguistics NLP pipelines. If the hosted instance is unreachable, the GitHub package can be run locally.
 
 ## Literature
 

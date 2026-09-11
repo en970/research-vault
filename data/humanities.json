@@ -3,7 +3,7 @@
   "title": "Linguistics & humanities",
   "order": 11,
   "kind": "discipline",
-  "generated": "2026-08-28",
+  "generated": "2026-09-11",
   "resources": [
     {
       "name": "AILLA (Archive of the Indigenous Languages of Latin America)",
@@ -1130,6 +1130,30 @@
       "notes": "This is where the discipline's practical information actually circulates — an unaffiliated researcher who reads nothing else will still see the conferences, calls and jobs. Volume is high; use the topic filters rather than the full digest. Job listings skew heavily toward institutions in North America and Europe.",
       "canonical": true,
       "also_in": []
+    },
+    {
+      "name": "Recogito",
+      "url": "https://recogito.pelagios.org/",
+      "category": "software",
+      "subcategory": "text/map/image annotation",
+      "summary": "Web platform for semantic annotation of texts, maps, and images that lets researchers tag named entities (places, people, events) without writing markup, with collaborative editing, discussion, and version history on shared collections.",
+      "access": "Web interface at recogito.pelagios.org; requires a free account (email registration) to create or upload collections. Source code is open on GitHub (pelagios/recogito2) for self-hosting.",
+      "free": "free-registration",
+      "registration": "email",
+      "beginner": 4,
+      "notes": "Built by a Mellon-funded consortium (Austrian Institute of Technology, Exeter, Humboldt Institute for Internet and Society, Open University, University of London); won Best Open Source Software at the 2019 Open Publishing Awards and Best DH Tool at the 2018 Digital Humanities Awards. Geared toward historical, classical, and place-based texts rather than general-purpose NLP."
+    },
+    {
+      "name": "Lexos",
+      "url": "http://lexos.wheatoncollege.edu",
+      "category": "software",
+      "subcategory": "text analysis",
+      "summary": "Web-based suite for computational analysis of literary and historical texts, covering pre-processing ('scrubbing'), tokenizing, cluster analysis, cosine similarity, z-score analysis, word clouds, and dendrogram visualization.",
+      "access": "Hosted web app at lexos.wheatoncollege.edu, no install needed; MIT-licensed source and pip-installable package at github.com/WheatonCS/Lexos for self-hosting.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 4,
+      "notes": "Developed by the Lexomics Research Group at Wheaton College; oriented toward literary/humanities text analysis rather than general corpus-linguistics NLP pipelines. If the hosted instance is unreachable, the GitHub package can be run locally."
     }
   ]
 }

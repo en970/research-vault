@@ -12,7 +12,7 @@ cover the thing they need, the researcher at an institution that cannot afford t
 subscriptions at all, and the person working without any affiliation.
 
 <!-- STATS:START -->
-**1,191 resources** across **18 fields** — 925 free outright, 763 usable with no account at all. Verified 2026-08-28 – 2026-09-09.
+**1,193 resources** across **18 fields** — 926 free outright, 764 usable with no account at all. Verified 2026-08-28 – 2026-09-11.
 <!-- STATS:END -->
 
 ## Guiding principle
@@ -54,7 +54,7 @@ sixty seconds. Those distinctions are the content.
 | [Neuroscience & psychology](docs/09-neuro-psych.md) | 96 | software (39), data (24), literature (10) |
 | [Social sciences](docs/10-social.md) | 87 | data (37), software (16), literature (12) |
 | [Economics & finance](docs/11-econ-finance.md) | 82 | data (40), software (14), literature (8) |
-| [Linguistics & humanities](docs/12-humanities.md) | 80 | data (34), software (22), publishing (7) |
+| [Linguistics & humanities](docs/12-humanities.md) | 82 | data (34), software (24), publishing (7) |
 | [Literature access & discovery](docs/13-literature-access.md) | 78 | literature (47), software (11), publishing (6) |
 | [Free compute & storage](docs/14-compute.md) | 66 | compute (40), data (10), publishing (6) |
 | [Publishing, identity & preservation](docs/15-publishing.md) | 77 | publishing (46), literature (13), software (5) |
