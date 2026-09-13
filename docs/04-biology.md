@@ -1,10 +1,10 @@
 # Biology & life sciences
 
-Part of [research-vault](../README.md). 89 entries, verified 2026-09-09. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 90 entries, verified 2026-09-13. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (39) · [Software](#software) (21) · [Literature](#literature) (5) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (4)
+**Contents:** [Data](#data) (40) · [Software](#software) (21) · [Literature](#literature) (5) · [Compute](#compute) (4) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (6) · [Community](#community) (4)
 
 ## Data
 
@@ -397,6 +397,16 @@ Whole-genome and exome sequencing data for 2,504 individuals from 26 populations
 **Access.** Bulk download via FTP, Aspera, or Globus; VCF and PED files browsable by sample, population, technology, or data type through the IGSR web portal; variants also viewable in the Ensembl genome browser by rsID or region.
 
 **Caveats.** The plain FTP site is rate-limited, so Globus or Aspera are recommended for large bulk transfers. Multiple overlapping releases exist (phase 1, phase 3, the 2019 high-coverage resequencing); check which one a given analysis expects, as variant calls and sample sets differ between them.
+
+### [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy)
+
+`Free` · beginner 4/5 · taxonomic classification
+
+NCBI's curated classification and nomenclature for every organism represented in public sequence databases, covering roughly 10% of the described species of life on Earth (i.e., organisms that have sequence data, not a complete tree of life).
+
+**Access.** Web: Taxonomy Browser and Common Tree tool at ncbi.nlm.nih.gov/taxonomy; bulk download of the taxdump files via FTP at ftp.ncbi.nih.gov/pub/taxonomy; programmatic queries via the E-utilities API; Batch Entrez for bulk ID lookups.
+
+**Caveats.** Only covers taxa with public sequence data, so it is not exhaustive of all described species. Some taxon IDs are marked merged/deleted rather than removed, for backward compatibility with older records — check for these when scripting against the dump files.
 
 ## Software
 
