@@ -3,7 +3,7 @@
   "title": "Earth, climate & environmental science",
   "order": 5,
   "kind": "discipline",
-  "generated": "2026-08-28",
+  "generated": "2026-09-15",
   "resources": [
     {
       "name": "AmeriFlux (and the FLUXNET network)",
@@ -1238,6 +1238,18 @@
       "notes": "Centre of gravity is subsurface geoscience (seismic, wells, petrophysics, geomechanics, geothermal) rather than climate or satellite remote sensing, and much of it grew out of the energy industry. The community moved off Slack to Mattermost, so old Slack invite links circulating in blog posts are dead. Volume is lower than Stack Exchange but the answers come from people who wrote the tools.",
       "canonical": true,
       "also_in": []
+    },
+    {
+      "name": "Macrostrat",
+      "url": "https://macrostrat.org",
+      "category": "data",
+      "subcategory": "geologic map data",
+      "summary": "Homogenized geologic database aggregating over 225 geologic maps worldwide, with roughly 1,400 regional rock columns, 33,900 rock units, and 2.5 million geologic map polygons spanning Earth's stratigraphic history.",
+      "access": "Free public API (v2), no key required: `https://macrostrat.org/api/v2/...`; also usable via the CRAN package `rmacrostrat`",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "US-centric coverage is deepest; international coverage varies by contributed map. Powers apps like Rockd and Flyover Country."
     }
   ]
 }

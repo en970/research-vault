@@ -1,10 +1,10 @@
 # Earth, climate & environmental science
 
-Part of [research-vault](../README.md). 88 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 89 entries, verified 2026-09-15. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (38) · [Software](#software) (18) · [Literature](#literature) (3) · [Compute](#compute) (6) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (8) · [Community](#community) (5)
+**Contents:** [Data](#data) (39) · [Software](#software) (18) · [Literature](#literature) (3) · [Compute](#compute) (6) · [Publishing](#publishing) (5) · [Funding](#funding) (5) · [Learning](#learning) (8) · [Community](#community) (5)
 
 ## Data
 
@@ -387,6 +387,16 @@ Global interpolated climate surfaces at 30 arc-second to 10 arc-minute resolutio
 **Access.** Direct zip download per variable and resolution (12 monthly GeoTIFFs each); in R, `geodata::worldclim_global(var='bio', res=10, path='.')` fetches and caches the same files.
 
 **Caveats.** Interpolated from station data, so it is least reliable where stations are sparse: high mountains, polar regions, and parts of Africa and Amazonia. The 30 arc-second global layers are multi-GB. Licence terms are not stated on the download page; cite Fick and Hijmans (2017) and check terms before commercial reuse.
+
+### [Macrostrat](https://macrostrat.org)
+
+`Free` · beginner 3/5 · geologic map data
+
+Homogenized geologic database aggregating over 225 geologic maps worldwide, with roughly 1,400 regional rock columns, 33,900 rock units, and 2.5 million geologic map polygons spanning Earth's stratigraphic history.
+
+**Access.** Free public API (v2), no key required: `https://macrostrat.org/api/v2/...`; also usable via the CRAN package `rmacrostrat`
+
+**Caveats.** US-centric coverage is deepest; international coverage varies by contributed map. Powers apps like Rockd and Flyover Country.
 
 ## Software
 
