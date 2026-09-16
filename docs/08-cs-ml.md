@@ -1,10 +1,10 @@
 # Computer science & machine learning
 
-Part of [research-vault](../README.md). 87 entries, verified 2026-09-11. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 88 entries, verified 2026-09-16. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (15) · [Software](#software) (22) · [Literature](#literature) (14) · [Compute](#compute) (6) · [Publishing](#publishing) (8) · [Funding](#funding) (4) · [Learning](#learning) (12) · [Community](#community) (6)
+**Contents:** [Data](#data) (15) · [Software](#software) (23) · [Literature](#literature) (14) · [Compute](#compute) (6) · [Publishing](#publishing) (8) · [Funding](#funding) (4) · [Learning](#learning) (12) · [Community](#community) (6)
 
 ## Data
 
@@ -381,6 +381,16 @@ Open-source gradient-boosting-on-decision-trees library from Yandex for classifi
 **Access.** `pip install catboost`; also available as an R package, CLI tool, and Apache Spark package
 
 **Caveats.** Apache 2.0 licensed; over 50,000 commits and ongoing active development. Distinguishing feature versus XGBoost/LightGBM is handling categorical variables without manual encoding.
+
+### [mlpack](https://github.com/mlpack/mlpack)
+
+`Free` · beginner 3/5 · general-purpose ML library
+
+Header-only C++17 machine learning library ("a machine learning analog to LAPACK") covering classification, regression, clustering, and preprocessing, with bindings for Python, R, Julia, Go, and a command-line interface. Fiscally sponsored by NumFOCUS, BSD-3-Clause licensed, currently at version 4.8.0 with 5.7k GitHub stars.
+
+**Access.** `pip install mlpack` (wheels for Linux/macOS/Windows, Python 3.9–3.14) or `conda install -c conda-forge mlpack`; C++ usage requires Armadillo, ensmallen, and cereal as dependencies.
+
+**Caveats.** Python/R/Julia bindings lower the barrier, but the library is C++-first and documentation assumes some comfort with linear algebra and build tooling; for everyday model-fitting most researchers still reach for scikit-learn first and use mlpack when they need the C++ core or header-only deployment.
 
 ## Literature
 
