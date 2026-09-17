@@ -1,10 +1,10 @@
 # Free compute & storage
 
-Part of [research-vault](../README.md). 67 entries, verified 2026-09-17. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 68 entries, verified 2026-09-17. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (10) · [Software](#software) (6) · [Compute](#compute) (40) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
+**Contents:** [Data](#data) (10) · [Software](#software) (7) · [Compute](#compute) (40) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
 
 ## Data
 
@@ -177,6 +177,16 @@ Open-source computing platform for solving partial differential equations with t
 **Access.** `pip install fenics-dolfinx` (or conda: `conda install -c conda-forge fenics-dolfinx`); Python interface for defining variational forms and meshes
 
 **Caveats.** Steep learning curve — requires understanding weak formulations of PDEs. Fiscally sponsored by NumFOCUS; donations are optional, not required.
+
+### [ParaView](https://www.paraview.org)
+
+`Free` · beginner 3/5 · scientific visualization
+
+Open-source post-processing visualization application for large scientific datasets, used across CFD, materials science, and engineering; runs as a desktop app, in a browser via trame, or in situ during HPC simulations via Catalyst.
+
+**Access.** Direct download of desktop binaries (Windows/macOS/Linux) from paraview.org/download; scriptable via Python (pvpython)
+
+**Caveats.** Developed by Kitware, which also sells optional paid training and custom development services — the visualization tool itself is fully free and open source.
 
 ## Compute
 

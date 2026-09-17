@@ -970,6 +970,18 @@
       "registration": "none",
       "beginner": 2,
       "notes": "Steep learning curve — requires understanding weak formulations of PDEs. Fiscally sponsored by NumFOCUS; donations are optional, not required."
+    },
+    {
+      "name": "ParaView",
+      "url": "https://www.paraview.org",
+      "category": "software",
+      "subcategory": "scientific visualization",
+      "summary": "Open-source post-processing visualization application for large scientific datasets, used across CFD, materials science, and engineering; runs as a desktop app, in a browser via trame, or in situ during HPC simulations via Catalyst.",
+      "access": "Direct download of desktop binaries (Windows/macOS/Linux) from paraview.org/download; scriptable via Python (pvpython)",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Developed by Kitware, which also sells optional paid training and custom development services — the visualization tool itself is fully free and open source."
     }
   ]
 }
