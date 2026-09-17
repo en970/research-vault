@@ -1,10 +1,10 @@
 # Free compute & storage
 
-Part of [research-vault](../README.md). 66 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 67 entries, verified 2026-09-17. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (10) · [Software](#software) (5) · [Compute](#compute) (40) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
+**Contents:** [Data](#data) (10) · [Software](#software) (6) · [Compute](#compute) (40) · [Publishing](#publishing) (6) · [Funding](#funding) (2) · [Learning](#learning) (1) · [Community](#community) (2)
 
 ## Data
 
@@ -167,6 +167,16 @@ One-command local runner for open-weight models, wrapping the same GGML/llama.cp
 **Access.** Download from ollama.com, then: ollama run qwen3:8b for a chat session, or ollama serve plus http://localhost:11434/v1 as an OpenAI-compatible base URL from Python.
 
 **Caveats.** What is free is the local runtime and the model downloads; Ollama also now sells a hosted cloud tier with paid usage, and the front page markets that heavily — do not confuse the two. Local inference sends nothing anywhere. Model licences vary by model (some restrict commercial or derivative use), so read the card before building results on one.
+
+### [FEniCS](https://fenicsproject.org)
+
+`Free` · beginner 2/5 · finite element PDE solving
+
+Open-source computing platform for solving partial differential equations with the finite element method, with Python and C++ interfaces and support for parallel execution from laptops to HPC clusters.
+
+**Access.** `pip install fenics-dolfinx` (or conda: `conda install -c conda-forge fenics-dolfinx`); Python interface for defining variational forms and meshes
+
+**Caveats.** Steep learning curve — requires understanding weak formulations of PDEs. Fiscally sponsored by NumFOCUS; donations are optional, not required.
 
 ## Compute
 

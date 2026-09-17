@@ -3,7 +3,7 @@
   "title": "Free compute & storage",
   "order": 13,
   "kind": "cross-cutting",
-  "generated": "2026-08-28",
+  "generated": "2026-09-17",
   "resources": [
     {
       "name": "Academic Torrents",
@@ -958,6 +958,18 @@
       "notes": "Traffic is modest compared with Stack Overflow, so expect hours to days for a reply, and skewed toward US campus infrastructure. For a problem on one specific machine, the operator's own ticket system is almost always faster; Ask.CI is better for 'how do people usually do X' questions that no single help desk owns.",
       "canonical": true,
       "also_in": []
+    },
+    {
+      "name": "FEniCS",
+      "url": "https://fenicsproject.org",
+      "category": "software",
+      "subcategory": "finite element PDE solving",
+      "summary": "Open-source computing platform for solving partial differential equations with the finite element method, with Python and C++ interfaces and support for parallel execution from laptops to HPC clusters.",
+      "access": "`pip install fenics-dolfinx` (or conda: `conda install -c conda-forge fenics-dolfinx`); Python interface for defining variational forms and meshes",
+      "free": "free",
+      "registration": "none",
+      "beginner": 2,
+      "notes": "Steep learning curve — requires understanding weak formulations of PDEs. Fiscally sponsored by NumFOCUS; donations are optional, not required."
     }
   ]
 }
