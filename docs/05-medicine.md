@@ -1,6 +1,6 @@
 # Medicine & health sciences
 
-Part of [research-vault](../README.md). 76 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 77 entries, verified 2026-09-18. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
@@ -785,3 +785,15 @@ The working forum of the Observational Health Data Sciences and Informatics comm
 **Access.** Free Discourse account to post; read without one. Pair it with the weekly OHDSI community calls and the workgroup calendar listed on ohdsi.org, both open to anyone.
 
 **Caveats.** Open to anyone including unaffiliated researchers, and unusually welcoming to newcomers — the 'Introduce Yourself' thread is a genuine entry point. Discussion presumes you already have or are building an OMOP CDM instance; general clinical epidemiology questions get thinner answers here than tooling and methods questions.
+
+## medicine
+
+### [NCI Genomic Data Commons (GDC) Data Portal](https://gdc.cancer.gov/access-data/gdc-data-portal)
+
+`Free` · beginner 3/5 · cancer genomics data
+
+NCI-run repository (under the Office of Cancer Genomics) that harmonizes cancer genomic and clinical data from programs including TCGA and TARGET onto a common set of bioinformatics pipelines, with a Cohort Builder, Repository, and REST/GraphQL API for browsing and downloading files.
+
+**Access.** Web portal at portal.gdc.cancer.gov; open-access files (e.g. harmonized somatic mutation calls, gene/RNA expression, clinical and biospecimen metadata) can be browsed and downloaded without logging in; also reachable via the GDC REST/GraphQL API.
+
+**Caveats.** Applies only to the open-access tier. A separate subset (raw sequencing reads, germline variant calls) is controlled-access and requires an eRA Commons account plus an approved dbGaP research-project application; institutions can help with that process, but GDC's own documentation does not guarantee an independent researcher without institutional backing can complete it.

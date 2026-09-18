@@ -3,7 +3,7 @@
   "title": "Medicine & health sciences",
   "order": 4,
   "kind": "discipline",
-  "generated": "2026-08-28",
+  "generated": "2026-09-18",
   "resources": [
     {
       "name": "All of Us Research Hub",
@@ -1072,6 +1072,18 @@
       "notes": "Open to anyone including unaffiliated researchers, and unusually welcoming to newcomers — the 'Introduce Yourself' thread is a genuine entry point. Discussion presumes you already have or are building an OMOP CDM instance; general clinical epidemiology questions get thinner answers here than tooling and methods questions.",
       "canonical": true,
       "also_in": []
+    },
+    {
+      "name": "NCI Genomic Data Commons (GDC) Data Portal",
+      "url": "https://gdc.cancer.gov/access-data/gdc-data-portal",
+      "category": "medicine",
+      "subcategory": "cancer genomics data",
+      "summary": "NCI-run repository (under the Office of Cancer Genomics) that harmonizes cancer genomic and clinical data from programs including TCGA and TARGET onto a common set of bioinformatics pipelines, with a Cohort Builder, Repository, and REST/GraphQL API for browsing and downloading files.",
+      "access": "Web portal at portal.gdc.cancer.gov; open-access files (e.g. harmonized somatic mutation calls, gene/RNA expression, clinical and biospecimen metadata) can be browsed and downloaded without logging in; also reachable via the GDC REST/GraphQL API.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Applies only to the open-access tier. A separate subset (raw sequencing reads, germline variant calls) is controlled-access and requires an eRA Commons account plus an approved dbGaP research-project application; institutions can help with that process, but GDC's own documentation does not guarantee an independent researcher without institutional backing can complete it."
     }
   ]
 }
