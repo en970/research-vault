@@ -1,10 +1,10 @@
 # Economics & finance
 
-Part of [research-vault](../README.md). 82 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 83 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (40) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
+**Contents:** [Data](#data) (41) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
 
 ## Data
 
@@ -167,6 +167,16 @@ IMF's rebuilt data portal serving IFS, BOP, GFS, DOTS, WEO, FSI and Monetary and
 **Access.** No key. Structure: https://api.imf.org/external/sdmx/3.0/structure/dataflow — then query data by dataflow id. Python: `pip install sdmx1` and point it at the IMF SDMX endpoint, or reach the same series through DBnomics. WEO aggregate tables also download as flat files from the WEO database pages.
 
 **Caveats.** The portal was rebuilt around 2024-2025 and the legacy dataservices.imf.org JSON endpoint that most older tutorials and blog posts use is no longer serving — code written against it will fail silently or return empty. The SDMX 3.0 grammar is a real learning curve; DBnomics is the gentler route to the same numbers.
+
+### [Invokely](https://invokely.ai/)
+
+`Free tier, api-key` · beginner 3/5 · official statistics API
+
+A hosted REST API and MCP server that returns official statistical figures with their period and a citation to the source. The catalog covers US states and counties, EU regions, Spanish municipalities, and country and world indicators from the World Bank.
+
+**Access.** Create a free account for an API key, then call https://invokely.ai/api/v1/indicators or https://invokely.ai/api/v1/value with `Authorization: Bearer ivk_...` (or `x-api-key`). The free plan includes 500 calls per month, with the latest 60 points per series; no card is required. Documentation: https://invokely.ai/docs. MCP clients can use OAuth or the 25-call-per-day, per-IP trial at https://invokely.ai/mcp/trial.
+
+**Caveats.** This is a secondary data layer, not a publisher: use the source URL and period returned for each figure, and check publisher reuse terms at https://invokely.ai/sources before redistribution. The 500-call monthly plan and 60-point series limit support exploration and smaller studies; full history and CSV export require a paid plan.
 
 ### [IPUMS CPS and IPUMS USA](https://www.ipums.org/)
 

@@ -230,6 +230,20 @@
       "also_in": []
     },
     {
+      "name": "Invokely",
+      "url": "https://invokely.ai/",
+      "category": "data",
+      "subcategory": "official statistics API",
+      "summary": "A hosted REST API and MCP server that returns official statistical figures with their period and a citation to the source. The catalog covers US states and counties, EU regions, Spanish municipalities, and country and world indicators from the World Bank.",
+      "access": "Create a free account for an API key, then call https://invokely.ai/api/v1/indicators or https://invokely.ai/api/v1/value with `Authorization: Bearer ivk_...` (or `x-api-key`). The free plan includes 500 calls per month, with the latest 60 points per series; no card is required. Documentation: https://invokely.ai/docs. MCP clients can use OAuth or the 25-call-per-day, per-IP trial at https://invokely.ai/mcp/trial.",
+      "free": "free-tier",
+      "registration": "api-key",
+      "beginner": 3,
+      "notes": "This is a secondary data layer, not a publisher: use the source URL and period returned for each figure, and check publisher reuse terms at https://invokely.ai/sources before redistribution. The 500-call monthly plan and 60-point series limit support exploration and smaller studies; full history and CSV export require a paid plan.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
       "name": "IPUMS CPS and IPUMS USA",
       "url": "https://www.ipums.org/",
       "category": "data",
