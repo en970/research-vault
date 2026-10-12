@@ -174,9 +174,9 @@ IMF's rebuilt data portal serving IFS, BOP, GFS, DOTS, WEO, FSI and Monetary and
 
 A hosted REST API and MCP server that returns official statistical figures with their period and a citation to the source. The catalog covers US states and counties, EU regions, Spanish municipalities, and country and world indicators from the World Bank.
 
-**Access.** Create a free account for an API key, then call https://invokely.ai/api/v1/indicators or https://invokely.ai/api/v1/value with `Authorization: Bearer ivk_...` (or `x-api-key`). The free plan includes 500 calls per month, with the latest 60 points per series; no card is required. Documentation: https://invokely.ai/docs. MCP clients can use OAuth or the 25-call-per-day, per-IP trial at https://invokely.ai/mcp/trial.
+**Access.** Free account (no card): use the hosted MCP server with an API key or OAuth for 500 calls per month. The no-account MCP trial allows 25 calls per day per IP. REST data queries require Builder (19 EUR/month, 10,000 calls), Pro (79 EUR/month, 100,000 calls), or prepaid credits (5 EUR per 1,000 calls; 10 EUR minimum, no expiry). Catalog lookups and CSV export remain available on every plan with an API key. Documentation: https://invokely.ai/docs. Each series response returns up to 5,000 points; use `from` and `to` to page through longer histories.
 
-**Caveats.** This is a secondary data layer, not a publisher: use the source URL and period returned for each figure, and check publisher reuse terms at https://invokely.ai/sources before redistribution. The 500-call monthly plan and 60-point series limit support exploration and smaller studies; full history and CSV export require a paid plan.
+**Caveats.** This is a secondary data layer, not a publisher: use the source URL and period returned for each figure, and check publisher reuse terms at https://invokely.ai/sources before redistribution. Full series history and CSV, Excel, and chart exports are available on every plan; REST data calls are paid.
 
 ### [IPUMS CPS and IPUMS USA](https://www.ipums.org/)
 
