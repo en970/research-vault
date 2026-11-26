@@ -3,7 +3,7 @@
   "title": "Economics & finance",
   "order": 10,
   "kind": "discipline",
-  "generated": "2026-08-28",
+  "generated": "2026-11-26",
   "resources": [
     {
       "name": "AQR Data Sets",
@@ -284,6 +284,20 @@
       "registration": "none",
       "beginner": 4,
       "notes": "Returns are in percent, not decimals, and the raw text files stack several tables (monthly, then annual, then value-weighted vs equal-weighted) in one file with blank-line separators — parsing naively silently concatenates them. Portfolios are built from CRSP/Compustat, so you get the outputs for free but cannot reconstruct or extend them without those paid databases.",
+      "canonical": true,
+      "also_in": []
+    },
+    {
+      "name": "MacroDial",
+      "url": "https://macrodial.org/dashboard",
+      "category": "data",
+      "subcategory": "U.S. macroeconomic research dashboard",
+      "summary": "Free dashboard for researching U.S. macroeconomic and market conditions, with a daily brief, seven analytical modules, and historical context based on public data.",
+      "access": "Open the public dashboard in a web browser; no institutional account is required.",
+      "free": "free",
+      "registration": "none",
+      "beginner": 3,
+      "notes": "Research and education resource; not investment advice. Submitted by MacroDial Team.",
       "canonical": true,
       "also_in": []
     },
