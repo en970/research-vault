@@ -1,10 +1,10 @@
 # Economics & finance
 
-Part of [research-vault](../README.md). 82 entries, verified 2026-08-28. Free status and limits change; check the source before you build on it.
+Part of [research-vault](../README.md). 83 entries, verified 2026-11-26. Free status and limits change; check the source before you build on it.
 
 Beginner ratings run 1–5: 5 means a newcomer gets something useful out of it in ten minutes, 1 means a specialist toolchain and patience.
 
-**Contents:** [Data](#data) (40) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
+**Contents:** [Data](#data) (41) · [Software](#software) (14) · [Literature](#literature) (8) · [Compute](#compute) (1) · [Publishing](#publishing) (4) · [Funding](#funding) (5) · [Learning](#learning) (7) · [Community](#community) (3)
 
 ## Data
 
@@ -209,6 +209,16 @@ The reference source for Fama-French 3- and 5-factor returns, momentum and rever
 **Access.** Direct download of zipped TXT/CSV, no account. Python: `pandas_datareader.data.DataReader('F-F_Research_Data_5_Factors_2x3','famafrench')`. R: `install.packages('frenchdata')` then `download_french_data('Fama/French 3 Factors')`.
 
 **Caveats.** Returns are in percent, not decimals, and the raw text files stack several tables (monthly, then annual, then value-weighted vs equal-weighted) in one file with blank-line separators — parsing naively silently concatenates them. Portfolios are built from CRSP/Compustat, so you get the outputs for free but cannot reconstruct or extend them without those paid databases.
+
+### [MacroDial](https://macrodial.org/dashboard)
+
+`Free` · beginner 3/5 · U.S. macroeconomic research dashboard
+
+Free dashboard for researching U.S. macroeconomic and market conditions, with a daily brief, seven analytical modules, and historical context based on public data.
+
+**Access.** Open the public dashboard in a web browser; no institutional account is required.
+
+**Caveats.** Research and education resource; not investment advice. Submitted by MacroDial Team.
 
 ### [Maddison Project Database 2023](https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023)
 
